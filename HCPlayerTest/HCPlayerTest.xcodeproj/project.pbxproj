@@ -7,34 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112B52011CD91316008564C6 /* testViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52001CD91316008564C6 /* testViewController.m */; };
+		112B52031CD914F5008564C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 112B52021CD914F5008564C6 /* LaunchScreen.storyboard */; };
+		112B52531CD918D6008564C6 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 112B52521CD918D6008564C6 /* Podfile */; };
+		112B52761CD91B4A008564C6 /* HCPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52751CD91B4A008564C6 /* HCPlayer.framework */; };
+		112B52821CD91B57008564C6 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52771CD91B57008564C6 /* libAFNetworking.a */; };
+		112B52831CD91B57008564C6 /* libHappyDNS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52781CD91B57008564C6 /* libHappyDNS.a */; };
+		112B52841CD91B57008564C6 /* libHCAudioUnit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52791CD91B57008564C6 /* libHCAudioUnit.a */; };
+		112B52851CD91B57008564C6 /* libHCBaseSystem.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527A1CD91B57008564C6 /* libHCBaseSystem.a */; };
+		112B52861CD91B57008564C6 /* libhccoren.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527B1CD91B57008564C6 /* libhccoren.a */; };
+		112B52871CD91B57008564C6 /* libHCMinizip.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527C1CD91B57008564C6 /* libHCMinizip.a */; };
+		112B52881CD91B57008564C6 /* libHCMVManager.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527D1CD91B57008564C6 /* libHCMVManager.a */; };
+		112B52891CD91B57008564C6 /* libPods-HCPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527E1CD91B57008564C6 /* libPods-HCPlayer.a */; };
+		112B528A1CD91B57008564C6 /* libPods-HCPlayerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B527F1CD91B57008564C6 /* libPods-HCPlayerTests.a */; };
+		112B528B1CD91B57008564C6 /* libQiniu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52801CD91B57008564C6 /* libQiniu.a */; };
+		112B528C1CD91B57008564C6 /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 112B52811CD91B57008564C6 /* libSDWebImage.a */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
-		11754FA51CD8AC6700F4DA09 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA41CD8AC6700F4DA09 /* ViewController.m */; };
-		11754FA81CD8AC6700F4DA09 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11754FA61CD8AC6700F4DA09 /* Main.storyboard */; };
-		11754FAB1CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA91CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodeld */; };
 		11754FAD1CD8AC6700F4DA09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */; };
-		11754FB01CD8AC6700F4DA09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11754FAE1CD8AC6700F4DA09 /* LaunchScreen.storyboard */; };
-		11754FB81CD8AC8C00F4DA09 /* HCPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11754FB71CD8AC8C00F4DA09 /* HCPlayer.framework */; };
-		11754FBC1CD8ACC400F4DA09 /* UIPlayerTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FBA1CD8ACC400F4DA09 /* UIPlayerTestVC.m */; };
-		11754FBD1CD8ACC400F4DA09 /* UIPlayerTestVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11754FBB1CD8ACC400F4DA09 /* UIPlayerTestVC.xib */; };
+		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112B51FF1CD91316008564C6 /* testViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
+		112B52001CD91316008564C6 /* testViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
+		112B52021CD914F5008564C6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		112B52521CD918D6008564C6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		112B52751CD91B4A008564C6 /* HCPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCPlayer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCPlayer.framework"; sourceTree = "<group>"; };
+		112B52771CD91B57008564C6 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
+		112B52781CD91B57008564C6 /* libHappyDNS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHappyDNS.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HappyDNS/libHappyDNS.a"; sourceTree = "<group>"; };
+		112B52791CD91B57008564C6 /* libHCAudioUnit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHCAudioUnit.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCAudioUnit/libHCAudioUnit.a"; sourceTree = "<group>"; };
+		112B527A1CD91B57008564C6 /* libHCBaseSystem.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHCBaseSystem.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCBaseSystem/libHCBaseSystem.a"; sourceTree = "<group>"; };
+		112B527B1CD91B57008564C6 /* libhccoren.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libhccoren.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/hccoren/libhccoren.a"; sourceTree = "<group>"; };
+		112B527C1CD91B57008564C6 /* libHCMinizip.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHCMinizip.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCMinizip/libHCMinizip.a"; sourceTree = "<group>"; };
+		112B527D1CD91B57008564C6 /* libHCMVManager.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHCMVManager.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCMVManager/libHCMVManager.a"; sourceTree = "<group>"; };
+		112B527E1CD91B57008564C6 /* libPods-HCPlayer.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HCPlayer.a"; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/libPods-HCPlayer.a"; sourceTree = "<group>"; };
+		112B527F1CD91B57008564C6 /* libPods-HCPlayerTests.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-HCPlayerTests.a"; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/libPods-HCPlayerTests.a"; sourceTree = "<group>"; };
+		112B52801CD91B57008564C6 /* libQiniu.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libQiniu.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/Qiniu/libQiniu.a"; sourceTree = "<group>"; };
+		112B52811CD91B57008564C6 /* libSDWebImage.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libSDWebImage.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/SDWebImage/libSDWebImage.a"; sourceTree = "<group>"; };
 		11754F9A1CD8AC6700F4DA09 /* HCPlayerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCPlayerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11754F9E1CD8AC6700F4DA09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11754FA01CD8AC6700F4DA09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11754FA11CD8AC6700F4DA09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11754FA31CD8AC6700F4DA09 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		11754FA41CD8AC6700F4DA09 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		11754FA71CD8AC6700F4DA09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		11754FAA1CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HCPlayerTest.xcdatamodel; sourceTree = "<group>"; };
 		11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		11754FAF1CD8AC6700F4DA09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11754FB11CD8AC6700F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		11754FB71CD8AC8C00F4DA09 /* HCPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCPlayer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphonesimulator/HCPlayer.framework"; sourceTree = "<group>"; };
-		11754FB91CD8ACC400F4DA09 /* UIPlayerTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIPlayerTestVC.h; sourceTree = "<group>"; };
-		11754FBA1CD8ACC400F4DA09 /* UIPlayerTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIPlayerTestVC.m; sourceTree = "<group>"; };
-		11754FBB1CD8ACC400F4DA09 /* UIPlayerTestVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UIPlayerTestVC.xib; sourceTree = "<group>"; };
+		7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayerTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.release.xcconfig"; sourceTree = "<group>"; };
+		C867399AE62F8274AF4D1A4E /* Pods-HCPlayerTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,19 +61,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11754FB81CD8AC8C00F4DA09 /* HCPlayer.framework in Frameworks */,
+				112B52821CD91B57008564C6 /* libAFNetworking.a in Frameworks */,
+				112B52831CD91B57008564C6 /* libHappyDNS.a in Frameworks */,
+				112B52841CD91B57008564C6 /* libHCAudioUnit.a in Frameworks */,
+				112B52851CD91B57008564C6 /* libHCBaseSystem.a in Frameworks */,
+				112B52861CD91B57008564C6 /* libhccoren.a in Frameworks */,
+				112B52871CD91B57008564C6 /* libHCMinizip.a in Frameworks */,
+				112B52881CD91B57008564C6 /* libHCMVManager.a in Frameworks */,
+				112B52891CD91B57008564C6 /* libPods-HCPlayer.a in Frameworks */,
+				112B528A1CD91B57008564C6 /* libPods-HCPlayerTests.a in Frameworks */,
+				112B528B1CD91B57008564C6 /* libQiniu.a in Frameworks */,
+				112B528C1CD91B57008564C6 /* libSDWebImage.a in Frameworks */,
+				112B52761CD91B4A008564C6 /* HCPlayer.framework in Frameworks */,
+				E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		112B51F31CD90D51008564C6 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
 		11754F911CD8AC6700F4DA09 = {
 			isa = PBXGroup;
 			children = (
-				11754FB71CD8AC8C00F4DA09 /* HCPlayer.framework */,
+				112B52521CD918D6008564C6 /* Podfile */,
+				112B51F31CD90D51008564C6 /* libs */,
 				11754F9C1CD8AC6700F4DA09 /* HCPlayerTest */,
 				11754F9B1CD8AC6700F4DA09 /* Products */,
+				DA1933E17343213D22AF04B8 /* Pods */,
+				E04A93D2DF773729C22F9C74 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,17 +112,12 @@
 			children = (
 				11754FA01CD8AC6700F4DA09 /* AppDelegate.h */,
 				11754FA11CD8AC6700F4DA09 /* AppDelegate.m */,
-				11754FB91CD8ACC400F4DA09 /* UIPlayerTestVC.h */,
-				11754FBA1CD8ACC400F4DA09 /* UIPlayerTestVC.m */,
-				11754FBB1CD8ACC400F4DA09 /* UIPlayerTestVC.xib */,
-				11754FA31CD8AC6700F4DA09 /* ViewController.h */,
-				11754FA41CD8AC6700F4DA09 /* ViewController.m */,
-				11754FA61CD8AC6700F4DA09 /* Main.storyboard */,
 				11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */,
-				11754FAE1CD8AC6700F4DA09 /* LaunchScreen.storyboard */,
 				11754FB11CD8AC6700F4DA09 /* Info.plist */,
-				11754FA91CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodeld */,
 				11754F9D1CD8AC6700F4DA09 /* Supporting Files */,
+				112B51FF1CD91316008564C6 /* testViewController.h */,
+				112B52001CD91316008564C6 /* testViewController.m */,
+				112B52021CD914F5008564C6 /* LaunchScreen.storyboard */,
 			);
 			path = HCPlayerTest;
 			sourceTree = "<group>";
@@ -94,6 +130,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DA1933E17343213D22AF04B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C867399AE62F8274AF4D1A4E /* Pods-HCPlayerTest.debug.xcconfig */,
+				C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E04A93D2DF773729C22F9C74 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				112B52771CD91B57008564C6 /* libAFNetworking.a */,
+				112B52781CD91B57008564C6 /* libHappyDNS.a */,
+				112B52791CD91B57008564C6 /* libHCAudioUnit.a */,
+				112B527A1CD91B57008564C6 /* libHCBaseSystem.a */,
+				112B527B1CD91B57008564C6 /* libhccoren.a */,
+				112B527C1CD91B57008564C6 /* libHCMinizip.a */,
+				112B527D1CD91B57008564C6 /* libHCMVManager.a */,
+				112B527E1CD91B57008564C6 /* libPods-HCPlayer.a */,
+				112B527F1CD91B57008564C6 /* libPods-HCPlayerTests.a */,
+				112B52801CD91B57008564C6 /* libQiniu.a */,
+				112B52811CD91B57008564C6 /* libSDWebImage.a */,
+				112B52751CD91B4A008564C6 /* HCPlayer.framework */,
+				7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,9 +166,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11754FB41CD8AC6700F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayerTest" */;
 			buildPhases = (
+				20CBE122D3FEA20838CBD216 /* 📦 Check Pods Manifest.lock */,
 				11754F961CD8AC6700F4DA09 /* Sources */,
 				11754F971CD8AC6700F4DA09 /* Frameworks */,
 				11754F981CD8AC6700F4DA09 /* Resources */,
+				131F0311A870784C3D0D2AC9 /* 📦 Embed Pods Frameworks */,
+				2B76F424EEF7881F64D1474D /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -151,48 +219,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11754FB01CD8AC6700F4DA09 /* LaunchScreen.storyboard in Resources */,
+				112B52531CD918D6008564C6 /* Podfile in Resources */,
+				112B52031CD914F5008564C6 /* LaunchScreen.storyboard in Resources */,
 				11754FAD1CD8AC6700F4DA09 /* Assets.xcassets in Resources */,
-				11754FA81CD8AC6700F4DA09 /* Main.storyboard in Resources */,
-				11754FBD1CD8ACC400F4DA09 /* UIPlayerTestVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		131F0311A870784C3D0D2AC9 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		20CBE122D3FEA20838CBD216 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2B76F424EEF7881F64D1474D /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		11754F961CD8AC6700F4DA09 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11754FA51CD8AC6700F4DA09 /* ViewController.m in Sources */,
-				11754FAB1CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodeld in Sources */,
 				11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */,
-				11754FBC1CD8ACC400F4DA09 /* UIPlayerTestVC.m in Sources */,
 				11754F9F1CD8AC6700F4DA09 /* main.m in Sources */,
+				112B52011CD91316008564C6 /* testViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		11754FA61CD8AC6700F4DA09 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11754FA71CD8AC6700F4DA09 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		11754FAE1CD8AC6700F4DA09 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				11754FAF1CD8AC6700F4DA09 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		11754FB21CD8AC6700F4DA09 /* Debug */ = {
@@ -281,6 +375,7 @@
 		};
 		11754FB51CD8AC6700F4DA09 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C867399AE62F8274AF4D1A4E /* Pods-HCPlayerTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HCPlayerTest/Info.plist;
@@ -293,6 +388,7 @@
 		};
 		11754FB61CD8AC6700F4DA09 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = HCPlayerTest/Info.plist;
@@ -325,19 +421,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		11754FA91CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				11754FAA1CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodel */,
-			);
-			currentVersion = 11754FAA1CD8AC6700F4DA09 /* HCPlayerTest.xcdatamodel */;
-			path = HCPlayerTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 11754F921CD8AC6700F4DA09 /* Project object */;
 }

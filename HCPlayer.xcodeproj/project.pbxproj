@@ -1,0 +1,771 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		112B52061CD91716008564C6 /* HCPlayerFrame */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 112B52071CD91716008564C6 /* Build configuration list for PBXAggregateTarget "HCPlayerFrame" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = HCPlayerFrame;
+			productName = HCPlayerFrame;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		11754E631CD755E000F4DA09 /* HCPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E621CD755E000F4DA09 /* HCPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E6A1CD755E100F4DA09 /* HCPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11754E5F1CD755E000F4DA09 /* HCPlayer.framework */; };
+		11754E6F1CD755E100F4DA09 /* HCPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E6E1CD755E100F4DA09 /* HCPlayerTests.m */; };
+		11754E841CD7585500F4DA09 /* WTVideoPlayerProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E851CD7585500F4DA09 /* WTVideoPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */; };
+		11754E861CD7585500F4DA09 /* WTVideoPlayerView(Cache).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E871CD7585500F4DA09 /* WTVideoPlayerView(Cache).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */; };
+		11754E881CD7585500F4DA09 /* WTVideoPlayerView(Lyric).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E7E1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E891CD7585500F4DA09 /* WTVideoPlayerView(Lyric).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E7F1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).m */; };
+		11754E8A1CD7585500F4DA09 /* WTVideoPlayerView(MTV).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E8B1CD7585500F4DA09 /* WTVideoPlayerView(MTV).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */; };
+		11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E8D1CD7585500F4DA09 /* WTVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E831CD7585500F4DA09 /* WTVideoPlayerView.m */; };
+		11754E9C1CD758A500F4DA09 /* AVFunComm.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E8F1CD758A500F4DA09 /* AVFunComm.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754E9D1CD758A500F4DA09 /* AVFunComm.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E901CD758A500F4DA09 /* AVFunComm.m */; };
+		11754E9E1CD758A500F4DA09 /* playloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 11754E911CD758A500F4DA09 /* playloading@2x.png */; };
+		11754E9F1CD758A500F4DA09 /* WTPlayerControlPannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E921CD758A500F4DA09 /* WTPlayerControlPannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754EA01CD758A500F4DA09 /* WTPlayerControlPannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E931CD758A500F4DA09 /* WTPlayerControlPannel.m */; };
+		11754EA31CD758A500F4DA09 /* WTPlayerTopPannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E961CD758A500F4DA09 /* WTPlayerTopPannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754EA41CD758A500F4DA09 /* WTPlayerTopPannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E971CD758A500F4DA09 /* WTPlayerTopPannel.m */; };
+		11754EA51CD758A500F4DA09 /* WTRecordTopPannel.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E981CD758A500F4DA09 /* WTRecordTopPannel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754EA61CD758A500F4DA09 /* WTRecordTopPannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E991CD758A500F4DA09 /* WTRecordTopPannel.m */; };
+		11754EA71CD758A500F4DA09 /* WTRecordTopPannel(Upload).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E9A1CD758A500F4DA09 /* WTRecordTopPannel(Upload).h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754EA81CD758A500F4DA09 /* WTRecordTopPannel(Upload).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E9B1CD758A500F4DA09 /* WTRecordTopPannel(Upload).m */; };
+		11754EAB1CD758F300F4DA09 /* PlayerMediaItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754EAC1CD758F300F4DA09 /* PlayerMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */; };
+		11754EAE1CD7593100F4DA09 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 11754EAD1CD7593100F4DA09 /* Podfile */; };
+		11754F201CD871A300F4DA09 /* player_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F1F1CD871A300F4DA09 /* player_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F221CD871CB00F4DA09 /* CommentAnimateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F2F1CD871CB00F4DA09 /* CommentAnimateItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F231CD871CB00F4DA09 /* CommentAnimateItem.m */; };
+		11754F301CD871CB00F4DA09 /* CommentViewManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F241CD871CB00F4DA09 /* CommentViewManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F311CD871CB00F4DA09 /* CommentViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F251CD871CB00F4DA09 /* CommentViewManager.m */; };
+		11754F321CD871CB00F4DA09 /* UICommentItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F261CD871CB00F4DA09 /* UICommentItemView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F331CD871CB00F4DA09 /* UICommentItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F271CD871CB00F4DA09 /* UICommentItemView.m */; };
+		11754F341CD871CB00F4DA09 /* UICommentListView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F281CD871CB00F4DA09 /* UICommentListView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F351CD871CB00F4DA09 /* UICommentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F291CD871CB00F4DA09 /* UICommentListView.m */; };
+		11754F361CD871CB00F4DA09 /* UICommentsPopView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F2A1CD871CB00F4DA09 /* UICommentsPopView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F371CD871CB00F4DA09 /* UICommentsPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F2B1CD871CB00F4DA09 /* UICommentsPopView.m */; };
+		11754F381CD871CB00F4DA09 /* UICommentsView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F2C1CD871CB00F4DA09 /* UICommentsView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F391CD871CB00F4DA09 /* UICommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F2D1CD871CB00F4DA09 /* UICommentsView.m */; };
+		11754F541CD87BD000F4DA09 /* LyricView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F521CD87BD000F4DA09 /* LyricView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F551CD87BD000F4DA09 /* LyricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F531CD87BD000F4DA09 /* LyricView.m */; };
+		11754F561CD87BD000F4DA09 /* LyricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F531CD87BD000F4DA09 /* LyricView.m */; };
+		11754F5B1CD87C0D00F4DA09 /* LyricCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F571CD87C0D00F4DA09 /* LyricCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F5C1CD87C0D00F4DA09 /* LyricCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F581CD87C0D00F4DA09 /* LyricCell.m */; };
+		11754F5D1CD87C0D00F4DA09 /* LyricCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F581CD87C0D00F4DA09 /* LyricCell.m */; };
+		11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F591CD87C0D00F4DA09 /* LyricDragView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
+		11754F601CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
+		11754F901CD89C3E00F4DA09 /* HCPlayer.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 11754F8F1CD89C3E00F4DA09 /* HCPlayer.podspec */; };
+		1F142260F210C2BBE2058C13 /* libPods-HCPlayerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A72471B555601803FF4AE737 /* libPods-HCPlayerTests.a */; };
+		E62704C7223F62D78257208B /* libPods-HCPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FEBC94BC0121B2C7A288B6 /* libPods-HCPlayer.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		11754E6B1CD755E100F4DA09 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 11754E561CD755E000F4DA09 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 11754E5E1CD755E000F4DA09;
+			remoteInfo = HCPlayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0A090FAEE027AAC80A0C294B /* Pods-HCPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayer/Pods-HCPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		11754E5F1CD755E000F4DA09 /* HCPlayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HCPlayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		11754E621CD755E000F4DA09 /* HCPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HCPlayer.h; sourceTree = "<group>"; };
+		11754E641CD755E000F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11754E691CD755E100F4DA09 /* HCPlayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HCPlayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		11754E6E1CD755E100F4DA09 /* HCPlayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HCPlayerTests.m; sourceTree = "<group>"; };
+		11754E701CD755E100F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerProgressView.h; sourceTree = "<group>"; };
+		11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTVideoPlayerProgressView.m; sourceTree = "<group>"; };
+		11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Cache).h"; sourceTree = "<group>"; };
+		11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Cache).m"; sourceTree = "<group>"; };
+		11754E7E1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Lyric).h"; sourceTree = "<group>"; };
+		11754E7F1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Lyric).m"; sourceTree = "<group>"; };
+		11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(MTV).h"; sourceTree = "<group>"; };
+		11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(MTV).m"; sourceTree = "<group>"; };
+		11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerView.h; sourceTree = "<group>"; };
+		11754E831CD7585500F4DA09 /* WTVideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTVideoPlayerView.m; sourceTree = "<group>"; };
+		11754E8F1CD758A500F4DA09 /* AVFunComm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVFunComm.h; sourceTree = "<group>"; };
+		11754E901CD758A500F4DA09 /* AVFunComm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVFunComm.m; sourceTree = "<group>"; };
+		11754E911CD758A500F4DA09 /* playloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playloading@2x.png"; sourceTree = "<group>"; };
+		11754E921CD758A500F4DA09 /* WTPlayerControlPannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPlayerControlPannel.h; sourceTree = "<group>"; };
+		11754E931CD758A500F4DA09 /* WTPlayerControlPannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPlayerControlPannel.m; sourceTree = "<group>"; };
+		11754E961CD758A500F4DA09 /* WTPlayerTopPannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTPlayerTopPannel.h; sourceTree = "<group>"; };
+		11754E971CD758A500F4DA09 /* WTPlayerTopPannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTPlayerTopPannel.m; sourceTree = "<group>"; };
+		11754E981CD758A500F4DA09 /* WTRecordTopPannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTRecordTopPannel.h; sourceTree = "<group>"; };
+		11754E991CD758A500F4DA09 /* WTRecordTopPannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRecordTopPannel.m; sourceTree = "<group>"; };
+		11754E9A1CD758A500F4DA09 /* WTRecordTopPannel(Upload).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTRecordTopPannel(Upload).h"; sourceTree = "<group>"; };
+		11754E9B1CD758A500F4DA09 /* WTRecordTopPannel(Upload).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTRecordTopPannel(Upload).m"; sourceTree = "<group>"; };
+		11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMediaItem.h; sourceTree = "<group>"; };
+		11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMediaItem.m; sourceTree = "<group>"; };
+		11754EAD1CD7593100F4DA09 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		11754F1F1CD871A300F4DA09 /* player_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player_config.h; sourceTree = "<group>"; };
+		11754F221CD871CB00F4DA09 /* CommentAnimateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAnimateItem.h; sourceTree = "<group>"; };
+		11754F231CD871CB00F4DA09 /* CommentAnimateItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentAnimateItem.m; sourceTree = "<group>"; };
+		11754F241CD871CB00F4DA09 /* CommentViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewManager.h; sourceTree = "<group>"; };
+		11754F251CD871CB00F4DA09 /* CommentViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewManager.m; sourceTree = "<group>"; };
+		11754F261CD871CB00F4DA09 /* UICommentItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentItemView.h; sourceTree = "<group>"; };
+		11754F271CD871CB00F4DA09 /* UICommentItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentItemView.m; sourceTree = "<group>"; };
+		11754F281CD871CB00F4DA09 /* UICommentListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentListView.h; sourceTree = "<group>"; };
+		11754F291CD871CB00F4DA09 /* UICommentListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentListView.m; sourceTree = "<group>"; };
+		11754F2A1CD871CB00F4DA09 /* UICommentsPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentsPopView.h; sourceTree = "<group>"; };
+		11754F2B1CD871CB00F4DA09 /* UICommentsPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentsPopView.m; sourceTree = "<group>"; };
+		11754F2C1CD871CB00F4DA09 /* UICommentsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICommentsView.h; sourceTree = "<group>"; };
+		11754F2D1CD871CB00F4DA09 /* UICommentsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICommentsView.m; sourceTree = "<group>"; };
+		11754F521CD87BD000F4DA09 /* LyricView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricView.h; sourceTree = "<group>"; };
+		11754F531CD87BD000F4DA09 /* LyricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricView.m; sourceTree = "<group>"; };
+		11754F571CD87C0D00F4DA09 /* LyricCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricCell.h; sourceTree = "<group>"; };
+		11754F581CD87C0D00F4DA09 /* LyricCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricCell.m; sourceTree = "<group>"; };
+		11754F591CD87C0D00F4DA09 /* LyricDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricDragView.h; sourceTree = "<group>"; };
+		11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricDragView.m; sourceTree = "<group>"; };
+		11754F8F1CD89C3E00F4DA09 /* HCPlayer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HCPlayer.podspec; sourceTree = "<group>"; };
+		53FEBC94BC0121B2C7A288B6 /* libPods-HCPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CC5ED81FD2A875CE7906A4F /* Pods-HCPlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTests/Pods-HCPlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A72471B555601803FF4AE737 /* libPods-HCPlayerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C805B9F8A1A21DC000456D37 /* Pods-HCPlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTests/Pods-HCPlayerTests.release.xcconfig"; sourceTree = "<group>"; };
+		E29E651BA9963A74C85944A1 /* Pods-HCPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayer/Pods-HCPlayer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		11754E5B1CD755E000F4DA09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E62704C7223F62D78257208B /* libPods-HCPlayer.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11754E661CD755E100F4DA09 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11754E6A1CD755E100F4DA09 /* HCPlayer.framework in Frameworks */,
+				1F142260F210C2BBE2058C13 /* libPods-HCPlayerTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		11754E551CD755E000F4DA09 = {
+			isa = PBXGroup;
+			children = (
+				11754F8F1CD89C3E00F4DA09 /* HCPlayer.podspec */,
+				11754EAD1CD7593100F4DA09 /* Podfile */,
+				11754E611CD755E000F4DA09 /* HCPlayer */,
+				11754E6D1CD755E100F4DA09 /* HCPlayerTests */,
+				11754E601CD755E000F4DA09 /* Products */,
+				C0975BD1069D1DC46039F28F /* Pods */,
+				404BEBCC910CE8859C734347 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		11754E601CD755E000F4DA09 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				11754E5F1CD755E000F4DA09 /* HCPlayer.framework */,
+				11754E691CD755E100F4DA09 /* HCPlayerTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		11754E611CD755E000F4DA09 /* HCPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				11754F511CD87BC400F4DA09 /* Lyric */,
+				11754F211CD871CB00F4DA09 /* CommentView */,
+				11754E8E1CD7588800F4DA09 /* Pannels */,
+				11754E791CD7585500F4DA09 /* VIMVideoPlayer */,
+				11754E621CD755E000F4DA09 /* HCPlayer.h */,
+				11754E641CD755E000F4DA09 /* Info.plist */,
+				11754F1F1CD871A300F4DA09 /* player_config.h */,
+			);
+			path = HCPlayer;
+			sourceTree = "<group>";
+		};
+		11754E6D1CD755E100F4DA09 /* HCPlayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				11754E6E1CD755E100F4DA09 /* HCPlayerTests.m */,
+				11754E701CD755E100F4DA09 /* Info.plist */,
+			);
+			path = HCPlayerTests;
+			sourceTree = "<group>";
+		};
+		11754E791CD7585500F4DA09 /* VIMVideoPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */,
+				11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */,
+				11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */,
+				11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */,
+				11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */,
+				11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */,
+				11754E7E1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).h */,
+				11754E7F1CD7585500F4DA09 /* WTVideoPlayerView(Lyric).m */,
+				11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */,
+				11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */,
+				11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */,
+				11754E831CD7585500F4DA09 /* WTVideoPlayerView.m */,
+			);
+			path = VIMVideoPlayer;
+			sourceTree = "<group>";
+		};
+		11754E8E1CD7588800F4DA09 /* Pannels */ = {
+			isa = PBXGroup;
+			children = (
+				11754E8F1CD758A500F4DA09 /* AVFunComm.h */,
+				11754E901CD758A500F4DA09 /* AVFunComm.m */,
+				11754E911CD758A500F4DA09 /* playloading@2x.png */,
+				11754E921CD758A500F4DA09 /* WTPlayerControlPannel.h */,
+				11754E931CD758A500F4DA09 /* WTPlayerControlPannel.m */,
+				11754E961CD758A500F4DA09 /* WTPlayerTopPannel.h */,
+				11754E971CD758A500F4DA09 /* WTPlayerTopPannel.m */,
+				11754E981CD758A500F4DA09 /* WTRecordTopPannel.h */,
+				11754E991CD758A500F4DA09 /* WTRecordTopPannel.m */,
+				11754E9A1CD758A500F4DA09 /* WTRecordTopPannel(Upload).h */,
+				11754E9B1CD758A500F4DA09 /* WTRecordTopPannel(Upload).m */,
+			);
+			path = Pannels;
+			sourceTree = "<group>";
+		};
+		11754F211CD871CB00F4DA09 /* CommentView */ = {
+			isa = PBXGroup;
+			children = (
+				11754F221CD871CB00F4DA09 /* CommentAnimateItem.h */,
+				11754F231CD871CB00F4DA09 /* CommentAnimateItem.m */,
+				11754F241CD871CB00F4DA09 /* CommentViewManager.h */,
+				11754F251CD871CB00F4DA09 /* CommentViewManager.m */,
+				11754F261CD871CB00F4DA09 /* UICommentItemView.h */,
+				11754F271CD871CB00F4DA09 /* UICommentItemView.m */,
+				11754F281CD871CB00F4DA09 /* UICommentListView.h */,
+				11754F291CD871CB00F4DA09 /* UICommentListView.m */,
+				11754F2A1CD871CB00F4DA09 /* UICommentsPopView.h */,
+				11754F2B1CD871CB00F4DA09 /* UICommentsPopView.m */,
+				11754F2C1CD871CB00F4DA09 /* UICommentsView.h */,
+				11754F2D1CD871CB00F4DA09 /* UICommentsView.m */,
+			);
+			path = CommentView;
+			sourceTree = "<group>";
+		};
+		11754F511CD87BC400F4DA09 /* Lyric */ = {
+			isa = PBXGroup;
+			children = (
+				11754F571CD87C0D00F4DA09 /* LyricCell.h */,
+				11754F581CD87C0D00F4DA09 /* LyricCell.m */,
+				11754F591CD87C0D00F4DA09 /* LyricDragView.h */,
+				11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */,
+				11754F521CD87BD000F4DA09 /* LyricView.h */,
+				11754F531CD87BD000F4DA09 /* LyricView.m */,
+			);
+			path = Lyric;
+			sourceTree = "<group>";
+		};
+		404BEBCC910CE8859C734347 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				53FEBC94BC0121B2C7A288B6 /* libPods-HCPlayer.a */,
+				A72471B555601803FF4AE737 /* libPods-HCPlayerTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C0975BD1069D1DC46039F28F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0A090FAEE027AAC80A0C294B /* Pods-HCPlayer.debug.xcconfig */,
+				E29E651BA9963A74C85944A1 /* Pods-HCPlayer.release.xcconfig */,
+				8CC5ED81FD2A875CE7906A4F /* Pods-HCPlayerTests.debug.xcconfig */,
+				C805B9F8A1A21DC000456D37 /* Pods-HCPlayerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		11754E5C1CD755E000F4DA09 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11754E8A1CD7585500F4DA09 /* WTVideoPlayerView(MTV).h in Headers */,
+				11754E841CD7585500F4DA09 /* WTVideoPlayerProgressView.h in Headers */,
+				11754EA71CD758A500F4DA09 /* WTRecordTopPannel(Upload).h in Headers */,
+				11754F341CD871CB00F4DA09 /* UICommentListView.h in Headers */,
+				11754F301CD871CB00F4DA09 /* CommentViewManager.h in Headers */,
+				11754EA31CD758A500F4DA09 /* WTPlayerTopPannel.h in Headers */,
+				11754F5B1CD87C0D00F4DA09 /* LyricCell.h in Headers */,
+				11754EA51CD758A500F4DA09 /* WTRecordTopPannel.h in Headers */,
+				11754F321CD871CB00F4DA09 /* UICommentItemView.h in Headers */,
+				11754E9C1CD758A500F4DA09 /* AVFunComm.h in Headers */,
+				11754E861CD7585500F4DA09 /* WTVideoPlayerView(Cache).h in Headers */,
+				11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */,
+				11754E9F1CD758A500F4DA09 /* WTPlayerControlPannel.h in Headers */,
+				11754F201CD871A300F4DA09 /* player_config.h in Headers */,
+				11754F381CD871CB00F4DA09 /* UICommentsView.h in Headers */,
+				11754E881CD7585500F4DA09 /* WTVideoPlayerView(Lyric).h in Headers */,
+				11754E631CD755E000F4DA09 /* HCPlayer.h in Headers */,
+				11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */,
+				11754F541CD87BD000F4DA09 /* LyricView.h in Headers */,
+				11754EAB1CD758F300F4DA09 /* PlayerMediaItem.h in Headers */,
+				11754F361CD871CB00F4DA09 /* UICommentsPopView.h in Headers */,
+				11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		11754E5E1CD755E000F4DA09 /* HCPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11754E731CD755E100F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayer" */;
+			buildPhases = (
+				6074E2379BBC3F71AD66BF9E /* 📦 Check Pods Manifest.lock */,
+				11754E5A1CD755E000F4DA09 /* Sources */,
+				11754E5B1CD755E000F4DA09 /* Frameworks */,
+				11754E5C1CD755E000F4DA09 /* Headers */,
+				11754E5D1CD755E000F4DA09 /* Resources */,
+				400ED44085F5235E3F01A456 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HCPlayer;
+			productName = HCPlayer;
+			productReference = 11754E5F1CD755E000F4DA09 /* HCPlayer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		11754E681CD755E100F4DA09 /* HCPlayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11754E761CD755E100F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayerTests" */;
+			buildPhases = (
+				C955714592E5A70D0CA57332 /* 📦 Check Pods Manifest.lock */,
+				11754E651CD755E100F4DA09 /* Sources */,
+				11754E661CD755E100F4DA09 /* Frameworks */,
+				11754E671CD755E100F4DA09 /* Resources */,
+				525541E0309417E8C9FC1F77 /* 📦 Embed Pods Frameworks */,
+				4404D74378D0036EBD0774F3 /* 📦 Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11754E6C1CD755E100F4DA09 /* PBXTargetDependency */,
+			);
+			name = HCPlayerTests;
+			productName = HCPlayerTests;
+			productReference = 11754E691CD755E100F4DA09 /* HCPlayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		11754E561CD755E000F4DA09 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = seenvoice.com;
+				TargetAttributes = {
+					112B52061CD91716008564C6 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					11754E5E1CD755E000F4DA09 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					11754E681CD755E100F4DA09 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = 11754E591CD755E000F4DA09 /* Build configuration list for PBXProject "HCPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 11754E551CD755E000F4DA09;
+			productRefGroup = 11754E601CD755E000F4DA09 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				11754E5E1CD755E000F4DA09 /* HCPlayer */,
+				11754E681CD755E100F4DA09 /* HCPlayerTests */,
+				112B52061CD91716008564C6 /* HCPlayerFrame */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		11754E5D1CD755E000F4DA09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11754EAE1CD7593100F4DA09 /* Podfile in Resources */,
+				11754F901CD89C3E00F4DA09 /* HCPlayer.podspec in Resources */,
+				11754E9E1CD758A500F4DA09 /* playloading@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11754E671CD755E100F4DA09 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		400ED44085F5235E3F01A456 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayer/Pods-HCPlayer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4404D74378D0036EBD0774F3 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTests/Pods-HCPlayerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		525541E0309417E8C9FC1F77 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTests/Pods-HCPlayerTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6074E2379BBC3F71AD66BF9E /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C955714592E5A70D0CA57332 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		11754E5A1CD755E000F4DA09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11754EAC1CD758F300F4DA09 /* PlayerMediaItem.m in Sources */,
+				11754E891CD7585500F4DA09 /* WTVideoPlayerView(Lyric).m in Sources */,
+				11754F371CD871CB00F4DA09 /* UICommentsPopView.m in Sources */,
+				11754EA01CD758A500F4DA09 /* WTPlayerControlPannel.m in Sources */,
+				11754E8B1CD7585500F4DA09 /* WTVideoPlayerView(MTV).m in Sources */,
+				11754F311CD871CB00F4DA09 /* CommentViewManager.m in Sources */,
+				11754EA61CD758A500F4DA09 /* WTRecordTopPannel.m in Sources */,
+				11754F351CD871CB00F4DA09 /* UICommentListView.m in Sources */,
+				11754F391CD871CB00F4DA09 /* UICommentsView.m in Sources */,
+				11754E8D1CD7585500F4DA09 /* WTVideoPlayerView.m in Sources */,
+				11754F331CD871CB00F4DA09 /* UICommentItemView.m in Sources */,
+				11754EA81CD758A500F4DA09 /* WTRecordTopPannel(Upload).m in Sources */,
+				11754F551CD87BD000F4DA09 /* LyricView.m in Sources */,
+				11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */,
+				11754F5C1CD87C0D00F4DA09 /* LyricCell.m in Sources */,
+				11754E871CD7585500F4DA09 /* WTVideoPlayerView(Cache).m in Sources */,
+				11754EA41CD758A500F4DA09 /* WTPlayerTopPannel.m in Sources */,
+				11754E9D1CD758A500F4DA09 /* AVFunComm.m in Sources */,
+				11754F2F1CD871CB00F4DA09 /* CommentAnimateItem.m in Sources */,
+				11754E851CD7585500F4DA09 /* WTVideoPlayerProgressView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		11754E651CD755E100F4DA09 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				11754F561CD87BD000F4DA09 /* LyricView.m in Sources */,
+				11754E6F1CD755E100F4DA09 /* HCPlayerTests.m in Sources */,
+				11754F601CD87C0D00F4DA09 /* LyricDragView.m in Sources */,
+				11754F5D1CD87C0D00F4DA09 /* LyricCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11754E6C1CD755E100F4DA09 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 11754E5E1CD755E000F4DA09 /* HCPlayer */;
+			targetProxy = 11754E6B1CD755E100F4DA09 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		112B52081CD91716008564C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		112B52091CD91716008564C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		11754E711CD755E100F4DA09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		11754E721CD755E100F4DA09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		11754E741CD755E100F4DA09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A090FAEE027AAC80A0C294B /* Pods-HCPlayer.debug.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = HCPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_dylib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		11754E751CD755E100F4DA09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E29E651BA9963A74C85944A1 /* Pods-HCPlayer.release.xcconfig */;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = YES;
+				INFOPLIST_FILE = HCPlayer/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_dylib;
+				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		11754E771CD755E100F4DA09 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CC5ED81FD2A875CE7906A4F /* Pods-HCPlayerTests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = HCPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		11754E781CD755E100F4DA09 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C805B9F8A1A21DC000456D37 /* Pods-HCPlayerTests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = HCPlayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		112B52071CD91716008564C6 /* Build configuration list for PBXAggregateTarget "HCPlayerFrame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				112B52081CD91716008564C6 /* Debug */,
+				112B52091CD91716008564C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		11754E591CD755E000F4DA09 /* Build configuration list for PBXProject "HCPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11754E711CD755E100F4DA09 /* Debug */,
+				11754E721CD755E100F4DA09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11754E731CD755E100F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11754E741CD755E100F4DA09 /* Debug */,
+				11754E751CD755E100F4DA09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		11754E761CD755E100F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				11754E771CD755E100F4DA09 /* Debug */,
+				11754E781CD755E100F4DA09 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 11754E561CD755E000F4DA09 /* Project object */;
+}
