@@ -38,9 +38,9 @@ FOUNDATION_EXPORT const unsigned char HCPlayerVersionString[];
 
 #import <HCPlayer/PlayerMediaItem.h>
 #import <HCPlayer/WTVideoPlayerProgressView.h>
-#import <HCPlayer/WTVideoPlayerProgressView(Cache).h>
-#import <HCPlayer/WTVideoPlayerProgressView(Lyric).h>
-#import <HCPlayer/WTVideoPlayerProgressView(MTV).h>
+#import <HCPlayer/WTVideoPlayerView(Cache).h>
+#import <HCPlayer/WTVideoPlayerView(Lyric).h>
+#import <HCPlayer/WTVideoPlayerView(MTV).h>
 #import <HCPlayer/WTVideoPlayerView.h>
 
 #import <HCPlayer/player_config.h>
