@@ -170,7 +170,6 @@
 		112B55ED1CDA0C7F008564C6 /* tanmu2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B55E11CDA0C7F008564C6 /* tanmu2@3x.png */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
-		11754FAD1CD8AC6700F4DA09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */; };
 		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
 /* End PBXBuildFile section */
 
@@ -178,7 +177,7 @@
 		112B51FF1CD91316008564C6 /* testViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testViewController.h; sourceTree = "<group>"; };
 		112B52001CD91316008564C6 /* testViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = testViewController.m; sourceTree = "<group>"; };
 		112B52021CD914F5008564C6 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		112B52521CD918D6008564C6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		112B52521CD918D6008564C6 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		112B52751CD91B4A008564C6 /* HCPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HCPlayer.framework; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HCPlayer.framework"; sourceTree = "<group>"; };
 		112B52771CD91B57008564C6 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/AFNetworking/libAFNetworking.a"; sourceTree = "<group>"; };
 		112B52781CD91B57008564C6 /* libHappyDNS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libHappyDNS.a; path = "../../../../Library/Developer/Xcode/DerivedData/HCPlayer-bpwtpuhuqjejougmhoqekkfsrjco/Build/Products/Debug-iphoneos/HappyDNS/libHappyDNS.a"; sourceTree = "<group>"; };
@@ -370,7 +369,6 @@
 		11754F9E1CD8AC6700F4DA09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11754FA01CD8AC6700F4DA09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11754FA11CD8AC6700F4DA09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11754FB11CD8AC6700F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayerTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -664,7 +662,6 @@
 				112B52ED1CD9A11C008564C6 /* CMD_GetMtvInfo.m */,
 				11754FA01CD8AC6700F4DA09 /* AppDelegate.h */,
 				11754FA11CD8AC6700F4DA09 /* AppDelegate.m */,
-				11754FAC1CD8AC6700F4DA09 /* Assets.xcassets */,
 				11754FB11CD8AC6700F4DA09 /* Info.plist */,
 				11754F9D1CD8AC6700F4DA09 /* Supporting Files */,
 				112B51FF1CD91316008564C6 /* testViewController.h */,
@@ -876,7 +873,6 @@
 				112B55311CDA0529008564C6 /* play_heart@3x.png in Resources */,
 				112B55501CDA0529008564C6 /* switch_icon@2x.png in Resources */,
 				112B555F1CDA0565008564C6 /* pause_icon.png in Resources */,
-				11754FAD1CD8AC6700F4DA09 /* Assets.xcassets in Resources */,
 				112B557D1CDA0593008564C6 /* microphone2@3x.png in Resources */,
 				112B55541CDA0544008564C6 /* commentswitch@2x.png in Resources */,
 				112B55E51CDA0C7F008564C6 /* fenxiang.png in Resources */,
