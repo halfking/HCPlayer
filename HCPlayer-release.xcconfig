@@ -1,0 +1,18 @@
+//
+//  HCPlayer-release.xcconfig
+//  HCPlayer
+//
+//  Created by HUANGXUTAO on 16/5/4.
+//  Copyright © 2016年 seenvoice.com. All rights reserved.
+//
+CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES
+DEFINES_MODULE = YES
+ENABLE_BITCODE = YES
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) ${PODS_ROOT}/HCAudioUnit/Lib/** $(inherited) $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/HCAudioUnit" "${PODS_ROOT}/Headers/Public/HCBaseSystem" "${PODS_ROOT}/Headers/Public/HCMVManager" "${PODS_ROOT}/Headers/Public/HCMinizip" "${PODS_ROOT}/Headers/Public/HappyDNS" "${PODS_ROOT}/Headers/Public/Qiniu" "${PODS_ROOT}/Headers/Public/SDWebImage" "${PODS_ROOT}/Headers/Public/hccoren"
+LIBRARY_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/AFNetworking" "$PODS_CONFIGURATION_BUILD_DIR/HCAudioUnit" "$PODS_CONFIGURATION_BUILD_DIR/HCBaseSystem" "$PODS_CONFIGURATION_BUILD_DIR/HCMVManager" "$PODS_CONFIGURATION_BUILD_DIR/HCMinizip" "$PODS_CONFIGURATION_BUILD_DIR/HappyDNS" "$PODS_CONFIGURATION_BUILD_DIR/Qiniu" "$PODS_CONFIGURATION_BUILD_DIR/SDWebImage" "$PODS_CONFIGURATION_BUILD_DIR/hccoren" "${PODS_ROOT}/HCAudioUnit/lame/Frameworks"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/AFNetworking" -isystem "${PODS_ROOT}/Headers/Public/HCAudioUnit" -isystem "${PODS_ROOT}/Headers/Public/HCBaseSystem" -isystem "${PODS_ROOT}/Headers/Public/HCMVManager" -isystem "${PODS_ROOT}/Headers/Public/HCMinizip" -isystem "${PODS_ROOT}/Headers/Public/HappyDNS" -isystem "${PODS_ROOT}/Headers/Public/Qiniu" -isystem "${PODS_ROOT}/Headers/Public/SDWebImage" -isystem "${PODS_ROOT}/Headers/Public/hccoren"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"AFNetworking" -l"HCAudioUnit" -l"HCBaseSystem" -l"HCMVManager" -l"HCMinizip" -l"HappyDNS" -l"Qiniu" -l"SDWebImage" -l"hccoren" -l"iconv" -l"icucore" -l"mp3lame" -l"opencore-amrnb" -l"opencore-amrwb" -l"resolv" -l"sqlite3.0" -l"stdc++" -l"stdc++.6" -l"z" -framework "CoreGraphics" -framework "CoreImage" -framework "CoreLocation" -framework "IOKit" -framework "ImageIO" -framework "MobileCoreServices" -framework "OpenGLES" -framework "QuartzCore" -framework "Security" -framework "SystemConfiguration" -framework "UIKit"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_ROOT = ${SRCROOT}/Pods

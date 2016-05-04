@@ -89,7 +89,7 @@
     }
     else if(index >=0)
     {
-        NSLog(@"获取第几个评论的frame ——————> %u",index);
+        NSLog(@"获取第几个评论的frame ——————> %d",(int)index);
         
         //简化处理，不存在于缓存中的均认为是最后一个添加进来的对像
         NSInteger lineIndex = [self getItemLine:index];
@@ -531,7 +531,7 @@
     CGFloat offset = self.scrollOffset;
     CGFloat offsetSpace  =  0;
     
-    NSLog(@"---->  scroll to index %d,",indexPath.row);
+    NSLog(@"---->  scroll to index %d,",(int)indexPath.row);
     
     lastRow_ = indexPath.row;
     //    if(indexPath.row>=19)

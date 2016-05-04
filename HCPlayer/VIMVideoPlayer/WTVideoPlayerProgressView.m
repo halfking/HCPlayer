@@ -1167,7 +1167,7 @@
 - (void)moveDone:(CGPoint)point
 {
     if(!isMoving_) return;
-    NSLog(@"-----------move done---%d------",objectMovingID_);
+    NSLog(@"-----------move done---%d------",(int)objectMovingID_);
     if(objectMovingID_ == TAG_SCROLLRECT)
     {
         objectMovingID_ = -1;

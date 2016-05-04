@@ -37,7 +37,7 @@ s.ios.deployment_target = "7.0"
 
 s.source       = { :git => "https://github.com/halfking/HCPlayer", :tag => s.version}
 
-s.source_files  = "HCPlayer/**/*.{h,m,mm,c,cpp}"
+s.source_files  = "HCPlayer/**/*.{h,m,mm,c,cpp}","HCPlayer/**/*.bundle"
 #  s.exclude_files = "hccoren/Exclude"
 #s.public_header_files = "HCPlayer/**/*.h"
 

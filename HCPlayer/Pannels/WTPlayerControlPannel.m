@@ -486,7 +486,7 @@
         }
         cmd.ObjectUserID = item.UserID;
         cmd.IsLike = !item.IsLike;
-        NSLog(@"%d", item.LikeCount);
+        NSLog(@"%d", (int)item.LikeCount);
         cmd.CMDCallBack = ^(HCCallbackResult * result)
         {
             if(result.Code==0)

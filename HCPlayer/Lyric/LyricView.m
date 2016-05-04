@@ -103,7 +103,7 @@
     #pragma mark 暂时用来判断 以防前两句歌词不是空歌词
     // 如果第一句歌词不为空歌词
     NSString *firstLyric = [[self.lrcArray firstObject] stringByReplacingOccurrencesOfString:@" " withString:@""];
-    NSLog(@"firstLyric.length %lu",firstLyric.length);
+    NSLog(@"firstLyric.length %d",(int)firstLyric.length);
     if (firstLyric.length >1)
     {
         [self.timeArray insertObject:@"0.00" atIndex:0];

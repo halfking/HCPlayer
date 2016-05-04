@@ -454,7 +454,7 @@ static NSString * cellIdentifier =@"CommentListitem";
         NSInteger index = [self getNextCommentIndex:begin hasMoreSameTime:&hasMoreSameTime];
         while(index !=NSNotFound)
         {
-            NSLog(@"add comment item:%ld",index);
+            NSLog(@"add comment item:%ld",(long)index);
             lastIndex_ = index;
             //            CommentAnimateItem * item = [CommentAnimateItem new];
             //            item.row = index;

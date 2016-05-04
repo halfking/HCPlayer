@@ -557,7 +557,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 }
 - (void)didFailLoadingWithTask:(VDCTempFileManager *)task WithError:(NSInteger )errorCode
 {
-    NSLog(@"load task failure:%ld",errorCode);
+    NSLog(@"load task failure:%ld",(long)errorCode);
 }
 - (void)didFinishLoadingWithTask:(VDCTempFileManager *)task
 {
