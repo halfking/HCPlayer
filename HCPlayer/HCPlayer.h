@@ -31,7 +31,7 @@ FOUNDATION_EXPORT const unsigned char HCPlayerVersionString[];
 
 #import <HCPlayer/AVFunComm.h>
 #import <HCPlayer/WTPlayerControlPannel.h>
-#import <HCPlayer/WTPlayerResource.h>
+//#import <HCPlayer/WTPlayerResource.h>
 #import <HCPlayer/WTPlayerTopPannel.h>
 #import <HCPlayer/WTRecordTopPannel.h>
 #import <HCPlayer/WTRecordTopPannel(Upload).h>
