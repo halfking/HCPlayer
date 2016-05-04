@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCPlayer"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "这是一个视频与音频播放器的库。"
   s.description  = <<-DESC
 这是一个视频的播放特定的核心库。包含了视频、音频、歌词及缓冲处理的功能。
@@ -52,9 +52,9 @@ s.pod_target_xcconfig = { 'LIBRARY_SEARCH_PATHS' => "$(inherited) " }
 # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
 s.dependency "HCMinizip", "~> 1.2.6"
-s.dependency "hccoren", "~> 0.1.7"
-s.dependency "HCBaseSystem", "~> 0.2.2"
-s.dependency "HCMVManager", "~> 0.0.8"
+s.dependency "hccoren"
+s.dependency "HCBaseSystem"
+s.dependency "HCMVManager"
 s.dependency "HCAudioUnit"
 
 #s.subspec 'lame' do |spec|
