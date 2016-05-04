@@ -8,7 +8,7 @@
 
 #import "LyricDragView.h"
 #import <hccoren/base.h>
-#import <player_config.h>
+#import "player_config.h"
 #import "LyricCell.h"
 
 @interface LyricDragView ()<UITableViewDelegate,UITableViewDataSource>

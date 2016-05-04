@@ -214,7 +214,7 @@
         {
             returnButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             returnButton_.frame = CGRectMake(left, top, 40, 40);
-            [returnButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateNormal];
+            [returnButton_ setImage:[UIImage imageNamed:@"play_return.png"] forState:UIControlStateNormal];
             [returnButton_ addTarget:self action:@selector(returnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:returnButton_];
         }
@@ -315,8 +315,8 @@
         {
             moreButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             moreButton_.frame = CGRectMake(left, top, 40, 40);
-            [moreButton_ setImage:[UIImage imageNamed:@"more_white"] forState:UIControlStateNormal];
-            [moreButton_ setImage:[UIImage imageNamed:@"more_yellow"] forState:UIControlStateSelected];
+            [moreButton_ setImage:[UIImage imageNamed:@"play_more_white"] forState:UIControlStateNormal];
+            [moreButton_ setImage:[UIImage imageNamed:@"play_more_yellow"] forState:UIControlStateSelected];
             //        [moreButton_ addTarget:self action:@selector(changeRightMenuState:) forControlEvents:UIControlEventTouchUpInside];
             //        [moreButton_ setImage:[UIImage imageNamed:@"more.png"] forState:UIControlStateNormal];
             [moreButton_ addTarget:self action:@selector(moreClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -413,7 +413,7 @@
             
             commentButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             commentButton_.frame = CGRectMake(left, top, 40, 40);
-            [commentButton_ setImage:[UIImage imageNamed:@"comment.png"] forState:UIControlStateNormal];
+            [commentButton_ setImage:[UIImage imageNamed:@"play_comment.png"] forState:UIControlStateNormal];
             [commentButton_ addTarget:self action:@selector(showCommentsOrNot:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:commentButton_];
         }
@@ -508,7 +508,7 @@
                 [self addSubview:cacheContainer_];
                 
                 cacheIcon_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-                cacheIcon_.image = [UIImage imageNamed:@"cache"];
+                cacheIcon_.image = [UIImage imageNamed:@"play_cache.png"];
                 [cacheContainer_ addSubview:cacheIcon_];
                 
                 cacheProgressLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 45, 10)];
@@ -1106,7 +1106,7 @@
     {
         if(self.ShowBigCache)
         {
-            cacheIcon_.image = [UIImage imageNamed:@"cacheing"];
+            cacheIcon_.image = [UIImage imageNamed:@"play_cacheing"];
             cacheProgressLabel_.textColor = color?color:COLOR_BA;
             if(text)
             {
@@ -1122,7 +1122,7 @@
     {
         if(self.ShowBigCache)
         {
-            cacheIcon_.image = [UIImage imageNamed:@"cache"];
+            cacheIcon_.image = [UIImage imageNamed:@"play_cache"];
             cacheProgressLabel_.textColor = color?color:[UIColor whiteColor];
             if(text)
             {
@@ -1147,7 +1147,7 @@
         cacheProgressLabel_.text = @"已缓存";
         cacheProgressLabel_.textColor = [UIColor whiteColor];
         cacheGesture_.enabled = NO;
-        cacheIcon_.image = [UIImage imageNamed:@"Cache_gray"];
+        cacheIcon_.image = [UIImage imageNamed:@"play_cache_gray"];
         if (cacheProgressLabel_.alpha == 1 && animates) {
             cacheProgressLabel_.alpha = 0.5;
             [UIView animateWithDuration:0.5 animations:^{
@@ -1230,7 +1230,7 @@
 {
     if(self.ShowCommentsButton)
     {
-        commentTitle_.text = [NSString stringWithFormat:@"%d",commentCount];
+        commentTitle_.text = [NSString stringWithFormat:@"%d",(int)commentCount];
     }
 }
 #pragma mark - events
@@ -1315,7 +1315,7 @@
         }
         cmd.ObjectUserID = item.UserID;
         cmd.IsLike = !item.IsLike;
-        NSLog(@"%d", item.LikeCount);
+        NSLog(@"%d", (int)item.LikeCount);
         cmd.CMDCallBack = ^(HCCallbackResult * result)
         {
             if(result.Code==0)
@@ -1430,6 +1430,13 @@
     {
         [self buildMenuViews];
     }
+    else if(!rightMenuContainer_.superview)
+    {
+        if(self.superview)
+        {
+            [self.superview addSubview:rightMenuContainer_];
+        }
+    }
     [rightMenuContainer_.superview bringSubviewToFront:rightMenuContainer_];
     
     NSLog(@"self frame:%@",NSStringFromCGRect(self.frame));
@@ -1534,6 +1541,7 @@
     {
         rightMenuContainer_ = [[UIView alloc] initWithFrame:CGRectMake(rootFrame.size.width - 25, 50, 0, 0)];
         rightMenuContainer_.clipsToBounds = YES;
+//        rightMenuContainer_.backgroundColor = [UIColor redColor];
 //        if(self.superview)
 //        {
 //            if(self.superview.superview)
@@ -1583,6 +1591,10 @@
     if(_isCommentsShow)
     {
         [barrageButton_ setSelected:YES];
+    }
+    if(self.superview)
+    {
+        [self.superview addSubview:rightMenuContainer_];
     }
 }
 //- (void)didTap:(UIGestureRecognizer *)tap

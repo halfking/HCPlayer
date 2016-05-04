@@ -7,7 +7,13 @@
 //
 
 #import "AppDelegate.h"
-#import "UIPlayerTestVC.h"
+
+#import <hccoren/base.h>
+
+#import "publicconfig.h"
+
+#import "testViewController.h"
+#import "MusicDetailViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,24 +23,38 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [UIWindow new];
+    self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
-    self.window.frame = [[UIScreen mainScreen] bounds];
-    
+    self.window.backgroundColor = [UIColor yellowColor];
     // 切换 statusBar 状态
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     
-
-    UIPlayerTestVC * vc = [[UIPlayerTestVC alloc]initWithNibName:nil bundle:nil];
-
-    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    DeviceConfig * config = [DeviceConfig config];
+   
+#ifndef __OPTIMIZE__
+    BOOL debugMode = YES;
+#else
+    BOOL debugMode = NO;
+#endif
+    
+    [config changeConfigs:CT_INTERFACE imageServer:CT_IMAGESERVERPATH imageSever2:CT_IMAGEPATHROOT uploadServer:CT_UPLOADSERVER uploadService:CT_UPLOADSERVERPATH debugMode:debugMode];
     
     
-    self.window.rootViewController = nav;
     
-    [self.window makeKeyAndVisible];
-
+    MusicDetailViewController * vc = [[MusicDetailViewController alloc]initWithNibName:nil bundle:nil];
+    
+    //    UINavigationController * nav = [[UINavigationController alloc]initWithRootViewController:vc];
+    
+    
+    self.window.rootViewController = vc;
+    
+    dispatch_async(dispatch_get_main_queue(),^(void){
+        [vc setupWithMtvID:3741];
+    }
+    );
+    //    [self.window makeKeyAndVisible];
+    
     
     return YES;
 }
@@ -60,7 +80,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
-//    [self saveContext];
+    //    [self saveContext];
 }
 
 //#pragma mark - Core Data stack
@@ -89,9 +109,9 @@
 //    if (_persistentStoreCoordinator != nil) {
 //        return _persistentStoreCoordinator;
 //    }
-//    
+//
 //    // Create the coordinator and store
-//    
+//
 //    _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
 //    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"HCPlayerTest.sqlite"];
 //    NSError *error = nil;
@@ -108,7 +128,7 @@
 //        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 //        abort();
 //    }
-//    
+//
 //    return _persistentStoreCoordinator;
 //}
 //
@@ -118,7 +138,7 @@
 //    if (_managedObjectContext != nil) {
 //        return _managedObjectContext;
 //    }
-//    
+//
 //    NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
 //    if (!coordinator) {
 //        return nil;
