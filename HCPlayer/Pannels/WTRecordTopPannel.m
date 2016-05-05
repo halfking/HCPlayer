@@ -348,8 +348,8 @@
     if(!returnBtn_)
     {
         returnBtn_  = [[UIButton alloc] initWithFrame:CGRectMake(left, top, 40, 40)];
-        [returnBtn_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateNormal];
-        //        [setupButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateSelected];
+        [returnBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateNormal];
+        //        [setupButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateSelected];
         [returnBtn_ addTarget:self action:@selector(returnClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:returnBtn_];
@@ -362,8 +362,8 @@
     if(!cancelPreivewBtn_)
     {
         cancelPreivewBtn_  = [[UIButton alloc] initWithFrame:CGRectMake(left, top+5, 45, 30)];
-        [cancelPreivewBtn_ setImage:[UIImage imageNamed:@"get_back.png"] forState:UIControlStateNormal];
-        //        [setupButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateSelected];
+        [cancelPreivewBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/get_back.png"] forState:UIControlStateNormal];
+        //        [setupButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateSelected];
         [cancelPreivewBtn_ addTarget:self action:@selector(cancelPreviewClick:) forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:cancelPreivewBtn_];
@@ -378,8 +378,8 @@
     if(!completedBtn_)
     {
         completedBtn_  = [[UIButton alloc] initWithFrame:CGRectMake(right, top, 45, 30)];
-        [completedBtn_ setImage:[UIImage imageNamed:@"next.png"] forState:UIControlStateNormal];
-        //        [setupButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateSelected];
+        [completedBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/next.png"] forState:UIControlStateNormal];
+        //        [setupButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateSelected];
         [completedBtn_ addTarget:self action:@selector(completedClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:completedBtn_];
         completedBtn_.hidden = !self.showCompletedBtn;
@@ -395,8 +395,8 @@
     if(!resingBtn_)
     {
         resingBtn_  = [[UIButton alloc] initWithFrame:CGRectMake(right, top, 45, 30)];
-        [resingBtn_ setImage:[UIImage imageNamed:@"repeat.png"] forState:UIControlStateNormal];
-        //        [setupButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateSelected];
+        [resingBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/repeat.png"] forState:UIControlStateNormal];
+        //        [setupButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateSelected];
         [resingBtn_ addTarget:self action:@selector(resingClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:resingBtn_];
         resingBtn_.hidden = !self.showResingBtn;
@@ -412,8 +412,8 @@
     if(!previewBtn_)
     {
         previewBtn_  = [[UIButton alloc] initWithFrame:CGRectMake(right, top, 45, 30)];
-        [previewBtn_ setImage:[UIImage imageNamed:@"audition.png"] forState:UIControlStateNormal];
-        //        [setupButton_ setImage:[UIImage imageNamed:@"return.png"] forState:UIControlStateSelected];
+        [previewBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/audition.png"] forState:UIControlStateNormal];
+        //        [setupButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/return.png"] forState:UIControlStateSelected];
         [previewBtn_ addTarget:self action:@selector(previewClick:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:previewBtn_];
         previewBtn_.hidden = !self.showPreviewBtn;
@@ -847,7 +847,7 @@
             [self addSubview:cacheContainer_];
             
             cacheIcon_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-            cacheIcon_.image = [UIImage imageNamed:@"cache"];
+            cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cache"];
             [cacheContainer_ addSubview:cacheIcon_];
             
             cacheProgressLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 45, 10)];
@@ -864,7 +864,7 @@
     }
     if(isDownloading==0 && !justBuild)  //没有下载
     {
-        cacheIcon_.image = [UIImage imageNamed:@"cache"];
+        cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cache"];
         cacheProgressLabel_.text = @"缓存";
         cacheProgressLabel_.textColor = [UIColor whiteColor];
         cacheProgressLabel_.alpha = 1;
@@ -873,7 +873,7 @@
     }
     else if(isDownloading==1) //正在下载
     {
-        cacheIcon_.image = [UIImage imageNamed:@"cacheing"];
+        cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cacheing"];
         cacheProgressLabel_.textColor = COLOR_BA;
         if (percent>=0) {
             cacheProgressLabel_.text = [NSString stringWithFormat:@"%d%%", (int)percent];
@@ -892,11 +892,11 @@
         //        cacheIcon_.alpha = 1;
         //        cacheGesture_.enabled = YES;
         //        if (item.isDownloading) {
-        //            cacheIcon_.image = [UIImage imageNamed:@"cacheing"];
+        //            cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/cacheing"];
         //            cacheProgressLabel_.textColor = COLOR_BA;
         //        }
         //        else{
-        //            cacheIcon_.image = [UIImage imageNamed:@"cache"];
+        //            cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/cache"];
         //            cacheProgressLabel_.textColor = [UIColor whiteColor];
         //        }
         
@@ -906,7 +906,7 @@
         cacheProgressLabel_.text = @"已缓存";
         cacheProgressLabel_.textColor = [UIColor whiteColor];
         cacheGesture_.enabled = NO;
-        cacheIcon_.image = [UIImage imageNamed:@"Cache_gray"];
+        cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_Cache_gray"];
         if (cacheProgressLabel_.alpha == 1 && animates) {
             cacheProgressLabel_.alpha = 0.5;
             [UIView animateWithDuration:0.5 animations:^{

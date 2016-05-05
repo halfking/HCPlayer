@@ -121,7 +121,7 @@
     
     {
         
-        handleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"progress_icon.png"]];
+        handleView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"HCPlayer.bundle/progress_icon.png"]];
         handleView.backgroundColor = [UIColor clearColor];
         //        handleView.layer.cornerRadius = SLIDER_viewCornerRadius;
         //        handleView.layer.masksToBounds = YES;
@@ -148,8 +148,8 @@
             //guide
             self.GuideAudioBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             self.GuideAudioBtn.frame = CGRectMake(left, (height - 30)/2.0f, 60, 30);
-            [self.GuideAudioBtn setImage:[UIImage imageNamed:@"singopen.png"] forState:UIControlStateNormal];
-            [self.GuideAudioBtn setImage:[UIImage imageNamed:@"singclose.png"] forState:UIControlStateSelected];
+            [self.GuideAudioBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/singopen.png"] forState:UIControlStateNormal];
+            [self.GuideAudioBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/singclose.png"] forState:UIControlStateSelected];
             [self.GuideAudioBtn addTarget:self action:@selector(openGuideAudio:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.GuideAudioBtn];
             left += 60+15;
@@ -160,8 +160,8 @@
             //播放
             self.playOrPauseBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             self.playOrPauseBtn.frame = CGRectMake(left, top, widthForBtn, widthForBtn);
-            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"play_icon.png"] forState:UIControlStateNormal];
-            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"pause_icon.png"] forState:UIControlStateSelected];
+            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_icon.png"] forState:UIControlStateNormal];
+            [self.playOrPauseBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/pause_icon.png"] forState:UIControlStateSelected];
             [self.playOrPauseBtn addTarget:self action:@selector(playOrPause:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.playOrPauseBtn];
             left += widthForBtn+15;
@@ -174,8 +174,8 @@
             //录音
             self.RecordBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             self.RecordBtn.frame = CGRectMake(rightMargin - 50-10, (height - 50)/2.0f, 50, 50);
-            [self.RecordBtn setImage:[UIImage imageNamed:@"microphone2.png"] forState:UIControlStateNormal];
-            [self.RecordBtn setImage:[UIImage imageNamed:@"microphone2.png"] forState:UIControlStateSelected];
+            [self.RecordBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/microphone2.png"] forState:UIControlStateNormal];
+            [self.RecordBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/microphone2.png"] forState:UIControlStateSelected];
             [self.RecordBtn addTarget:self action:@selector(willRecord:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.RecordBtn];
             if(self.isRecordButtonShow)
@@ -193,8 +193,8 @@
             //放大缩小
             self.MaxMinSizeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
             self.MaxMinSizeBtn.frame = CGRectMake( rightMargin - widthForBtn - 10, top, widthForBtn, widthForBtn);
-            [self.MaxMinSizeBtn setImage:[UIImage imageNamed:@"fullscreen_icon.png"] forState:UIControlStateNormal];
-            [self.MaxMinSizeBtn setImage:[UIImage imageNamed:@"narrow_icon.png"] forState:UIControlStateSelected];
+            [self.MaxMinSizeBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/fullscreen_icon.png"] forState:UIControlStateNormal];
+            [self.MaxMinSizeBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/narrow_icon.png"] forState:UIControlStateSelected];
             [self.MaxMinSizeBtn addTarget:self action:@selector(doFullScreenOrNot:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:self.MaxMinSizeBtn];
             rightMargin -= widthForBtn  +15;

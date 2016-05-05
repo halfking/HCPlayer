@@ -990,7 +990,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
             
             
             waitingView_ = [[UIImageView alloc]initWithFrame:CGRectMake(0, -489.5/2.0f, 887, 489.5)];
-            waitingView_.image = [UIImage imageNamed:@"playloading.png"];
+            waitingView_.image = [UIImage imageNamed:@"HCPlayer.bundle/playloading.png"];
             waitingView_.backgroundColor = [UIColor clearColor];
             [self addSubview:waitingView_];
             

@@ -26,7 +26,7 @@
         progressView_ = [[UIView alloc] initWithFrame:CGRectMake((self.frame.size.width - 85)/2.0f, (self.frame.size.height - 30)/2.0f, 85, 30)];
         
         uploadIcon_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        uploadIcon_.image = [UIImage imageNamed:@"upload"];
+        uploadIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/upload"];
         [progressView_ addSubview:uploadIcon_];
         
         uploadProgressLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 50, 10)];
@@ -72,7 +72,7 @@
     
     [self showUploadingProgressViewAutoInThread];
     
-    uploadIcon_.image = [UIImage imageNamed:@"upload"];
+    uploadIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/upload"];
     uploadProgressLabel_.textColor = [UIColor whiteColor];
 }
 
@@ -83,7 +83,7 @@
         NSLog(@"进度继续");
         self.isUploadingSuspended = NO;
         [self showUploadingProgressViewAutoInThread];
-        uploadIcon_.image = [UIImage imageNamed:@"upload_yellow"];
+        uploadIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/upload_yellow"];
         uploadProgressLabel_.textColor = COLOR_BA;
     }
 }
@@ -340,7 +340,7 @@
                     NSLog(@"self.progressView.hidden %d",progressView_.hidden);
                     //                    [self.progressView setProgress:percent];
                     uploadProgressLabel_.text = [NSString stringWithFormat:@"%d%%",(int)(percent*100)];
-                    uploadIcon_.image = [UIImage imageNamed:@"upload_yellow"];
+                    uploadIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/upload_yellow"];
                     uploadProgressLabel_.textColor = COLOR_BA;
                 }
                 else

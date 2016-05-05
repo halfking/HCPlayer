@@ -214,7 +214,7 @@
         {
             returnButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             returnButton_.frame = CGRectMake(left, top, 40, 40);
-            [returnButton_ setImage:[UIImage imageNamed:@"play_return.png"] forState:UIControlStateNormal];
+            [returnButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_return.png"] forState:UIControlStateNormal];
             [returnButton_ addTarget:self action:@selector(returnClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:returnButton_];
         }
@@ -255,7 +255,7 @@
         {
             cancelPreviewButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             cancelPreviewButton_.frame = CGRectMake(10, top, 40, 40);
-            [cancelPreviewButton_ setImage:[UIImage imageNamed:@"get_back.png"] forState:UIControlStateNormal];
+            [cancelPreviewButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/get_back.png"] forState:UIControlStateNormal];
             [cancelPreviewButton_ addTarget:self action:@selector(cancelPreview:) forControlEvents:UIControlEventTouchUpInside];
             cancelPreviewButton_.hidden = YES;
             [self addSubview:cancelPreviewButton_];
@@ -315,10 +315,10 @@
         {
             moreButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             moreButton_.frame = CGRectMake(left, top, 40, 40);
-            [moreButton_ setImage:[UIImage imageNamed:@"play_more_white"] forState:UIControlStateNormal];
-            [moreButton_ setImage:[UIImage imageNamed:@"play_more_yellow"] forState:UIControlStateSelected];
+            [moreButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_more_white"] forState:UIControlStateNormal];
+            [moreButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_more_yellow"] forState:UIControlStateSelected];
             //        [moreButton_ addTarget:self action:@selector(changeRightMenuState:) forControlEvents:UIControlEventTouchUpInside];
-            //        [moreButton_ setImage:[UIImage imageNamed:@"more.png"] forState:UIControlStateNormal];
+            //        [moreButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/more.png"] forState:UIControlStateNormal];
             [moreButton_ addTarget:self action:@selector(moreClicked:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:moreButton_];
         }
@@ -333,8 +333,8 @@
         {
             shareButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             shareButton_.frame = CGRectMake(left, top, 40, 40);
-            [shareButton_ setImage:[UIImage imageNamed:@"playpannel_share_icon.png"] forState:UIControlStateNormal];
-            [shareButton_ setImage:[UIImage imageNamed:@"playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
+            [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_share_icon.png"] forState:UIControlStateNormal];
+            [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
             [shareButton_ addTarget:self action:@selector(shareMtv:) forControlEvents:UIControlEventTouchUpInside];
             
             UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 40 - 16, 40, 15)];
@@ -360,8 +360,8 @@
         {
             previewButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             previewButton_.frame = CGRectMake(left, top, 40, 40);
-            [previewButton_ setImage:[UIImage imageNamed:@"preview.png"] forState:UIControlStateNormal];
-            //            [previewButton_ setImage:[UIImage imageNamed:@"preview.png"] forState:UIControlStateSelected];
+            [previewButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/preview.png"] forState:UIControlStateNormal];
+            //            [previewButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/preview.png"] forState:UIControlStateSelected];
             [previewButton_ addTarget:self action:@selector(previewClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:previewButton_];
         }
@@ -377,8 +377,8 @@
         {
             resingButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             resingButton_.frame = CGRectMake(left, top, 40, 40);
-            [resingButton_ setImage:[UIImage imageNamed:@"repeat.png"] forState:UIControlStateNormal];
-            //            [resingButton_ setImage:[UIImage imageNamed:@"repeat.png"] forState:UIControlStateSelected];
+            [resingButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/repeat.png"] forState:UIControlStateNormal];
+            //            [resingButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/repeat.png"] forState:UIControlStateSelected];
             [resingButton_ addTarget:self action:@selector(resingClick:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:resingButton_];
         }
@@ -413,7 +413,7 @@
             
             commentButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             commentButton_.frame = CGRectMake(left, top, 40, 40);
-            [commentButton_ setImage:[UIImage imageNamed:@"play_comment.png"] forState:UIControlStateNormal];
+            [commentButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_comment.png"] forState:UIControlStateNormal];
             [commentButton_ addTarget:self action:@selector(showCommentsOrNot:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:commentButton_];
         }
@@ -449,8 +449,8 @@
             
             likeButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
             likeButton_.frame = CGRectMake(left, top, 40, 40);
-            [likeButton_ setImage:[UIImage imageNamed:@"videolove_icon.png"] forState:UIControlStateNormal];
-            [likeButton_ setImage:[UIImage imageNamed:@"videolove2_icon.png"] forState:UIControlStateSelected];
+            [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/videolove_icon.png"] forState:UIControlStateNormal];
+            [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/videolove2_icon.png"] forState:UIControlStateSelected];
             [likeButton_ addTarget:self action:@selector(likeMtv:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:likeButton_];
         }
@@ -468,13 +468,13 @@
         leaderSwitch_.onTextColor = COLOR_CF;
         leaderSwitch_.offText = @"伴奏";
         leaderSwitch_.offTextColor = COLOR_CC;
-        leaderSwitch_.borderColor = COLOR_CL;//[UIColor] [UIImage imageNamed:@"switch_icon.png"];
+        leaderSwitch_.borderColor = COLOR_CL;//[UIColor] [UIImage imageNamed:@"HCPlayer.bundle/switch_icon.png"];
         leaderSwitch_.isRounded = YES;
         leaderSwitch_.hidden = NO;
         //        leaderSwitch_.onColor = COLOR_CL;
         //        leaderSwitch_.activeColor = COLOR_CL;
         //        leaderSwitch_.inactiveColor = COLOR_CL;
-        leaderSwitch_.knobColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"switch_icon.png"]];
+        leaderSwitch_.knobColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"HCPlayer.bundle/switch_icon.png"]];
         NSLog(@"leader switch frame:%@",NSStringFromCGRect(leaderSwitch_.frame));
         [leaderSwitch_ setOn:YES];
         [leaderSwitch_ setup];
@@ -508,7 +508,7 @@
                 [self addSubview:cacheContainer_];
                 
                 cacheIcon_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-                cacheIcon_.image = [UIImage imageNamed:@"play_cache.png"];
+                cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cache.png"];
                 [cacheContainer_ addSubview:cacheIcon_];
                 
                 cacheProgressLabel_ = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 45, 10)];
@@ -536,8 +536,8 @@
             {
                 cacheButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
                 cacheButton_.frame = CGRectMake(left, top, 40, 40);
-                [cacheButton_ setImage:[UIImage imageNamed:@"playpannel_cache_icon.png"] forState:UIControlStateNormal];
-                [cacheButton_ setImage:[UIImage imageNamed:@"playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
+                [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_cache_icon.png"] forState:UIControlStateNormal];
+                [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
                 [cacheButton_ addTarget:self action:@selector(cacheMtv:) forControlEvents:UIControlEventTouchUpInside];
                 
                 UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 40 - 16, 40, 15)];
@@ -1106,7 +1106,7 @@
     {
         if(self.ShowBigCache)
         {
-            cacheIcon_.image = [UIImage imageNamed:@"play_cacheing"];
+            cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cacheing"];
             cacheProgressLabel_.textColor = color?color:COLOR_BA;
             if(text)
             {
@@ -1122,7 +1122,7 @@
     {
         if(self.ShowBigCache)
         {
-            cacheIcon_.image = [UIImage imageNamed:@"play_cache"];
+            cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cache"];
             cacheProgressLabel_.textColor = color?color:[UIColor whiteColor];
             if(text)
             {
@@ -1147,7 +1147,7 @@
         cacheProgressLabel_.text = @"已缓存";
         cacheProgressLabel_.textColor = [UIColor whiteColor];
         cacheGesture_.enabled = NO;
-        cacheIcon_.image = [UIImage imageNamed:@"play_cache_gray"];
+        cacheIcon_.image = [UIImage imageNamed:@"HCPlayer.bundle/play_cache_gray"];
         if (cacheProgressLabel_.alpha == 1 && animates) {
             cacheProgressLabel_.alpha = 0.5;
             [UIView animateWithDuration:0.5 animations:^{
@@ -1554,26 +1554,26 @@
 //            }
 //        }
         rightMenuArrow_ = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 90, 4)];
-        rightMenuArrow_.image = [UIImage imageNamed:@"triangle"];
+        rightMenuArrow_.image = [UIImage imageNamed:@"HCPlayer.bundle/triangle"];
         [rightMenuContainer_ addSubview:rightMenuArrow_];
         
         
         editButton_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 40)];
-        [editButton_ setImage:[UIImage imageNamed:@"bianji"] forState:UIControlStateNormal];
+        [editButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/bianji"] forState:UIControlStateNormal];
         [editButton_ addTarget:self action:@selector(clickEditButton:) forControlEvents:UIControlEventTouchUpInside];
         [rightMenuContainer_ addSubview:editButton_];
         editButton_.hidden = YES;
         
         barrageButton_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90,40)];
-        [barrageButton_ setImage:[UIImage imageNamed:@"tanmu2"] forState:UIControlStateNormal];
-        [barrageButton_ setImage:[UIImage imageNamed:@"tanmu"] forState:UIControlStateSelected];
+        [barrageButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/tanmu2"] forState:UIControlStateNormal];
+        [barrageButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/tanmu"] forState:UIControlStateSelected];
         [barrageButton_ addTarget:self action:@selector(showOrHideBarrage:) forControlEvents:UIControlEventTouchUpInside];
         barrageButton_.selected = YES;
         [rightMenuContainer_ addSubview:barrageButton_];
         barrageButton_.hidden = YES;
         
         shareButton2_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 90, 40)];
-        [shareButton2_ setImage:[UIImage imageNamed:@"fenxiang"] forState:UIControlStateNormal];
+        [shareButton2_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/fenxiang"] forState:UIControlStateNormal];
         [shareButton2_ addTarget:self action:@selector(shareMtv:) forControlEvents:UIControlEventTouchUpInside];
         [rightMenuContainer_ addSubview:shareButton2_];
         shareButton2_.hidden = YES;
@@ -1583,7 +1583,7 @@
         //        [rightMenuContainer_ addGestureRecognizer:tap];
         
         //        reportButton_ = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-        //        [reportButton_ setImage:[UIImage imageNamed:@"report_hover_full"] forState:UIControlStateNormal];
+        //        [reportButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/report_hover_full"] forState:UIControlStateNormal];
         //        [reportButton_ addTarget:self action:@selector(reportMtv:) forControlEvents:UIControlEventTouchUpInside];
         //        [rightMenuContainer_ addSubview:reportButton_];
         

@@ -76,13 +76,13 @@
         leaderSwitch_.onTextColor = COLOR_CG;
         leaderSwitch_.offText = @"伴奏";
         leaderSwitch_.offTextColor = COLOR_CC;
-        leaderSwitch_.borderColor = COLOR_CL;//[UIColor] [UIImage imageNamed:@"switch_icon.png"];
+        leaderSwitch_.borderColor = COLOR_CL;//[UIColor] [UIImage imageNamed:@"HCPlayer.bundle/switch_icon.png"];
         leaderSwitch_.isRounded = YES;
         leaderSwitch_.hidden = NO;
         //        leaderSwitch_.onColor = COLOR_CL;
         //        leaderSwitch_.activeColor = COLOR_CL;
         //        leaderSwitch_.inactiveColor = COLOR_CL;
-        leaderSwitch_.knobColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"switch_icon.png"]];
+        leaderSwitch_.knobColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"HCPlayer.bundle/switch_icon.png"]];
         NSLog(@"leader switch frame:%@",NSStringFromCGRect(leaderSwitch_.frame));
         [leaderSwitch_ setOn:YES];
         [leaderSwitch_ setup];
@@ -92,8 +92,8 @@
         [leaderSwitch_ addTarget:self action:@selector(openOrCloseLeader:) forControlEvents:UIControlEventValueChanged];
         
         //        leaderButton_ = [[UIButton alloc] initWithFrame:CGRectMake(left, top, 65, 30)];
-        //        [leaderButton_ setImage:[UIImage imageNamed:@"singclose"] forState:UIControlStateNormal];
-        //        [leaderButton_ setImage:[UIImage imageNamed:@"singopen"] forState:UIControlStateSelected];
+        //        [leaderButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/singclose"] forState:UIControlStateNormal];
+        //        [leaderButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/singopen"] forState:UIControlStateSelected];
         //        [leaderButton_ addTarget:self action:@selector(openOrCloseLeader:) forControlEvents:UIControlEventTouchUpInside];
         //        leaderButton_.titleLabel.font = FONT_STANDARD(10);
         //        leaderButton_.titleLabel.textColor = COLOR_CA;
@@ -105,8 +105,8 @@
 //    {
 //        reportButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
 //        reportButton_.frame = CGRectMake(left, top, 46, 46);
-//        [reportButton_ setImage:[UIImage imageNamed:@"report_hover"] forState:UIControlStateNormal];
-//        [reportButton_ setImage:[UIImage imageNamed:@"report_hover"] forState:UIControlStateSelected];
+//        [reportButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/report_hover"] forState:UIControlStateNormal];
+//        [reportButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/report_hover"] forState:UIControlStateSelected];
 //        [reportButton_ addTarget:self action:@selector(reportMtv:) forControlEvents:UIControlEventTouchUpInside];
 //        
 //        UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
@@ -130,8 +130,8 @@
     {
         shareButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         shareButton_.frame = CGRectMake(left, top, 46, 46);
-        [shareButton_ setImage:[UIImage imageNamed:@"playpannel_share_icon.png"] forState:UIControlStateNormal];
-        [shareButton_ setImage:[UIImage imageNamed:@"playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
+        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_share_icon.png"] forState:UIControlStateNormal];
+        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
         [shareButton_ addTarget:self action:@selector(shareMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
@@ -156,8 +156,8 @@
     {
         cacheButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         cacheButton_.frame = CGRectMake(left, top, 46, 46);
-        [cacheButton_ setImage:[UIImage imageNamed:@"playpannel_cache_icon.png"] forState:UIControlStateNormal];
-        [cacheButton_ setImage:[UIImage imageNamed:@"playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
+        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_cache_icon.png"] forState:UIControlStateNormal];
+        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
         [cacheButton_ addTarget:self action:@selector(cacheMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
@@ -179,8 +179,8 @@
     {
         likeButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         likeButton_.frame = CGRectMake(left, top, 46, 46);
-        [likeButton_ setImage:[UIImage imageNamed:@"playpannel_love_icon.png"] forState:UIControlStateNormal];
-        [likeButton_ setImage:[UIImage imageNamed:@"playpannel_love_sel_icon.png"] forState:UIControlStateSelected];
+        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_love_icon.png"] forState:UIControlStateNormal];
+        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_love_sel_icon.png"] forState:UIControlStateSelected];
         [likeButton_ addTarget:self action:@selector(likeMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
