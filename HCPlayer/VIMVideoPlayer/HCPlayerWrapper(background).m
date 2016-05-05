@@ -71,7 +71,7 @@
         [dict setObject:item.Tag forKey:MPMediaItemPropertyAlbumTitle];
         
         //专辑缩略图
-        UIImage * image = [self getCoverImage];
+        UIImage * image =  [self getCoverImage];
         if(!image) image = [UIImage imageNamed:@"mtvcover_icon.png"];
         
         MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];

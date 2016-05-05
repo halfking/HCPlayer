@@ -19,13 +19,18 @@
 #import "WTVideoPlayerView(MTV).h"
 #import "WTVideoPlayerProgressView.h"
 
+
+#import "HCPlayerWrapper(Lyric).h"
+#import "HCPlayerWrapper(Data).h"
+#import "HCPlayerWrapper(background).h"
+
 @implementation HCPlayerWrapper(Play)
 #pragma mark - play pause changeitem 核心操作，这些操作可以当作原子操作
 - (void)pauseItemWithCoreEvents
 {
     NSLog(@"pauseItemWithCoreEvents");
     //[commentManager_ stopCommentTimer];
-    [mplayer_.commentManager stopCommentTimer];
+    [commentManager_ stopCommentTimer];
     
     if(mplayer_)// && mplayer.playing)
     {
@@ -34,7 +39,7 @@
     if (leaderPlayer_) {
         [leaderPlayer_ pause];
     }
-    playOrPause_.enabled = YES;
+//    playOrPause_.enabled = YES;
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
@@ -43,7 +48,7 @@
 {
     if(!mplayer_)
     {
-        [self playItem:nil seconds:-1];
+        [self play];
         return;
     }
     lastPlaySecondsForBackInfo_ = 0;
@@ -100,10 +105,10 @@
             needPlayLeader_ = YES; //需要人声同步
         }
     }
-    playOrPause_.enabled = YES;
+//    playOrPause_.enabled = YES;
     NSLog(@"playItemWithCoreEvents");
     
-    [mplayer_.commentManager startCommentTimer];
+    [commentManager_ startCommentTimer];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 - (void)playItemChangeWithCoreEvents:(NSString *)path orgPath:(NSString*)orgPath mtv:(MTV*)item beginSeconds:(CGFloat)beginSeconds
@@ -203,7 +208,7 @@
     [playPannel_ setUseGuidAudio:NO];
 #endif
     
-    [playContainerView_ addSubview:mplayer_];
+    [self addSubview:mplayer_];
     mplayer_.hidden = YES;
     [self bringToolBar2Front];
     if(beginSeconds>=0)
@@ -346,7 +351,7 @@
         }
     }
 #else
-    if(netStatus_==ReachableViaWWAN)
+    if([DeviceConfig config].networkStatus ==ReachableViaWWAN)
     {
         if([[UserManager sharedUserManager]canShowNotickeFor3G])
         {

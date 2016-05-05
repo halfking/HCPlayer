@@ -19,7 +19,9 @@
 #import "WTPlayerTopPannel.h"
 #import <HCBaseSystem/VDCItem.h>
 
-@interface HCPlayerWrapper : UIView
+static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
+
+@interface HCPlayerWrapper : UIView<WTVideoPlayerViewDelegate>
 {
     LyricView * lyricView_;
     UICommentsView * commentListView_;
@@ -45,12 +47,13 @@
     NSURL * currentUrl_;
     
     BOOL needPlayLeader_; //是否叠加音频，如导唱之类的
+    CGFloat currentPlaySeconds_; //当前播放时间，当切源时，可以继续
+    CGFloat lastPlaySecondsForBackInfo_;//??
+    
+    BOOL canShowPlaybackInfo_;  //后台播放显示相关的信息？
     
 }
-//@property (nonatomic,PP_STRONG) LyricView *         lyricView; //歌词
-//@property (nonatomic,PP_STRONG) UICommentsView *    commentListView;//评论
-//@property (nonatomic,PP_STRONG) UITextField *       commentTextInput;//评论框
-//@property (nonatomic,PP_STRONG) CommentViewManager * commentManager;
+@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate> delegate;
 
 - (BOOL) setPlayerData:(MTV *)item;
 - (BOOL) setPlayerItem:(AVPlayerItem *)playerItem;
@@ -68,4 +71,10 @@
 
 - (void) fullScreen;
 - (void) normalScrenn:(CGRect)frame;
+
+
+- (void) bringToolBar2Front;
+- (CGRect) getPlayerFrame;
+- (MTV*) getCurrentMTV;
+- (UIImage *) getCoverImage;
 @end

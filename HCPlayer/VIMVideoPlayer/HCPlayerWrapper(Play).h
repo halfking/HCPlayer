@@ -16,7 +16,7 @@
 - (void)    playItemChangeWithCoreEvents:(NSString *)path
                                  orgPath:(NSString*)orgPath
                                      mtv:(MTV*)item
-                            beginSeconds:(CGFloat);
+                            beginSeconds:(CGFloat) beginSeconds;
 - (void)    playItemChangeWithReady:(NSString *)path
                             orgPath:(NSString*)orgPath
                                 mtv:(MTV*)item

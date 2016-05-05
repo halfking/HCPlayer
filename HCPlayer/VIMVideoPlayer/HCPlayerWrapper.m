@@ -28,6 +28,7 @@
     
     UIWebImageViewN * cover_;
     CGFloat     progressHeight_;    //进度条高度
+    CGFloat     playPannelHeight_;  //非全屏时，操作按钮在视频外，占用的高度
 }
 
 @end
@@ -46,6 +47,8 @@
 - (void)initData
 {
     centerPlayWidth_ = 60;
+    playPannelHeight_ = 0;
+    bgTask_ = UIBackgroundTaskInvalid;
     
     userManager_ = [UserManager sharedUserManager];
     commentManager_ = [CommentViewManager new];
@@ -72,7 +75,7 @@
     // 封面
     {
         cover_ = [[UIWebImageViewN alloc] initWithFrame:CGRectMake(0, 0, containerSize.width, containerSize.height)];
-
+        
         cover_.keepScale_ = YES;
         cover_.fastMode = NO;
         cover_.contentMode = UIViewContentModeScaleAspectFit;
@@ -93,7 +96,7 @@
                                        border:[UIColor colorWithRed:0.0 green:205.0/255.0 blue:184.0/255.0 alpha:1.0]];
         
         [progressView_ setTotalSeconds:60];
-
+        
         progressView_.isFullScreen = NO;
         progressView_.GuideAudioBtn.hidden = YES;
         [playContainerView_ addSubview:progressView_];
@@ -106,12 +109,19 @@
     {
         CGRect toolFrame = CGRectMake(0, 0, containerSize.width, 40);
         maxPannel_ = [[WTPlayerTopPannel alloc]initWithFrame:toolFrame];
-      
+        
         [playContainerView_ addSubview:maxPannel_];
         maxPannel_.hidden = YES;
         maxPannel_.backgroundColor = [UIColor clearColor];
         maxPannel_.delegate = self;
     }
+    //按钮栏
+    {
+        playPannel_ = [[WTPlayerControlPannel alloc]initWithFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
+        playPannel_.backgroundColor = [UIColor clearColor];
+        playPannel_.delegate = self;
+    }
+    
     {
         UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showProgressView:)];
         tap.enabled = YES;
@@ -126,9 +136,17 @@
 {
     CGSize containerSize = frame.size;
     
-    centerPlayBtn_ = [[UIButton alloc] initWithFrame:CGRectMake((containerSize.width-centerPlayWidth_)/2,
-                                                                (containerSize.height-centerPlayWidth_)/2,
-                                                                centerPlayWidth_, centerPlayWidth_)];
+    centerPlayBtn_.frame = CGRectMake((containerSize.width-centerPlayWidth_)/2,
+                                      (containerSize.height-centerPlayWidth_)/2,
+                                      centerPlayWidth_, centerPlayWidth_);
+    cover_.frame = CGRectMake(0, 0, containerSize.width, containerSize.height);
+    
+    [progressView_ changeFrame:CGRectMake(0, containerSize.height - progressHeight_, containerSize.width, progressHeight_)];
+    
+    [maxPannel_ changeFrame:CGRectMake(0, 0, containerSize.width, 40)];
+    
+    [playPannel_ changeFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
+    
 }
 
 - (void)showProgressView:(id)sender
@@ -252,7 +270,7 @@
         {
             localFileVDCItem_ = [[VDCManager shareObject]getVDCItemByMtv:currentMtv_ urlString:nil];
         }
-   
+        
         [progressView_ setCacheKey:localFileVDCItem_.key];
     }
 #endif
@@ -271,6 +289,7 @@
         [playPannel_ setUseGuidAudio:NO];
         [progressView_ setGuidAudio:NO];
     }
+    
     
     return YES;
 }
@@ -319,7 +338,7 @@
     else
     {
         pauseUnexpected_ = NO;
-
+        
         if([mplayer_ isCurrentMTV:item])
         {
             if(mplayer_ && [mplayer_ getCurrentUrl]) {
@@ -452,13 +471,19 @@
         [self showPlayBackProgress:currentPlaySeconds_];
         lastPlaySecondsForBackInfo_ = currentPlaySeconds_;
     }
-    
-    // 同步comment的时间
-    if([self canShowComment] && mplayer_.commentManager)
+    //显示歌词
+    if(lyricView_ && lyricView_.hidden == NO)
     {
-        //[mplayer_.commentManager commentsShowInThread:progress time:0 animate:YES];
-        
-        [mplayer_.commentManager setCurrentDuranceWhen:progress];
+        [lyricView_ didPlayingWithSecond:secondsPlaying];
+    }
+    // 同步comment的时间
+    if([self canShowComment] && commentManager_)
+    {
+        [commentManager_ setCurrentDuranceWhen:progress];
+    }
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:timeDidChange:)])
+    {
+        [self.delegate videoPlayerView:videoPlayer timeDidChange:secondsPlaying];
     }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didStalled:(AVPlayerItem *)playerItem
@@ -556,7 +581,60 @@
 {
     [self showProgressView:nil];
 }
-
+#pragma mark - view
+- (MTV*)getCurrentMTV
+{
+    return currentMtv_;
+}
+- (UIImage *)getCoverImage
+{
+    if(cover_ && cover_.image)
+    return cover_.image;
+    else
+    return nil;
+}
+- (void) bringToolBar2Front
+{
+    if(cover_)
+    [self bringSubviewToFront:cover_];
+    if(mplayer_)
+    [self bringSubviewToFront:mplayer_];
+    
+    
+    
+    [self bringSubviewToFront:progressView_];
+    [self bringSubviewToFront:playPannel_];
+    [self bringSubviewToFront:maxPannel_];
+    
+    [self bringSubviewToFront:centerPlayBtn_];
+    
+    
+    
+    [self bringSubviewToFront:commentListView_];
+}
+- (CGRect)getPlayerFrame
+{
+    if(progressView_.isFullScreen)
+    {
+        if(!currentMtv_ || currentMtv_.IsLandscape)
+        {
+            return CGRectMake(0, 0, config_.Height, config_.Width);
+        }
+        else
+        {
+            return CGRectMake(0, 0, config_.Width, config_.Height);
+        }
+    }
+    else
+    {
+        CGRect containerFrame = self.frame;
+        containerFrame.size.height -= playPannelHeight_;
+        containerFrame.origin.y = 0;
+        containerFrame.origin.x = 0;
+        return containerFrame;
+    }
+}
+#pragma mark - dealloc
 - (void)readyToRelease
 {
     PP_RELEASE(_commentManager);
@@ -567,6 +645,6 @@
 - (void)dealloc
 {
     [self readyToRelease];
-    PP_SUPPERDOALLOC;
+    PP_SUPPERDEALLOC;
 }
 @end

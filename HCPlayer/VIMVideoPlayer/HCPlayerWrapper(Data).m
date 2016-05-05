@@ -52,6 +52,10 @@
     });
     [item setFilePathN:filePath];
 }
+- (void)setTotalSeconds:(CGFloat)seconds
+{
+    progressView_.totalSeconds = seconds;
+}
 
 #pragma mark - record events
 - (void)recordPlayItemBegin
@@ -165,6 +169,7 @@
                        playerWaitingView_.frame = frame;
                    });
 }
+
 
 
 @end

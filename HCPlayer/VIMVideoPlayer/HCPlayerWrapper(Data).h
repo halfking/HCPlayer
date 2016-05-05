@@ -15,10 +15,14 @@
 - (CGFloat) currentPlayerWhen;
 - (CGFloat) duration;
 - (BOOL)    isPlaying;
-
+- (void)    setTotalSeconds:(CGFloat)seconds;
 - (void)    updateFilePath:(MTV*)item filePath:(NSString*)filePath;
 
 - (void)    showPlayerWaitingView;
 - (void)    hidePlayerWaitingView;
+
+
+- (void)recordPlayItemBegin;
+- (void)recordPlayItemEnd;
 
 @end

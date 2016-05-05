@@ -379,8 +379,8 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     PP_RELEASE(currentPlayUrl_);
     self.player = nil;
     
-    [self removeLyric];
-    [self resetComments];
+//    [self removeLyric];
+//    [self resetComments];
     
     secondsPlaying_ =0;
     //    secondsDurationLastInArray_ = 0;
@@ -904,10 +904,10 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     [self hideActivityView];
     //显示歌词
-    if(self.lyricView && self.lyricView.hidden == NO)
-    {
-        [self.lyricView didPlayingWithSecond:secondsPlaying];
-    }
+//    if(lyricView && self.lyricView.hidden == NO)
+//    {
+//        [self.lyricView didPlayingWithSecond:secondsPlaying];
+//    }
     
     if ([videoPlayer.delegate respondsToSelector:@selector(videoPlayerView:timeDidChange:)])
     {
