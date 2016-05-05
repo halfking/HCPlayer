@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WTVideoPlayerView.h"
+#import "HCPlayerWrapper.h"
+#import <HCBaseSystem/publicenum.h>
 
-
-@interface WTVideoPlayerView(Lyric)
+@interface HCPlayerWrapper(Lyric)
 - (void)showLyric:(NSString *)lyric singleLine:(BOOL)singleLine container:(UIView *)container;
 - (void)resetLyricFrame:(CGRect)containerFrame;
 - (void)showLyric;

@@ -6,7 +6,7 @@
 //  Copyright © 2016年 seenvoice.com. All rights reserved.
 //
 
-#import "WTVideoPlayerView(Lyric).h"
+#import "HCPlayerWrapper(Lyric).h"
 #import <hccoren/UIView+extension.h>
 #import "CommentViewManager.h"
 #import "UICommentListView.h"
@@ -14,10 +14,10 @@
 
 #import "LyricView.h"
 
-@implementation WTVideoPlayerView(Lyric)
+@implementation HCPlayerWrapper(Lyric)
 //- (CGFloat) showLyricForPlayItem:(MTV *)item seconds:(CGFloat)seconds
 //{
-//    if(!self.lyricView)
+//    if(!lyricView_)
 //    {
 //        self init
 //    }
@@ -56,9 +56,9 @@
     if([NSThread isMainThread])
     {
         CGFloat height = 90;
-        if (self.lyricView) {
-            [self.lyricView setLyric:lyric singleRowShow:singleLine];
-            [self.lyricView didPlayingWithSecond:0];
+        if (lyricView_) {
+            [lyricView_ setLyric:lyric singleRowShow:singleLine];
+            [lyricView_ didPlayingWithSecond:0];
             if(container)
             {
                 [self resetLyricFrame:container.frame];
@@ -81,16 +81,16 @@
                 frame.size.width -= (10 - frame.origin.x )*2;
                 frame.origin.x = 10;
             }
-            self.lyricView = [[LyricView alloc] initWithFrame:frame lyric:lyric singleRowShow:singleLine];
+            lyricView_= [[LyricView alloc] initWithFrame:frame lyric:lyric singleRowShow:singleLine];
             if(container)
             {
-                [container addSubview:self.lyricView];
+                [container addSubview:lyricView_];
             }
             else
             {
-                [self addSubview:self.lyricView];
+                [self addSubview:lyricView_];
             }
-            self.lyricView.backgroundColor = [UIColor clearColor];
+            lyricView_.backgroundColor = [UIColor clearColor];
         }
     }
     else
@@ -112,7 +112,7 @@
             frame.size.width -= (10 - frame.origin.x )*2;
             frame.origin.x = 10;
         }
-        self.lyricView.frame = frame;
+        lyricView_.frame = frame;
     }
     else
     {
@@ -126,9 +126,9 @@
 {
     if([NSThread isMainThread])
     {
-        if(self.lyricView)
+        if(lyricView_)
         {
-            self.lyricView.hidden = NO;
+            lyricView_.hidden = NO;
         }
     }
     else
@@ -144,9 +144,9 @@
 {
     if([NSThread isMainThread])
     {
-        if(self.lyricView)
+        if(lyricView_)
         {
-            self.lyricView.hidden = YES;
+            lyricView_.hidden = YES;
         }
     }
     else
@@ -162,8 +162,8 @@
 {
     if([NSThread isMainThread])
     {
-        [self.lyricView removeFromSuperview];
-        self.lyricView = nil;
+        [lyricView_ removeFromSuperview];
+        lyricView_= nil;
     }
     else
     {
@@ -178,35 +178,35 @@
 - (void)initComments:(UIView *)container textContainer:(UIView *)textContainer inputTag:(int)inputTag objectType:(HCObjectType) objectType objectID:(long)objectID
 {
     NSLog(@"comment view container frame = %@",NSStringFromCGRect(container.bounds));
-    if(!self.commentManager)
+    if(!commentManager_)
     {
-        self.commentManager = [CommentViewManager new];
+        commentManager_ = [CommentViewManager new];
     }
-    [self.commentManager setObject:objectType objectID:objectID];
-    if(!self.commentTextInput)
-    {
-        CGRect textFrame = self.frame;
-        if(textContainer)
-        {
-            textFrame = textContainer.frame;
-        }
-        textFrame.origin.y = textFrame.size.height *2;
-        textFrame.origin.x = (textFrame.size.width - 202)/2.0f;
-        textFrame.size.width = 202;
-        textFrame.size.height = 34;
-        
-        self.commentTextInput = [[UITextField alloc] initWithFrame:textFrame];
-        self.commentTextInput.tag = inputTag;
-        self.commentTextInput.borderStyle = UITextBorderStyleRoundedRect;
-        self.commentTextInput.returnKeyType = UIReturnKeySend;
-        self.commentTextInput.enabled = YES;
-        self.commentTextInput.delegate = [self traverseResponderChainForUIViewController];
-        if(textContainer)
-           [textContainer addSubview:self.commentTextInput];
-        else
-            [self addSubview:self.commentTextInput];
-    }
-    if(!self.commentListView)
+    [commentManager_ setObject:objectType objectID:objectID];
+//    if(!self.commentTextInput)
+//    {
+//        CGRect textFrame = self.frame;
+//        if(textContainer)
+//        {
+//            textFrame = textContainer.frame;
+//        }
+//        textFrame.origin.y = textFrame.size.height *2;
+//        textFrame.origin.x = (textFrame.size.width - 202)/2.0f;
+//        textFrame.size.width = 202;
+//        textFrame.size.height = 34;
+//        
+//        self.commentTextInput = [[UITextField alloc] initWithFrame:textFrame];
+//        self.commentTextInput.tag = inputTag;
+//        self.commentTextInput.borderStyle = UITextBorderStyleRoundedRect;
+//        self.commentTextInput.returnKeyType = UIReturnKeySend;
+//        self.commentTextInput.enabled = YES;
+//        self.commentTextInput.delegate = [self traverseResponderChainForUIViewController];
+//        if(textContainer)
+//           [textContainer addSubview:self.commentTextInput];
+//        else
+//            [self addSubview:self.commentTextInput];
+//    }
+    if(!commentListView_)
     {
         CGRect frame = self.frame;
         if(container)
@@ -216,34 +216,34 @@
         frame.origin.x = 0;
         frame.origin.y = 50;
         frame.size.height -= 100;
-        self.commentManager.showType = CommentShowTypePop;
-        self.commentListView = [self.commentManager createCommentsView:frame];
-        self.commentListView.hidden = YES;
-        //self.commentListView.backgroundColor = [UIColor yellowColor];
+        commentManager_.showType = CommentShowTypePop;
+        commentListView_ = [commentManager_ createCommentsView:frame];
+        commentListView_.hidden = YES;
+        //commentListView_.backgroundColor = [UIColor yellowColor];
         if(container)
-            [container addSubview:self.commentListView];
+            [container addSubview:commentListView_];
         else
-            [self addSubview:self.commentListView];
+            [self addSubview:commentListView_];
     }
     [self refreshComment];
 }
 - (void)resetCommentsFrame:(CGRect)commentFamre container:(UIView *)container textContainer:(UIView *)textContainer
 {
-    if(self.commentTextInput)
-    {
-        CGRect textFrame = self.frame;
-        if(textContainer)
-        {
-            textFrame = textContainer.frame;
-        }
-        textFrame.origin.y = textFrame.size.height *2;
-        textFrame.origin.x = (textFrame.size.width - 202)/2.0f;
-        textFrame.size.width = 202;
-        textFrame.size.height = 34;
-        
-        self.commentTextInput.frame = textFrame;
-    }
-    if(self.commentListView)
+//    if(self.commentTextInput)
+//    {
+//        CGRect textFrame = self.frame;
+//        if(textContainer)
+//        {
+//            textFrame = textContainer.frame;
+//        }
+//        textFrame.origin.y = textFrame.size.height *2;
+//        textFrame.origin.x = (textFrame.size.width - 202)/2.0f;
+//        textFrame.size.width = 202;
+//        textFrame.size.height = 34;
+//        
+//        self.commentTextInput.frame = textFrame;
+//    }
+    if(commentListView_)
     {
 //        CGRect frame = self.frame;
 //        if(container)
@@ -257,88 +257,88 @@
         frame.origin.x = 0;
         frame.origin.y = 50;
         frame.size.height -= 100;
-        self.commentListView.frame = frame;
+        commentListView_.frame = frame;
         
         if(container) {
-            if (self.commentListView.superview == container)
-                [container bringSubviewToFront:self.commentListView];
+            if (commentListView_.superview == container)
+                [container bringSubviewToFront:commentListView_];
             else
-                [container addSubview:self.commentListView];
+                [container addSubview:commentListView_];
         }
         else {
-            if (self.commentListView.superview == self)
-                [self bringSubviewToFront:self.commentListView];
+            if (commentListView_.superview == self)
+                [self bringSubviewToFront:commentListView_];
             else
-                [self addSubview:self.commentListView];
+                [self addSubview:commentListView_];
         }
         [self refreshComment];
     }
 }
 - (void)showComments
 {
-    if(!self.commentListView || self.commentListView.hidden==NO) return;
+    if(!commentListView_ || commentListView_.hidden==NO) return;
     [self switchCommentsShowHide:YES];
 }
 - (void)hideComments
 {
-    if(!self.commentListView || self.commentListView.hidden) return;
+    if(!commentListView_ || commentListView_.hidden) return;
     [self switchCommentsShowHide:NO];
 }
 - (void)resetComments
 {
-    if(self.commentManager)
+    if(commentManager_)
     {
-        [self.commentManager stopCommentTimer];
-        [self.commentManager reset];
+        [commentManager_ stopCommentTimer];
+        [commentManager_ reset];
     }
-    if(self.commentListView)
+    if(commentListView_)
     {
-        [self.commentListView reset];
+        [commentListView_ reset];
     }
-    if(self.commentTextInput)
-    {
-        self.commentTextInput.text = @"";
-    }
+//    if(self.commentTextInput)
+//    {
+//        self.commentTextInput.text = @"";
+//    }
 }
 - (void)removeComments
 {
-    if(self.commentManager)
+    if(commentManager_)
     {
-        [self.commentManager stopCommentTimer];
-        [self.commentManager readyToRelease];
-        self.commentManager = nil;
+        [commentManager_ stopCommentTimer];
+        [commentManager_ readyToRelease];
+        commentManager_ = nil;
     }
-    if(self.commentListView)
+    if(commentListView_)
     {
-        [self.commentListView removeFromSuperview];
-        self.commentListView = nil;
+        [commentListView_ removeFromSuperview];
+        commentListView_ = nil;
     }
-    if(self.commentTextInput)
-    {
-        [self.commentTextInput removeFromSuperview];
-        self.commentTextInput = nil;
-    }
+//    if(self.commentTextInput)
+//    {
+//        [self.commentTextInput removeFromSuperview];
+//        self.commentTextInput = nil;
+//    }
 }
 
 #pragma mark - comments details
 - (void)refreshCommentsView:(CGFloat)durance
 {
-    if(!self.commentManager) return;
+    if(!commentManager_) return;
     // 刷新评论到指定位置
-//    [self.commentManager reset];
-//    //        [self.commentManager setObject:HCObjectTypeMTV objectID:currentMtv_.MTVID];
-//    [self.commentManager setCommentBeginWhen:durance];
-//    [self.commentManager getComments:0 completed:^(int code,long commentsCount,NSString * qaguid,NSString * msg)
+//    [commentManager_ reset];
+//    //        [commentManager_ setObject:HCObjectTypeMTV objectID:currentMtv_.MTVID];
+//    [commentManager_ setCommentBeginWhen:durance];
+//    [commentManager_ getComments:0 completed:^(int code,long commentsCount,NSString * qaguid,NSString * msg)
 //     {
-//         if(code==0 && self.commentListView)
+//         if(code==0 && commentListView_)
 //         {
-//             [self switchCommentsShowHide:!self.commentListView.hidden];
+//             [self switchCommentsShowHide:!commentListView_.hidden];
 //         }
 //     }];
     
-    [self.commentManager refreshCommentsView:durance reloadNow:YES completed:^(int code) {
-        if (code == 0 && self.commentListView) {
-            [self switchCommentsShowHide:!self.commentListView.hidden];
+    [commentManager_ refreshCommentsView:durance reloadNow:YES completed:^(int code) {
+        if (code == 0 && commentListView_) {
+            [self switchCommentsShowHide:!commentListView_.hidden];
         }
     }];
 }
@@ -357,7 +357,7 @@
 //}
 - (void)refreshComment
 {
-    CGFloat durance = CMTimeGetSeconds(self.durationWhen);
+    CGFloat durance = CMTimeGetSeconds(mplayer_.durationWhen);
     
     if (!(durance>0)) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -377,15 +377,15 @@
     if ([NSThread isMainThread]) {
         if(!Show) // 隐藏
         {
-            self.commentListView.hidden = YES;
-            [self.commentManager stopCommentTimer];
+            commentListView_.hidden = YES;
+            [commentManager_ stopCommentTimer];
         }
         else // 显示
         {
-            self.commentListView.hidden = NO;
-            [self.commentManager startCommentTimer];
+            commentListView_.hidden = NO;
+            [commentManager_ startCommentTimer];
         }
-        NSLog(@"listview frame:%@ hidden:%d",NSStringFromCGRect(self.commentListView.frame),self.commentListView.hidden);
+        NSLog(@"listview frame:%@ hidden:%d",NSStringFromCGRect(commentListView_.frame),commentListView_.hidden);
     }
     else
     {

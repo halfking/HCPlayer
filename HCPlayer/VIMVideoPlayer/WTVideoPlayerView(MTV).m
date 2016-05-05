@@ -218,4 +218,9 @@
 {
     [[VDCManager shareObject] stopDownload:nil];
 }
+#pragma mark - play mtv
+- (BOOL) playMTV:(MTV*)item{
+    return YES;
+}
+
 @end

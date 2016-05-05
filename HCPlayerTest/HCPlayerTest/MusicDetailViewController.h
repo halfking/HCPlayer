@@ -8,7 +8,7 @@
 
 //#import <MediaPlayer/MediaPlayer.h>
 #import "WTVideoPlayerView.h"
-#import "WTVideoPlayerView(Lyric).h"
+//#import "WTVideoPlayerView(Lyric).h"
 #import "WTVideoPlayerView(Cache).h"
 #import "WTVideoPlayerProgressView.h"
 #import <HCBaseSystem/cmds_wt.h>
@@ -19,14 +19,17 @@
 #import <HCMVManager/hcmvmanager.h>
 //#import "MediaEditManager.h"
 //#import "MTVUploader.h"
-#import "WTVideoPlayerProgressView.h"
-#import "CommentViewManager.h"
-#import "WTPlayerTopPannel.h"
-#import "WTPlayerControlPannel.h"
-
-#import "LyricView.h"
+//#import "WTVideoPlayerProgressView.h"
+//#import "CommentViewManager.h"
+//#import "WTPlayerTopPannel.h"
+//#import "WTPlayerControlPannel.h"
+//
+//#import "LyricView.h"
 //#import "SNAlterView.h"
-
+#import "HCPlayerWrapper.h"
+#import "HCPlayerWrapper(background).h"
+#import "HCPlayerWrapper(lyric).h"
+#import "HCPlayerWrapper(Data).h"
 #define DELAYSEC 0.1
 
 #define USE_CACHEPLAYING  //播放时是否使用缓存
@@ -52,13 +55,13 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     VDCItem *localFileVDCItem_;
 #endif
     
-    NetworkStatus netStatus_;
-    UserInformation *userInfo_;
-    MediaEditManager *mediaEditManager_;
+//    NetworkStatus netStatus_;
+//    UserInformation *userInfo_;
+//    MediaEditManager *mediaEditManager_;
     BOOL needPlayLeader_;
     
-    UserManager * userManager_;
-    CommentViewManager * commentManager_;
+//    UserManager * userManager_;
+//    CommentViewManager * commentManager_;
     
 //    LyricView *lyricView_;
     WTVideoPlayerProgressView * progressView_;

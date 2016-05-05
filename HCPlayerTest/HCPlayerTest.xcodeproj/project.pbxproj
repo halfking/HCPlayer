@@ -37,7 +37,7 @@
 		112B52DE1CD92000008564C6 /* PlayerMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C31CD91FFF008564C6 /* PlayerMediaItem.m */; };
 		112B52DF1CD92000008564C6 /* WTVideoPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */; };
 		112B52E01CD92000008564C6 /* WTVideoPlayerView(Cache).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */; };
-		112B52E11CD92000008564C6 /* WTVideoPlayerView(Lyric).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C91CD91FFF008564C6 /* WTVideoPlayerView(Lyric).m */; };
+		112B52E11CD92000008564C6 /* HCPlayerWrapper(Lyric).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C91CD91FFF008564C6 /* HCPlayerWrapper(Lyric).m */; };
 		112B52E21CD92000008564C6 /* WTVideoPlayerView(MTV).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52CB1CD91FFF008564C6 /* WTVideoPlayerView(MTV).m */; };
 		112B52E31CD92000008564C6 /* WTVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52CD1CD91FFF008564C6 /* WTVideoPlayerView.m */; };
 		112B52E91CD9224F008564C6 /* MusicDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52E51CD9224F008564C6 /* MusicDetailViewController.m */; };
@@ -71,6 +71,10 @@
 		112B57C81CDAFAEE008564C6 /* microphonestop_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C21CDAFAEE008564C6 /* microphonestop_icon@2x.png */; };
 		112B57C91CDAFAEE008564C6 /* microphonestop_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C31CDAFAEE008564C6 /* microphonestop_icon@3x.png */; };
 		112B57CB1CDAFBDA008564C6 /* playloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57CA1CDAFBDA008564C6 /* playloading@2x.png */; };
+		112B58111CDB204E008564C6 /* HCPlayerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58101CDB204E008564C6 /* HCPlayerWrapper.m */; };
+		112B58141CDB27F9008564C6 /* HCPlayerWrapper(background).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58131CDB27F9008564C6 /* HCPlayerWrapper(background).m */; };
+		112B58171CDB2A62008564C6 /* HCPlayerWrapper(Data).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58161CDB2A62008564C6 /* HCPlayerWrapper(Data).m */; };
+		112B581A1CDB3771008564C6 /* HCPlayerWrapper(Play).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
 		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
@@ -129,8 +133,8 @@
 		112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTVideoPlayerProgressView.m; sourceTree = "<group>"; };
 		112B52C61CD91FFF008564C6 /* WTVideoPlayerView(Cache).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Cache).h"; sourceTree = "<group>"; };
 		112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Cache).m"; sourceTree = "<group>"; };
-		112B52C81CD91FFF008564C6 /* WTVideoPlayerView(Lyric).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Lyric).h"; sourceTree = "<group>"; };
-		112B52C91CD91FFF008564C6 /* WTVideoPlayerView(Lyric).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Lyric).m"; sourceTree = "<group>"; };
+		112B52C81CD91FFF008564C6 /* HCPlayerWrapper(Lyric).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCPlayerWrapper(Lyric).h"; sourceTree = "<group>"; };
+		112B52C91CD91FFF008564C6 /* HCPlayerWrapper(Lyric).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HCPlayerWrapper(Lyric).m"; sourceTree = "<group>"; };
 		112B52CA1CD91FFF008564C6 /* WTVideoPlayerView(MTV).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(MTV).h"; sourceTree = "<group>"; };
 		112B52CB1CD91FFF008564C6 /* WTVideoPlayerView(MTV).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(MTV).m"; sourceTree = "<group>"; };
 		112B52CC1CD91FFF008564C6 /* WTVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerView.h; sourceTree = "<group>"; };
@@ -285,6 +289,14 @@
 		112B57C21CDAFAEE008564C6 /* microphonestop_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphonestop_icon@2x.png"; sourceTree = "<group>"; };
 		112B57C31CDAFAEE008564C6 /* microphonestop_icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "microphonestop_icon@3x.png"; sourceTree = "<group>"; };
 		112B57CA1CDAFBDA008564C6 /* playloading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playloading@2x.png"; sourceTree = "<group>"; };
+		112B580F1CDB204E008564C6 /* HCPlayerWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCPlayerWrapper.h; sourceTree = "<group>"; };
+		112B58101CDB204E008564C6 /* HCPlayerWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCPlayerWrapper.m; sourceTree = "<group>"; };
+		112B58121CDB27F9008564C6 /* HCPlayerWrapper(background).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCPlayerWrapper(background).h"; sourceTree = "<group>"; };
+		112B58131CDB27F9008564C6 /* HCPlayerWrapper(background).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HCPlayerWrapper(background).m"; sourceTree = "<group>"; };
+		112B58151CDB2A62008564C6 /* HCPlayerWrapper(Data).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCPlayerWrapper(Data).h"; sourceTree = "<group>"; };
+		112B58161CDB2A62008564C6 /* HCPlayerWrapper(Data).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HCPlayerWrapper(Data).m"; sourceTree = "<group>"; };
+		112B58181CDB3771008564C6 /* HCPlayerWrapper(Play).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCPlayerWrapper(Play).h"; sourceTree = "<group>"; };
+		112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HCPlayerWrapper(Play).m"; sourceTree = "<group>"; };
 		11754F9A1CD8AC6700F4DA09 /* HCPlayerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HCPlayerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11754F9E1CD8AC6700F4DA09 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		11754FA01CD8AC6700F4DA09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -399,12 +411,20 @@
 				112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */,
 				112B52C61CD91FFF008564C6 /* WTVideoPlayerView(Cache).h */,
 				112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */,
-				112B52C81CD91FFF008564C6 /* WTVideoPlayerView(Lyric).h */,
-				112B52C91CD91FFF008564C6 /* WTVideoPlayerView(Lyric).m */,
 				112B52CA1CD91FFF008564C6 /* WTVideoPlayerView(MTV).h */,
 				112B52CB1CD91FFF008564C6 /* WTVideoPlayerView(MTV).m */,
 				112B52CC1CD91FFF008564C6 /* WTVideoPlayerView.h */,
 				112B52CD1CD91FFF008564C6 /* WTVideoPlayerView.m */,
+				112B580F1CDB204E008564C6 /* HCPlayerWrapper.h */,
+				112B58101CDB204E008564C6 /* HCPlayerWrapper.m */,
+				112B58181CDB3771008564C6 /* HCPlayerWrapper(Play).h */,
+				112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */,
+				112B58121CDB27F9008564C6 /* HCPlayerWrapper(background).h */,
+				112B58131CDB27F9008564C6 /* HCPlayerWrapper(background).m */,
+				112B52C81CD91FFF008564C6 /* HCPlayerWrapper(Lyric).h */,
+				112B52C91CD91FFF008564C6 /* HCPlayerWrapper(Lyric).m */,
+				112B58151CDB2A62008564C6 /* HCPlayerWrapper(Data).h */,
+				112B58161CDB2A62008564C6 /* HCPlayerWrapper(Data).m */,
 			);
 			path = VIMVideoPlayer;
 			sourceTree = "<group>";
@@ -666,12 +686,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 11754FB41CD8AC6700F4DA09 /* Build configuration list for PBXNativeTarget "HCPlayerTest" */;
 			buildPhases = (
+				3787A94429B4385C01E6FFED /* 📦 Check Pods Manifest.lock */,
 				20CBE122D3FEA20838CBD216 /* � Check Pods Manifest.lock */,
 				11754F961CD8AC6700F4DA09 /* Sources */,
 				11754F971CD8AC6700F4DA09 /* Frameworks */,
 				11754F981CD8AC6700F4DA09 /* Resources */,
 				131F0311A870784C3D0D2AC9 /* � Embed Pods Frameworks */,
 				2B76F424EEF7881F64D1474D /* � Copy Pods Resources */,
+				D1A7A31846564B3A6F284A95 /* 📦 Embed Pods Frameworks */,
+				FC4F40DDA3E6D17C7FDD9866 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -800,6 +823,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		3787A94429B4385C01E6FFED /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D1A7A31846564B3A6F284A95 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC4F40DDA3E6D17C7FDD9866 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -812,21 +880,25 @@
 				112B52EB1CD9224F008564C6 /* MusicDetailViewController(Play).m in Sources */,
 				112B52DB1CD91FFF008564C6 /* WTPlayerTopPannel.m in Sources */,
 				112B52D01CD91FFF008564C6 /* UICommentItemView.m in Sources */,
+				112B58111CDB204E008564C6 /* HCPlayerWrapper.m in Sources */,
 				112B52DD1CD92000008564C6 /* WTRecordTopPannel.m in Sources */,
 				11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */,
+				112B58141CDB27F9008564C6 /* HCPlayerWrapper(background).m in Sources */,
 				112B52D51CD91FFF008564C6 /* LyricCell.m in Sources */,
 				11754F9F1CD8AC6700F4DA09 /* main.m in Sources */,
 				112B52DF1CD92000008564C6 /* WTVideoPlayerProgressView.m in Sources */,
 				112B52E91CD9224F008564C6 /* MusicDetailViewController.m in Sources */,
 				112B52DC1CD92000008564C6 /* WTRecordTopPannel(Upload).m in Sources */,
+				112B58171CDB2A62008564C6 /* HCPlayerWrapper(Data).m in Sources */,
 				112B52D21CD91FFF008564C6 /* UICommentsPopView.m in Sources */,
+				112B581A1CDB3771008564C6 /* HCPlayerWrapper(Play).m in Sources */,
 				112B52EE1CD9A11C008564C6 /* CMD_GetMtvInfo.m in Sources */,
 				112B52D11CD91FFF008564C6 /* UICommentListView.m in Sources */,
 				112B52011CD91316008564C6 /* testViewController.m in Sources */,
 				112B52DE1CD92000008564C6 /* PlayerMediaItem.m in Sources */,
 				112B52D71CD91FFF008564C6 /* LyricView.m in Sources */,
 				112B52E21CD92000008564C6 /* WTVideoPlayerView(MTV).m in Sources */,
-				112B52E11CD92000008564C6 /* WTVideoPlayerView(Lyric).m in Sources */,
+				112B52E11CD92000008564C6 /* HCPlayerWrapper(Lyric).m in Sources */,
 				112B52D81CD91FFF008564C6 /* AVFunComm.m in Sources */,
 				112B52E01CD92000008564C6 /* WTVideoPlayerView(Cache).m in Sources */,
 				112B52CF1CD91FFF008564C6 /* CommentViewManager.m in Sources */,

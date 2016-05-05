@@ -494,7 +494,7 @@ static MusicDetailViewController * _instanceDetailItem;
             [centerPlayBtn_ addTarget:self action:@selector(tempPlayPauseBtnClick:)
                         forControlEvents:UIControlEventTouchUpInside];
             //centerPlayBtn_.alpha = 1;
-            [playContainerView_ addSubview:centerPlayBtn_];
+            [self addSubview:centerPlayBtn_];
         }
         // 封面
         {

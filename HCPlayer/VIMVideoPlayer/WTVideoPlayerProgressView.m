@@ -200,6 +200,20 @@
             rightMargin -= widthForBtn  +15;
             progressLength_ -=  widthForBtn + 15;
         }
+        
+        //   弹幕
+        {
+            //放大缩小
+            self.commentShowBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.commentShowBtn.frame = CGRectMake( rightMargin - widthForBtn - 10, top, widthForBtn, widthForBtn);
+            [self.commentShowBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/open_danmu.png"] forState:UIControlStateNormal];
+            [self.commentShowBtn setImage:[UIImage imageNamed:@"HCPlayer.bundle/close_danmu.png"] forState:UIControlStateSelected];
+            [self.commentShowBtn addTarget:self action:@selector(showCommentsOrNot:) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:self.commentShowBtn];
+            rightMargin -= widthForBtn  +15;
+            progressLength_ -=  widthForBtn + 15;
+        }
+        
         //total seconds
         UIFont * textFont = FONT_STANDARD(11);
         NSDictionary *attributes = @{NSFontAttributeName: textFont};
@@ -218,7 +232,6 @@
             [self addSubview:self.totalSecondsLabel];
             progressLength_ -= lableSize.width + 10;
         }
-        
         
         {
             self.currentSecondsLabel = [[UILabel alloc]initWithFrame:CGRectMake(left,(height - lableSize.height)/2.0f , lableSize.width, lableSize.height)];
@@ -312,10 +325,21 @@
     {
         //放大缩小
         self.MaxMinSizeBtn.frame = CGRectMake( rightMargin - widthForBtn, top, widthForBtn, widthForBtn);
-        progressLength_ -=  widthForBtn + 15;
-        rightMargin -= widthForBtn +15;
+        progressLength_ -=  widthForBtn + 10;
+        rightMargin -= widthForBtn +10;
     }
-    
+    if(self.isCommentBtnShow)
+    {
+        //弹幕
+        self.commentShowBtn.frame = CGRectMake(rightMargin - widthForBtn-10, (height - widthForBtn)/2.0f, widthForBtn, widthForBtn);
+        progressLength_ -= 15 + widthForBtn;
+        rightMargin -= widthForBtn+15;
+    }
+    else
+    {
+        self.commentShowBtn.hidden = YES;
+    }
+
     //total seconds
     UIFont * textFont = FONT_STANDARD(11);
     NSDictionary *attributes = @{NSFontAttributeName: textFont};
@@ -427,6 +451,56 @@
                        });
     }
     
+}
+- (void)setIsCommentShow:(BOOL)isShowA
+{
+    if([NSThread isMainThread])
+    {
+        if(isShowA)
+        {
+            self.commentShowBtn.selected = YES;
+        }
+        else
+        {
+            self.commentShowBtn.selected = NO;
+        }
+//        BOOL isShow = self.commentShowBtn.isSelected;
+//        if(self.delegate && [self.delegate respondsToSelector:@selector(videoProgress:showComments:)])
+//        {
+//            [self.delegate videoProgress:self showComments:isShow];
+//        }
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+                       {
+                           [self setIsCommentShow:isShowA];
+                       });
+    }
+}
+- (void)setIsCommentBtnShow:(BOOL)isShowA
+{
+    if([NSThread isMainThread])
+    {
+        if(isShowA != self.commentShowBtn.hidden) return;
+        
+        if(isShowA)
+        {
+            self.commentShowBtn.hidden = NO;
+        }
+        else
+        {
+            self.commentShowBtn.hidden = YES;
+        }
+        [self changeFrame:self.frame];
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+                       {
+                           [self setIsCommentBtnShow:isShowA];
+                       });
+    }
 }
 - (void)setIsFullScreen:(BOOL)isFullScreenA
 {
@@ -602,6 +676,27 @@
                        });
     }
 }
+- (void)showCommentsOrNot:(id)sender
+{
+    if([NSThread isMainThread])
+    {
+        [self.commentShowBtn setSelected:!self.commentShowBtn.isSelected];
+        BOOL isShow = self.commentShowBtn.isSelected;
+            if(self.delegate && [self.delegate respondsToSelector:@selector(videoProgress:showComments:)])
+            {
+                [self.delegate videoProgress:self showComments:isShow];
+            }
+       
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
+                       {
+                           [self showCommentsOrNot:nil];
+                       });
+    }
+}
+
 - (void)doFullScreenOrNot:(id)sender
 {
     if([NSThread isMainThread])

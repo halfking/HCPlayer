@@ -26,8 +26,7 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "PlayerMediaItem.h"
-#import "HCBase.h"
+#import <hccoren/base.h>
 
 @class MTV;
 @class LyricView;
@@ -42,14 +41,14 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 @class WTVideoPlayerView;
 //@class WTVideoPlayerProgressView;
 
-@protocol WTVideoPlayerViewDatasource <NSObject>
-@optional
--(NSInteger) videoPlayerView:(WTVideoPlayerView *)player itemCount:(NSInteger)section;
--(AVPlayerItem*) videoPlayerView:(WTVideoPlayerView *)player getPlayerItemForIndex:(NSInteger)index;
--(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForIndex:(NSInteger)index;
--(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForTime:(CGFloat)secondsInTime;
--(CMTime) videoPlayerView:(WTVideoPlayerView *)player getDuration:(CGFloat)secondsInTime;
-@end
+//@protocol WTVideoPlayerViewDatasource <NSObject>
+//@optional
+//-(NSInteger) videoPlayerView:(WTVideoPlayerView *)player itemCount:(NSInteger)section;
+//-(AVPlayerItem*) videoPlayerView:(WTVideoPlayerView *)player getPlayerItemForIndex:(NSInteger)index;
+//-(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForIndex:(NSInteger)index;
+//-(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForTime:(CGFloat)secondsInTime;
+//-(CMTime) videoPlayerView:(WTVideoPlayerView *)player getDuration:(CGFloat)secondsInTime;
+//@end
 
 @protocol WTVideoPlayerViewDelegate <NSObject>
 
@@ -76,8 +75,8 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 
 }
 
-@property (nonatomic, PP_WEAK) id<WTVideoPlayerViewDelegate> delegate;
-@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDatasource> datasource;
+@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate> delegate;
+//@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDatasource> datasource;
 
 @property (strong, nonatomic) AVPlayerItem *playerItem;
 
@@ -85,26 +84,24 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 //@property (assign,nonatomic) BOOL isFull;
 @property (assign,nonatomic) BOOL playing;
 @property (assign,nonatomic) BOOL isFull;
-//@property (assign,nonatomic) BOOL loop;
 @property (nonatomic,strong) NSString * playerItemKey;
 @property (nonatomic, assign) BOOL isEcoCancellationMode;
-@property (nonatomic,PP_STRONG) LyricView * lyricView; //歌词
-@property (nonatomic,PP_STRONG) UICommentsView * commentListView;//评论
-@property (nonatomic,PP_STRONG) UITextField * commentTextInput;//评论框
-@property (nonatomic,PP_STRONG) CommentViewManager * commentManager;
+
 @property (nonatomic,assign) BOOL cachingWhenPlaying;   //在播放时是否缓存文件
-//@property (nonatomic,assign) BOOL hasPlayPgrogress;
-//@property (nonatomic,PP_STRONG,readonly) WTVideoPlayerProgressView * progressView;
+
 + (instancetype)sharedWTVideoPlayerView;
 - (id)initWithFrame:(CGRect) frame;
 
 - (BOOL) canPlay;
 - (void) play;
-- (void) play:(CGFloat)begin end:(CGFloat)end;
+- (BOOL) play:(CGFloat)begin end:(CGFloat)end;
 - (void) pause;
 - (void) pauseWithCache;
-- (void) seek:(CGFloat)seconds accurate:(BOOL)accurate;
+- (BOOL) seek:(CGFloat)seconds accurate:(BOOL)accurate;
 - (void) resetPlayer;
+
+- (void) setVideoVolume:(float)volume;//值 0-1
+- (CGFloat) getVideoVolumne;
 
 - (void) changeCurrentPlayerItem:(AVPlayerItem *)item;
 - (void) changeCurrentItemUrl:(NSURL *)url;
@@ -115,26 +112,16 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 - (void) resetPlayItemKey;
 - (NSURL *) getUrlFromString:(NSString *)urlString;
 
-//- (void) resizeViewToRect:(CGRect) frame andUpdateBounds:(bool) isupdate withAnimation:(BOOL)animation  hidden:(BOOL)hidden;
-
-- (void) setVideoVolume:(float)volume;//值 0-1
-- (CGFloat) getVideoVolumne;
-
 - (CGFloat) getSecondsEnd;
-//- (CGFloat) getSecondsBeforeCurrentItem;
 - (NSURL *) getCurrentUrl;
 - (CMTime) duration;
 - (CMTime) durationWhen;
 - (UIImage *) captureImage;
 - (void) showActivityView;
-//- (BOOL) captureImageAsync:(CMTime)time andSize:(CGSize)size callback:(generateCompletedByPlayer)completed failure:(generateFailureByPlayer)failure;
 
 -(void) resizeViewToRect:(CGRect) frame andUpdateBounds:(bool) isupdate withAnimation:(BOOL)animation hidden:(BOOL)hidden  changed:(PlayerFrameChanged)changed;
 
 - (void)readyToRelease;
  
 - (void)setPlayerTransform:(CATransform3D)transform position:(CGPoint)position;
-
-//- (void)willEnterBackground;
-//- (void)willEnterForeground;
 @end

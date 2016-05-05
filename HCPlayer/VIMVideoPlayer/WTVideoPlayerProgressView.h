@@ -39,6 +39,7 @@ typedef enum{
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willRecode:(BOOL)record;
 
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView isPlaying:(BOOL)isPlaying;
+- (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView showComments:(BOOL)isPlaying;
 @end
 
 @interface WTVideoPlayerProgressView : UIView
@@ -52,6 +53,7 @@ typedef enum{
 @property (nonatomic, strong) UIButton * MaxMinSizeBtn;
 @property (nonatomic, strong) UIButton * GuideAudioBtn;
 @property (nonatomic, strong) UIButton * RecordBtn;
+@property (nonatomic, strong) UIButton * commentShowBtn; //弹幕开关
 
 @property (nonatomic, strong) UILabel * currentSecondsLabel;
 @property (nonatomic, strong) UILabel * totalSecondsLabel;
@@ -65,6 +67,9 @@ typedef enum{
 @property (nonatomic,assign) BOOL isPlaying;
 @property (nonatomic,assign) BOOL isFullScreen;
 @property (nonatomic,assign) BOOL isGuidAudioShow;
+@property (nonatomic,assign) BOOL isCommentShow; //是否显示弹幕
+@property (nonatomic,assign) BOOL isCommentBtnShow; //是否显示弹幕选择按钮
+
 @property (nonatomic,assign,setter=setIsRecordButtonShow:) BOOL isRecordButtonShow;
 @property (nonatomic,PP_STRONG) NSString * CacheKey;
 

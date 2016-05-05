@@ -1,34 +1,28 @@
 
 #import "WTVideoPlayerView.h"
-#import "CommonUtil.h"
 #import <AVFoundation/AVFoundation.h>
-#import "MTV.h"
+#import <HCMVManager/MTV.h>
+#import <HCMVManager/vdcmanager_full.h>
+
 #import "LyricView.h"
 #import "CommentViewManager.h"
 #import "UICommentsView.h"
 
 #import "WTVideoPlayerView(Cache).h"
-#import "WTVideoPlayerView(Lyric).h"
-
-#import "VDCLoaderConnection.h"
-#import "VDCTempFileManager(readwriter).h"
-#import "VDCTempFileManager.h"
+//#import "WTVideoPlayerView(Lyric).h"
 
 @interface WTVideoPlayerView () <VDCLoaderConnectionDelegate>
-@property (strong,nonatomic) NSArray * mediaItemList;
-
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerLayer *playerLayer;
 @property (strong, nonatomic) VDCLoaderConnection * loader;
-@property (PP_STRONG,nonatomic) UIActivityIndicatorView * activityView_;
 @end
 
 @implementation WTVideoPlayerView
 {
     id timeObserver_;
     
-    NSURL * currentPlayUrl_; //当前播放的媒体文件
-    NSString * orgPath_; //由于边下边播，源Path与真实播的Path不一致
+    NSURL *     currentPlayUrl_; //当前播放的媒体文件
+    NSString *  orgPath_; //由于边下边播，源Path与真实播的Path不一致
     
     CGFloat secondsBegin_;
     CGFloat secondsEnd_;
@@ -36,11 +30,8 @@
     CMTime duration_;
     CGFloat secondsDuration_;
     
-    //    CGFloat secondsDurationLastInArray_;
     
-    
-    
-    BOOL hasObserver;
+    BOOL hasObserver_;
     
     NSTimer * waitingTimer_;
     CGFloat waitingOffset_;
@@ -49,7 +40,6 @@
     NSNumber *audioPlayerID_;
     
     BOOL needAutoPlay_;//是否需要在加载完成后自动开始播放
-    //    BOOL wantPlay_;//当前操作希望是播放（仅在内部响应，外部不可见）。
     
     int pauseCount_;//即检测到播放速率为0的次数
     
@@ -58,12 +48,9 @@
 }
 @synthesize player = player_;
 @synthesize playerItem = playerItem_;
-//@synthesize progressView = progressView_;
+
 + (instancetype)sharedWTVideoPlayerView
 {
-    //    dispatch_once(&t, ^{
-    //        sharedPlayerView = [[WTVideoPlayerView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    //    });
     return sharedPlayerView;
 }
 
@@ -82,26 +69,7 @@
     transform_  = transform;
     position_ = position;
 }
-#pragma mark - init dealloc
 
-- (void)readyToRelease
-{
-    [self resetPlayer];
-    PP_RELEASE(_commentManager);
-    PP_RELEASE(_commentListView);
-    PP_RELEASE(_lyricView);
-    PP_RELEASE(_activityView_);
-    PP_RELEASE(_mediaItemList);
-    PP_RELEASE(_datasource);
-    PP_RELEASE(_delegate);
-    sharedPlayerView = nil;
-}
-- (void)dealloc
-{
-    NSLog(@"wtplayer dealloc...");
-    [self readyToRelease];
-    PP_SUPERDEALLOC;
-}
 
 static dispatch_once_t t;
 static WTVideoPlayerView *sharedPlayerView = nil;
@@ -114,8 +82,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         NSLog(@"wtplayer alloc...");
         self.backgroundColor = [UIColor blackColor];
         self.mainBounds = frame;
-        //bgTask_= UIBackgroundTaskInvalid;
-        //        wantPlay_ = NO;
+        
         self.cachingWhenPlaying = YES;
         [self clearPlayerContents];
         
@@ -163,9 +130,6 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 -(void)play:(BOOL)enterForeground
 {
     
-    //    if(enterForeground)
-    //        [self willEnterForeground];
-    
     if(!player_ || ![player_ currentItem])
     {
         NSLog(@"avplayer is nil!");
@@ -173,8 +137,6 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     }
     [self changeFlagsForPlay];
     
-    //    [self hideActivityView];
-    //    wantPlay_ = YES;
     if(player_ && player_.rate>0)
     {
         NSLog(@"is playing,do nothing,return;");
@@ -194,7 +156,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     
     [player_ play];
     
-    //    NSLog(@"playing...");
+    NSLog(@"player status:%d",(int)player_.status);
     if(player_.error)
     {
         //        wantPlay_ = NO;
@@ -202,31 +164,28 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         [self changeFlagForPause];
         
         NSLog(@"play error:%@",[player_.error localizedDescription]);
+        
+        if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
+        {
+            [self.delegate videoPlayerView:self didFailWithError:player_.error];
+        }
     }
-    //    else
-    //    {
-    //        [self hideActivityView];
-    //    }
-    //    UIApplication*app = [UIApplication sharedApplication];
-    //    if(app.applicationState== UIApplicationStateBackground) {
-    //
-    //        [self willEnterBackground];
-    //    }
-    NSLog(@"player status:%d",(int)player_.status);
-    
-    if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:beginPlay:)])
+    else
     {
-        [self.delegate videoPlayerView:self beginPlay:self.playerItem];
+        if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:beginPlay:)])
+        {
+            [self.delegate videoPlayerView:self beginPlay:self.playerItem];
+        }
     }
 }
 
 
-- (void)play:(CGFloat)begin end:(CGFloat)end
+- (BOOL)play:(CGFloat)begin end:(CGFloat)end
 {
     secondsBegin_ = begin;
     secondsEnd_= end;
     
-    if(!player_ || !playerItem_) return;
+    if(!player_ || !playerItem_) return NO;
     
     [self setDurationWithPlayeritem:player_.currentItem];
     
@@ -236,50 +195,55 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         begin = 0;
     }
     needAutoPlay_ = YES;
-    [self seek:secondsBegin_ accurate:YES];
+    return [self seek:secondsBegin_ accurate:YES];
+    
+    return YES;
 }
-- (void)seek:(CGFloat)seconds accurate:(BOOL)accurate
+- (BOOL)seek:(CGFloat)seconds accurate:(BOOL)accurate
 {
-    [self seek:seconds accurate:accurate count:0];
+    return [self seek:seconds accurate:accurate count:0];
 }
-- (void)seek:(CGFloat)seconds accurate:(BOOL)accurate count:(int)count
+- (BOOL)seek:(CGFloat)seconds accurate:(BOOL)accurate count:(int)count
 {
-    if(player_ && player_.currentItem)
-    {
-        if(seconds>= CMTimeGetSeconds(duration_))//到末尾了，就再重新开始
+    while (count<50) {
+        if(player_ && player_.currentItem)
         {
-            seconds = 0;
+            if(seconds>= CMTimeGetSeconds(duration_))//到末尾了，就再重新开始
+            {
+                seconds = 0;
+            }
+            if(player_.currentItem.status == AVPlayerItemStatusReadyToPlay)
+            {
+                count = 0;
+                return [self seekInThread:seconds accurate:accurate];
+            }
         }
-        if(player_.currentItem.status == AVPlayerItemStatusReadyToPlay)
-        {
-            [self seekInThread:seconds accurate:accurate];
-            count = 0;
-            return;
-        }
+        [NSThread sleepForTimeInterval:0.1];
+        count ++;
     }
     
-    if(count > 100)
+    //    if(count > 100)
+    //    {
+    NSError * error = [NSError errorWithDomain:@"maiba" code:-99 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"播放对像状态不正确 (重试超过 %i次)", count]}];
+    if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
     {
-        NSError * error = [NSError errorWithDomain:@"maiba" code:-99 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"播放对像状态不正确 (重试超过 %i次)", count]}];
-        if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
-        {
-            [self.delegate videoPlayerView:self didFailWithError:error];
-        }
-        NSLog(@"%@",[error localizedDescription]);
-        count = 0;
+        [self.delegate videoPlayerView:self didFailWithError:error];
     }
-    else
-    {
-        [self showActivityView];
-        dispatch_time_t nextTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);// 页面刷新的时间基数
-        dispatch_after(nextTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-                       {
-                           [self seek:seconds accurate:accurate count:count +1];
-                       });
-    }
-    
+    NSLog(@"%@",[error localizedDescription]);
+    count = 0;
+    //    }
+    //    else
+    //    {
+    //        [self showActivityView];
+    //        dispatch_time_t nextTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);// 页面刷新的时间基数
+    //        dispatch_after(nextTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
+    //                       {
+    //                           [self seek:seconds accurate:accurate count:count +1];
+    //                       });
+    //    }
+    return NO;
 }
-- (void)seekInThread:(CGFloat)seconds accurate:(BOOL)accurate
+- (BOOL)seekInThread:(CGFloat)seconds accurate:(BOOL)accurate
 {
     //    [self showActivityView];
     if(player_ && (player_.rate >0||self.playing))
@@ -300,14 +264,14 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     if(seconds <0) seconds = 0;
     else if(seconds >= secondsDuration_) seconds = 0;//secondsDuration_ -1;
     
-    TimeScale ts = CMTIME_IS_VALID(duration_)?duration_.timescale:25;
+    TimeScale ts = CMTIME_IS_VALID(duration_)?duration_.timescale:600;
     
     if(!accurate)
-        [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)];
+    [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)];
     else
-        [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)
-            toleranceBefore:kCMTimeZero
-             toleranceAfter:kCMTimeZero];
+    [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)
+        toleranceBefore:kCMTimeZero
+         toleranceAfter:kCMTimeZero];
     
     if(needAutoPlay_)
     {
@@ -320,6 +284,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     //    {
     //        [[AudioCenter shareAudioCenter] seekToSeconds:seconds forItemID:audioPlayerID_];
     //    }
+    return YES;
 }
 -(void)pause
 {
@@ -452,9 +417,9 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 -(CMTime) duration{
     
     if(CMTIME_IS_VALID(duration_))
-        return duration_;
+    return duration_;
     else
-        return kCMTimeZero;
+    return kCMTimeZero;
 }
 -(CGFloat) getSecondsEnd
 {
@@ -581,7 +546,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if(!mtvItem) return NO;
     if(self.playerItemKey && [self.playerItemKey isEqualToString:[mtvItem getKey]])
-        return YES;
+    return YES;
     
     return NO;
 }
@@ -589,9 +554,9 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if(!path || path.length==0) return NO;
     if(self.playerItemKey && [self.playerItemKey isEqual:path])
-        return YES;
+    return YES;
     if(orgPath_ && [orgPath_ isEqualToString:path])
-        return YES;
+    return YES;
     //如果敀展名相同也可以的
     
     
@@ -599,18 +564,18 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     
     NSString * fullPath = [[self getUrlFromString:path]absoluteString];
     if ([fullPath isEqual:currentPlayUrl_.absoluteString])
-        return YES;
+    return YES;
     else
-        return NO;
+    return NO;
 }
 - (NSURL *)getUrlFromString:(NSString *)urlString
 {
     if(urlString)
     {
         if([urlString hasPrefix:@"/"])
-            return [NSURL fileURLWithPath:urlString];
+        return [NSURL fileURLWithPath:urlString];
         else
-            return [NSURL URLWithString:urlString];
+        return [NSURL URLWithString:urlString];
     }
     return nil;
 }
@@ -666,7 +631,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 
 -(void) addObserver
 {
-    if(player_ && !hasObserver){
+    if(player_ && !hasObserver_){
         [[player_ currentItem] addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
         [[player_ currentItem] addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
         [[player_ currentItem] addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
@@ -729,13 +694,13 @@ static WTVideoPlayerView *sharedPlayerView = nil;
                                                                      timerDoing_ = NO;
                                                                  }
                                                              }];
-        hasObserver = YES;
+        hasObserver_ = YES;
     }
 }
 
 -(void)clearObserver
 {
-    if(player_ && hasObserver){
+    if(player_ && hasObserver_){
         
         [[player_ currentItem] removeObserver:self forKeyPath:@"status"];
         [[player_ currentItem] removeObserver:self forKeyPath:@"loadedTimeRanges"];
@@ -762,7 +727,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
             [player_ removeTimeObserver:timeObserver_];
             timeObserver_ = nil;
         }
-        hasObserver = NO;
+        hasObserver_ = NO;
         
     }
 }
@@ -965,13 +930,70 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         [videoPlayer.delegate videoPlayerView:videoPlayer didFailWithError:error];
     }
 }
-#pragma mark - helper
+#pragma mark - change frame
+-(void) resizeViewToRect:(CGRect) frame andUpdateBounds:(bool) isupdate withAnimation:(BOOL)animation hidden:(BOOL)hidden  changed:(PlayerFrameChanged)changed;
+{
+    if(CGRectEqualToRect(self.frame, frame) && hidden==self.hidden)
+    {
+        if(changed)
+        {
+            changed(frame,currentPlayUrl_);
+        }
+        return;
+    }
+    
+    if(isupdate){
+        self.mainBounds = frame;
+    }
+    if(animation){
+        [UIView animateWithDuration:0.35f animations:^{
+            [self setFrame:frame];
+            [_playerLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+            [self resizeActivityView];
+        } completion:^(BOOL finished) {
+            if(hidden)
+            {
+                [UIView animateWithDuration:0.2 animations:^(void)
+                 {
+                     self.alpha = 0.0;
+                 }completion:^(BOOL finished)
+                 {
+                     self.hidden = YES;
+                 }];
+            }
+            else
+            {
+                self.alpha = 1;
+                self.hidden = NO;
+            }
+            if(changed)
+            {
+                changed(frame,currentPlayUrl_);
+            }
+        }];
+    }else{
+        [self setFrame:frame];
+        [_playerLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        if(hidden)
+        {
+            self.hidden = YES;
+        }
+        else
+        {
+            self.hidden = NO;
+        }
+        self.alpha = 1;
+        if(changed)
+        {
+            changed(frame,currentPlayUrl_);
+        }
+        [self resizeActivityView];
+    }
+    
+}
+#pragma mark - waiting View
 - (void)resizeActivityView
 {
-    //    if(self.activityView_)
-    //    {
-    //        self.activityView_.center = CGPointMake(self.bounds.size.width/2.0f, self.bounds.size.height/2.0f);
-    //    }
     if(waitingView_)
     {
         waitingView_.frame = CGRectMake(0, -489.5/2.0f, 887, 489.5);
@@ -983,12 +1005,6 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     {
         if(!waitingView_)
         {
-            //            self.activityView_ = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-            //            //        self.activityView_.frame = CGRectMake(0, 0, 50, 50);
-            //            //        self.activityView_.center = CGPointMake(self.bounds.size.width/2.0f, self.bounds.size.height/2.0f);
-            //            [self addSubview:self.activityView_];
-            
-            
             waitingView_ = [[UIImageView alloc]initWithFrame:CGRectMake(0, -489.5/2.0f, 887, 489.5)];
             waitingView_.image = [UIImage imageNamed:@"HCPlayer.bundle/playloading.png"];
             waitingView_.backgroundColor = [UIColor clearColor];
@@ -1088,91 +1104,19 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     //    BOOL result = [UIImagePNGRepresentation(image) writeToFile: filePath atomically:YES]; // 保存成功会返回YES
     return PP_AUTORELEASE(image);
 }
-#pragma mark - change frame
--(void) resizeViewToRect:(CGRect) frame andUpdateBounds:(bool) isupdate withAnimation:(BOOL)animation hidden:(BOOL)hidden  changed:(PlayerFrameChanged)changed;
+
+
+#pragma mark - init dealloc
+- (void)readyToRelease
 {
-    if(CGRectEqualToRect(self.frame, frame) && hidden==self.hidden)
-    {
-        if(changed)
-        {
-            changed(frame,currentPlayUrl_);
-        }
-        return;
-    }
-    
-    if(isupdate){
-        self.mainBounds = frame;
-    }
-    if(animation){
-        [UIView animateWithDuration:0.35f animations:^{
-            [self setFrame:frame];
-            [_playerLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-            [self resizeActivityView];
-        } completion:^(BOOL finished) {
-            if(hidden)
-            {
-                [UIView animateWithDuration:0.2 animations:^(void)
-                 {
-                     self.alpha = 0.0;
-                 }completion:^(BOOL finished)
-                 {
-                     self.hidden = YES;
-                 }];
-            }
-            else
-            {
-                self.alpha = 1;
-                self.hidden = NO;
-            }
-            if(changed)
-            {
-                changed(frame,currentPlayUrl_);
-            }
-        }];
-    }else{
-        [self setFrame:frame];
-        [_playerLayer setFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
-        if(hidden)
-        {
-            self.hidden = YES;
-        }
-        else
-        {
-            self.hidden = NO;
-        }
-        self.alpha = 1;
-        if(changed)
-        {
-            changed(frame,currentPlayUrl_);
-        }
-        [self resizeActivityView];
-    }
-    
+    [self resetPlayer];
+    PP_RELEASE(_delegate);
+    sharedPlayerView = nil;
 }
-//- (void)willEnterBackground
-//{
-//    NSLog(@"will enter background.");
-//    UIApplication*app = [UIApplication sharedApplication];
-//
-//    if(bgTask_!=UIBackgroundTaskInvalid)
-//    {
-//        [app endBackgroundTask:bgTask_];
-//        bgTask_ = UIBackgroundTaskInvalid;
-//    }
-//    if(self.playing)
-//    {
-//        bgTask_ = [app beginBackgroundTaskWithExpirationHandler:nil];
-//    }
-//}
-//- (void)willEnterForeground
-//{
-//    NSLog(@"will enter foreground");
-//    UIApplication*app = [UIApplication sharedApplication];
-//
-//    if(bgTask_!=UIBackgroundTaskInvalid)
-//    {
-//        [app endBackgroundTask:bgTask_];
-//        bgTask_ = UIBackgroundTaskInvalid;
-//    }
-//}
+- (void)dealloc
+{
+    NSLog(@"wtplayer dealloc...");
+    [self readyToRelease];
+    PP_SUPERDEALLOC;
+}
 @end

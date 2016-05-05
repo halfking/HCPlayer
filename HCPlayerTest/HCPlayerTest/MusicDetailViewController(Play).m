@@ -177,7 +177,7 @@
 {
     NSLog(@"pauseItemWithCoreEvents");
     //[commentManager_ stopCommentTimer];
-    [mplayer_.commentManager stopCommentTimer];
+//    [mplayer_.commentManager stopCommentTimer];
     
     if(mplayer_)// && mplayer.playing)
     {
@@ -255,7 +255,7 @@
     playOrPause_.enabled = YES;
     NSLog(@"playItemWithCoreEvents");
     
-    [mplayer_.commentManager startCommentTimer];
+//    [mplayer_.commentManager startCommentTimer];
     [[UIApplication sharedApplication] setIdleTimerDisabled:YES];
 }
 - (void)playItemChangeWithCoreEvents:(NSString *)path orgPath:(NSString*)orgPath mtv:(MTV*)item beginSeconds:(CGFloat)beginSeconds
