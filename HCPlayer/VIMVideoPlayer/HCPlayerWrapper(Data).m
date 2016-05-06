@@ -32,9 +32,9 @@
 - (CGFloat) duration
 {
     if(mplayer_ && [mplayer_ canPlay])
-    return CMTimeGetSeconds(mplayer_.duration);
+        return CMTimeGetSeconds(mplayer_.duration);
     else
-    return 0;
+        return 0;
 }
 // 是否正在播放
 - (BOOL)isPlaying
@@ -58,7 +58,7 @@
     if(isnan(seconds))
         seconds = 60;
     [progressView_ setTotalSeconds:seconds];
-//    progressView_.totalSeconds = seconds;
+    //    progressView_.totalSeconds = seconds;
 }
 - (BOOL)isFullScreen
 {
@@ -102,38 +102,38 @@
 #pragma mark - record events
 - (void)recordPlayItemBegin
 {
-//    //将上次没有搞完的记录一下
-//    if(record_ && record_.MTVID >0)
-//    {
-//        [self recordPlayItemEnd];
-//    }
-//    PP_RELEASE(record_);
-//    if(![self getCurrentMTV]) return;
-//    
-//    record_ = [[PlayRecord alloc]init];
-//    record_.UserID = [[UserManager sharedUserManager]userID];
-//    record_.MTVID = [self getCurrentMTV].MTVID;
-//    record_.PlayTime = [CommonUtil stringFromDate:[NSDate date]];
-//    if(mplayer_)
-//    {
-//        record_.BeginDurance = CMTimeGetSeconds(mplayer_.durationWhen);
-//    }
-//    record_.IsFullScreen = YES;
-//    record_.IsSynced = NO;
+    //    //将上次没有搞完的记录一下
+    //    if(record_ && record_.MTVID >0)
+    //    {
+    //        [self recordPlayItemEnd];
+    //    }
+    //    PP_RELEASE(record_);
+    //    if(![self getCurrentMTV]) return;
+    //
+    //    record_ = [[PlayRecord alloc]init];
+    //    record_.UserID = [[UserManager sharedUserManager]userID];
+    //    record_.MTVID = [self getCurrentMTV].MTVID;
+    //    record_.PlayTime = [CommonUtil stringFromDate:[NSDate date]];
+    //    if(mplayer_)
+    //    {
+    //        record_.BeginDurance = CMTimeGetSeconds(mplayer_.durationWhen);
+    //    }
+    //    record_.IsFullScreen = YES;
+    //    record_.IsSynced = NO;
 }
 - (void)recordPlayItemEnd
 {
-//    if(record_ && (record_.MTVID !=0 || record_.SampleID!=0))
-//    {
-//        if(mplayer_)
-//        {
-//            record_.EndDurance = CMTimeGetSeconds(mplayer_.durationWhen);
-//        }
-//        //        CMD_TrackOpeate * cmd = (CMD_TrackOpeate *)[[CMDS_WT sharedCMDS_WT]createCMDOP:@"TrackOpeate"];
-//        //        cmd.Item = record_;
-//        //        [cmd sendCMD];
-//    }
-//    PP_RELEASE(record_);
+    //    if(record_ && (record_.MTVID !=0 || record_.SampleID!=0))
+    //    {
+    //        if(mplayer_)
+    //        {
+    //            record_.EndDurance = CMTimeGetSeconds(mplayer_.durationWhen);
+    //        }
+    //        //        CMD_TrackOpeate * cmd = (CMD_TrackOpeate *)[[CMDS_WT sharedCMDS_WT]createCMDOP:@"TrackOpeate"];
+    //        //        cmd.Item = record_;
+    //        //        [cmd sendCMD];
+    //    }
+    //    PP_RELEASE(record_);
 }
 
 #pragma mark - show hide waiting
@@ -150,13 +150,17 @@
             //            [self addSubview:self.activityView_];
             
             playerWaitingView_ = [[UIImageView alloc]initWithFrame: CGRectMake(0, -489.5/2.0f, 887, 489.5)];
-            playerWaitingView_.image = [UIImage imageNamed:@"playloading.png"];
+            playerWaitingView_.image = [UIImage imageNamed:@"HCPlayer.bundle/playloading.png"];
             playerWaitingView_.backgroundColor = [UIColor clearColor];
             playerWaitingView_.hidden = YES;
             
             [self addSubview:playerWaitingView_];
             
-            playerWaitingTimer_ = PP_RETAIN([NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveWaitingView:) userInfo:nil repeats:YES]);
+            playerWaitingTimer_ = PP_RETAIN([NSTimer scheduledTimerWithTimeInterval:0.1
+                                                                             target:self
+                                                                           selector:@selector(moveWaitingView:)
+                                                                           userInfo:nil
+                                                                            repeats:YES]);
             playerWaitingTimer_.fireDate = [NSDate distantFuture];
             playerWaitingOffset_ = 0;
             
@@ -200,16 +204,26 @@
 }
 - (void)moveWaitingView:(NSTimer *)timer
 {
-    dispatch_async(dispatch_get_main_queue(), ^(void)
-                   {
-                       CGRect frame = playerWaitingView_.frame;
-                       frame.origin.x -= 5;
-                       if(frame.origin.x < - 100)
+    
+    if([NSThread isMainThread])
+    {
+        NSLog(@"move waiting....");
+        CGRect frame = playerWaitingView_.frame;
+        frame.origin.x -= 5;
+        if(frame.origin.x < - 100)
+        {
+            frame.origin.x = 0;
+        }
+        playerWaitingView_.frame = frame;
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(), ^(void)
                        {
-                           frame.origin.x = 0;
-                       }
-                       playerWaitingView_.frame = frame;
-                   });
+                           [self moveWaitingView:nil];
+                       });
+    }
+    
 }
 
 

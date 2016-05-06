@@ -205,36 +205,40 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 }
 - (BOOL)seek:(CGFloat)seconds accurate:(BOOL)accurate count:(int)count
 {
-//    while (count<20) {
-        if(player_ && player_.currentItem && count<10)
+    //    while (count<20) {
+    if(player_ && player_.currentItem && count<10)
+    {
+        if(seconds>= CMTimeGetSeconds(duration_))//到末尾了，就再重新开始
         {
-            if(seconds>= CMTimeGetSeconds(duration_))//到末尾了，就再重新开始
-            {
-                seconds = 0;
-            }
-            if(player_.currentItem.status == AVPlayerItemStatusReadyToPlay)
-            {
-                count = 0;
-                return [self seekInThread:seconds accurate:accurate];
-            }
-            else if(player_.currentItem.status == AVPlayerItemStatusUnknown)
-            {
-                __weak WTVideoPlayerView * weakSelf = self;
-                count ++;
-                [NSThread sleepForTimeInterval:1];
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    __strong WTVideoPlayerView * strongSelf = weakSelf;
-                    [strongSelf seek:seconds accurate:accurate count:count];
-                });
-            }
-            return NO;
+            seconds = 0;
         }
-//        [NSThread sleepForTimeInterval:0.5];
-//        count ++;
-//    }
+        if(player_.currentItem.status == AVPlayerItemStatusReadyToPlay)
+        {
+            [self hideActivityView];
+            if(count>0)
+            {
+                if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerViewIsReadyToPlayVideo:)])
+                {
+                    [self.delegate videoPlayerViewIsReadyToPlayVideo:self];
+                }
+            }
+            count = 0;
+            return [self seekInThread:seconds accurate:accurate];
+        }
+        else if(player_.currentItem.status == AVPlayerItemStatusUnknown)
+        {
+            [self showActivityView];
+            __weak WTVideoPlayerView * weakSelf = self;
+            count ++;
+            [NSThread sleepForTimeInterval:1];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                __strong WTVideoPlayerView * strongSelf = weakSelf;
+                [strongSelf seek:seconds accurate:accurate count:count];
+            });
+        }
+        return NO;
+    }
     
-    //    if(count > 100)
-    //    {
     NSError * error = [NSError errorWithDomain:@"maiba" code:-99 userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:@"播放对像状态不正确 (重试超过 %i次)", count]}];
     if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
     {
@@ -268,11 +272,11 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     TimeScale ts = CMTIME_IS_VALID(duration_)?duration_.timescale:600;
     
     if(!accurate)
-    [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)];
+        [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)];
     else
-    [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)
-        toleranceBefore:kCMTimeZero
-         toleranceAfter:kCMTimeZero];
+        [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)
+            toleranceBefore:kCMTimeZero
+             toleranceAfter:kCMTimeZero];
     
     if(needAutoPlay_)
     {
@@ -380,8 +384,8 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     PP_RELEASE(currentPlayUrl_);
     self.player = nil;
     
-//    [self removeLyric];
-//    [self resetComments];
+    //    [self removeLyric];
+    //    [self resetComments];
     
     secondsPlaying_ =0;
     //    secondsDurationLastInArray_ = 0;
@@ -418,9 +422,9 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 -(CMTime) duration{
     
     if(CMTIME_IS_VALID(duration_))
-    return duration_;
+        return duration_;
     else
-    return kCMTimeZero;
+        return kCMTimeZero;
 }
 -(CGFloat) getSecondsEnd
 {
@@ -547,7 +551,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if(!mtvItem) return NO;
     if(self.playerItemKey && [self.playerItemKey isEqualToString:[mtvItem getKey]])
-    return YES;
+        return YES;
     
     return NO;
 }
@@ -555,9 +559,9 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if(!path || path.length==0) return NO;
     if(self.playerItemKey && [self.playerItemKey isEqual:path])
-    return YES;
+        return YES;
     if(orgPath_ && [orgPath_ isEqualToString:path])
-    return YES;
+        return YES;
     //如果敀展名相同也可以的
     
     
@@ -565,18 +569,18 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     
     NSString * fullPath = [[self getUrlFromString:path]absoluteString];
     if ([fullPath isEqual:currentPlayUrl_.absoluteString])
-    return YES;
+        return YES;
     else
-    return NO;
+        return NO;
 }
 - (NSURL *)getUrlFromString:(NSString *)urlString
 {
     if(urlString)
     {
         if([urlString hasPrefix:@"/"])
-        return [NSURL fileURLWithPath:urlString];
+            return [NSURL fileURLWithPath:urlString];
         else
-        return [NSURL URLWithString:urlString];
+            return [NSURL URLWithString:urlString];
     }
     return nil;
 }
@@ -905,10 +909,10 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     [self hideActivityView];
     //显示歌词
-//    if(lyricView && self.lyricView.hidden == NO)
-//    {
-//        [self.lyricView didPlayingWithSecond:secondsPlaying];
-//    }
+    //    if(lyricView && self.lyricView.hidden == NO)
+    //    {
+    //        [self.lyricView didPlayingWithSecond:secondsPlaying];
+    //    }
     
     if ([videoPlayer.delegate respondsToSelector:@selector(videoPlayerView:timeDidChange:)])
     {
@@ -1004,28 +1008,34 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if([NSThread isMainThread])
     {
-        if(!waitingView_)
+        if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:showWaiting:)])
         {
-            waitingView_ = [[UIImageView alloc]initWithFrame:CGRectMake(0, -489.5/2.0f, 887, 489.5)];
-            waitingView_.image = [UIImage imageNamed:@"HCPlayer.bundle/playloading.png"];
-            waitingView_.backgroundColor = [UIColor clearColor];
-            [self addSubview:waitingView_];
-            
-            waitingTimer_ = PP_RETAIN([NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveWaitingView:) userInfo:nil repeats:YES]);
-            waitingTimer_.fireDate = [NSDate distantFuture];
-            waitingOffset_ = 0;
-            
+            [self.delegate videoPlayerView:self showWaiting:YES];
         }
-        if(waitingView_.hidden)
+        else
         {
-            //            self.activityView_.hidden = NO;
-            //            [self.activityView_ startAnimating];
-            waitingView_.hidden = NO;
-            waitingTimer_.fireDate = [NSDate distantPast];
+            
+            if(!waitingView_)
+            {
+                waitingView_ = [[UIImageView alloc]initWithFrame:CGRectMake(0, -489.5/2.0f, 887, 489.5)];
+                UIImage * image = [UIImage imageNamed:@"HCPlayer.bundle/playloading.png"];
+                waitingView_.image = image;
+                waitingView_.backgroundColor = [UIColor clearColor];
+                [self addSubview:waitingView_];
+                
+                waitingTimer_ = PP_RETAIN([NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveWaitingView:) userInfo:nil repeats:YES]);
+                waitingTimer_.fireDate = [NSDate distantFuture];
+                waitingOffset_ = 0;
+                
+            }
+            if(waitingView_.hidden)
+            {
+                waitingView_.hidden = NO;
+                waitingTimer_.fireDate = [NSDate distantPast];
+            }
+            [self bringSubviewToFront:waitingView_];
+            //        [self bringSubviewToFront:self.activityView_];
         }
-        [self bringSubviewToFront:waitingView_];
-        //        [self bringSubviewToFront:self.activityView_];
-        
     }
     else
     {
@@ -1039,13 +1049,21 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 {
     if([NSThread isMainThread])
     {
-        if(waitingView_ && waitingView_.hidden==NO)
+        if(self.delegate && [self.delegate respondsToSelector:@selector(videoPlayerView:showWaiting:)])
         {
-            //            [self.activityView_ stopAnimating];
-            //            self.activityView_.hidden = YES;
+            [self.delegate videoPlayerView:self showWaiting:NO];
+        }
+        else
+        {
             
-            waitingTimer_.fireDate = [NSDate distantFuture];
-            waitingView_.hidden = YES;
+            if(waitingView_ && waitingView_.hidden==NO)
+            {
+                //            [self.activityView_ stopAnimating];
+                //            self.activityView_.hidden = YES;
+                
+                waitingTimer_.fireDate = [NSDate distantFuture];
+                waitingView_.hidden = YES;
+            }
         }
     }
     else

@@ -40,6 +40,7 @@ typedef enum{
 
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView isPlaying:(BOOL)isPlaying;
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView showComments:(BOOL)isPlaying;
+
 @end
 
 @interface WTVideoPlayerProgressView : UIView

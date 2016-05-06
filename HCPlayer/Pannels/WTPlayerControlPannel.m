@@ -130,8 +130,8 @@
     {
         shareButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         shareButton_.frame = CGRectMake(left, top, 46, 46);
-        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_share_icon.png"] forState:UIControlStateNormal];
-        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
+        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_share_icon.png"] forState:UIControlStateNormal];
+        [shareButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_share_sel_icon.png"] forState:UIControlStateSelected];
         [shareButton_ addTarget:self action:@selector(shareMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
@@ -156,8 +156,8 @@
     {
         cacheButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         cacheButton_.frame = CGRectMake(left, top, 46, 46);
-        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_cache_icon.png"] forState:UIControlStateNormal];
-        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
+        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_cache_icon.png"] forState:UIControlStateNormal];
+        [cacheButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_cache_sel_icon.png"] forState:UIControlStateSelected];
         [cacheButton_ addTarget:self action:@selector(cacheMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];
@@ -179,8 +179,8 @@
     {
         likeButton_ = [UIButton buttonWithType:UIButtonTypeCustom];
         likeButton_.frame = CGRectMake(left, top, 46, 46);
-        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_love_icon.png"] forState:UIControlStateNormal];
-        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/HCPlayer.bundle/playpannel_love_sel_icon.png"] forState:UIControlStateSelected];
+        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_love_icon.png"] forState:UIControlStateNormal];
+        [likeButton_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/playpannel_love_sel_icon.png"] forState:UIControlStateSelected];
         [likeButton_ addTarget:self action:@selector(likeMtv:) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel * lable = [[UILabel alloc]initWithFrame:CGRectMake(0, 46 - 20, 46, 15)];

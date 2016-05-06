@@ -12,7 +12,7 @@
 #import <HCBaseSystem/user_wt.h>
 #import <HCBaseSystem/SNAlertView.h>
 #import <HCBaseSystem/UIWebImageViewN.h>
-
+#import <hccoren/images.h>
 #import <HCMVManager/VdcManager_full.h>
 
 #import "MediaPlayer/MPMediaItem.h"
@@ -86,7 +86,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     config_ = [DeviceConfig config];
     
-    centerPlayWidth_ = 60;
+    centerPlayWidth_ = 200;
     playPannelHeight_ = 40;
     progressHeight_ = 45;
     playItemChanged_ = YES;
@@ -105,7 +105,8 @@ static HCPlayerWrapper * _instanceDetailItem;
                                                                     (containerSize.height-centerPlayWidth_)/2,
                                                                     centerPlayWidth_, centerPlayWidth_)];
         
-        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play2_icon.png"]
+//        UIImage * image = [[UIImage imageNamed:@"HCPlayer.bundle/play_icon.png"]imageByScalingToSize:CGSizeMake(centerPlayWidth_, centerPlayWidth_)];
+        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_iconbig.png"]
                         forState:UIControlStateNormal];
         [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/pause_icon.png"]
                         forState:UIControlStateSelected];
@@ -210,7 +211,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         NSLog(@"point:%@",NSStringFromCGPoint(pos));
         //        [self dismissKeyboard];
         
-        if([progressView_ isHidden]==NO && [self isFullScreen])
+        if([progressView_ isHidden]==NO)
         {
             CGRect pRect = [self convertRect:progressView_.frame fromView:progressView_.superview];
             CGRect mRect = [self convertRect:maxPannel_.frame fromView:maxPannel_.superview];
@@ -483,7 +484,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self videoPannel:nil guideChanged:NO];
     }
-    
+    [self showButtonsPause];
     return YES;
 }
 - (BOOL) setPlayerItem:(AVPlayerItem *)playerItem
@@ -522,7 +523,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         leaderPlayer_ = nil;
     }
     [self removeLyric];
-    
+    [self showButtonsPause];
     return YES;
 }
 - (BOOL) setPlayerUrl:(NSURL *)url
@@ -569,7 +570,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         [leaderPlayer_ stop];
         leaderPlayer_ = nil;
     }
-    
+    [self showButtonsPause];
     return NO;
 }
 
@@ -1042,6 +1043,8 @@ static HCPlayerWrapper * _instanceDetailItem;
 - (void)videoPlayerViewIsReadyToPlayVideo:(WTVideoPlayerView *)videoPlayerView
 {
     NSLog(@"ready to play...%i",(int)mplayer_.playing);
+    [self setTotalSeconds:CMTimeGetSeconds(videoPlayerView.playerItem.duration)];
+    
     //    [self recordPlayItemBegin];
     //    [self setDelaySeconds];
     
@@ -1060,11 +1063,20 @@ static HCPlayerWrapper * _instanceDetailItem;
         [self hideComments];
     }
 }
+- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView showWaiting:(BOOL)isShow
+{
+    if(isShow)
+    {
+        [self showPlayerWaitingView];
+    }
+    else
+    {
+        [self hidePlayerWaitingView];
+    }
+}
 - (void)videoPlayerViewDidReachEnd:(WTVideoPlayerView *)videoPlayerView
 {
-    
     currentPlaySeconds_ = playBeginSeconds_;
-    
     //如果是循环播放
     if(self.isLoop)
     {

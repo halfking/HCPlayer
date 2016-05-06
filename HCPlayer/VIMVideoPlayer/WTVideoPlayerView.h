@@ -64,6 +64,8 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didStalled:(AVPlayerItem *)playerItem;
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didTapped:(AVPlayerItem *)playerItem;
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView beginPlay:(AVPlayerItem *)playerItem;
+
+- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView showWaiting:(BOOL)isShow;
 //- (WTVideoPlayerProgressView *)videPlayerView:(WTVideoPlayerView *)videoPlayerView buildProgress:(CGFloat)totalSeconds currentSeconds:(CGFloat)seconds;
 @end
 
