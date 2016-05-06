@@ -62,8 +62,15 @@
 }
 - (BOOL)isFullScreen
 {
-    return progressView_.isFullScreen;
-    //    return playContainerView_.frame.size.height >= _ScreenHeight;
+    DeviceConfig * config = [DeviceConfig config];
+    if((config.Width == self.frame.size.width && config.Height == self.frame.size.height)
+       ||(config.Width == self.frame.size.height && config.Height == self.frame.size.width)
+       )
+    {
+        return YES;
+    }
+    else
+        return NO;
 }
 - (BOOL)canShowRecordBtn
 {
@@ -207,7 +214,7 @@
     
     if([NSThread isMainThread])
     {
-        NSLog(@"move waiting....");
+        //        NSLog(@"move waiting....");
         CGRect frame = playerWaitingView_.frame;
         frame.origin.x -= 5;
         if(frame.origin.x < - 100)

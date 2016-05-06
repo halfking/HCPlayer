@@ -30,6 +30,7 @@
 #import <HCBaseSystem/CMD_LikeOrNot.h>
 
 #define TAG_SCROLLRECT 78654
+#define TAG_PROGRESSVIEW 78653
 #define COVERHOLDER @"HCPlayer.boundle/mtvcover_icon"
 @interface HCPlayerWrapper()<WTVideoPlayerViewDelegate,WTVideoPlayerProgressDelegate,WTPlayerControlPannelDelegate>
 {
@@ -105,7 +106,7 @@ static HCPlayerWrapper * _instanceDetailItem;
                                                                     (containerSize.height-centerPlayWidth_)/2,
                                                                     centerPlayWidth_, centerPlayWidth_)];
         
-//        UIImage * image = [[UIImage imageNamed:@"HCPlayer.bundle/play_icon.png"]imageByScalingToSize:CGSizeMake(centerPlayWidth_, centerPlayWidth_)];
+        //        UIImage * image = [[UIImage imageNamed:@"HCPlayer.bundle/play_icon.png"]imageByScalingToSize:CGSizeMake(centerPlayWidth_, centerPlayWidth_)];
         [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play_iconbig.png"]
                         forState:UIControlStateNormal];
         [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/pause_icon.png"]
@@ -177,6 +178,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)resizeViews:(CGRect)frame
 {
+    self.frame = frame;
     CGSize containerSize = frame.size;
     CGRect coverFrame = CGRectMake(0, 0, containerSize.width, containerSize.height);
     cover_.frame = coverFrame;
@@ -190,10 +192,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     [maxPannel_ changeFrame:CGRectMake(0, 0, containerSize.width, 40)];
     
     if(playPannelHeight_>0)
-    [playPannel_ changeFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
+        [playPannel_ changeFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
     
     // 播放器
-    [mplayer_ resizeViewToRect:coverFrame andUpdateBounds:YES withAnimation:YES hidden:NO changed:nil];
+    [mplayer_ resizeViewToRect:coverFrame andUpdateBounds:YES withAnimation:NO hidden:NO changed:nil];
     
     [self resetLyricFrame:coverFrame];
     
@@ -694,8 +696,8 @@ static HCPlayerWrapper * _instanceDetailItem;
         }
         if(currentPlaySeconds_ < playBeginSeconds_ || (currentPlaySeconds_ > playEndSeconds_ && playEndSeconds_>0))
             currentPlaySeconds_ = playBeginSeconds_;
-//        else
-//            currentPlaySeconds_  = -1;
+        //        else
+        //            currentPlaySeconds_  = -1;
         [self playItemWithCoreEvents:currentPlaySeconds_];
         
         [self showButtonsPlaying];
@@ -816,15 +818,9 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self.delegate videoProgress:progressView_ willFullScreen:fullScreen];
     }
-    //    NSLog(@"need full screen...%d",fullScreen);
-    //    if(fullScreen)
-    //    {
-    //        [self doFullScreen:UIInterfaceOrientationLandscapeRight];
-    //    }
-    //    else
-    //    {
-    //        [self cancelFullScreen:UIInterfaceOrientationPortrait];
-    //    }
+    
+    progressView_.isFullScreen = [self isFullScreen];
+    
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView didHidden:(BOOL)hidden
 {
@@ -1249,7 +1245,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 #pragma mark - pan moving
 - (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
 {
-    if(![progressView_ isFullScreen]) return;
+    //    if(![progressView_ isFullScreen]) return;
     isCanMove_ = YES;
     
     CGPoint touchPoint = [recoginzer locationInView:self];
@@ -1309,7 +1305,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     
     touchPointStart_ = point;
-    if(objectMovingID_ == TAG_SCROLLRECT)
+    if(objectMovingID_ == TAG_SCROLLRECT||objectMovingID_==TAG_PROGRESSVIEW)
     {
         lastSecondsBeMoving_ = CMTimeGetSeconds([mplayer_ durationWhen]);
     }
@@ -1320,7 +1316,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     if(!isMoving_) return;
     NSLog(@"-----------move done---%ld------",(long)objectMovingID_);
-    if(objectMovingID_ == TAG_SCROLLRECT)
+    if(objectMovingID_ == TAG_SCROLLRECT||objectMovingID_==TAG_PROGRESSVIEW)
     {
         objectMovingID_ = -1;
         isMoving_ = NO;
@@ -1335,7 +1331,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     if(isMoving_==NO) return;
     
-    if(objectMovedTagID == TAG_SCROLLRECT)
+    if(objectMovedTagID == TAG_SCROLLRECT||objectMovedTagID==TAG_PROGRESSVIEW)
     {
         CGFloat targetPosx = touchPoint.x - touchPointStart_.x;
         CGFloat progressLength = [progressView_ getProgressWidth];
@@ -1354,14 +1350,19 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (NSInteger)locationViewMoving:(CGPoint)point
 {
-    CGRect scrollRect = CGRectMake(0, 40, config_.Height, config_.Width - 120);
-    if (!currentMTV_.IsLandscape) {
-        scrollRect = CGRectMake(0, 40, config_.Width, config_.Height - 80);
-    }
-    
-    if(CGRectContainsPoint(scrollRect, point))
+    CGRect pRect = [self convertRect:progressView_.frame fromView:self];
+    //        CGRect mRect = [self convertRect:maxPannel_.frame fromView:maxPannel_.superview];
+    if(CGRectContainsPoint(pRect, point))
     {
-        return TAG_SCROLLRECT;
+        return TAG_PROGRESSVIEW;
+    }
+    else if([progressView_ isFullScreen]) //只有全屏才有可能在全区域滑动
+    {
+        CGRect scrollRect = CGRectMake(0, maxPannel_.frame.size.height, self.frame.size.width, self.frame.size.height -maxPannel_.frame.size.height - progressView_.frame.size.height );
+        if(CGRectContainsPoint(scrollRect, point))
+        {
+            return TAG_SCROLLRECT;
+        }
     }
     return -1;
 }

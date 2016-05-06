@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCPlayer"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "这是一个视频与音频播放器的库。"
   s.description  = <<-DESC
 这是一个视频的播放特定的核心库。包含了视频、音频、歌词及缓冲处理的功能。

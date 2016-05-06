@@ -48,31 +48,31 @@ static MusicDetailViewController * _instanceDetailItem;
 {
     
     //    UIView *containerView_;
-//    UIInputToolView *inputToolView_;
+    //    UIInputToolView *inputToolView_;
     
     // 播放区
-//    UIVisualEffectView *playerVisualEffectView_;
-//    UIButton *centerPlayBtn_;
-//    UIWebImageViewN *cover_;
-//    CGSize coverSize_;
+    //    UIVisualEffectView *playerVisualEffectView_;
+    //    UIButton *centerPlayBtn_;
+    //    UIWebImageViewN *cover_;
+    //    CGSize coverSize_;
     //    UIView *playerToolBarView_;
     
     // 信息区
-//    UIView *authorInfoView_;
-//    MtvInfoView *mtvInfoView_;
+    //    UIView *authorInfoView_;
+    //    MtvInfoView *mtvInfoView_;
     // 内容区
-//    UIView *contentContainerView_;
-//    UIView *tagsContainerView_;
-//    UIView *swipeContainerView_;
+    //    UIView *contentContainerView_;
+    //    UIView *tagsContainerView_;
+    //    UIView *swipeContainerView_;
     
     UIButton * returnBtn_;
     UIButton * reportBtn_;
-//    SevenSwitch *commentSwitch_;
+    //    SevenSwitch *commentSwitch_;
     
     // swipe
-//    SwipeView * listView_;
-//    UISwipePager * pager_;
-//    UIListViewA * onePageView_;
+    //    SwipeView * listView_;
+    //    UISwipePager * pager_;
+    //    UIListViewA * onePageView_;
     NSArray *tags_;
     //
     CGFloat screenWidth_;
@@ -91,36 +91,36 @@ static MusicDetailViewController * _instanceDetailItem;
     BOOL canPushPlayView_;
     
     DeviceConfig * config_;
-//    RecordRemindeView *recordReminderView_;
+    //    RecordRemindeView *recordReminderView_;
     
     
     CGRect playFrameForPortrait_;
     
     BOOL needPlayAfterPause_;
     
-//    ShareView *shareView_;
+    //    ShareView *shareView_;
     
-//    LoginViewNew *loginView_;
+    //    LoginViewNew *loginView_;
     
-//    BOOL canShowComments_;
-//    BOOL needRefreshComments_;
+    //    BOOL canShowComments_;
+    //    BOOL needRefreshComments_;
     CGFloat commentForWhen_;
     
-//    UIView  *dynamicCountView_;
-//    UILabel *dynamicCountLabel_;
+    //    UIView  *dynamicCountView_;
+    //    UILabel *dynamicCountLabel_;
     
-//    DynamicView * currentDynamicView_;
-//    DynamicView * listViewDynamicItem_;
+    //    DynamicView * currentDynamicView_;
+    //    DynamicView * listViewDynamicItem_;
     //    int currentTab_;
     
     int openTypeAfterLogin_;
     NSMutableDictionary * tempDataDic_;
     
-//    BOOL isCanMove_;
-//    NSInteger objectMovingID_;
-//    CGPoint touchPointStart_;
-//    BOOL isMoving_;
-//    CGFloat lastSecondsBeMoving_;
+    //    BOOL isCanMove_;
+    //    NSInteger objectMovingID_;
+    //    CGPoint touchPointStart_;
+    //    BOOL isMoving_;
+    //    CGFloat lastSecondsBeMoving_;
     
     BOOL canQueryList_;
     
@@ -169,10 +169,10 @@ static MusicDetailViewController * _instanceDetailItem;
     //        [[UIDevice currentDevice] setValue:value forKey:@"orientation"];
     //    }
     [playContainerView_ playerWillEnterForeground];
-//    if(mplayer_ && isAutoPlaying_)
-//    {
-//        [self playItem:nil seconds:-1];
-//    }
+    //    if(mplayer_ && isAutoPlaying_)
+    //    {
+    //        [self playItem:nil seconds:-1];
+    //    }
 }
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -199,13 +199,13 @@ static MusicDetailViewController * _instanceDetailItem;
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault animated:NO];
     _instanceDetailItem = nil;
     [playContainerView_ playerWillEnterBackground];
-//    if(playContainerView_ && playContainerView_.isPlaying)
-//    {
-//        [self pauseItem:nil];
-//    }
+    //    if(playContainerView_ && playContainerView_.isPlaying)
+    //    {
+    //        [self pauseItem:nil];
+    //    }
     
-//    NSString *downloadURL = [currentMtv_ getDownloadUrlOpeated:netStatus_ userID:userInfo_.UserID];
-//    [self stopCacheMTV:downloadURL];
+    //    NSString *downloadURL = [currentMtv_ getDownloadUrlOpeated:netStatus_ userID:userInfo_.UserID];
+    //    [self stopCacheMTV:downloadURL];
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
     
 }
@@ -254,23 +254,23 @@ static MusicDetailViewController * _instanceDetailItem;
     openTypeAfterLogin_ = 0;
     tempDataDic_ = [NSMutableDictionary new];
     
-//    if(!userManager_)
-//    {
-//        userManager_ = [UserManager sharedUserManager];
-//    }
-//    commentManager_ = [CommentViewManager new];
-//    userInfo_ = [userManager_ currentUser];
-//    netStatus_ = [[MTVUploader sharedMTVUploader] networkStatus];
-//    mediaEditManager_ = [MediaEditManager shareObject];
+    //    if(!userManager_)
+    //    {
+    //        userManager_ = [UserManager sharedUserManager];
+    //    }
+    //    commentManager_ = [CommentViewManager new];
+    //    userInfo_ = [userManager_ currentUser];
+    //    netStatus_ = [[MTVUploader sharedMTVUploader] networkStatus];
+    //    mediaEditManager_ = [MediaEditManager shareObject];
     
     if (needSetupUI_ && currentMtv_) {
         [self setupUI];
-//        [self setUpForDismissKeyboard];
-//        self.keyboardMode = keyboardModeNewInputView;
-//        [self setRootViewKeyboardEffect:swipeContainerView_];
+        //        [self setUpForDismissKeyboard];
+        //        self.keyboardMode = keyboardModeNewInputView;
+        //        [self setRootViewKeyboardEffect:swipeContainerView_];
         //[self setRootViewKeyboardEffect:contentContainerView_];
-//        [inputToolView_ registerKB:nil];
-//        [self.view bringSubviewToFront:inputToolView_];
+        //        [inputToolView_ registerKB:nil];
+        //        [self.view bringSubviewToFront:inputToolView_];
         
         [self setupData];
     }
@@ -327,30 +327,32 @@ static MusicDetailViewController * _instanceDetailItem;
 }
 - (void)setupWithMtvID:(int)mtvID
 {
-     [[MediaEditManager shareObject]clear];
-     [self loadMTV:mtvID];
+    [[MediaEditManager shareObject]clear];
+    [self loadMTV:mtvID];
 }
 - (void)setCurrentMTV:(MTV *)mtv
 {
-//    [self removeStartView];
+    //    [self removeStartView];
+    mtv.IsLandscape = YES;
     currentMtv_ = mtv;
+    [UserManager sharedUserManager].currentSettings.EnbaleCacheWhenPlaying = YES;
     [MediaEditManager shareObject].mergeMTVItem = mtv;
     //    mtv.IsLandscape = NO;
-//    [[MediaEditManager shareObject] setCacheDataBetweenWindows:mtv sample:nil];
-//    [MediaEditManager shareObject].CurrentMTV = mtv;
+    //    [[MediaEditManager shareObject] setCacheDataBetweenWindows:mtv sample:nil];
+    //    [MediaEditManager shareObject].CurrentMTV = mtv;
     
     if(needSetupUI_)
     {
         [self setupUI];
     } else {
-//        [self refreshSwipeView];
+        //        [self refreshSwipeView];
     }
-//    if (currentDynamicView_) {
-//        //[currentDynamicView_ setHeaderView:authorInfoView_];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [currentDynamicView_ setHeaderView:mtvInfoView_];
-//        });
-//    }
+    //    if (currentDynamicView_) {
+    //        //[currentDynamicView_ setHeaderView:authorInfoView_];
+    //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //            [currentDynamicView_ setHeaderView:mtvInfoView_];
+    //        });
+    //    }
     
     //[self setPlayBackInfoA];
     //[self setupData];
@@ -369,50 +371,50 @@ static MusicDetailViewController * _instanceDetailItem;
     
     screenWidth_ = config_.Width;
     screenHeight_ = config_.Height;
-//    
-//    if(!userManager_)
-//    {
-//        userManager_ = [UserManager sharedUserManager];
-//    }
+    //
+    //    if(!userManager_)
+    //    {
+    //        userManager_ = [UserManager sharedUserManager];
+    //    }
     
-//#ifdef USE_CACHEPLAYING
-//    if([userManager_ enableCachenWhenPlaying])
-//    {
-//        if(!localFileVDCItem_)
-//        {
-//            localFileVDCItem_ = [[VDCManager shareObject]getVDCItemByMtv:currentMtv_ urlString:nil];
-//        }
-//    }
-//#endif
+    //#ifdef USE_CACHEPLAYING
+    //    if([userManager_ enableCachenWhenPlaying])
+    //    {
+    //        if(!localFileVDCItem_)
+    //        {
+    //            localFileVDCItem_ = [[VDCManager shareObject]getVDCItemByMtv:currentMtv_ urlString:nil];
+    //        }
+    //    }
+    //#endif
     //    NSLog(@"MusicDetailViewController frame = %@",NSStringFromCGRect(self.view.frame));
     //    containerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, screenHeight_)];
     //    [self.view addSubview:containerView_];
     // container Height
     CGFloat contentHeight = screenHeight_-(playerHeightMax_+49);// 49为底部输入框
-//    CGFloat swipeHeight = contentHeight-tagsHeight_;
+    //    CGFloat swipeHeight = contentHeight-tagsHeight_;
     // container subView
     {
-//        returnBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-//        returnBtn_.frame = CGRectMake(10, 20, 40, 40);
-//        [returnBtn_ setImage:[UIImage imageNamed:@"play_back_icon.png"] forState:UIControlStateNormal];
-//        [returnBtn_ addTarget:self action:@selector(returnToParent:) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:returnBtn_];
-//        
-//        playContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, playerHeightMax_)];
-//        [self.view addSubview:playContainerView_];
-//        playContainerView_.userInteractionEnabled = YES;
-//        playFrameForPortrait_ = playContainerView_.frame;
-//        
-//        authorInfoView_ = [[UIView alloc] initWithFrame:CGRectMake(0, playerHeightMax_, screenWidth_, authorInfoHeight_)];
-//        [self.view addSubview:authorInfoView_];
-
-//        contentContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, playerHeightMax_, screenWidth_, contentHeight)];
-//        [self.view addSubview:contentContainerView_];
+        //        returnBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        returnBtn_.frame = CGRectMake(10, 20, 40, 40);
+        //        [returnBtn_ setImage:[UIImage imageNamed:@"play_back_icon.png"] forState:UIControlStateNormal];
+        //        [returnBtn_ addTarget:self action:@selector(returnToParent:) forControlEvents:UIControlEventTouchUpInside];
+        //        [self.view addSubview:returnBtn_];
+        //
+        //        playContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, playerHeightMax_)];
+        //        [self.view addSubview:playContainerView_];
+        //        playContainerView_.userInteractionEnabled = YES;
+        //        playFrameForPortrait_ = playContainerView_.frame;
+        //
+        //        authorInfoView_ = [[UIView alloc] initWithFrame:CGRectMake(0, playerHeightMax_, screenWidth_, authorInfoHeight_)];
+        //        [self.view addSubview:authorInfoView_];
         
-//        tagsContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, tagsHeight_)];
-//        [contentContainerView_ addSubview:tagsContainerView_];
-//        swipeContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, tagsHeight_, screenWidth_, swipeHeight)];
-//        [contentContainerView_ addSubview:swipeContainerView_];
+        //        contentContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, playerHeightMax_, screenWidth_, contentHeight)];
+        //        [self.view addSubview:contentContainerView_];
+        
+        //        tagsContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, tagsHeight_)];
+        //        [contentContainerView_ addSubview:tagsContainerView_];
+        //        swipeContainerView_ = [[UIView alloc] initWithFrame:CGRectMake(0, tagsHeight_, screenWidth_, swipeHeight)];
+        //        [contentContainerView_ addSubview:swipeContainerView_];
         
         
         returnBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -423,7 +425,7 @@ static MusicDetailViewController * _instanceDetailItem;
         
         playContainerView_ = [[HCPlayerWrapper alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, playerHeightMax_)];
         currentPlayerHeight_ = playerHeightMax_;
-//        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
+        //        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
         playContainerView_.delegate = self;
         
         [self.view addSubview:playContainerView_];
@@ -432,170 +434,170 @@ static MusicDetailViewController * _instanceDetailItem;
         
     }
     //report
-//    {
-////        reportBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-////        reportBtn_.frame = CGRectMake(config_.Width - 40 - 10, 20, 40, 40);
-////        [reportBtn_ setImage:[UIImage imageNamed:@"report.png"] forState:UIControlStateNormal];
-////        [reportBtn_ addTarget:self action:@selector(reportMtv:) forControlEvents:UIControlEventTouchUpInside];
-////        [self.view addSubview:reportBtn_];
-//        
-//        CGFloat left = config_.Width - 50 - 10;
-//        commentSwitch_ = [[SevenSwitch alloc]initWithFrame:CGRectMake(left, 30, 40, 25)];
-//        commentSwitch_.isRounded = YES;
-//        commentSwitch_.hidden = NO;
-//        
-//        [commentSwitch_ setup];
-//        [commentSwitch_ setOn:YES];
-//        commentSwitch_.knobImage = [UIImage imageNamed:@"commentswitch"];
-//        commentSwitch_.borderColor = [UIColor clearColor];
-//        commentSwitch_.onColor = COLOR_BA;
-//        commentSwitch_.activeColor = COLOR_CF;
-//        commentSwitch_.inactiveColor = COLOR_CF;
-//        
-//        [self.view addSubview:commentSwitch_];
-//        
-//        [commentSwitch_ addTarget:self action:@selector(showOrHideComment:) forControlEvents:UIControlEventValueChanged];
-//    }
+    //    {
+    ////        reportBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
+    ////        reportBtn_.frame = CGRectMake(config_.Width - 40 - 10, 20, 40, 40);
+    ////        [reportBtn_ setImage:[UIImage imageNamed:@"report.png"] forState:UIControlStateNormal];
+    ////        [reportBtn_ addTarget:self action:@selector(reportMtv:) forControlEvents:UIControlEventTouchUpInside];
+    ////        [self.view addSubview:reportBtn_];
+    //
+    //        CGFloat left = config_.Width - 50 - 10;
+    //        commentSwitch_ = [[SevenSwitch alloc]initWithFrame:CGRectMake(left, 30, 40, 25)];
+    //        commentSwitch_.isRounded = YES;
+    //        commentSwitch_.hidden = NO;
+    //
+    //        [commentSwitch_ setup];
+    //        [commentSwitch_ setOn:YES];
+    //        commentSwitch_.knobImage = [UIImage imageNamed:@"commentswitch"];
+    //        commentSwitch_.borderColor = [UIColor clearColor];
+    //        commentSwitch_.onColor = COLOR_BA;
+    //        commentSwitch_.activeColor = COLOR_CF;
+    //        commentSwitch_.inactiveColor = COLOR_CF;
+    //
+    //        [self.view addSubview:commentSwitch_];
+    //
+    //        [commentSwitch_ addTarget:self action:@selector(showOrHideComment:) forControlEvents:UIControlEventValueChanged];
+    //    }
     // 播放区
-//    {
-//        playContainerView_.backgroundColor = [UIColor blackColor];
-//        if ([DeviceConfig config].SysVersion >= 8.0) {
-//            // iOS8.0 以上可用 毛玻璃
-////            playerVisualEffectView_ = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
-////            playerVisualEffectView_.frame = playContainerView_.bounds;
-////            //            playerVisualEffectView_.alpha = 0;
-////            playerVisualEffectView_.hidden = YES;
-//            //[playContainerView_ addSubview:playerVisualEffectView_];
-//        }
-//        {
-//            // 滚动时的播放按钮
-//            centerPlayBtn_ = [[UIButton alloc] initWithFrame:CGRectMake((playContainerView_.frame.size.width-centerPlayWidth_)/2, (playerHeightMax_-centerPlayWidth_)/2, centerPlayWidth_, centerPlayWidth_)];
-//            [centerPlayBtn_ setImage:[UIImage imageNamed:@"play"]
-//                               forState:UIControlStateNormal];
-//            [centerPlayBtn_ setImage:[UIImage imageNamed:@"stop"]
-//                               forState:UIControlStateSelected];
-//            [centerPlayBtn_ addTarget:self action:@selector(tempPlayPauseBtnClick:)
-//                        forControlEvents:UIControlEventTouchUpInside];
-//            //centerPlayBtn_.alpha = 1;
-//            [self addSubview:centerPlayBtn_];
-//        }
-//        // 封面
-//        {
-//            cover_ = [[UIWebImageViewN alloc] initWithFrame:CGRectMake(0, 0, playContainerView_.frame.size.width, playerHeightMax_ - PLAYPANNEL_HEIGHT)];
-//            //cover_.isFill_ = YES;
-//            cover_.keepScale_ = YES;
-//            cover_.fastMode = NO;
-//            cover_.contentMode = UIViewContentModeScaleAspectFit;
-//            cover_.clipsToBounds = YES;
-////            cover_.image = [UIImage imageNamed:PLAYERHOLDER];
-//            [playContainerView_ addSubview:cover_];
-//        }
-//        // 工具栏
-//        {
-//            CGRect toolFrame = CGRectMake(0, playerHeightMax_- PROGRESS_HEIGHT - PLAYPANNEL_HEIGHT, screenWidth_, PROGRESS_HEIGHT);
-//            progressView_ = [[WTVideoPlayerProgressView alloc]initWithFrame:toolFrame needGradient:YES];
-//            
-//            [progressView_ setColorsForBackground:[UIColor whiteColor]
-//                                       foreground:COLOR_BA //[UIColor redColor] //COLOR_P1
-//                                          caching:[UIColor yellowColor] //COLOR_P2
-//                                           handle:[UIColor clearColor]
-//                                           border:[UIColor colorWithRed:0.0 green:205.0/255.0 blue:184.0/255.0 alpha:1.0]];
-//            
-//            [progressView_ setTotalSeconds:currentMtv_.Durance];
-//#ifdef USE_CACHEPLAYING
-//            if([userManager_ enableCachenWhenPlaying])
-//            {
-//                [progressView_ setCacheKey:localFileVDCItem_.key];
-//            }
-//#endif
-//            progressView_.isFullScreen = NO;
-//            progressView_.GuideAudioBtn.hidden = YES;
-//            [playContainerView_ addSubview:progressView_];
-//            
-//            [progressView_ changeFrame:toolFrame];
-//            
-//            progressView_.delegate = self;
-//        }
-//        //top pannel
-//        {
-//            CGRect toolFrame = CGRectMake(0, 0, screenWidth_, 40);
-//            maxPannel_ = [[WTPlayerTopPannel alloc]initWithFrame:toolFrame];
-//            if(currentMtv_)
-//            {
-//                [maxPannel_ setMTVItem:currentMtv_ sample:currentSample_];
-//                //                maxPannel_.MTVItem = currentMtv_;
-//            }
-//            [playContainerView_ addSubview:maxPannel_];
-//            maxPannel_.hidden = YES;
-//            maxPannel_.backgroundColor = [UIColor clearColor];
-//            maxPannel_.delegate = self;
-//        }
-//        //按钮栏
-//        {
-////            playPannel_ = [[WTPlayerControlPannel alloc]initWithFrame:CGRectMake(0, playContainerView_.frame.size.height - PLAYPANNEL_HEIGHT, playContainerView_.frame.size.width, PLAYPANNEL_HEIGHT)];
-////            //            NSLog(@"pannel frame:%@",NSStringFromCGRect(playPannel_.frame));
-////            playPannel_.backgroundColor = [UIColor clearColor];
-////            [playPannel_ setMTVItem:currentMtv_ sample:currentSample_];
-////            playPannel_.delegate = self;
-////            // [playContainerView_ addSubview:playPannel_];
-////            
-////            // NSLog(@"pannel frame:%@",NSStringFromCGRect(playPannel_.frame));
-//        }
-//    }
+    //    {
+    //        playContainerView_.backgroundColor = [UIColor blackColor];
+    //        if ([DeviceConfig config].SysVersion >= 8.0) {
+    //            // iOS8.0 以上可用 毛玻璃
+    ////            playerVisualEffectView_ = [[UIVisualEffectView alloc] initWithEffect:[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight]];
+    ////            playerVisualEffectView_.frame = playContainerView_.bounds;
+    ////            //            playerVisualEffectView_.alpha = 0;
+    ////            playerVisualEffectView_.hidden = YES;
+    //            //[playContainerView_ addSubview:playerVisualEffectView_];
+    //        }
+    //        {
+    //            // 滚动时的播放按钮
+    //            centerPlayBtn_ = [[UIButton alloc] initWithFrame:CGRectMake((playContainerView_.frame.size.width-centerPlayWidth_)/2, (playerHeightMax_-centerPlayWidth_)/2, centerPlayWidth_, centerPlayWidth_)];
+    //            [centerPlayBtn_ setImage:[UIImage imageNamed:@"play"]
+    //                               forState:UIControlStateNormal];
+    //            [centerPlayBtn_ setImage:[UIImage imageNamed:@"stop"]
+    //                               forState:UIControlStateSelected];
+    //            [centerPlayBtn_ addTarget:self action:@selector(tempPlayPauseBtnClick:)
+    //                        forControlEvents:UIControlEventTouchUpInside];
+    //            //centerPlayBtn_.alpha = 1;
+    //            [self addSubview:centerPlayBtn_];
+    //        }
+    //        // 封面
+    //        {
+    //            cover_ = [[UIWebImageViewN alloc] initWithFrame:CGRectMake(0, 0, playContainerView_.frame.size.width, playerHeightMax_ - PLAYPANNEL_HEIGHT)];
+    //            //cover_.isFill_ = YES;
+    //            cover_.keepScale_ = YES;
+    //            cover_.fastMode = NO;
+    //            cover_.contentMode = UIViewContentModeScaleAspectFit;
+    //            cover_.clipsToBounds = YES;
+    ////            cover_.image = [UIImage imageNamed:PLAYERHOLDER];
+    //            [playContainerView_ addSubview:cover_];
+    //        }
+    //        // 工具栏
+    //        {
+    //            CGRect toolFrame = CGRectMake(0, playerHeightMax_- PROGRESS_HEIGHT - PLAYPANNEL_HEIGHT, screenWidth_, PROGRESS_HEIGHT);
+    //            progressView_ = [[WTVideoPlayerProgressView alloc]initWithFrame:toolFrame needGradient:YES];
+    //
+    //            [progressView_ setColorsForBackground:[UIColor whiteColor]
+    //                                       foreground:COLOR_BA //[UIColor redColor] //COLOR_P1
+    //                                          caching:[UIColor yellowColor] //COLOR_P2
+    //                                           handle:[UIColor clearColor]
+    //                                           border:[UIColor colorWithRed:0.0 green:205.0/255.0 blue:184.0/255.0 alpha:1.0]];
+    //
+    //            [progressView_ setTotalSeconds:currentMtv_.Durance];
+    //#ifdef USE_CACHEPLAYING
+    //            if([userManager_ enableCachenWhenPlaying])
+    //            {
+    //                [progressView_ setCacheKey:localFileVDCItem_.key];
+    //            }
+    //#endif
+    //            progressView_.isFullScreen = NO;
+    //            progressView_.GuideAudioBtn.hidden = YES;
+    //            [playContainerView_ addSubview:progressView_];
+    //
+    //            [progressView_ changeFrame:toolFrame];
+    //
+    //            progressView_.delegate = self;
+    //        }
+    //        //top pannel
+    //        {
+    //            CGRect toolFrame = CGRectMake(0, 0, screenWidth_, 40);
+    //            maxPannel_ = [[WTPlayerTopPannel alloc]initWithFrame:toolFrame];
+    //            if(currentMtv_)
+    //            {
+    //                [maxPannel_ setMTVItem:currentMtv_ sample:currentSample_];
+    //                //                maxPannel_.MTVItem = currentMtv_;
+    //            }
+    //            [playContainerView_ addSubview:maxPannel_];
+    //            maxPannel_.hidden = YES;
+    //            maxPannel_.backgroundColor = [UIColor clearColor];
+    //            maxPannel_.delegate = self;
+    //        }
+    //        //按钮栏
+    //        {
+    ////            playPannel_ = [[WTPlayerControlPannel alloc]initWithFrame:CGRectMake(0, playContainerView_.frame.size.height - PLAYPANNEL_HEIGHT, playContainerView_.frame.size.width, PLAYPANNEL_HEIGHT)];
+    ////            //            NSLog(@"pannel frame:%@",NSStringFromCGRect(playPannel_.frame));
+    ////            playPannel_.backgroundColor = [UIColor clearColor];
+    ////            [playPannel_ setMTVItem:currentMtv_ sample:currentSample_];
+    ////            playPannel_.delegate = self;
+    ////            // [playContainerView_ addSubview:playPannel_];
+    ////
+    ////            // NSLog(@"pannel frame:%@",NSStringFromCGRect(playPannel_.frame));
+    //        }
+    //    }
     
     // 创建listView
-//    [self refreshSwipeView];
+    //    [self refreshSwipeView];
     
     // recordReminderView
-//    {
-//        recordReminderView_ = [[RecordRemindeView alloc] initWithFrame:CGRectMake((screenWidth_ - 150)/2, (screenHeight_ - 150)/2, 150, 150)];
-//        recordReminderView_.hidden = YES;
-//        [self.view addSubview:recordReminderView_];
-//    }
-//    {
-//        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showProgressView:)];
-//        tap.enabled = YES;
-//        tap.numberOfTapsRequired = 1;
-//        tap.cancelsTouchesInView = NO;
-//        [playContainerView_ addGestureRecognizer:tap];
-//    }
+    //    {
+    //        recordReminderView_ = [[RecordRemindeView alloc] initWithFrame:CGRectMake((screenWidth_ - 150)/2, (screenHeight_ - 150)/2, 150, 150)];
+    //        recordReminderView_.hidden = YES;
+    //        [self.view addSubview:recordReminderView_];
+    //    }
+    //    {
+    //        UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(showProgressView:)];
+    //        tap.enabled = YES;
+    //        tap.numberOfTapsRequired = 1;
+    //        tap.cancelsTouchesInView = NO;
+    //        [playContainerView_ addGestureRecognizer:tap];
+    //    }
     
     /* // 弹幕整合到player
-    if(!self.commentListView_)
-    {
-        if (!commentManager_) commentManager_ = [CommentViewManager new];
-        commentManager_.showType = CommentShowTypePop;
-        self.commentListView_ = [commentManager_ createCommentsView:CGRectMake(0, 50, config_.Height, config_.Width - 150)];
-        [self.view addSubview:self.commentListView_];
-        self.commentListView_.hidden = YES;
-        // self.commentListView_.backgroundColor = [UIColor yellowColor];
-    }
+     if(!self.commentListView_)
+     {
+     if (!commentManager_) commentManager_ = [CommentViewManager new];
+     commentManager_.showType = CommentShowTypePop;
+     self.commentListView_ = [commentManager_ createCommentsView:CGRectMake(0, 50, config_.Height, config_.Width - 150)];
+     [self.view addSubview:self.commentListView_];
+     self.commentListView_.hidden = YES;
+     // self.commentListView_.backgroundColor = [UIColor yellowColor];
+     }
      */
     
-//    if(currentMtv_ && currentMtv_.AudioRemoteUrl && currentMtv_.AudioRemoteUrl.length>2)
-//    {
-//        [playPannel_ setUseGuidAudio:YES];
-//        [progressView_ setGuidAudio:YES];
-//    }
-//    else
-//    {
-//        [playPannel_ setUseGuidAudio:NO];
-//        [progressView_ setGuidAudio:NO];
-//    }
+    //    if(currentMtv_ && currentMtv_.AudioRemoteUrl && currentMtv_.AudioRemoteUrl.length>2)
+    //    {
+    //        [playPannel_ setUseGuidAudio:YES];
+    //        [progressView_ setGuidAudio:YES];
+    //    }
+    //    else
+    //    {
+    //        [playPannel_ setUseGuidAudio:NO];
+    //        [progressView_ setGuidAudio:NO];
+    //    }
     // 发动态
-//    if(!inputToolView_)
-//    {
-//        inputToolView_ = [[UIInputToolView alloc] initWithFrame:CGRectMake(0, screenHeight_-49, screenWidth_, 49)];
-//        inputToolView_.delegate = self;
-//        if(currentMtv_.SampleID==0)
-//        {
-//            [inputToolView_ hideSingButton];
-//        }
-//        [self.view addSubview:inputToolView_];
-//        
-//        self.keyboardMode = keyboardModeNewInputView;
-//        [inputToolView_ registerKB:self];
-//    }
+    //    if(!inputToolView_)
+    //    {
+    //        inputToolView_ = [[UIInputToolView alloc] initWithFrame:CGRectMake(0, screenHeight_-49, screenWidth_, 49)];
+    //        inputToolView_.delegate = self;
+    //        if(currentMtv_.SampleID==0)
+    //        {
+    //            [inputToolView_ hideSingButton];
+    //        }
+    //        [self.view addSubview:inputToolView_];
+    //
+    //        self.keyboardMode = keyboardModeNewInputView;
+    //        [inputToolView_ registerKB:self];
+    //    }
     
     [self bringToolBar2Front];
 }
@@ -608,7 +610,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //}
 - (BOOL)canShowSwipeView
 {
-//    return (currentMtv_.SampleID>0);
+    //    return (currentMtv_.SampleID>0);
     return NO;
 }
 
@@ -670,10 +672,10 @@ static MusicDetailViewController * _instanceDetailItem;
     if([NSThread isMainThread])
     {
         [self setupData];
-
+        
         [playContainerView_ setPlayRange:0 end:-1];
         [playContainerView_ play];
-    //    [self playItem:nil seconds:0];
+        //    [self playItem:nil seconds:0];
         // player 放大最大位置
         if (currentPlayerHeight_ < playerHeightMax_) {
             currentPlayerHeight_ = playerHeightMax_;
@@ -687,7 +689,7 @@ static MusicDetailViewController * _instanceDetailItem;
 {
     if (isPlayViewScrolling_)  {
         canPushPlayView_ = YES;
-       
+        
         return;
     }
     
@@ -713,87 +715,87 @@ static MusicDetailViewController * _instanceDetailItem;
 - (void)showPlayerHeight:(CGFloat)playerHeight
 {
     canPushPlayView_ = YES;
-   
-//    if (playerHeight == playerHeightMax_) {
-//        if ([self canShowComment]) {
-//            if (!mplayer_.commentListView) {
-//                [self initCommentView];
-//            }
-//            if (self.isPlaying) {
-//                [mplayer_ showComments];
-//                [mplayer_ refreshComment];
-//            }
-//        }
-//        commentSwitch_.hidden = NO;
-//    } else if (playerHeight < playerHeightMax_) {
-//        [mplayer_ hideComments];
-//        commentSwitch_.hidden = YES;
-//    }
+    
+    //    if (playerHeight == playerHeightMax_) {
+    //        if ([self canShowComment]) {
+    //            if (!mplayer_.commentListView) {
+    //                [self initCommentView];
+    //            }
+    //            if (self.isPlaying) {
+    //                [mplayer_ showComments];
+    //                [mplayer_ refreshComment];
+    //            }
+    //        }
+    //        commentSwitch_.hidden = NO;
+    //    } else if (playerHeight < playerHeightMax_) {
+    //        [mplayer_ hideComments];
+    //        commentSwitch_.hidden = YES;
+    //    }
 }
 
 - (void)showPlayOrPause:(CGFloat)height
 {
-//    CGFloat scale = (float)(playerHeightMax_-height)/(playerHeightMax_-playerHeightMin_);
-//    
-//    if (height >= playerHeightMax_)
-//    {
-//        //centerPlayBtn_.hidden = YES;
-//        //centerPlayBtn_.alpha = 0;
-//        CGRect frame = CGRectMake((playContainerView_.frame.size.width-centerPlayWidth_)/2, (height-centerPlayWidth_)/2, centerPlayWidth_, centerPlayWidth_);
-//        centerPlayBtn_.frame = frame;
-//        
-////        playerVisualEffectView_.hidden = YES;
-//        progressView_.hidden = NO;
-//        NSLog(@"height:%.1f > playerheightmax:%.1f",height,playerHeightMax_);
-//    }
-//    else
-//    {
-//        if(fabs(height - (playerHeightMax_ - 40))<3)
-//        {
-//            height = (playerHeightMax_ - 40);
-//        }
-//        //        if (fabs(height - (playerHeightMax_ - 40))>0.5) { //防止抖动
-//        
-//        //NSLog(@"height:%.1f <= playerheightmax:%.1f - 40 ",height,playerHeightMax_);
-//        //centerPlayBtn_.alpha = scale;
-//        //centerPlayBtn_.hidden = NO;
-//        
-//        //随时定位在中央,在可见区中央
-//        CGFloat top = 0 - playContainerView_.frame.origin.y
-//        + (playContainerView_.frame.origin.y + playContainerView_.frame.size.height - 30)/2.0f;
-//        centerPlayBtn_.frame = CGRectMake((playContainerView_.frame.size.width - centerPlayWidth_)/2.0f,
-//                                             top,
-//                                             centerPlayWidth_, centerPlayWidth_);
-//        
-//        
-//        CGRect playerFrame = [self getPlayerFrame];
-//        playerFrame.origin.x = 0;
-//        mplayer_.frame = playerFrame;
-//        cover_.frame = playerFrame;
-//        
-//        //             progressView_.alpha = 0;
-//        //            [progressView_ hide:NO];
-//        
-//        // 改变透明度
-//        playerFrame.size.height += PLAYPANNEL_HEIGHT;
-////        playerVisualEffectView_.hidden = NO;
-////        playerVisualEffectView_.alpha = scale;
-////        playerVisualEffectView_.frame = playerFrame;
-//        //NSLog(@"playerVisualEffectView_.alpha = %.1f",scale);
-//        //        }
-//        //        else
-//        //        {
-//        //            NSLog(@"height:%.1f > playerheightmax:%.1f - 40",height,playerHeightMax_);
-//        //            playerVisualEffectView_.hidden = YES;
-//        //            centerPlayBtn_.hidden = YES;
-//        //
-//        //            //            progressView_.alpha = MAX(0,(1 - scale)/2);
-//        //        }
-//    }
+    //    CGFloat scale = (float)(playerHeightMax_-height)/(playerHeightMax_-playerHeightMin_);
+    //
+    //    if (height >= playerHeightMax_)
+    //    {
+    //        //centerPlayBtn_.hidden = YES;
+    //        //centerPlayBtn_.alpha = 0;
+    //        CGRect frame = CGRectMake((playContainerView_.frame.size.width-centerPlayWidth_)/2, (height-centerPlayWidth_)/2, centerPlayWidth_, centerPlayWidth_);
+    //        centerPlayBtn_.frame = frame;
+    //
+    ////        playerVisualEffectView_.hidden = YES;
+    //        progressView_.hidden = NO;
+    //        NSLog(@"height:%.1f > playerheightmax:%.1f",height,playerHeightMax_);
+    //    }
+    //    else
+    //    {
+    //        if(fabs(height - (playerHeightMax_ - 40))<3)
+    //        {
+    //            height = (playerHeightMax_ - 40);
+    //        }
+    //        //        if (fabs(height - (playerHeightMax_ - 40))>0.5) { //防止抖动
+    //
+    //        //NSLog(@"height:%.1f <= playerheightmax:%.1f - 40 ",height,playerHeightMax_);
+    //        //centerPlayBtn_.alpha = scale;
+    //        //centerPlayBtn_.hidden = NO;
+    //
+    //        //随时定位在中央,在可见区中央
+    //        CGFloat top = 0 - playContainerView_.frame.origin.y
+    //        + (playContainerView_.frame.origin.y + playContainerView_.frame.size.height - 30)/2.0f;
+    //        centerPlayBtn_.frame = CGRectMake((playContainerView_.frame.size.width - centerPlayWidth_)/2.0f,
+    //                                             top,
+    //                                             centerPlayWidth_, centerPlayWidth_);
+    //
+    //
+    //        CGRect playerFrame = [self getPlayerFrame];
+    //        playerFrame.origin.x = 0;
+    //        mplayer_.frame = playerFrame;
+    //        cover_.frame = playerFrame;
+    //
+    //        //             progressView_.alpha = 0;
+    //        //            [progressView_ hide:NO];
+    //
+    //        // 改变透明度
+    //        playerFrame.size.height += PLAYPANNEL_HEIGHT;
+    ////        playerVisualEffectView_.hidden = NO;
+    ////        playerVisualEffectView_.alpha = scale;
+    ////        playerVisualEffectView_.frame = playerFrame;
+    //        //NSLog(@"playerVisualEffectView_.alpha = %.1f",scale);
+    //        //        }
+    //        //        else
+    //        //        {
+    //        //            NSLog(@"height:%.1f > playerheightmax:%.1f - 40",height,playerHeightMax_);
+    //        //            playerVisualEffectView_.hidden = YES;
+    //        //            centerPlayBtn_.hidden = YES;
+    //        //
+    //        //            //            progressView_.alpha = MAX(0,(1 - scale)/2);
+    //        //        }
+    //    }
 }
 - (void)changePlayViewFrame:(CGFloat)playerHeight
 {
-//    if ([self isKeyboardShow]) return;
+    //    if ([self isKeyboardShow]) return;
     
     NSLog(@"playerHeight = %f",playerHeight);
     //playContainerView_.frame = CGRectMake(0, -(playerHeightMax_-playerHeight), _ScreenWidth, playerHeightMax_);
@@ -801,41 +803,41 @@ static MusicDetailViewController * _instanceDetailItem;
     CGRect playFrame = CGRectMake(0, 0, config_.Width, playerHeight);;
     playContainerView_.frame = playFrame;
     [self resetPlayFrame:playFrame];
-//    // 播放器
-//    [mplayer_ resizeViewToRect:playFrame andUpdateBounds:YES withAnimation:YES hidden:NO changed:nil];
+    //    // 播放器
+    //    [mplayer_ resizeViewToRect:playFrame andUpdateBounds:YES withAnimation:YES hidden:NO changed:nil];
     
     //authorInfoView_.frame = CGRectMake(0, playerHeight, screenWidth_, authorInfoHeight_);
     //NSLog(@"player container frame:%@",NSStringFromCGRect(playContainerView_.frame));
     
-//    CGFloat contentHeight = screenHeight_-(playerHeight+49);// 49为底部输入框
-//    contentContainerView_.frame = CGRectMake(0, playerHeight, config_.Width, contentHeight);
-//    
-//    CGFloat top =[self canShowSwipeView]==NO?0:tagsHeight_;
+    //    CGFloat contentHeight = screenHeight_-(playerHeight+49);// 49为底部输入框
+    //    contentContainerView_.frame = CGRectMake(0, playerHeight, config_.Width, contentHeight);
+    //
+    //    CGFloat top =[self canShowSwipeView]==NO?0:tagsHeight_;
     
-//    CGFloat swipeHeight = contentHeight- top;
-//    swipeContainerView_.frame = CGRectMake(0, top, screenWidth_, swipeHeight);
+    //    CGFloat swipeHeight = contentHeight- top;
+    //    swipeContainerView_.frame = CGRectMake(0, top, screenWidth_, swipeHeight);
     
     
     // swipeView 内部frame变化
-//    if(listView_ && listView_.hidden==NO)
-//    {
-//        CGRect frame = CGRectMake(0, 0, screenWidth_, swipeHeight);
-//        //        NSLog(@"swipe frame = %@",NSStringFromCGRect(frame));
-//        listView_.frame = frame;
-//        
-//        // 滚动过程中只改变当前子view的高度 滚动结束再改变其它两个view的高度 以免造成卡顿
-//        //for (int i = 0; i < listView_.numberOfItems; i++) {
-//        UIListViewA *itemView = (UIListViewA *)[listView_ currentItemView];
-//        itemView.frame = CGRectMake(itemView.frame.origin.x, itemView.frame.origin.y, itemView.frame.size.width, frame.size.height);
-//        [itemView changeSubviewsFrame:frame];
-//        //}
-//    }
-//    else if(currentDynamicView_)
-//    {
-//        CGRect frame = swipeContainerView_.bounds;
-//        currentDynamicView_.frame = frame;
-//        [currentDynamicView_ changeSubviewsFrame:frame];
-//    }
+    //    if(listView_ && listView_.hidden==NO)
+    //    {
+    //        CGRect frame = CGRectMake(0, 0, screenWidth_, swipeHeight);
+    //        //        NSLog(@"swipe frame = %@",NSStringFromCGRect(frame));
+    //        listView_.frame = frame;
+    //
+    //        // 滚动过程中只改变当前子view的高度 滚动结束再改变其它两个view的高度 以免造成卡顿
+    //        //for (int i = 0; i < listView_.numberOfItems; i++) {
+    //        UIListViewA *itemView = (UIListViewA *)[listView_ currentItemView];
+    //        itemView.frame = CGRectMake(itemView.frame.origin.x, itemView.frame.origin.y, itemView.frame.size.width, frame.size.height);
+    //        [itemView changeSubviewsFrame:frame];
+    //        //}
+    //    }
+    //    else if(currentDynamicView_)
+    //    {
+    //        CGRect frame = swipeContainerView_.bounds;
+    //        currentDynamicView_.frame = frame;
+    //        [currentDynamicView_ changeSubviewsFrame:frame];
+    //    }
     
     //    NSLog(@"play container:%@",NSStringFromCGRect(playContainerView_.frame));
     //    NSLog(@"play frame:%@",NSStringFromCGRect(mplayer_.frame));
@@ -845,19 +847,19 @@ static MusicDetailViewController * _instanceDetailItem;
 #pragma mark - button event
 - (void) showButtonsPause
 {
-
+    
 }
 - (void) showButtonsPlaying
 {
-
+    
 }
 #pragma mark - videoProgress delegate
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView pause:(CGFloat)seconds
 {
-//    if(seconds>=0)
-//    {
-//        [self pauseItem:nil];
-//    }
+    //    if(seconds>=0)
+    //    {
+    //        [self pauseItem:nil];
+    //    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView progressChanged:(CGFloat)seconds
 {
@@ -865,56 +867,56 @@ static MusicDetailViewController * _instanceDetailItem;
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willFullScreen:(BOOL)fullScreen
 {
-//    NSLog(@"need full screen...%d",fullScreen);
-//    if(fullScreen)
-//    {
-//        [self doFullScreen:UIInterfaceOrientationLandscapeRight];
-//    }
-//    else
-//    {
-//        [self cancelFullScreen:UIInterfaceOrientationPortrait];
-//    }
+    NSLog(@"need full screen...%d",fullScreen);
+    if(fullScreen)
+    {
+        [self doFullScreen:UIInterfaceOrientationLandscapeRight];
+    }
+    else
+    {
+        [self cancelFullScreen:UIInterfaceOrientationPortrait];
+    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView didHidden:(BOOL)hidden
 {
-//    if(progressView.isFullScreen)
-//    {
-//        if(hidden)
-//        {
-//            [maxPannel_ hideRightMenu:nil animates:YES];
-//            [maxPannel_ hideWithAnimates:YES];
-//        }
-//        else
-//        {
-//            maxPannel_.hidden = hidden;
-//            [maxPannel_ hideRightMenu:nil animates:NO];
-//        }
-//    }
-//    else
-//    {
-//        //returnBtn_.hidden = hidden;
-//        maxPannel_.hidden = YES;
-//    }
-//    if (self.isPlaying) {
-//        if (centerPlayBtn_.isHidden == hidden) return;
-//        
-//        if (hidden) {
-//            [UIView animateWithDuration:0.3f animations:^{
-//                centerPlayBtn_.alpha = 0;
-//            } completion:^(BOOL finished) {
-//                centerPlayBtn_.hidden = hidden;
-//                centerPlayBtn_.alpha = 1;
-//            }];
-//        } else {
-//            centerPlayBtn_.alpha = 0;
-//            [UIView animateWithDuration:0.3f animations:^{
-//                centerPlayBtn_.alpha = 1;
-//            } completion:^(BOOL finished) {
-//                centerPlayBtn_.hidden = hidden;
-//                centerPlayBtn_.alpha = 1;
-//            }];
-//        }
-//    }
+    //    if(progressView.isFullScreen)
+    //    {
+    //        if(hidden)
+    //        {
+    //            [maxPannel_ hideRightMenu:nil animates:YES];
+    //            [maxPannel_ hideWithAnimates:YES];
+    //        }
+    //        else
+    //        {
+    //            maxPannel_.hidden = hidden;
+    //            [maxPannel_ hideRightMenu:nil animates:NO];
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //returnBtn_.hidden = hidden;
+    //        maxPannel_.hidden = YES;
+    //    }
+    //    if (self.isPlaying) {
+    //        if (centerPlayBtn_.isHidden == hidden) return;
+    //
+    //        if (hidden) {
+    //            [UIView animateWithDuration:0.3f animations:^{
+    //                centerPlayBtn_.alpha = 0;
+    //            } completion:^(BOOL finished) {
+    //                centerPlayBtn_.hidden = hidden;
+    //                centerPlayBtn_.alpha = 1;
+    //            }];
+    //        } else {
+    //            centerPlayBtn_.alpha = 0;
+    //            [UIView animateWithDuration:0.3f animations:^{
+    //                centerPlayBtn_.alpha = 1;
+    //            } completion:^(BOOL finished) {
+    //                centerPlayBtn_.hidden = hidden;
+    //                centerPlayBtn_.alpha = 1;
+    //            }];
+    //        }
+    //    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView openGuideAudio:(BOOL)isOpen
 {
@@ -922,34 +924,34 @@ static MusicDetailViewController * _instanceDetailItem;
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willRecode:(BOOL)record
 {
-//    if(record)
-//    {
-//        [self readyToRelease];
-//        [mediaEditManager_ clear];
-//        if(currentMtv_.UserID == userInfo_.UserID && userInfo_.UserID>0)
-//        {
-//            mediaEditManager_.mergeMTVItem = currentMtv_;
-//        }
-////        NSString * url = [[HWindowStack shareObject]buildSingUrl:NO
-////                                                          source:@"cache"
-////                                                        sampleID:currentMtv_.SampleID
-////                                                     isLandscape:currentMtv_.IsLandscape?1:0];
-////        [[HWindowStack shareObject]openWindow:self urlString:url shouldOpenWeb:YES];
-//    }
+    //    if(record)
+    //    {
+    //        [self readyToRelease];
+    //        [mediaEditManager_ clear];
+    //        if(currentMtv_.UserID == userInfo_.UserID && userInfo_.UserID>0)
+    //        {
+    //            mediaEditManager_.mergeMTVItem = currentMtv_;
+    //        }
+    ////        NSString * url = [[HWindowStack shareObject]buildSingUrl:NO
+    ////                                                          source:@"cache"
+    ////                                                        sampleID:currentMtv_.SampleID
+    ////                                                     isLandscape:currentMtv_.IsLandscape?1:0];
+    ////        [[HWindowStack shareObject]openWindow:self urlString:url shouldOpenWeb:YES];
+    //    }
 }
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView isPlaying:(BOOL)isPlaying
 {
-//    if(mplayer_ && mplayer_.playing)
-//        return YES;
-//    else
-        return NO;
+    //    if(mplayer_ && mplayer_.playing)
+    //        return YES;
+    //    else
+    return NO;
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView Seek:(CGFloat)seconds
 {
-//    if(mplayer_)
-//    {
-//        [mplayer_ seek:seconds accurate:YES];
-//    }
+    //    if(mplayer_)
+    //    {
+    //        [mplayer_ seek:seconds accurate:YES];
+    //    }
 }
 #pragma mark - share download....
 
@@ -975,7 +977,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //- (void)videoPannel:(WTPlayerControlPannel *)pannelView showComments:(BOOL)show{
 //    NSLog(@"need comments... 1 Or 0 -> %d",show);
 //    [commentSwitch_ setOn:show];
-//    
+//
 //    if (!mplayer_) return;
 //    if (show) {
 //        if(!mplayer_.commentListView)
@@ -1001,26 +1003,26 @@ static MusicDetailViewController * _instanceDetailItem;
 //        //            [mplayer_ hideComments];
 //        //        }
 //    }
-//    
+//
 ////    self.keyboardMode = keyboardModeNewInputView;
 ////    [inputToolView_ registerKB:self];
-////    
+////
 ////    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
 ////        [inputToolView_ becomeFirstResponder];
 ////        //        self.commentText.selectedTextRange = NSMakeRange(0, 0);
 ////    });
-//    
-//    
+//
+//
 //    //    textView.selectedRange = NSMakeRange(0, 0);
 //    //    }
 //}
 //- (void)videoPannel:(WTPlayerControlPannel *)pannelView likeIt:(BOOL)isLike
 //{
 ////    if (![self checkLoginStatus]) return;
-//    
+//
 //    MTV * item = currentMtv_;
 //    CMD_CREATE(cmd, LikeOrNot, @"LikeOrNot");
-//    
+//
 //    if(item.MTVID>0)
 //    {
 //        cmd.MtvID = item.MTVID;
@@ -1048,7 +1050,7 @@ static MusicDetailViewController * _instanceDetailItem;
 ////                    [vv setConcernChanged:currentMtv_];
 ////                }
 ////            }
-//            
+//
 //            if (currentMtv_.MTVID>0) {
 //                NSMutableDictionary *dic = [NSMutableDictionary new];
 //                [dic setValue:@(HCObjectTypeMTV) forKey:@"objecttype"];
@@ -1059,7 +1061,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //        }
 //    };
 //    [cmd sendCMD];
-//    
+//
 //}
 //- (void)videoPannel:(WTPlayerControlPannel *)pannelView editMtv:(BOOL)edit
 //{
@@ -1070,8 +1072,8 @@ static MusicDetailViewController * _instanceDetailItem;
 //        [mediaEditManager_ clear];
 //        mediaEditManager_.mergeMTVItem = [self getCurrentMTV];
 ////        NSString * url = [[HWindowStack shareObject]buildSingUrl:NO source:@"cache" sampleID:currentMtv_.SampleID];
-//        
-//        
+//
+//
 ////        NSString * url = [[HWindowStack shareObject]buildEditUrl:currentMtv_.MTVID isLandscape:mediaEditManager_.mergeMTVItem.IsLandscape?1:0];
 ////        [[HWindowStack shareObject]openWindow:self urlString:url shouldOpenWeb:YES];
 //    }
@@ -1096,7 +1098,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //    [maxPannel_ setIsCommentsShow:isOn];
 //    if (!mplayer_)
 //        return;
-//    
+//
 //    if (isOn) {
 //        if (currentPlayerHeight_ >= playerHeightMax_) {
 //            if (!mplayer_.commentListView) {
@@ -1154,15 +1156,15 @@ static MusicDetailViewController * _instanceDetailItem;
 - (void) bringToolBar2Front
 {
     [self.view bringSubviewToFront:playContainerView_];
-//    [self.view bringSubviewToFront:recordReminderView_];
+    //    [self.view bringSubviewToFront:recordReminderView_];
     //[self.view bringSubviewToFront:self.commentListView_];
     
     [self.view bringSubviewToFront:returnBtn_];
     //[self.view bringSubviewToFront:reportBtn_];
-//    [self.view bringSubviewToFront:commentSwitch_];
-//    [self.view bringSubviewToFront:inputToolView_];
-//    
-//    [self.view bringSubviewToFront:mplayer_.commentListView];
+    //    [self.view bringSubviewToFront:commentSwitch_];
+    //    [self.view bringSubviewToFront:inputToolView_];
+    //
+    //    [self.view bringSubviewToFront:mplayer_.commentListView];
 }
 
 - (void)showMessage:(NSString *)msgTitle msg:(NSString *)msg
@@ -1188,10 +1190,10 @@ static MusicDetailViewController * _instanceDetailItem;
     CMD_CREATE(cmd, GetMtvInfo, @"GetMtvInfo");
     cmd.MtvID = mtvID;
     cmd.HasSample = YES;
-//    [self showProgressHUDWithMessage:@"waiting..."];
+    //    [self showProgressHUDWithMessage:@"waiting..."];
     cmd.CMDCallBack = ^(HCCallbackResult * result)
     {
-//        [self hideProgressHUD:YES];
+        //        [self hideProgressHUD:YES];
         if(result.Code==0)
         {
             if (result.Data) {
@@ -1218,7 +1220,7 @@ static MusicDetailViewController * _instanceDetailItem;
         }
     };
     if ([cmd sendCMD]) {
-//        [self hideProgressHUD:YES];
+        //        [self hideProgressHUD:YES];
     }
 }
 
@@ -1261,35 +1263,35 @@ static MusicDetailViewController * _instanceDetailItem;
 }
 - (BOOL)downloadUserAudio:(MTV *)mtv
 {
-//    if(!mtv || mtv.MTVID==0) return NO;
-//    if(!mtv.AudioRemoteUrl || mtv.AudioRemoteUrl.length<3) return NO;
-//    
-//    if(![mediaEditManager_ checkAudioPath:mtv])
-//    {
-//        [[VDCManager shareObject]downloadUrl:mtv.AudioRemoteUrl
-//                                       title:[NSString stringWithFormat:@"%@ 用户音频",mtv.Title]
-//                                    urlReady:^(VDCItem *vdcItem, NSURL *videoUrl) {
-//                                        
-//                                    } progress:^(VDCItem *vdcItem) {
-//                                        
-//                                    } completed:^(VDCItem *vdcItem, BOOL completed, VDCTempFileInfo *tempFile) {
-//                                        if([HCFileManager isFileExistAndNotEmpty:vdcItem.localFilePath size:nil])
-//                                        {
-//                                            if(mtv.AudioFileName && mtv.AudioFileName.length>0)
-//                                            {
-//                                                [HCFileManager copyFile:vdcItem.localFilePath target:[mtv getAudioPathN] overwrite:YES];
-//                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:YES];
-//                                            }
-//                                            else
-//                                            {
-//                                                [mtv setAudioPathN:vdcItem.localFileName];
-//                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:NO];
-//                                                //                                                [[MTVUploader sharedMTVUploader]updateMTVKeyAndUserID:mtv];
-//                                            }
-//                                        }
-//                                    }];
-//        return YES;
-//    }
+    //    if(!mtv || mtv.MTVID==0) return NO;
+    //    if(!mtv.AudioRemoteUrl || mtv.AudioRemoteUrl.length<3) return NO;
+    //
+    //    if(![mediaEditManager_ checkAudioPath:mtv])
+    //    {
+    //        [[VDCManager shareObject]downloadUrl:mtv.AudioRemoteUrl
+    //                                       title:[NSString stringWithFormat:@"%@ 用户音频",mtv.Title]
+    //                                    urlReady:^(VDCItem *vdcItem, NSURL *videoUrl) {
+    //
+    //                                    } progress:^(VDCItem *vdcItem) {
+    //
+    //                                    } completed:^(VDCItem *vdcItem, BOOL completed, VDCTempFileInfo *tempFile) {
+    //                                        if([HCFileManager isFileExistAndNotEmpty:vdcItem.localFilePath size:nil])
+    //                                        {
+    //                                            if(mtv.AudioFileName && mtv.AudioFileName.length>0)
+    //                                            {
+    //                                                [HCFileManager copyFile:vdcItem.localFilePath target:[mtv getAudioPathN] overwrite:YES];
+    //                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:YES];
+    //                                            }
+    //                                            else
+    //                                            {
+    //                                                [mtv setAudioPathN:vdcItem.localFileName];
+    //                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:NO];
+    //                                                //                                                [[MTVUploader sharedMTVUploader]updateMTVKeyAndUserID:mtv];
+    //                                            }
+    //                                        }
+    //                                    }];
+    //        return YES;
+    //    }
     return NO;
 }
 
@@ -1299,13 +1301,13 @@ static MusicDetailViewController * _instanceDetailItem;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(willResignActive:) name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(didBecomeActive:) name:UIApplicationDidBecomeActiveNotification object:nil];
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordStarted:) name:NT_STARTRECORD object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordStopped:) name:NT_STOPRECORD object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordMeterChanged:) name:NT_RECORDMETERCHANGED object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCancelStatusChanged:) name:NT_CANSENDSTATUSCHANGED object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didIWantSing:) name:NT_IWANTSING object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBeginPlayAudio:) name:NT_BEGINPLAYAUDIO object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndPlayAudio:) name:NT_ENDPLAYAUDIO object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordStarted:) name:NT_STARTRECORD object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordStopped:) name:NT_STOPRECORD object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didRecordMeterChanged:) name:NT_RECORDMETERCHANGED object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didCancelStatusChanged:) name:NT_CANSENDSTATUSCHANGED object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didIWantSing:) name:NT_IWANTSING object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBeginPlayAudio:) name:NT_BEGINPLAYAUDIO object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didEndPlayAudio:) name:NT_ENDPLAYAUDIO object:nil];
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(beginFullScreen) name:UIWindowDidBecomeVisibleNotification object:nil];//进入全屏
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(endFullScreen) name:UIWindowDidBecomeHiddenNotification object:nil];//退出全屏
 }
@@ -1314,22 +1316,22 @@ static MusicDetailViewController * _instanceDetailItem;
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationWillResignActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter]removeObserver:self name:UIApplicationDidBecomeActiveNotification object:nil];
     
-//    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_IWANTSING object:nil];
-//    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_BEGINPLAYAUDIO object:nil];
-//    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_ENDPLAYAUDIO object:nil];
-//    
-//    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIWindowDidBecomeVisibleNotification object:nil];
-//    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIWindowDidBecomeHiddenNotification object:nil];
-//    
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_STARTRECORD object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_STOPRECORD object:nil];
-//    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_CANSENDSTATUSCHANGED object:nil];
+    //    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_IWANTSING object:nil];
+    //    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_BEGINPLAYAUDIO object:nil];
+    //    [[NSNotificationCenter defaultCenter]removeObserver:self name:NT_ENDPLAYAUDIO object:nil];
+    //
+    //    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIWindowDidBecomeVisibleNotification object:nil];
+    //    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIWindowDidBecomeHiddenNotification object:nil];
+    //
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_STARTRECORD object:nil];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_STOPRECORD object:nil];
+    //    [[NSNotificationCenter defaultCenter] removeObserver:self name:NT_CANSENDSTATUSCHANGED object:nil];
 }
 - (void)willResignActive:(NSNotification *)notification
 {
-//    if ([self isKeyboardShow]) {
-//        [self dismissKeyboard];
-//    }
+    //    if ([self isKeyboardShow]) {
+    //        [self dismissKeyboard];
+    //    }
     //    [((AppDelegate *)[UIApplication sharedApplication].delegate) decBackgroundRef];
 }
 - (void)didBecomeActive:(NSNotification*)notification
@@ -1405,7 +1407,7 @@ static MusicDetailViewController * _instanceDetailItem;
     //    }
     
     [self doChangeOrientaion:or prevOrietation:lastOrientation_ count:0];
-//    [super deviceOrientChange:notification];
+    //    [super deviceOrientChange:notification];
     lastOrientation_ = or;
 }
 - (void)doChangeOrientaion:(UIDeviceOrientation)or prevOrietation:(UIDeviceOrientation)prevOr count:(int)count
@@ -1434,12 +1436,12 @@ static MusicDetailViewController * _instanceDetailItem;
         if(or==UIDeviceOrientationLandscapeLeft)
         {
             [playContainerView_ doFullScreen:CGRectMake(0, 0, config_.Height, config_.Width)];
-//            [self doFullScreen:UIInterfaceOrientationLandscapeRight];
+            //            [self doFullScreen:UIInterfaceOrientationLandscapeRight];
         }
         else
         {
             [playContainerView_ doFullScreen:CGRectMake(0, 0, config_.Height, config_.Width)];
-//            [self doFullScreen:UIInterfaceOrientationLandscapeLeft];
+            //            [self doFullScreen:UIInterfaceOrientationLandscapeLeft];
         }
         //        lastOrientationChangeTime_ = [NSDate date];
         lastOrientationDone_ = or;
@@ -1514,291 +1516,92 @@ static MusicDetailViewController * _instanceDetailItem;
 {
     
     if(currentSample_ && [currentSample_ hasVideo])
-//       && currentMtv_.UserID !=userManager_.userID)
+        //       && currentMtv_.UserID !=userManager_.userID)
     {
         return YES;
     }
     return NO;
 }
-//- (void)doFullScreen:(UIInterfaceOrientation)orientation
-//{
-//    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
-//    
-//    NSLog(@"landscape...");
-//    if(![self isFullScreen])
-//    {
-////        [self hidePopView:nil];
-//        [UIView animateWithDuration:0.35 animations:^(void)
-//         {
-//             self.view.transform = CGAffineTransformIdentity;
-//             
-//             //        if(!UIInterfaceOrientationIsLandscape(orientation))
-//             //        {
-//             CGFloat width = config_.Height;
-//             CGFloat height = config_.Width;
-//             
-//             if(currentMtv_.IsLandscape)
-//             {
-//                 if(orientation == UIInterfaceOrientationLandscapeLeft)
-//                 {
-//                     self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
-//                 }
-//                 else
-//                     self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-//                 //        }
-//                 
-//                 self.view.bounds = CGRectMake(0.0, 0.0, config_.Height,config_.Width);
-//             }
-//             else
-//             {
-//                 width = config_.Width;
-//                 height = config_.Height;
-//             }
-//             playFrameForPortrait_ = playContainerView_.frame;
-//             CGRect playFrame = CGRectMake(0, 0,width, height);
-//             
-//             CGFloat progressHeight = progressView_.frame.size.height;
-//             if(currentMtv_.AudioRemoteUrl && currentMtv_.AudioRemoteUrl.length>2)
-//             {
-//                 progressView_.GuideAudioBtn.hidden = NO;
-//             }
-//             else
-//             {
-//                 progressView_.GuideAudioBtn.hidden = YES;
-//             }
-//             if(![self currentItemIsSample])
-//             {
-//                 progressView_.isGuidAudioShow = NO;
-//             }
-//             
-//             
-//             progressView_.isRecordButtonShow = [self canShowRecordBtn];// && currentMtv_.IsLandscape; //只有横屏才能显示，否则位置不够
-//
-//             [progressView_ changeFrame:CGRectMake(0, height - progressHeight, width, progressHeight)];
-//             progressView_.isFullScreen = YES;
-//             
-//             [self.view bringSubviewToFront:progressView_];
-//             
-//             [self addPanGestureRecognizer];
-//             
-//             playContainerView_.frame = CGRectMake(0, 0,width , height );
-//             
-//             [mplayer_ resizeViewToRect:playFrame andUpdateBounds:YES withAnimation:NO hidden:NO changed:nil];
-//             
-//             cover_.frame = playFrame;
-//             
-//             [maxPannel_ setMTVItem:currentMtv_ sample:currentSample_];
-//             //             maxPannel_.MTVItem = currentMtv_;
-//             [maxPannel_ changeFrame:CGRectMake(0, 0, width, 40)];
-//             maxPannel_.hidden = NO;
-//             maxPannel_.ShowGuideAudio = NO;
-//             authorInfoView_.hidden = YES;
-//             tagsContainerView_.hidden = YES;
-//             swipeContainerView_.hidden = YES;
-////             playerVisualEffectView_.hidden = YES;
-////             recordReminderView_.hidden = YES;
-//             playPannel_.hidden = YES;
-//             returnBtn_.hidden = YES;
-//             //reportBtn_.hidden = YES;
-//             commentSwitch_.hidden = YES;
-////             inputToolView_.hidden = YES;
-//             
-//             if([playPannel_ getUseGuidAudio])
-//             {
-//                 [progressView_ setGuidAudio:YES];
-//                 [maxPannel_ setUseGuidAudio:YES];
-//                 [maxPannel_ hideGuidAudio];
-//             }
-//             else
-//             {
-//                 [progressView_ setGuidAudio:NO];
-//                 [maxPannel_ setUseGuidAudio:NO];
-//                 [maxPannel_ hideGuidAudio];
-//             }
-//             
-//             
-//             NSLog(@"landscape height:%.1f",height);
-//             [self showPlayOrPause:height];
-//             //centerPlayBtn_.center = mplayer_.center;
-//             
-//             //不显示歌词，因此注释。因为歌词已经合成到视频中
-////             [mplayer_ showLyric:currentMtv_.Lyric singleLine:YES container:mplayer_];
-//             
-//             if(!mplayer_.commentListView)
-//             {
-//                 [self initCommentView];
-//             }
-//             else
-//             {
-//                 [mplayer_.commentManager setObject:currentMtv_.MTVID>0?HCObjectTypeMTV:HCObjectTypeSample objectID:(currentMtv_.MTVID>0?currentMtv_.MTVID:currentMtv_.SampleID)];
-//                 [mplayer_ refreshComment];
-//             }
-//             
-//             [progressView_ show:YES autoHide:YES];
-//             
-//             [self bringToolBar2Front];
-//             
-//             // 判断要不要显示弹幕
-//             if ([self canShowComment] && mplayer_ && mplayer_.playing) {
-//                 [mplayer_ showComments];
-//             } else {
-//                 [mplayer_ hideComments];
-//             }
-//         
-//             [playContainerView_ bringSubviewToFront:playPannel_];
-//             [playContainerView_ bringSubviewToFront:maxPannel_];
-//             [playContainerView_ bringSubviewToFront:progressView_];
-//             
-//             [mplayer_ resetCommentsFrame:mplayer_.frame container:self.view textContainer:self.view];
-//             
-//             //        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
-//             
-//             
-//             NSLog(@"player frame:%@",NSStringFromCGRect(mplayer_.frame));
-//         }];
-//    }
-//    else
-//    {
-//        if(currentMtv_.IsLandscape)
-//        {
-//            [UIView animateWithDuration:0.35 animations:^(void)
-//             {
-//                 if(orientation == UIInterfaceOrientationLandscapeLeft)
-//                     self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
-//                 else
-//                     self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-//                 self.view.bounds = CGRectMake(0.0, 0.0, config_.Height,config_.Width);
-//             }];
-//        }
-//    }
-//    //    else
-//    //    {
-//    //        self.view.transform = CGAffineTransformIdentity;
-//    //
-//    //        if(orientation == UIInterfaceOrientationPortraitUpsideDown)
-//    //        {
-//    //            self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
-//    //             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft animated:NO];
-//    //        }
-//    //        else if(orientation == UIInterfaceOrientationPortrait)
-//    //        {
-//    //            self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
-//    //             [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeRight animated:NO];
-//    //        }
-//    //        //        else if(orientation == UIInterfaceOrientationLandscapeLeft)
-//    //        //        {
-//    //        //            self.view.transform = CGAffineTransformMakeRotation(0 - M_PI);
-//    //        //        }
-//    //        self.view.bounds = CGRectMake(0.0, 0.0, config_.Height,config_.Width);
-//    //    }
-//}
-//- (void)initCommentView
-//{
-//    if(!mplayer_) return;
-//    // 先注释掉
-////    if(!mplayer_)
-////    {
-////        CGRect playerFrame = [self getPlayerFrame];
-////        //        mplayer_ = [WTVideoPlayerView sharedWTVideoPlayerView];
-////        mplayer_ = [[WTVideoPlayerView alloc]initWithFrame:playerFrame];
-////    }
-//    [mplayer_ initComments:self.view textContainer:self.view inputTag:600 objectType:(currentMtv_.MTVID>0?HCObjectTypeMTV:HCObjectTypeSample) objectID:(currentMtv_.MTVID>0?currentMtv_.MTVID:currentMtv_.SampleID)];
-//    [mplayer_ resetCommentsFrame:mplayer_.frame container:self.view textContainer:self.view];
-//}
-//- (void)cancelFullScreen:(UIInterfaceOrientation)orientation
-//{
-////    if ([[HWindowStack shareObject] getLastVc] == self) {
-////        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
-////    }
-//    if([self isFullScreen])
-//    {
-////        [self hidePopView:nil];
-//        
-//        self.view.transform = CGAffineTransformIdentity;
-//        self.view.bounds = CGRectMake(0.0, 0.0, config_.Width,config_.Height);
-//        
-//        CGRect playFrame = CGRectMake(0, 0, playFrameForPortrait_.size.width, playFrameForPortrait_.size.height - PLAYPANNEL_HEIGHT);
-//        
-//        CGFloat progressHeight = progressView_.frame.size.height;
-//        
-//        [mplayer_ removeLyric];
-//        // [mplayer_ hideComments];
-//        
-//        progressView_.GuideAudioBtn.hidden = YES;
-//        progressView_.isRecordButtonShow = NO;
-//        
-//        [progressView_ changeFrame:CGRectMake(0, playFrameForPortrait_.size.height - progressHeight - PLAYPANNEL_HEIGHT, playFrameForPortrait_.size.width, progressHeight)];
-//        progressView_.isFullScreen = NO;
-//        
-//        [self removePanGestureRecognizer];
-//        
-//        playContainerView_.frame = playFrameForPortrait_;
-//        
-//        [mplayer_ resizeViewToRect:playFrame andUpdateBounds:YES withAnimation:YES hidden:NO changed:nil];
-//        cover_.frame = playFrame;
-//        
-//        maxPannel_.hidden = YES;
-////        inputToolView_.hidden = NO;
-//        authorInfoView_.hidden = NO;
-//        tagsContainerView_.hidden = NO;
-//        swipeContainerView_.hidden = NO;
-////        playerVisualEffectView_.hidden=NO;
-//        progressView_.hidden = NO;
-//        playPannel_.hidden = NO;
-//        returnBtn_.hidden = NO;
-//        //reportBtn_.hidden = NO;
-//        commentSwitch_.hidden = NO;
-//        [playPannel_ setMTVItem:currentMtv_ sample:currentSample_];
-//        
-//        if([maxPannel_ getUseGuidAudio])
-//        {
-//            playPannel_.useGuidAudio = YES;
-//        }
-//        else
-//        {
-//            playPannel_.useGuidAudio = NO;
-//        }
-//        
-//        NSLog(@"playframeforportain:%@",NSStringFromCGRect(playFrameForPortrait_));
-//        //计算可见区域
-//        [self showPlayOrPause:playFrameForPortrait_.size.height + playFrameForPortrait_.origin.y];
-//        //centerPlayBtn_.center = mplayer_.center;
-//        
-//        [progressView_ show:YES autoHide:NO];
-//        
-//        [self bringToolBar2Front];
-//        
-//        [playContainerView_ bringSubviewToFront:playPannel_];
-//        [playContainerView_ bringSubviewToFront:maxPannel_];
-//        [playContainerView_ bringSubviewToFront:progressView_];
-//        
-//        
-//        // 判断要不要显示弹幕
-//        if ([self isMaxWindowPlay]) {
-//            [mplayer_ resetCommentsFrame:mplayer_.frame container:self.view textContainer:self.view];
-//        } else {
-//            CGRect frame = mplayer_.frame;
-//            frame.size.height = playerHeightMax_;
-//            [mplayer_ resetCommentsFrame:frame container:self.view textContainer:self.view];
-//            [mplayer_ hideComments];
-//        }
-//        
-//        [[UIApplication sharedApplication] setStatusBarOrientation:orientation animated:NO];
-//    }
-//    
-//    //    if(UIInterfaceOrientationIsLandscape(self.interfaceOrientation))
-//    //    {
-//    //        self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
-//    //        self.view.bounds = CGRectMake(0.0, 0.0, config_.Width,config_.Height);
-//    //    }
-//}
+- (void)doFullScreen:(UIInterfaceOrientation)orientation
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    
+    NSLog(@"landscape...");
+    if(![playContainerView_ isFullScreen])
+    {
+        //        [self hidePopView:nil];
+        [UIView animateWithDuration:0.35 animations:^(void)
+         {
+             self.view.transform = CGAffineTransformIdentity;
+             
+             //        if(!UIInterfaceOrientationIsLandscape(orientation))
+             //        {
+             CGFloat width = config_.Height;
+             CGFloat height = config_.Width;
+             
+             if(currentMtv_.IsLandscape)
+             {
+                 if(orientation == UIInterfaceOrientationLandscapeLeft)
+                 {
+                     self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
+                 }
+                 else
+                     self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
+                 //        }
+                 
+                 self.view.bounds = CGRectMake(0.0, 0.0, config_.Height,config_.Width);
+             }
+             else
+             {
+                 width = config_.Width;
+                 height = config_.Height;
+             }
+             playFrameForPortrait_ = playContainerView_.frame;
+//             [playContainerView_ resizeViews:CGRectMake(0, 0,width , height )];
+             [playContainerView_ doFullScreen:CGRectMake(0, 0,width , height )];
+             NSLog(@"player frame:%@",NSStringFromCGRect(playContainerView_.frame));
+         }];
+    }
+    else
+    {
+        if(currentMtv_.IsLandscape)
+        {
+            [UIView animateWithDuration:0.35 animations:^(void)
+             {
+                 if(orientation == UIInterfaceOrientationLandscapeLeft)
+                     self.view.transform = CGAffineTransformMakeRotation(0 - M_PI_2);
+                 else
+                     self.view.transform = CGAffineTransformMakeRotation(M_PI_2);
+                 self.view.bounds = CGRectMake(0.0, 0.0, config_.Height,config_.Width);
+             }];
+        }
+    }
+}
+- (void)cancelFullScreen:(UIInterfaceOrientation)orientation
+{
+    //    if ([[HWindowStack shareObject] getLastVc] == self) {
+    //        [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:NO];
+    //    }
+    if([playContainerView_ isFullScreen])
+    {
+        [UIView animateWithDuration:0.35 animations:^(void)
+         {
+             self.view.transform = CGAffineTransformIdentity;
+             self.view.bounds = CGRectMake(0.0, 0.0, config_.Width,config_.Height);
+             
+             [playContainerView_ cancelFullScreen:playFrameForPortrait_];
+//             [playContainerView_ resizeViews:playFrameForPortrait_];
+         }];
+        [[UIApplication sharedApplication] setStatusBarOrientation:orientation animated:NO];
+    }
+}
 - (void)didRecordStarted:(NSNotification *)noti
 {
     if([NSThread isMainThread])
     {
-//        recordReminderView_.hidden = NO;
-//        recordReminderView_.isCancelMode = NO;
-//        [recordReminderView_ startRefreshVolume];
+        //        recordReminderView_.hidden = NO;
+        //        recordReminderView_.isCancelMode = NO;
+        //        [recordReminderView_ startRefreshVolume];
     }
     else
     {
@@ -1813,8 +1616,8 @@ static MusicDetailViewController * _instanceDetailItem;
 {
     if([NSThread isMainThread])
     {
-//        recordReminderView_.hidden = YES;
-//        [recordReminderView_ stopRefreshVolume];
+        //        recordReminderView_.hidden = YES;
+        //        [recordReminderView_ stopRefreshVolume];
     }
     else
     {
@@ -1827,13 +1630,13 @@ static MusicDetailViewController * _instanceDetailItem;
 - (void)didRecordMeterChanged:(NSNotification *)noti
 {
     double meter = [[noti.userInfo objectForKey:@"meters"] doubleValue];
-//    [recordReminderView_ setCurrentMeter:(CGFloat)meter];
+    //    [recordReminderView_ setCurrentMeter:(CGFloat)meter];
 }
 //- NT_RECORDMETERCHANGED
 
 - (void)didCancelStatusChanged:(NSNotification *)noti
 {
-//    recordReminderView_.isCancelMode = [[noti.userInfo objectForKey:@"cancelSend"] boolValue];
+    //    recordReminderView_.isCancelMode = [[noti.userInfo objectForKey:@"cancelSend"] boolValue];
 }
 
 - (void)didIWantSing:(NSNotification *)noti
@@ -1841,8 +1644,8 @@ static MusicDetailViewController * _instanceDetailItem;
     //    if (playOrPause_.selected) {
     //        [self tempPlayPauseBtnClick:nil];
     //    }
-//    [self pauseItem:nil];
-//    [self removePlayerInThread];
+    //    [self pauseItem:nil];
+    //    [self removePlayerInThread];
 }
 //-(void)clickEditButton:(id)sender
 //{
@@ -1868,17 +1671,17 @@ static MusicDetailViewController * _instanceDetailItem;
 
 - (void)didBeginPlayAudio:(NSNotification *)noti
 {
-//    needPlayAfterPause_ = mplayer_.playing;
-//    if (needPlayAfterPause_) {
-//        [self pauseItem:nil];
-//    }
+    //    needPlayAfterPause_ = mplayer_.playing;
+    //    if (needPlayAfterPause_) {
+    //        [self pauseItem:nil];
+    //    }
 }
 
 - (void)didEndPlayAudio:(NSNotification *)noti
 {
-//    if (needPlayAfterPause_) {
-//        [self playItem:nil seconds:-1];
-//    }
+    //    if (needPlayAfterPause_) {
+    //        [self playItem:nil seconds:-1];
+    //    }
 }
 
 //#pragma mark - PanGestureRecognizer
@@ -1886,7 +1689,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //{
 ////    MLNavigationController * nav = (MLNavigationController *)(self.navigationController);
 ////    nav.canDragBack = NO;
-//    
+//
 //    if (!panRecognizer_) {
 //        panRecognizer_ = [[UIPanGestureRecognizer alloc]initWithTarget:self
 //                                                                action:@selector(paningGestureReceive:)];
@@ -1903,7 +1706,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //        [self.view removeGestureRecognizer:panRecognizer_];
 //        panRecognizer_ = nil;
 //    }
-//    
+//
 ////    MLNavigationController * nav = (MLNavigationController *)(self.navigationController);
 ////    nav.canDragBack = YES;
 //}
@@ -1914,7 +1717,7 @@ static MusicDetailViewController * _instanceDetailItem;
 {
     [playContainerView_ endBackgroundTask];
     [self readyToRelease];
-//    [super returnToParent:sender];
+    //    [super returnToParent:sender];
 }
 - (void)readyToRelease
 {
@@ -1924,9 +1727,9 @@ static MusicDetailViewController * _instanceDetailItem;
     ////        [[AudioCenter shareAudioCenter] setAudioSessionForPlayBack];
     //    });
     
-//    [mediaEditManager_ setCacheDataBetweenWindows:nil sample:nil];
-//    [MediaEditManager shareObject].CurrentMTV = nil;
-//    [MediaEditManager shareObject].CurrentSample = nil;
+    //    [mediaEditManager_ setCacheDataBetweenWindows:nil sample:nil];
+    //    [MediaEditManager shareObject].CurrentMTV = nil;
+    //    [MediaEditManager shareObject].CurrentSample = nil;
     
     [playContainerView_ clearPlayBackinfo];
     //    [[UIApplication sharedApplication]endReceivingRemoteControlEvents];
@@ -1937,24 +1740,24 @@ static MusicDetailViewController * _instanceDetailItem;
     [self stopCacheMTV:nil];
     [playContainerView_ pause];
     [playContainerView_ readyToRelease];
-////    if (mplayer_) {
-////        [self removePlayerInThread];
-////    }
-////    if(leaderPlayer_)
-////    {
-////        [leaderPlayer_ stop];
-////        leaderPlayer_ = nil;
-////    }
-////    [progressView_ readyToRelease];
-////    [playPannel_ readyToRelease];
-////    
-//    if(commentManager_)
-//    {
-//        [commentManager_ stopCommentTimer];
-//        [commentManager_ readyToRelease];
-//        commentManager_ = nil;
-//    }
-//    [super readyToRelease];
+    ////    if (mplayer_) {
+    ////        [self removePlayerInThread];
+    ////    }
+    ////    if(leaderPlayer_)
+    ////    {
+    ////        [leaderPlayer_ stop];
+    ////        leaderPlayer_ = nil;
+    ////    }
+    ////    [progressView_ readyToRelease];
+    ////    [playPannel_ readyToRelease];
+    ////
+    //    if(commentManager_)
+    //    {
+    //        [commentManager_ stopCommentTimer];
+    //        [commentManager_ readyToRelease];
+    //        commentManager_ = nil;
+    //    }
+    //    [super readyToRelease];
 }
 - (void)dealloc
 {
@@ -1995,11 +1798,11 @@ static MusicDetailViewController * _instanceDetailItem;
 //            [self pauseItem:nil];
 //            [self hidePlayerWaitingView];
 //        }else{
-//            
+//
 //            //30分钟内不再提示
 //            [UserManager sharedUserManager].currentSettings.DownloadVia3G = YES;
 //            [[UserManager sharedUserManager] disableNotickeFor3G];
-//            
+//
 //            [self playItem:nil seconds:-1];
 //        }
 //    }
@@ -2011,7 +1814,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //    //    {
 //    //
 //    //    }
-//    
+//
 //}
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
@@ -2076,65 +1879,65 @@ static MusicDetailViewController * _instanceDetailItem;
     //    }
     //    else
     //    {
-//    MTV * mtv = [self getCurrentMTV];
-//    ri.ObjectType = (int)HCObjectTypeMTV;
-//    ri.ObjectID = mtv.MTVID;
-//    ri.UrlString = mtv.DownloadUrl;
-//    ri.TargetNickName = mtv.Author;
-//    ri.TargetUserID = mtv.UserID;
-//    //    }
-//    ri.NickName = [UserManager sharedUserManager].currentUser.NickName;
-//    ri.UserID = [UserManager sharedUserManager].currentUser.UserID;
-//    ri.ReportReason = reason;
-//    //    int tag = (int)reasonIndicator_.tag +1000;
-//    //    if(tag >=3000)
-//    //    {
-//    //        UILabel * lbl = (UILabel *)[reasonView_ viewWithTag:tag];
-//    //        if(lbl)
-//    //        {
-//    //            ri.ReportReason = lbl.text;
-//    //        }
-//    //    }
-//    ri.Message = @"";//reasonMore_.text;
-//    
-//    NSString * msg =  @"提交举报信息失败，请稍后重试!";
-//    CMD_CREATEN(cmd,ReportItem);
-//    cmd.data = ri;
-//    cmd.CMDCallBack = ^(HCCallbackResult * result)
-//    {
-//        if(result.Code==0)
-//        {
-//            //            [self returnToParent:nil];
-//        }
-//        else
-//        {
-//            NSString * newMsg = msg;
-//            if(result.Msg && result.Msg.length>0)
-//            {
-//                newMsg = [NSString stringWithFormat:@"%@\n%@",msg,result.Msg];
-//            }
-//            SNAlertView * alertView = [[SNAlertView alloc]initWithTitle:MSG_ERROR
-//                                                                message:newMsg
-//                                                               delegate:nil
-//                                                      cancelButtonTitle:EDIT_OK
-//                                                      otherButtonTitles:nil];
-//            [alertView show];
-//            alertView = nil;
-//        }
-//    };
-//    if(![cmd sendCMD])
-//    {
-//        SNAlertView * alertView = [[SNAlertView alloc]initWithTitle:MSG_ERROR message:msg delegate:nil cancelButtonTitle:EDIT_OK otherButtonTitles:nil];
-//        [alertView show];
-//        alertView = nil;
-//    }
+    //    MTV * mtv = [self getCurrentMTV];
+    //    ri.ObjectType = (int)HCObjectTypeMTV;
+    //    ri.ObjectID = mtv.MTVID;
+    //    ri.UrlString = mtv.DownloadUrl;
+    //    ri.TargetNickName = mtv.Author;
+    //    ri.TargetUserID = mtv.UserID;
+    //    //    }
+    //    ri.NickName = [UserManager sharedUserManager].currentUser.NickName;
+    //    ri.UserID = [UserManager sharedUserManager].currentUser.UserID;
+    //    ri.ReportReason = reason;
+    //    //    int tag = (int)reasonIndicator_.tag +1000;
+    //    //    if(tag >=3000)
+    //    //    {
+    //    //        UILabel * lbl = (UILabel *)[reasonView_ viewWithTag:tag];
+    //    //        if(lbl)
+    //    //        {
+    //    //            ri.ReportReason = lbl.text;
+    //    //        }
+    //    //    }
+    //    ri.Message = @"";//reasonMore_.text;
+    //
+    //    NSString * msg =  @"提交举报信息失败，请稍后重试!";
+    //    CMD_CREATEN(cmd,ReportItem);
+    //    cmd.data = ri;
+    //    cmd.CMDCallBack = ^(HCCallbackResult * result)
+    //    {
+    //        if(result.Code==0)
+    //        {
+    //            //            [self returnToParent:nil];
+    //        }
+    //        else
+    //        {
+    //            NSString * newMsg = msg;
+    //            if(result.Msg && result.Msg.length>0)
+    //            {
+    //                newMsg = [NSString stringWithFormat:@"%@\n%@",msg,result.Msg];
+    //            }
+    //            SNAlertView * alertView = [[SNAlertView alloc]initWithTitle:MSG_ERROR
+    //                                                                message:newMsg
+    //                                                               delegate:nil
+    //                                                      cancelButtonTitle:EDIT_OK
+    //                                                      otherButtonTitles:nil];
+    //            [alertView show];
+    //            alertView = nil;
+    //        }
+    //    };
+    //    if(![cmd sendCMD])
+    //    {
+    //        SNAlertView * alertView = [[SNAlertView alloc]initWithTitle:MSG_ERROR message:msg delegate:nil cancelButtonTitle:EDIT_OK otherButtonTitles:nil];
+    //        [alertView show];
+    //        alertView = nil;
+    //    }
 }
 //#pragma mark - pan moving
 //- (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
 //{
 //    if(![progressView_ isFullScreen]) return;
 //    isCanMove_ = YES;
-//    
+//
 //    CGPoint touchPoint = [recoginzer locationInView:self.view];
 //    if(isCanMove_)
 //    {
@@ -2145,7 +1948,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //- (void)moveWithPan:(CGPoint)point  state:(UIGestureRecognizerState)state
 //{
 //    CGPoint touchPoint = point;// [recoginzer locationInView:KEY_WINDOW];
-//    
+//
 //    if (state == UIGestureRecognizerStateBegan)
 //    {
 //        [self beginMoving:point];
@@ -2157,7 +1960,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //    }else if (state == UIGestureRecognizerStateCancelled){
 //        return;
 //    }
-//    
+//
 //    if (isMoving_ && objectMovingID_>=0) {
 //        [self moveTrackObjectInView:touchPoint viewID:objectMovingID_];
 //    }
@@ -2178,9 +1981,9 @@ static MusicDetailViewController * _instanceDetailItem;
 //        isMoving_ = NO;
 //        return;
 //    }
-//    
+//
 //    NSLog(@"begin move...");
-//    
+//
 //    if(mplayer_ && mplayer_.playing)
 //    {
 //        needPlaying_ = YES;
@@ -2190,13 +1993,13 @@ static MusicDetailViewController * _instanceDetailItem;
 //    {
 //        needPlaying_ = NO;
 //    }
-//    
+//
 //    touchPointStart_ = point;
 //    if(objectMovingID_ == TAG_SCROLLRECT)
 //    {
 //        lastSecondsBeMoving_ = CMTimeGetSeconds([mplayer_ durationWhen]);
 //    }
-//    
+//
 //    isMoving_ = YES;
 //}
 //- (void)moveDone:(CGPoint)point
@@ -2217,7 +2020,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //- (void)    moveTrackObjectInView:(CGPoint)touchPoint viewID:(NSInteger)objectMovedTagID
 //{
 //    if(isMoving_==NO) return;
-//    
+//
 //    if(objectMovedTagID == TAG_SCROLLRECT)
 //    {
 //        CGFloat targetPosx = touchPoint.x - touchPointStart_.x;
@@ -2225,7 +2028,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //        if(progressLength <=0) return;
 //        CGFloat seconds = targetPosx / progressLength * [progressView_ totalSeconds];
 //        [mplayer_ seek:seconds + lastSecondsBeMoving_ accurate:YES];
-//        
+//
 //        // refresh comment
 //        CGFloat commentSeconds = seconds + lastSecondsBeMoving_;
 //        if(commentSeconds < 0) commentSeconds = 0;
@@ -2241,7 +2044,7 @@ static MusicDetailViewController * _instanceDetailItem;
 //    if (!currentMtv_.IsLandscape) {
 //        scrollRect = CGRectMake(0, 40, config_.Width, config_.Height - 80);
 //    }
-//    
+//
 //    if(CGRectContainsPoint(scrollRect, point))
 //    {
 //        return TAG_SCROLLRECT;

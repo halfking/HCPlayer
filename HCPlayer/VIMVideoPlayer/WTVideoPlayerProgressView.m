@@ -1122,9 +1122,9 @@
     _isRecordButtonShow = pisRecordButtonShow;
     if(self.RecordBtn)
     {
-        if(self.RecordBtn.hidden==NO) return;
+        if(self.RecordBtn.hidden!=pisRecordButtonShow) return;
         else
-            self.RecordBtn.hidden = NO;
+            self.RecordBtn.hidden = !pisRecordButtonShow;
     }
     else
     {
@@ -1220,7 +1220,7 @@
 }
 - (void)paningGestureReceive:(UIPanGestureRecognizer *)recoginzer
 {
-    if(![self isFullScreen]) return;
+//    if(![self isFullScreen]) return;
     isCanMove_ = YES;
     
     CGPoint touchPoint = [recoginzer locationInView:self];
