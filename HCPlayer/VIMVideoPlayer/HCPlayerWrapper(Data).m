@@ -55,7 +55,10 @@
 }
 - (void)setTotalSeconds:(CGFloat)seconds
 {
-    progressView_.totalSeconds = seconds;
+    if(isnan(seconds))
+        seconds = 60;
+    [progressView_ setTotalSeconds:seconds];
+//    progressView_.totalSeconds = seconds;
 }
 - (BOOL)isFullScreen
 {
@@ -75,6 +78,17 @@
 - (BOOL)currentItemIsSample
 {
     return currentMTV_.MTVID == 0;
+}
+- (BOOL)isMVLandscape
+{
+    if(currentMTV_)
+        return currentMTV_.IsLandscape;
+    else
+        return NO;
+}
+- (BOOL)hasGuideAudio
+{
+    return currentMTV_.MTVID==0 && currentMTV_.AudioRemoteUrl && currentMTV_.AudioRemoteUrl.length>2;
 }
 //- (BOOL)isMaxWindowPlay
 //{

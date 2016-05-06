@@ -96,19 +96,19 @@
 - (BOOL) downloadUserAudio:(MTV *)mtv;
 - (void) playMTVItemWithMTVID:(long)MTVID;
 
-- (void) showProgressView:(id)sender;
-- (void) showProgressSync:(CGFloat)seconds;
+//- (void) showProgressView:(id)sender;
+//- (void) showProgressSync:(CGFloat)seconds;
 - (void) showButtonsPause;
 - (void) showButtonsPlaying;
 - (CGRect) getPlayerFrame;
-- (void) setTotalSeconds:(CGFloat)seconds;
+//- (void) setTotalSeconds:(CGFloat)seconds;
 
 //- (BOOL)isFullScreen;
 //- (BOOL)checkLoginStatus;
 
-- (void)initCommentView;
-- (BOOL)canShowComment;
-- (BOOL)isMaxWindowPlay;
+//- (void)initCommentView;
+//- (BOOL)canShowComment;
+//- (BOOL)isMaxWindowPlay;
 
 //- (UIImage *)getCoverImage;
 //- (void)loadTestData;

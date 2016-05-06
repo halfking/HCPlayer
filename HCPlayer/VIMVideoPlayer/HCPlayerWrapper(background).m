@@ -72,7 +72,7 @@
         
         //专辑缩略图
         UIImage * image =  [self getCoverImage];
-        if(!image) image = [UIImage imageNamed:@"mtvcover_icon.png"];
+        if(!image) image = [UIImage imageNamed:@"HCPlayer.bundle/mtvcover_icon.png"];
         
         MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:image];
         [dict setObject:artwork forKey:MPMediaItemPropertyArtwork];

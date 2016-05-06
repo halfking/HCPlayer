@@ -20,6 +20,8 @@
 - (BOOL)    isFullScreen;
 - (BOOL)    canShowRecordBtn;
 - (BOOL)    currentItemIsSample;
+- (BOOL)    isMVLandscape;
+- (BOOL)    hasGuideAudio;
 
 - (void)    showPlayerWaitingView;
 - (void)    hidePlayerWaitingView;

@@ -60,27 +60,28 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     UIImageView * playerWaitingView_;
     NSTimer * playerWaitingTimer_;
     CGFloat playerWaitingOffset_;
+    
+    //播放的范围
+    CGFloat playBeginSeconds_;
+    CGFloat playEndSeconds_;
+    BOOL playItemChanged_;
 }
 @property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate> delegate;
 + (instancetype)shareObject;
 
-- (BOOL) setPlayerData:(MTV *)item;
+- (BOOL) setPlayerData:(MTV *)item sample:(MTV *)sample;
 - (BOOL) setPlayerItem:(AVPlayerItem *)playerItem;
 - (BOOL) setPlayerUrl:(NSURL *)url;
 
 - (BOOL) setPlayRange:(CGFloat)beginSeconds end:(CGFloat)endSeconds;
-- (void) showComments;
-- (void) hideComments;
-- (void) showLyric;
-- (void) hideLyric;
 
 - (BOOL) play;
 - (BOOL) pause;
 - (BOOL) pauseWithCache;
 - (void) readyToRelease;
 
-- (void) fullScreen;
-- (void) normalScrenn:(CGRect)frame;
+- (void) doFullScreen:(CGRect)frame;
+- (void) cancelFullScreen:(CGRect)frame;
 - (void) resizeViews:(CGRect)frame;
 
 - (void)    bringToolBar2Front;

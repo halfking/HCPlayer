@@ -33,4 +33,5 @@
                   seconds:(CGFloat)seconds
                      play:(BOOL)play
 ;
+- (void)playItemWithPlayerItem:(AVPlayerItem *)playerItem beginSeconds:(CGFloat)beginSeconds play:(BOOL)play;
 @end

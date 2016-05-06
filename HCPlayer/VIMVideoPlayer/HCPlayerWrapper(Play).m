@@ -39,7 +39,7 @@
     if (leaderPlayer_) {
         [leaderPlayer_ pause];
     }
-//    playOrPause_.enabled = YES;
+    //    playOrPause_.enabled = YES;
     
     [[UIApplication sharedApplication] setIdleTimerDisabled:NO];
 }
@@ -105,7 +105,7 @@
             needPlayLeader_ = YES; //需要人声同步
         }
     }
-//    playOrPause_.enabled = YES;
+    //    playOrPause_.enabled = YES;
     NSLog(@"playItemWithCoreEvents");
     
     [commentManager_ startCommentTimer];
@@ -207,6 +207,64 @@
     [maxPannel_ setUseGuidAudio:NO];
     [playPannel_ setUseGuidAudio:NO];
 #endif
+    
+    [self addSubview:mplayer_];
+    mplayer_.hidden = YES;
+    [self bringToolBar2Front];
+    if(beginSeconds>=0)
+    {
+        [mplayer_ seek:beginSeconds accurate:YES];
+        if(beginSeconds>0.1)
+        {
+            currentPlaySeconds_ = beginSeconds;
+        }
+    }
+    
+    __weak WTVideoPlayerView * weakPlayer  = mplayer_;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        __strong WTVideoPlayerView * player = weakPlayer;
+        
+        if(play)
+        {
+            [self playItemWithCoreEvents:beginSeconds];
+            [self recordPlayItemBegin];
+        }
+        player.alpha = 0;
+        player.hidden = NO;
+        [UIView animateWithDuration:0.35 animations:^{
+            player.alpha= 1;
+        } completion:^(BOOL finished) {
+        }];
+    });
+    //    mplayer_.alpha = 1;
+    //[self hideHUDViewInThread];
+}
+- (void)playItemWithPlayerItem:(AVPlayerItem *)playerItem beginSeconds:(CGFloat)beginSeconds play:(BOOL)play
+{
+    if (mplayer_) {
+        [self removePlayerInThread];
+    }
+    
+    [self hidePlayerWaitingView];
+    
+    CGRect playerFrame = [self getPlayerFrame];
+    if (!mplayer_) {
+        mplayer_ = [[WTVideoPlayerView alloc]initWithFrame:playerFrame];
+    }
+    else
+    {
+        [mplayer_ resizeViewToRect:playerFrame andUpdateBounds:YES withAnimation:NO hidden:NO changed:nil];
+    }
+    
+    mplayer_.userInteractionEnabled = NO;
+    mplayer_.delegate = self;
+    
+    [mplayer_ changeCurrentPlayerItem:playerItem];
+    mplayer_.playerItemKey = nil;
+    
+    [maxPannel_ setUseGuidAudio:NO];
+    [playPannel_ setUseGuidAudio:NO];
+    
     
     [self addSubview:mplayer_];
     mplayer_.hidden = YES;
@@ -382,7 +440,7 @@
                  if(mplayer_ && mplayer_.playing) return;
                  [NSThread sleepForTimeInterval:0.1];
                  if(mplayer_ && mplayer_.playing)
-                 return;
+                     return;
              }
              
              [self showButtonsPlaying];
@@ -466,7 +524,7 @@
         if([NSThread isMainThread])
         {
             if(!play)
-            [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
+                [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
             else
             {
                 [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
@@ -485,7 +543,7 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 if(!play)
-                [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
+                    [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
                 else
                 {
                     [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];

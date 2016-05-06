@@ -23,6 +23,7 @@
 - (void)refreshComment;
 - (void)resetComments;
 
+- (void)initCommentView;
 - (void)showComments;
 - (void)hideComments;
 - (void)refreshCommentsView:(CGFloat)durance;

@@ -103,6 +103,7 @@
 }
 - (void)resetLyricFrame:(CGRect)containerFrame
 {
+    if(!lyricView_) return;
     
     if([NSThread isMainThread])
     {
@@ -175,6 +176,19 @@
 }
 
 #pragma mark - comments
+- (void)initCommentView
+{
+    if(!mplayer_) return;
+    // 先注释掉
+    //    if(!mplayer_)
+    //    {
+    //        CGRect playerFrame = [self getPlayerFrame];
+    //        //        mplayer_ = [WTVideoPlayerView sharedWTVideoPlayerView];
+    //        mplayer_ = [[WTVideoPlayerView alloc]initWithFrame:playerFrame];
+    //    }
+    [self initComments:self textContainer:self.superview inputTag:600 objectType:(currentMTV_.MTVID>0?HCObjectTypeMTV:HCObjectTypeSample) objectID:(currentMTV_.MTVID>0?currentMTV_.MTVID:currentMTV_.SampleID)];
+    [self resetCommentsFrame:mplayer_.frame container:self textContainer:self.superview];
+}
 - (void)initComments:(UIView *)container textContainer:(UIView *)textContainer inputTag:(int)inputTag objectType:(HCObjectType) objectType objectID:(long)objectID
 {
     NSLog(@"comment view container frame = %@",NSStringFromCGRect(container.bounds));
