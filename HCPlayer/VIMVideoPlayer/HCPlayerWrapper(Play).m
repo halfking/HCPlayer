@@ -375,7 +375,7 @@
     [self showPlayerWaitingView];
     
     //    localFileVDCItem_  = [self getVDCItemByRemoveUrl:item path:path audioUrl:audioUrl];
-#ifdef USE_CACHEPLAYING
+
     VDCManager * vdcManager = [VDCManager shareObject];
     if([userManager_ enableCachenWhenPlaying])
     {
@@ -383,7 +383,7 @@
         localFileVDCItem_  = [WTVideoPlayerView getVDCItem:item Sample:nil];
         
         if((!localFileVDCItem_ || localFileVDCItem_.contentLength > localFileVDCItem_.downloadBytes)
-           && netStatus_==ReachableViaWWAN
+           && [DeviceConfig config].networkStatus==ReachableViaWWAN
            )
         {
             if([[UserManager sharedUserManager]canShowNotickeFor3G])
@@ -397,7 +397,7 @@
     }
     else
     {
-        if(netStatus_==ReachableViaWWAN)
+        if([DeviceConfig config].networkStatus==ReachableViaWWAN)
         {
             if([[UserManager sharedUserManager]canShowNotickeFor3G])
             {
@@ -408,23 +408,12 @@
             }
         }
     }
-#else
-    if([DeviceConfig config].networkStatus ==ReachableViaWWAN)
-    {
-        if([[UserManager sharedUserManager]canShowNotickeFor3G])
-        {
-            //[self hideHUDViewInThread];
-            [self hidePlayerWaitingView];
-            [self showNoticeForWWAN];
-            return NO;
-        }
-    }
-#endif
+
     //[self showHUDViewInThread];
     NSLog(@"playing ready to %@",path);
     [self showPlayerWaitingView];
     
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         
@@ -465,7 +454,8 @@
                  NSLog(@"**-- Play:%@",newPath?newPath:@"文件可能没有上传，但本地文件又不在了，所以会出现NULL值");
                  [self playItemChangeWithCoreEvents:newPath orgPath:weakPath mtv:item beginSeconds:seconds];
                  
-                 if (seconds <0.1 &&(([UserManager sharedUserManager].isFirstEnterMain && weakMtv.MTVID == 0) || weakMtv.UserID == userInfo_.UserID)) {
+                 if (seconds <0.1 &&(([UserManager sharedUserManager].isFirstEnterMain && weakMtv.MTVID == 0)
+                                     || weakMtv.UserID == [userManager_ userID])) {
                      //[self showTitleInThread:YES];
                  }
                  else
@@ -499,13 +489,6 @@
             
         });
     }
-#else
-    NSLog(@"playing item url begin:%@",path);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
-        
-    });
-#endif
     return YES;
 }
 
@@ -513,12 +496,12 @@
 {
     //    localFileVDCItem_ = [self getVDCItemByLocalFile:item path:path audioUrl:audioUrl];
     
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         localFileVDCItem_  = [WTVideoPlayerView getVDCItem:item Sample:nil];
         
-        mediaEditManager_.accompanyDownKey = localFileVDCItem_.key;
+//        mediaEditManager_.accompanyDownKey = localFileVDCItem_.key;
         
         NSLog(@"playing ready2 to %@",path);
         if([NSThread isMainThread])
@@ -529,7 +512,8 @@
             {
                 [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
                 //看别人的没有标题
-                if (seconds <0.1&&(([UserManager sharedUserManager].isFirstEnterMain && item.MTVID == 0) || item.UserID == userInfo_.UserID) ) {
+                if (seconds <0.1&&(([UserManager sharedUserManager].isFirstEnterMain && item.MTVID == 0)
+                                   || item.UserID == [userManager_ userID]) ) {
                     //[self showTitleInThread:YES];
                 }
                 else
@@ -548,7 +532,8 @@
                 {
                     [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
                     
-                    if (seconds <0.1&&(([UserManager sharedUserManager].isFirstEnterMain && item.MTVID == 0) || item.UserID == userInfo_.UserID) ) {
+                    if (seconds <0.1&&(([UserManager sharedUserManager].isFirstEnterMain && item.MTVID == 0)
+                                       || item.UserID == [userManager_ userID]) ) {
                         //[self showTitleInThread:YES];
                     }
                     else
@@ -592,33 +577,43 @@
             });
         }
     }
-#else
-    if([NSThread isMainThread])
+}
+#pragma mark - download user audio
+- (BOOL)downloadUserAudio:(MTV *)mtv
+{
+    if(!mtv || mtv.MTVID==0) return NO;
+    if(!mtv.AudioRemoteUrl || mtv.AudioRemoteUrl.length<3) return NO;
+    
+    localFileVDCItem_.AudioUrl = mtv.AudioRemoteUrl;
+    localFileVDCItem_.AudioFileName = mtv.AudioFileName;
+    if(![[VDCManager shareObject] checkAudioPath:localFileVDCItem_])
     {
-        if(!play)
-        {
-            [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
-        }
-        else
-        {
-            [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
-        }
+        [[VDCManager shareObject]downloadUrl:mtv.AudioRemoteUrl
+                                       title:[NSString stringWithFormat:@"%@ 用户音频",mtv.Title]
+                                    urlReady:^(VDCItem *vdcItem, NSURL *videoUrl) {
+                                        
+                                    } progress:^(VDCItem *vdcItem) {
+                                        
+                                    } completed:^(VDCItem *vdcItem, BOOL completed, VDCTempFileInfo *tempFile) {
+                                        if([HCFileManager isFileExistAndNotEmpty:vdcItem.localFilePath size:nil])
+                                        {
+                                            if(mtv.AudioFileName && mtv.AudioFileName.length>0)
+                                            {
+                                                [HCFileManager copyFile:vdcItem.localFilePath
+                                                                 target:[mtv getAudioPathN]
+                                                              overwrite:YES];
+                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:YES];
+                                            }
+                                            else
+                                            {
+                                                [mtv setAudioPathN:vdcItem.localFileName];
+                                                [[VDCManager shareObject]removeItem:vdcItem withTempFiles:YES includeLocal:NO];
+                                                //                                                [[MTVUploader sharedMTVUploader]updateMTVKeyAndUserID:mtv];
+                                            }
+                                        }
+                                    }];
+        return YES;
     }
-    else
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            
-            if(!play)
-            {
-                [self playItemChangeWithReady:path orgPath:path mtv:item beginSeconds:seconds play:NO];
-            }
-            else
-            {
-                [self playItemChangeWithCoreEvents:path orgPath:path mtv:item beginSeconds:seconds];
-                
-            }
-        });
-    }
-#endif
+    return NO;
 }
 @end

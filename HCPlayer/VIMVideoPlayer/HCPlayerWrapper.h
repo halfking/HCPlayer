@@ -89,4 +89,6 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 - (CGRect)  getPlayerFrame;
 - (MTV*)    getCurrentMTV;
 - (UIImage *) getCoverImage;
+- (void)    showButtonsPause;
+- (void)    showButtonsPlaying;
 @end
