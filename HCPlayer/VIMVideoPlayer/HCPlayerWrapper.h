@@ -10,6 +10,8 @@
 #import <hccoren/base.h>
 #import <HCBaseSystem/user_wt.h>
 #import <HCMVManager/MTV.h>
+#import <HCMVManager/Samples.h>
+
 #import "lyricView.h"
 #import "UICommentsView.h"
 #import "CommentViewManager.h"
@@ -43,6 +45,8 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     
     //播放的数据
     MTV * currentMTV_;
+    MTV * currentSample_;
+    
     AVPlayerItem * currentPlayerItem_;
     NSURL * currentUrl_;
     
@@ -51,9 +55,14 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     CGFloat lastPlaySecondsForBackInfo_;//??
     
     BOOL canShowPlaybackInfo_;  //后台播放显示相关的信息？
+    BOOL isPlayingWhenEnterBackground_;//在切入后台时，是否正在播放中
     
+    UIImageView * playerWaitingView_;
+    NSTimer * playerWaitingTimer_;
+    CGFloat playerWaitingOffset_;
 }
-@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate> delegate;
+@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate> delegate;
++ (instancetype)shareObject;
 
 - (BOOL) setPlayerData:(MTV *)item;
 - (BOOL) setPlayerItem:(AVPlayerItem *)playerItem;
@@ -67,14 +76,15 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 
 - (BOOL) play;
 - (BOOL) pause;
+- (BOOL) pauseWithCache;
 - (void) readyToRelease;
 
 - (void) fullScreen;
 - (void) normalScrenn:(CGRect)frame;
+- (void) resizeViews:(CGRect)frame;
 
-
-- (void) bringToolBar2Front;
-- (CGRect) getPlayerFrame;
-- (MTV*) getCurrentMTV;
+- (void)    bringToolBar2Front;
+- (CGRect)  getPlayerFrame;
+- (MTV*)    getCurrentMTV;
 - (UIImage *) getCoverImage;
 @end

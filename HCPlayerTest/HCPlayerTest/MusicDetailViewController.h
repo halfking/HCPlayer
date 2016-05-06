@@ -30,30 +30,33 @@
 #import "HCPlayerWrapper(background).h"
 #import "HCPlayerWrapper(lyric).h"
 #import "HCPlayerWrapper(Data).h"
+#import "HCPlayerWrapper(Play).h"
+
 #define DELAYSEC 0.1
 
 #define USE_CACHEPLAYING  //播放时是否使用缓存
 
-static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
+//static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 
 @interface MusicDetailViewController :UIViewController
 {
     // 播放区
-    UIView *playContainerView_;
-    UIButton *playOrPause_;
+    HCPlayerWrapper * playContainerView_;
+//    UIView *playContainerView_;
+//    UIButton *playOrPause_;
     
-    WTVideoPlayerView *mplayer_;
-    AVAudioPlayer *leaderPlayer_;
-    AVAudioPlayer *audioPlayer_;
-    CGFloat currentPlaySeconds_;
+//    WTVideoPlayerView *mplayer_;
+//    AVAudioPlayer *leaderPlayer_;
+//    AVAudioPlayer *audioPlayer_;
+//    CGFloat currentPlaySeconds_;
     BOOL pauseUnexpected_; // 未知原因中断
-    PlayRecord *record_;
+//    PlayRecord *record_;
     MTV *currentMtv_;
     MTV * currentSample_;
     
-#ifdef USE_CACHEPLAYING
-    VDCItem *localFileVDCItem_;
-#endif
+//#ifdef USE_CACHEPLAYING
+//    VDCItem *localFileVDCItem_;
+//#endif
     
 //    NetworkStatus netStatus_;
 //    UserInformation *userInfo_;
@@ -64,22 +67,22 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 //    CommentViewManager * commentManager_;
     
 //    LyricView *lyricView_;
-    WTVideoPlayerProgressView * progressView_;
-    WTPlayerControlPannel * playPannel_;
-    WTPlayerTopPannel * maxPannel_;
+//    WTVideoPlayerProgressView * progressView_;
+//    WTPlayerControlPannel * playPannel_;
+//    WTPlayerTopPannel * maxPannel_;
     
-    UIImageView * playerWaitingView_;
-    NSTimer * playerWaitingTimer_;
-    CGFloat playerWaitingOffset_;
+//    UIImageView * playerWaitingView_;
+//    NSTimer * playerWaitingTimer_;
+//    CGFloat playerWaitingOffset_;
     
-    BOOL canShowPlaybackInfo_;
-    BOOL needPlaying_;
+//    BOOL canShowPlaybackInfo_;
+//    BOOL needPlaying_;
     
     UIDeviceOrientation lastOrientation_;
     UIDeviceOrientation lastOrientationDone_;
     //    NSDate * lastOrientationChangeTime_;
-    CGFloat lastPlaySecondsForBackInfo_;
-    BOOL isAutoPlaying_;
+//    CGFloat lastPlaySecondsForBackInfo_;
+//    BOOL isAutoPlaying_;
 }
 @property (nonatomic,PP_STRONG) NSString * shareTitle;
 + (instancetype)shareObject;
@@ -100,13 +103,13 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 - (CGRect) getPlayerFrame;
 - (void) setTotalSeconds:(CGFloat)seconds;
 
-- (BOOL)isFullScreen;
+//- (BOOL)isFullScreen;
 //- (BOOL)checkLoginStatus;
 
 - (void)initCommentView;
 - (BOOL)canShowComment;
 - (BOOL)isMaxWindowPlay;
 
-- (UIImage *)getCoverImage;
+//- (UIImage *)getCoverImage;
 //- (void)loadTestData;
 @end

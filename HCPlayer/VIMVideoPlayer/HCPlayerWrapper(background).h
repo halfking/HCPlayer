@@ -16,6 +16,8 @@
 - (void) setMPNowPlayingInfo;
 - (void) clearPlayBackinfo;
 
+- (void) showPlayBackProgress:(CGFloat)seconds;
+
 - (void) playerWillEnterBackground;
 - (void) playerWillEnterForeground;
 - (void) endBackgroundTask;

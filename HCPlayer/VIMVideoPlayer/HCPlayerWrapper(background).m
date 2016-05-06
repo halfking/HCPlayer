@@ -11,7 +11,7 @@
 #import "MediaPlayer/MPMediaItem.h"
 #import "MediaPlayer/MPNowPlayingInfoCenter.h"
 #import "HCPlayerWrapper(background).h"
-
+#import "HCPlayerWrapper(Data).h"
 @implementation HCPlayerWrapper(background)
 
 #pragma mark - playback
@@ -138,7 +138,7 @@
 - (void) remoteControlReceivedWithEvent: (UIEvent *) receivedEvent {
     if (receivedEvent.type == UIEventTypeRemoteControl) {
         NSLog(@"remote control.222..");
-        MusicDetailViewController * detailVC = [MusicDetailViewController shareObject];
+        HCPlayerWrapper * detailVC = [HCPlayerWrapper shareObject];
         if(!detailVC) return;
         switch (receivedEvent.subtype) {
                 case UIEventSubtypeRemoteControlPlay:
@@ -146,12 +146,12 @@
                 NSLog(@"UIEventSubtypeRemoteControlPlay");
                 if(mplayer_ && mplayer_.playing)
                 {
-                    [detailVC pauseItem:nil];
+                    [detailVC pause];
                     [self showPlayBackPause];
                 }
                 else
                 {
-                    [detailVC playItem:nil seconds:-1];
+                    [detailVC play];
                     [self showPlayBackPlay];
                 }
             }
@@ -161,12 +161,12 @@
                 NSLog(@"UIEventSubtypeRemoteControlPause");
                 if(mplayer_ && mplayer_.playing)
                 {
-                    [detailVC pauseItem:nil];
+                    [detailVC pause];
                     [self showPlayBackPause];
                 }
                 else
                 {
-                    [detailVC playItem:nil seconds:-1];
+                    [detailVC play];
                     [self showPlayBackPlay];
                 }
                 
@@ -177,12 +177,12 @@
                 NSLog(@"UIEventSubtypeRemoteControlTogglePlayPause");
                 if(mplayer_ && mplayer_.playing)
                 {
-                    [detailVC pauseItem:nil];
+                    [detailVC pause];
                     [self showPlayBackPause];
                 }
                 else
                 {
-                    [detailVC playItem:nil seconds:-1];
+                    [detailVC play];
                     [self showPlayBackPlay];
                 }
             }
@@ -196,7 +196,8 @@
                     CGFloat seconds = [detailVC currentPlayerWhen];
                     seconds -= 10;
                     if(seconds<0) seconds = 0;
-                    [detailVC playItem:nil seconds:seconds];
+                    [detailVC setPlayRange:seconds end:-1];
+                    [detailVC play];
                 }
             }
                 break;
@@ -209,7 +210,8 @@
                     CGFloat seconds = [detailVC currentPlayerWhen];
                     seconds += 10;
                     if(seconds>= [detailVC duration]) seconds = 0;
-                    [detailVC playItem:nil seconds:seconds];
+                    [detailVC setPlayRange:seconds end:-1];
+                    [detailVC play];
                 }
             }
                 break;
@@ -249,7 +251,7 @@
     //    }
     
     if (mplayer_ && mplayer_.playing) {
-        isAutoPlaying_ = YES;
+        isPlayingWhenEnterBackground_ = YES;
         //        [self pauseItemWithCoreEvents];
         [self setPlayBackInfo];
         //        [self playItemWithCoreEvents:-1];
@@ -257,7 +259,7 @@
     else
     {
         [self setPlayBackInfo];
-        isAutoPlaying_ = NO;
+        isPlayingWhenEnterBackground_ = NO;
     }
     //避免错误显示按钮，必须判断播放器状态
     
@@ -285,30 +287,59 @@
         bgTask_ = UIBackgroundTaskInvalid;
     }
     
-    if(isAutoPlaying_)
+    if(isPlayingWhenEnterBackground_)
     {
         if(mplayer_ && mplayer_.playing)
         {
-            [self pauseItemWithCoreEvents];
-            [self playItemWithCoreEvents:-1];
+            [self pause];
+            [self play];
+//            [self pauseItemWithCoreEvents];
+//            [self playItemWithCoreEvents:-1];
         }
         else
         {
-            [self playItem:nil seconds:-1];
+            [self play];
+//            [self playItem:nil seconds:-1];
         }
     }
     else
     {
-        [self pauseItem:nil];
+        [self pause];
+//        [self pauseItem:nil];
     }
     [self clearPlayBackinfo];
     [self becomeFirstResponder];
 }
+#pragma mark - background??
+
+- (NSMutableDictionary *)getParameters
+{
+    NSMutableDictionary * dic = [NSMutableDictionary new];
+    if(mplayer_ && mplayer_.playing)
+    {
+        [dic setObject:@(1) forKey:@"isplaying"];
+    }
+    else
+    {
+        [dic setObject:@(0) forKey:@"isplaying"];
+    }
+    return dic;
+}
+- (void)setParameters:(NSDictionary *)para
+{
+    BOOL isplaying = NO;
+    if(para && [para objectForKey:@"isplaying"])
+    {
+        isplaying = [[para objectForKey:@"isplaying"]intValue]>0;
+    }
+}
+
 #pragma mark - network check
 - (void)showNoticeForWWANForTag:(int)tagID
 {
     if ([NSThread isMainThread]) {
-        [self pauseItem:nil];
+        [self pause];
+//        [self pauseItem:nil];
         
         SNAlertView *alert = [[SNAlertView alloc] initWithTitle:@"prompt"
                                                         message:@"您正在使用手机网络，是否继续加载视频？"
@@ -351,16 +382,17 @@
             //下次再出现，还需要提醒
             [[UserManager sharedUserManager] enableNotickeFor3G];
             [UserManager sharedUserManager].currentSettings.DownloadVia3G = NO;
-            [self stopCacheMTV:nil];
-            [self pauseItem:nil];
+            [self pauseWithCache];
+//            [self stopCacheMTV:nil];
+//            [self pauseItem:nil];
             [self hidePlayerWaitingView];
         }else{
             
             //30分钟内不再提示
             [UserManager sharedUserManager].currentSettings.DownloadVia3G = YES;
             [[UserManager sharedUserManager] disableNotickeFor3G];
-            
-            [self playItem:nil seconds:-1];
+            [self play];
+//            [self playItem:nil seconds:-1];
         }
     }
 }

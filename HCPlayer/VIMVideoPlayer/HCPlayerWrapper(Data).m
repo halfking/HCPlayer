@@ -10,6 +10,7 @@
 #import <hccoren/base.h>
 #import <HCBaseSystem/database_wt.h>
 #import <HCMVManager/MTV.h>
+#import <HCMVManager/Samples.h>
 #import <HCMVManager/HCDBHelper(MTV).h>
 //#import <HCBaseSystem/CMD_TrackOpeate.h>
 
@@ -38,7 +39,7 @@
 // 是否正在播放
 - (BOOL)isPlaying
 {
-    if ((mplayer_ && mplayer_.playing) || isAutoPlaying_) {
+    if ((mplayer_ && mplayer_.playing) || isPlayingWhenEnterBackground_) {
         return YES;
     } else {
         return NO;
@@ -56,7 +57,34 @@
 {
     progressView_.totalSeconds = seconds;
 }
-
+- (BOOL)isFullScreen
+{
+    return progressView_.isFullScreen;
+    //    return playContainerView_.frame.size.height >= _ScreenHeight;
+}
+- (BOOL)canShowRecordBtn
+{
+    
+    if(currentSample_ && [currentSample_ hasVideo])
+        //       && currentMtv_.UserID !=userManager_.userID)
+    {
+        return YES;
+    }
+    return NO;
+}
+- (BOOL)currentItemIsSample
+{
+    return currentMTV_.MTVID == 0;
+}
+//- (BOOL)isMaxWindowPlay
+//{
+//    return (currentPlayerHeight_ >= playerHeightMax_);
+//}
+//- (BOOL)canShowComment
+//{
+//    canShowComments_ = maxPannel_.isCommentsShow || commentSwitch_.isOn;
+//    return canShowComments_;
+//}
 #pragma mark - record events
 - (void)recordPlayItemBegin
 {
@@ -112,7 +140,7 @@
             playerWaitingView_.backgroundColor = [UIColor clearColor];
             playerWaitingView_.hidden = YES;
             
-            [playContainerView_ addSubview:playerWaitingView_];
+            [self addSubview:playerWaitingView_];
             
             playerWaitingTimer_ = PP_RETAIN([NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(moveWaitingView:) userInfo:nil repeats:YES]);
             playerWaitingTimer_.fireDate = [NSDate distantFuture];
@@ -126,7 +154,7 @@
             playerWaitingView_.hidden = NO;
             playerWaitingTimer_.fireDate = [NSDate distantPast];
         }
-        [playContainerView_ bringSubviewToFront:playerWaitingView_];
+        [self bringSubviewToFront:playerWaitingView_];
         //        [self bringSubviewToFront:self.activityView_];
         
     }
@@ -169,7 +197,6 @@
                        playerWaitingView_.frame = frame;
                    });
 }
-
 
 
 @end

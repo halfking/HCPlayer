@@ -395,4 +395,36 @@
         
     }
 }
+
+#pragma mark - comment check
+- (BOOL)canShowComment
+{
+//    canShowComments_ = maxPannel_.isCommentsShow || commentSwitch_.isOn;
+//    return canShowComments_;
+    return NO;
+}
+- (BOOL)isMaxWindowPlay
+{
+//    return (currentPlayerHeight_ >= playerHeightMax_);
+    return NO;
+}
+- (void)showOrHideComment:(id)sender
+{
+//    BOOL isOn = commentSwitch_.isOn;
+//    [maxPannel_ setIsCommentsShow:isOn];
+//    if (!mplayer_)
+//        return;
+//    
+//    if (isOn) {
+//        if (currentPlayerHeight_ >= playerHeightMax_) {
+//            if (!mplayer_.commentListView) {
+//                [self initCommentView];
+//            }
+//            [mplayer_ showComments];
+//            [mplayer_ refreshComment];
+//        }
+//    } else {
+//        [mplayer_ hideComments];
+//    }
+}
 @end

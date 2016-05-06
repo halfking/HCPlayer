@@ -77,6 +77,7 @@
 		112B581A1CDB3771008564C6 /* HCPlayerWrapper(Play).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
+		1193D4651CDC48C7006874C8 /* mtvcover_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4641CDC48C7006874C8 /* mtvcover_icon@2x.png */; };
 		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
 /* End PBXBuildFile section */
 
@@ -302,6 +303,7 @@
 		11754FA01CD8AC6700F4DA09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11754FA11CD8AC6700F4DA09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		11754FB11CD8AC6700F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1193D4641CDC48C7006874C8 /* mtvcover_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mtvcover_icon@2x.png"; sourceTree = "<group>"; };
 		7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayerTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.release.xcconfig"; sourceTree = "<group>"; };
 		C867399AE62F8274AF4D1A4E /* Pods-HCPlayerTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.debug.xcconfig"; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 		112B54F51CDA0529008564C6 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1193D4641CDC48C7006874C8 /* mtvcover_icon@2x.png */,
 				112B55991CDA0688008564C6 /* play_comment.png */,
 				112B559A1CDA0688008564C6 /* play_comment@2x.png */,
 				112B559B1CDA0688008564C6 /* play_comment@3x.png */,
@@ -770,6 +773,7 @@
 				112B52031CD914F5008564C6 /* LaunchScreen.storyboard in Resources */,
 				112B579D1CDAF786008564C6 /* audition@2x.png in Resources */,
 				112B57BD1CDAFA71008564C6 /* progress_icon@3x.png in Resources */,
+				1193D4651CDC48C7006874C8 /* mtvcover_icon@2x.png in Resources */,
 				112B57BB1CDAFA71008564C6 /* progress_icon.png in Resources */,
 				112B52EA1CD9224F008564C6 /* MusicDetailViewController.xib in Resources */,
 			);
