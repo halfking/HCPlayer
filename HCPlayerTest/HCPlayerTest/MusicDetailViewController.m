@@ -615,20 +615,6 @@ static MusicDetailViewController * _instanceDetailItem;
 - (void)resetPlayFrame:(CGRect)frame
 {
     [playContainerView_ resizeViews:frame];
-//    [playPannel_ changeFrame:CGRectMake(0, playContainerView_.frame.size
-//                                        .height - 45, playContainerView_.frame.size.width, 45)];
-//    
-//    CGRect toolFrame = CGRectMake(0,playContainerView_.frame.size
-//                                  .height - PROGRESS_HEIGHT - PLAYPANNEL_HEIGHT, screenWidth_, PROGRESS_HEIGHT);
-//    [progressView_ changeFrame:toolFrame];
-//    //[progressView_ changeFrame:CGRectMake(0, playContainerView_.frame.size.height-49, screenWidth_, 49)];
-//    
-//    CGFloat rate = frame.size.height / playerHeightMax_;
-//    if (coverSize_.width > 0 && coverSize_.height > 0) {
-//        cover_.frame = CGRectMake(0, 0, coverSize_.width*rate, coverSize_.height*rate);
-//    }
-//    cover_.frame = CGRectMake(0, 0, playContainerView_.frame.size.width, playContainerView_.frame.size.height);
-//    cover_.center = playContainerView_.center;
 }
 - (void)setupData
 {

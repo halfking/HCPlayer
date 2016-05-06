@@ -87,7 +87,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     config_ = [DeviceConfig config];
     
     centerPlayWidth_ = 200;
-    playPannelHeight_ = 40;
+    playPannelHeight_ = 0;
     progressHeight_ = 45;
     playItemChanged_ = YES;
     bgTask_ = UIBackgroundTaskInvalid;
@@ -158,7 +158,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         maxPannel_.delegate = self;
     }
     //按钮栏
-    {
+    if(playPannelHeight_>0){
         playPannel_ = [[WTPlayerControlPannel alloc]initWithFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
         playPannel_.backgroundColor = [UIColor clearColor];
         playPannel_.delegate = self;
@@ -189,6 +189,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     
     [maxPannel_ changeFrame:CGRectMake(0, 0, containerSize.width, 40)];
     
+    if(playPannelHeight_>0)
     [playPannel_ changeFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
     
     // 播放器
