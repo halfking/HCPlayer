@@ -264,7 +264,7 @@
     
     [maxPannel_ setUseGuidAudio:NO];
     [playPannel_ setUseGuidAudio:NO];
-    
+    [progressView_ setGuidAudio:NO];
     
     [self addSubview:mplayer_];
     mplayer_.hidden = YES;

@@ -87,7 +87,8 @@ static HCPlayerWrapper * _instanceDetailItem;
     config_ = [DeviceConfig config];
     
     centerPlayWidth_ = 60;
-    playPannelHeight_ = 0;
+    playPannelHeight_ = 40;
+    progressHeight_ = 45;
     playItemChanged_ = YES;
     bgTask_ = UIBackgroundTaskInvalid;
     
@@ -104,9 +105,9 @@ static HCPlayerWrapper * _instanceDetailItem;
                                                                     (containerSize.height-centerPlayWidth_)/2,
                                                                     centerPlayWidth_, centerPlayWidth_)];
         
-        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play2_icon"]
+        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/play2_icon.png"]
                         forState:UIControlStateNormal];
-        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/pause_icon"]
+        [centerPlayBtn_ setImage:[UIImage imageNamed:@"HCPlayer.bundle/pause_icon.png"]
                         forState:UIControlStateSelected];
         [centerPlayBtn_ addTarget:self action:@selector(centerPlayPauseBtnClick:)
                  forControlEvents:UIControlEventTouchUpInside];
@@ -126,7 +127,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     // 工具栏
     {
-        CGRect toolFrame = CGRectMake(0, containerSize.height - progressHeight_, containerSize.width, progressHeight_);
+        CGRect toolFrame = CGRectMake(0, containerSize.height - progressHeight_ - playPannelHeight_, containerSize.width, progressHeight_);
         progressView_ = [[WTVideoPlayerProgressView alloc]initWithFrame:toolFrame needGradient:YES];
         
         [progressView_ setColorsForBackground:[UIColor whiteColor]
@@ -160,6 +161,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         playPannel_ = [[WTPlayerControlPannel alloc]initWithFrame:CGRectMake(0, containerSize.height - playPannelHeight_, containerSize.width, playPannelHeight_)];
         playPannel_.backgroundColor = [UIColor clearColor];
         playPannel_.delegate = self;
+        [self addSubview:playPannel_];
     }
     
     {
@@ -182,7 +184,7 @@ static HCPlayerWrapper * _instanceDetailItem;
                                       (containerSize.height-centerPlayWidth_)/2,
                                       centerPlayWidth_, centerPlayWidth_);
     
-    [progressView_ changeFrame:CGRectMake(0, containerSize.height - progressHeight_, containerSize.width, progressHeight_)];
+    [progressView_ changeFrame:CGRectMake(0, containerSize.height - progressHeight_ - playPannelHeight_, containerSize.width, progressHeight_)];
     
     [maxPannel_ changeFrame:CGRectMake(0, 0, containerSize.width, 40)];
     
@@ -634,15 +636,18 @@ static HCPlayerWrapper * _instanceDetailItem;
                 {
                     if(![self playRemoteFile:item path:path audioUrl:audioUrl seconds:currentPlaySeconds_])
                     {
+                        [self showButtonsPause];
                         return NO;
                     }
                 }
                 [self showButtonsPlaying];
+                playItemChanged_ = NO;
                 return YES;
             }
             else
             {
                 NSLog(@"invalid item path(not found)");
+                [self showButtonsPause];
                 return NO;
             }
         }
@@ -657,33 +662,38 @@ static HCPlayerWrapper * _instanceDetailItem;
             {
                 if(![self playRemoteFile:item path:path audioUrl:nil seconds:currentPlaySeconds_])
                 {
+                    [self showButtonsPause];
                     return NO;
                 }
             }
             [self showButtonsPlaying];
+            playItemChanged_ = NO;
         }
         else if(currentPlayerItem_)
         {
             [self playItemWithPlayerItem:currentPlayerItem_ beginSeconds:currentPlaySeconds_ play:YES];
             [self showButtonsPlaying];
+            playItemChanged_ = NO;
         }
         else
         {
             NSLog(@"no item /url/playeritem to play.failure.");
+            [self showButtonsPause];
             return NO;
         }
     }
     else //没有变
     {
         //没有可播放对像
-        if(!currentPlayerItem_)
+        if(!mplayer_ || !mplayer_.playerItem)
         {
+            [self showButtonsPause];
             return NO;
         }
         if(currentPlaySeconds_ < playBeginSeconds_ || (currentPlaySeconds_ > playEndSeconds_ && playEndSeconds_>0))
             currentPlaySeconds_ = playBeginSeconds_;
-        else
-            currentPlaySeconds_  = -1;
+//        else
+//            currentPlaySeconds_  = -1;
         [self playItemWithCoreEvents:currentPlaySeconds_];
         
         [self showButtonsPlaying];
@@ -784,17 +794,26 @@ static HCPlayerWrapper * _instanceDetailItem;
 //}
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView pause:(CGFloat)seconds
 {
-    //    if(seconds>=0)
-    //    {
-    //        [self pauseItem:nil];
-    //    }
+    [self pause];
+}
+- (void)videoProgress:(WTVideoPlayerProgressView *)progressView playBegin:(CGFloat)seconds
+{
+    if(seconds>0)
+    {
+        currentPlaySeconds_ = seconds;
+    }
+    [self play];
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView progressChanged:(CGFloat)seconds
 {
-    
+    NSLog(@"progress changed:%f",seconds);
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willFullScreen:(BOOL)fullScreen
 {
+    if([self.delegate respondsToSelector:@selector(videoProgress:willFullScreen:)])
+    {
+        [self.delegate videoProgress:progressView_ willFullScreen:fullScreen];
+    }
     //    NSLog(@"need full screen...%d",fullScreen);
     //    if(fullScreen)
     //    {
@@ -1043,13 +1062,19 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)videoPlayerViewDidReachEnd:(WTVideoPlayerView *)videoPlayerView
 {
-    //[commentManager_ stopCommentTimer];
-    [commentManager_ stopCommentTimer];
     
     currentPlaySeconds_ = playBeginSeconds_;
-    [self pause];
     
-    //    [self removePlayerInThread];
+    //如果是循环播放
+    if(self.isLoop)
+    {
+        [self play];
+    }
+    else
+    {
+        [commentManager_ stopCommentTimer];
+        [self pause];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView timeDidChange:(CGFloat)cmTime
 {

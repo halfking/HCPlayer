@@ -423,7 +423,7 @@ static MusicDetailViewController * _instanceDetailItem;
         
         playContainerView_ = [[HCPlayerWrapper alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, playerHeightMax_)];
         currentPlayerHeight_ = playerHeightMax_;
-        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
+//        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
         playContainerView_.delegate = self;
         
         [self.view addSubview:playContainerView_];
@@ -636,7 +636,8 @@ static MusicDetailViewController * _instanceDetailItem;
     if([NSThread isMainThread])
     {
         [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
-
+        playContainerView_.isLoop = YES;
+        
         [self bringToolBar2Front];
     }
     else

@@ -205,8 +205,8 @@ static WTVideoPlayerView *sharedPlayerView = nil;
 }
 - (BOOL)seek:(CGFloat)seconds accurate:(BOOL)accurate count:(int)count
 {
-    while (count<50) {
-        if(player_ && player_.currentItem)
+//    while (count<20) {
+        if(player_ && player_.currentItem && count<10)
         {
             if(seconds>= CMTimeGetSeconds(duration_))//到末尾了，就再重新开始
             {
@@ -217,10 +217,21 @@ static WTVideoPlayerView *sharedPlayerView = nil;
                 count = 0;
                 return [self seekInThread:seconds accurate:accurate];
             }
+            else if(player_.currentItem.status == AVPlayerItemStatusUnknown)
+            {
+                __weak WTVideoPlayerView * weakSelf = self;
+                count ++;
+                [NSThread sleepForTimeInterval:1];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    __strong WTVideoPlayerView * strongSelf = weakSelf;
+                    [strongSelf seek:seconds accurate:accurate count:count];
+                });
+            }
+            return NO;
         }
-        [NSThread sleepForTimeInterval:0.1];
-        count ++;
-    }
+//        [NSThread sleepForTimeInterval:0.5];
+//        count ++;
+//    }
     
     //    if(count > 100)
     //    {
@@ -231,16 +242,6 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     }
     NSLog(@"%@",[error localizedDescription]);
     count = 0;
-    //    }
-    //    else
-    //    {
-    //        [self showActivityView];
-    //        dispatch_time_t nextTime = dispatch_time(DISPATCH_TIME_NOW, 0.1 * NSEC_PER_SEC);// 页面刷新的时间基数
-    //        dispatch_after(nextTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void)
-    //                       {
-    //                           [self seek:seconds accurate:accurate count:count +1];
-    //                       });
-    //    }
     return NO;
 }
 - (BOOL)seekInThread:(CGFloat)seconds accurate:(BOOL)accurate

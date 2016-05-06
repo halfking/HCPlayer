@@ -25,7 +25,6 @@
 		112B52D11CD91FFF008564C6 /* UICommentListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52A61CD91FFF008564C6 /* UICommentListView.m */; };
 		112B52D21CD91FFF008564C6 /* UICommentsPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52A81CD91FFF008564C6 /* UICommentsPopView.m */; };
 		112B52D31CD91FFF008564C6 /* UICommentsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52AA1CD91FFF008564C6 /* UICommentsView.m */; };
-		112B52D41CD91FFF008564C6 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 112B52AC1CD91FFF008564C6 /* Info.plist */; };
 		112B52D51CD91FFF008564C6 /* LyricCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52AF1CD91FFF008564C6 /* LyricCell.m */; };
 		112B52D61CD91FFF008564C6 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52B11CD91FFF008564C6 /* LyricDragView.m */; };
 		112B52D71CD91FFF008564C6 /* LyricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52B31CD91FFF008564C6 /* LyricView.m */; };
@@ -46,38 +45,12 @@
 		112B52EE1CD9A11C008564C6 /* CMD_GetMtvInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52ED1CD9A11C008564C6 /* CMD_GetMtvInfo.m */; };
 		112B52F11CD9A136008564C6 /* CMD_GetSampleInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52F01CD9A136008564C6 /* CMD_GetSampleInfo.m */; };
 		112B57981CDAF464008564C6 /* HCPlayer.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 112B57971CDAF464008564C6 /* HCPlayer.bundle */; };
-		112B579C1CDAF786008564C6 /* audition.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57991CDAF786008564C6 /* audition.png */; };
-		112B579D1CDAF786008564C6 /* audition@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B579A1CDAF786008564C6 /* audition@2x.png */; };
-		112B579E1CDAF786008564C6 /* audition@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B579B1CDAF786008564C6 /* audition@3x.png */; };
-		112B57A21CDAF897008564C6 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B579F1CDAF897008564C6 /* next.png */; };
-		112B57A31CDAF897008564C6 /* next@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57A01CDAF897008564C6 /* next@2x.png */; };
-		112B57A41CDAF897008564C6 /* next@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57A11CDAF897008564C6 /* next@3x.png */; };
-		112B57A81CDAF926008564C6 /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57A51CDAF925008564C6 /* return.png */; };
-		112B57A91CDAF926008564C6 /* return@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57A61CDAF926008564C6 /* return@2x.png */; };
-		112B57AA1CDAF926008564C6 /* return@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57A71CDAF926008564C6 /* return@3x.png */; };
-		112B57B11CDAF992008564C6 /* upload_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57AB1CDAF992008564C6 /* upload_yellow.png */; };
-		112B57B21CDAF992008564C6 /* upload_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57AC1CDAF992008564C6 /* upload_yellow@2x.png */; };
-		112B57B31CDAF992008564C6 /* upload_yellow@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57AD1CDAF992008564C6 /* upload_yellow@3x.png */; };
-		112B57B41CDAF992008564C6 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57AE1CDAF992008564C6 /* upload.png */; };
-		112B57B51CDAF992008564C6 /* upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57AF1CDAF992008564C6 /* upload@2x.png */; };
-		112B57B61CDAF992008564C6 /* upload@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57B01CDAF992008564C6 /* upload@3x.png */; };
-		112B57BB1CDAFA71008564C6 /* progress_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57B81CDAFA71008564C6 /* progress_icon.png */; };
-		112B57BC1CDAFA71008564C6 /* progress_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57B91CDAFA71008564C6 /* progress_icon@2x.png */; };
-		112B57BD1CDAFA71008564C6 /* progress_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57BA1CDAFA71008564C6 /* progress_icon@3x.png */; };
-		112B57C41CDAFAEE008564C6 /* microphone2.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57BE1CDAFAEE008564C6 /* microphone2.png */; };
-		112B57C51CDAFAEE008564C6 /* microphone2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57BF1CDAFAEE008564C6 /* microphone2@2x.png */; };
-		112B57C61CDAFAEE008564C6 /* microphone2@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C01CDAFAEE008564C6 /* microphone2@3x.png */; };
-		112B57C71CDAFAEE008564C6 /* microphonestop_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C11CDAFAEE008564C6 /* microphonestop_icon.png */; };
-		112B57C81CDAFAEE008564C6 /* microphonestop_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C21CDAFAEE008564C6 /* microphonestop_icon@2x.png */; };
-		112B57C91CDAFAEE008564C6 /* microphonestop_icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57C31CDAFAEE008564C6 /* microphonestop_icon@3x.png */; };
-		112B57CB1CDAFBDA008564C6 /* playloading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57CA1CDAFBDA008564C6 /* playloading@2x.png */; };
 		112B58111CDB204E008564C6 /* HCPlayerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58101CDB204E008564C6 /* HCPlayerWrapper.m */; };
 		112B58141CDB27F9008564C6 /* HCPlayerWrapper(background).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58131CDB27F9008564C6 /* HCPlayerWrapper(background).m */; };
 		112B58171CDB2A62008564C6 /* HCPlayerWrapper(Data).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58161CDB2A62008564C6 /* HCPlayerWrapper(Data).m */; };
 		112B581A1CDB3771008564C6 /* HCPlayerWrapper(Play).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
-		1193D4651CDC48C7006874C8 /* mtvcover_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4641CDC48C7006874C8 /* mtvcover_icon@2x.png */; };
 		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
 /* End PBXBuildFile section */
 
@@ -745,36 +718,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				112B57BC1CDAFA71008564C6 /* progress_icon@2x.png in Resources */,
-				112B579C1CDAF786008564C6 /* audition.png in Resources */,
-				112B57B21CDAF992008564C6 /* upload_yellow@2x.png in Resources */,
-				112B52D41CD91FFF008564C6 /* Info.plist in Resources */,
-				112B57A41CDAF897008564C6 /* next@3x.png in Resources */,
-				112B57C51CDAFAEE008564C6 /* microphone2@2x.png in Resources */,
-				112B57AA1CDAF926008564C6 /* return@3x.png in Resources */,
-				112B57A21CDAF897008564C6 /* next.png in Resources */,
-				112B57B41CDAF992008564C6 /* upload.png in Resources */,
-				112B57C41CDAFAEE008564C6 /* microphone2.png in Resources */,
-				112B57B51CDAF992008564C6 /* upload@2x.png in Resources */,
-				112B57B61CDAF992008564C6 /* upload@3x.png in Resources */,
-				112B57A31CDAF897008564C6 /* next@2x.png in Resources */,
-				112B57C81CDAFAEE008564C6 /* microphonestop_icon@2x.png in Resources */,
-				112B57C71CDAFAEE008564C6 /* microphonestop_icon.png in Resources */,
-				112B57A81CDAF926008564C6 /* return.png in Resources */,
-				112B57C91CDAFAEE008564C6 /* microphonestop_icon@3x.png in Resources */,
-				112B57CB1CDAFBDA008564C6 /* playloading@2x.png in Resources */,
-				112B579E1CDAF786008564C6 /* audition@3x.png in Resources */,
-				112B57B11CDAF992008564C6 /* upload_yellow.png in Resources */,
-				112B57C61CDAFAEE008564C6 /* microphone2@3x.png in Resources */,
-				112B57B31CDAF992008564C6 /* upload_yellow@3x.png in Resources */,
-				112B57A91CDAF926008564C6 /* return@2x.png in Resources */,
 				112B57981CDAF464008564C6 /* HCPlayer.bundle in Resources */,
 				112B52531CD918D6008564C6 /* Podfile in Resources */,
 				112B52031CD914F5008564C6 /* LaunchScreen.storyboard in Resources */,
-				112B579D1CDAF786008564C6 /* audition@2x.png in Resources */,
-				112B57BD1CDAFA71008564C6 /* progress_icon@3x.png in Resources */,
-				1193D4651CDC48C7006874C8 /* mtvcover_icon@2x.png in Resources */,
-				112B57BB1CDAFA71008564C6 /* progress_icon.png in Resources */,
 				112B52EA1CD9224F008564C6 /* MusicDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

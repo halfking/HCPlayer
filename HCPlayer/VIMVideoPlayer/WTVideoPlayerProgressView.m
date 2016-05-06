@@ -93,6 +93,8 @@
     hideSeconds_ = 5;
     progressLength_ = self.frame.size.width;
     
+    _isCommentBtnShow = YES;
+    
     self.trackBGView = [[UIView alloc] init];
     self.trackBGView.alpha = 0.3;
     self.playProgressView = [[UIView alloc] init];
@@ -325,15 +327,25 @@
     {
         //放大缩小
         self.MaxMinSizeBtn.frame = CGRectMake( rightMargin - widthForBtn, top, widthForBtn, widthForBtn);
-        progressLength_ -=  widthForBtn + 10;
+        
+        if(self.isCommentBtnShow)
+        {
+            progressLength_ -=  widthForBtn + 10;
+            rightMargin -= widthForBtn;
+        }
+        else
+        {
+            progressLength_ -=  widthForBtn + 10;
         rightMargin -= widthForBtn +10;
+        }
+        
     }
     if(self.isCommentBtnShow)
     {
         //弹幕
-        self.commentShowBtn.frame = CGRectMake(rightMargin - widthForBtn-10, (height - widthForBtn)/2.0f, widthForBtn, widthForBtn);
+        self.commentShowBtn.frame = CGRectMake(rightMargin - widthForBtn, (height - widthForBtn)/2.0f, widthForBtn, widthForBtn);
         progressLength_ -= 15 + widthForBtn;
-        rightMargin -= widthForBtn+15;
+        rightMargin -= widthForBtn +15;
     }
     else
     {
@@ -948,6 +960,8 @@
 
 - (void) show:(BOOL)animates autoHide:(BOOL)autoHide
 {
+    if([NSThread isMainThread])
+    {
     if(self.alpha==1 && self.hidden==NO)
     {
         hideSeconds_ = 10;
@@ -978,6 +992,15 @@
     if(self.delegate && [self.delegate respondsToSelector:@selector(videoProgress:didHidden:)])
     {
         [self.delegate videoProgress:self didHidden:NO];
+    }
+    }
+    else
+    {
+        dispatch_async(dispatch_get_main_queue(),^(void)
+                       {
+                           [self show:animates autoHide:autoHide];
+                       }
+        );
     }
 }
 - (void)checkHideProgress

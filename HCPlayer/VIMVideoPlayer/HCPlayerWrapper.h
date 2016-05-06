@@ -66,7 +66,8 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     CGFloat playEndSeconds_;
     BOOL playItemChanged_;
 }
-@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate> delegate;
+@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate> delegate;
+@property (nonatomic,assign) BOOL isLoop;
 + (instancetype)shareObject;
 
 - (BOOL) setPlayerData:(MTV *)item sample:(MTV *)sample;
