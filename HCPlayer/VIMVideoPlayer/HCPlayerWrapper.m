@@ -894,6 +894,10 @@ static HCPlayerWrapper * _instanceDetailItem;
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView pause:(CGFloat)seconds
 {
     [self pause];
+    if([self.delegate respondsToSelector:@selector(videoProgress:pause:)])
+    {
+        [self.delegate videoProgress:progressView pause:seconds];
+    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView playBegin:(CGFloat)seconds
 {
@@ -915,10 +919,18 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self refreshCommentsView:currentPlaySeconds_];
     }
+    if([self.delegate respondsToSelector:@selector(videoProgress:playBegin:)])
+    {
+        [self.delegate videoProgress:progressView playBegin:seconds];
+    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView progressChanged:(CGFloat)seconds
 {
     NSLog(@"progress changed:%f",seconds);
+    if([self.delegate respondsToSelector:@selector(videoProgress:progressChanged:)])
+    {
+        [self.delegate videoProgress:progressView progressChanged:seconds];
+    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willFullScreen:(BOOL)fullScreen
 {
@@ -977,20 +989,24 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willRecode:(BOOL)record
 {
-    if(record)
+    if([self.delegate respondsToSelector:@selector(videoProgress:willRecode:)])
     {
-        [self readyToRelease];
-        //        [mediaEditManager_ clear];
-        //        if(currentMtv_.UserID == userInfo_.UserID && userInfo_.UserID>0)
-        //        {
-        //            mediaEditManager_.mergeMTVItem = currentMtv_;
-        //        }
-        //        NSString * url = [[HWindowStack shareObject]buildSingUrl:NO
-        //                                                          source:@"cache"
-        //                                                        sampleID:currentMtv_.SampleID
-        //                                                     isLandscape:currentMtv_.IsLandscape?1:0];
-        //        [[HWindowStack shareObject]openWindow:self urlString:url shouldOpenWeb:YES];
+        [self.delegate videoProgress:progressView willRecode:record];
     }
+//    if(record)
+//    {
+//        [self readyToRelease];
+//        //        [mediaEditManager_ clear];
+//        //        if(currentMtv_.UserID == userInfo_.UserID && userInfo_.UserID>0)
+//        //        {
+//        //            mediaEditManager_.mergeMTVItem = currentMtv_;
+//        //        }
+//        //        NSString * url = [[HWindowStack shareObject]buildSingUrl:NO
+//        //                                                          source:@"cache"
+//        //                                                        sampleID:currentMtv_.SampleID
+//        //                                                     isLandscape:currentMtv_.IsLandscape?1:0];
+//        //        [[HWindowStack shareObject]openWindow:self urlString:url shouldOpenWeb:YES];
+//    }
 }
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView isPlaying:(BOOL)isPlaying
 {
@@ -1160,7 +1176,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self pause];
         [self.delegate videoPannel:pannelView editMtv:edit];
-        [self readyToRelease];
+//        [self readyToRelease];
     }
     //    if(edit)
     //    {
