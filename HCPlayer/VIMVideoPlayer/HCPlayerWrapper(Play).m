@@ -34,7 +34,9 @@
     [self buildMPlayer];
     
     NSLog(@"play item:%@",path);
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"begin to setpath"];
+#endif
     [mplayer_ changeCurrentItemPath:path];
     
     
@@ -76,8 +78,9 @@
     }
     
     [self addSubview:mplayer_];
-    
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play withcore"];
+#endif
     [self showMPlayer:play seconds:beginSeconds];
 }
 
@@ -85,8 +88,9 @@
 {
     [self buildMPlayer];
     [mplayer_ changeCurrentPlayerItem:playerItem];
-    
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play with item"];
+#endif
     [maxPannel_ setUseGuidAudio:NO];
     [playPannel_ setUseGuidAudio:NO];
     [progressView_ setGuidAudio:NO];
@@ -98,7 +102,7 @@
 - (BOOL) playRemoteFile:(MTV *)item path:(NSString *)path audioUrl:(NSString*)audioUrl seconds:(CGFloat)seconds
 {
     //先停，让它不要再去读缓存了
-//    [self removePlayerInThread];
+    //    [self removePlayerInThread];
     
     [self showPlayerWaitingView];
     
@@ -135,7 +139,7 @@
     
     //[self showHUDViewInThread];
     NSLog(@"playing ready to %@",path);
-//    [self showPlayerWaitingView];
+    //    [self showPlayerWaitingView];
     
     if([userManager_ enableCachenWhenPlaying])
     {
@@ -168,7 +172,9 @@
                  localFileVDCItem_.SampleID = weakMtv.SampleID;
                  [[VDCManager shareObject] rememberDownloadUrl:localFileVDCItem_ tempPath:localFileVDCItem_.tempFilePath];
              }
+#ifndef __OPTIMIZE__
              [self showSecondsWasted:@"play vdc get"];
+#endif
              NSLog(@"playing item url begin:%@",[url absoluteString]);
              dispatch_async(dispatch_get_main_queue(), ^{
                  if(weakMtv)
@@ -242,16 +248,18 @@
         localFileVDCItem_.AudioFileName = [[HCFileManager manager] getFileName:audioUrl];
         localFileVDCItem_.title = item.Title;
     }
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play get localvdc"];
+#endif
     NSLog(@"playing ready2 to %@",path);
-
-        if(!play)
-            [self playItemChangeWithCoreEvents:path  beginSeconds:seconds play:NO];
-        else
-        {
-            [self playItemChangeWithCoreEvents:path beginSeconds:seconds play:YES];
-
-        }
+    
+    if(!play)
+        [self playItemChangeWithCoreEvents:path  beginSeconds:seconds play:NO];
+    else
+    {
+        [self playItemChangeWithCoreEvents:path beginSeconds:seconds play:YES];
+        
+    }
 }
 #pragma mark - play pause changeitem 核心操作，这些操作可以当作原子操作
 - (void)pauseItemWithCoreEvents
@@ -365,12 +373,16 @@
     }
     mplayer_.hidden = YES;
     [self addSubview:mplayer_];
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play build"];
+#endif
     
 }
 - (void)showMPlayer:(BOOL)autoPlay seconds:(CGFloat)beginSeconds
 {
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play seek begin 0"];
+#endif
     if(beginSeconds>=0)
     {
         [mplayer_ seek:beginSeconds accurate:YES];
@@ -379,17 +391,24 @@
             currentPlaySeconds_ = beginSeconds;
         }
     }
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play seek end"];
+#endif
     [self bringToolBar2Front];
-    [self showSecondsWasted:@"play show 0"];
+    //    [self showSecondsWasted:@"play show 0"];
     if(autoPlay)
     {
         [self playItemWithCoreEvents:beginSeconds];
         [self recordPlayItemBegin];
     }
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play show 1"];
+#endif
     [self showMPlayerAnimates];
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"play show finished"];
+#endif
+    
 }
 - (void)showMPlayerAnimates
 {

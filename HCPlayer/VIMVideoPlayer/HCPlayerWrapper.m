@@ -716,7 +716,9 @@ static HCPlayerWrapper * _instanceDetailItem;
                 {
                     audioUrl = currentSample_.AudioRemoteUrl;
                 }
+#ifndef __OPTIMIZE__
                 [self showSecondsWasted:@" get path"];
+#endif
                 if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
                 {
                     [self playLocalFile:item path:path audioUrl:audioUrl seconds:currentPlaySeconds_ play:YES];
@@ -730,7 +732,7 @@ static HCPlayerWrapper * _instanceDetailItem;
                     }
                 }
                 [self showButtonsPlaying];
-//                playItemChanged_ = NO;
+                //                playItemChanged_ = NO;
                 return YES;
             }
             else
@@ -756,13 +758,13 @@ static HCPlayerWrapper * _instanceDetailItem;
                 }
             }
             [self showButtonsPlaying];
-//            playItemChanged_ = NO;
+            //            playItemChanged_ = NO;
         }
         else if(currentPlayerItem_)
         {
             [self playItemWithPlayerItem:currentPlayerItem_ beginSeconds:currentPlaySeconds_ play:YES];
             [self showButtonsPlaying];
-//            playItemChanged_ = NO;
+            //            playItemChanged_ = NO;
         }
         else
         {
@@ -790,11 +792,13 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     return YES;
 }
+#ifndef __OPTIMIZE__
 - (void)showSecondsWasted:(NSString *)title
 {
     CGFloat now = [[NSDate date]timeIntervalSince1970];
     NSLog(@"%@ waster seconds:%f",title,now - lastSecondsRemember_);
 }
+#endif
 ////滚动的时候也会触发该事件
 ////更换当前播放的对像或者再次播放
 ////在此之前，请不要更新currentMtv对像
@@ -811,7 +815,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 //    }
 //
 //    path = [item getMTVUrlString:config_.networkStatus userID:[userManager_ userID] remoteUrl:nil];
-//    
+//
 //    if(path && path.length != 0)
 //    {
 //        //[self showHUDViewInThread];
@@ -821,7 +825,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 //        {
 //            audioUrl = item.AudioRemoteUrl;
 //        }
-//        
+//
 //        //        [[UMShareObject shareObject]event:@"PlayBegin" attributes:@{@"title":item.Title?item.Title:@"NoName",@"url":path}];
 //        if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
 //        {
@@ -838,10 +842,10 @@ static HCPlayerWrapper * _instanceDetailItem;
 //        {
 //            //            [self setCurrentMTV:item];
 //        }
-//        
+//
 //        //[self refreshButtonStateInThreadWithMTV:item];
-//        
-//        
+//
+//
 //        return YES;
 //    }
 //    else if(item)
@@ -1014,7 +1018,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         [self hideComments];
     }
     maxPannel_.isCommentsShow = show;
-
+    
     return YES;
 }
 #pragma mark - share download....
@@ -1102,48 +1106,48 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     else
     {
-    MTV * item = currentMTV_;
-    CMD_CREATE(cmd, LikeOrNot, @"LikeOrNot");
-    
-    if(item.MTVID>0)
-    {
-        cmd.MtvID = item.MTVID;
-    }
-    else
-    {
-        cmd.MtvID = item.SampleID;
-        cmd.ObjectType = HCObjectTypeSample;
-    }
-    cmd.ObjectUserID = item.UserID;
-    cmd.IsLike = !isLike;
-    cmd.CMDCallBack = ^(HCCallbackResult * result)
-    {
-        if(result.Code==0)
+        MTV * item = currentMTV_;
+        CMD_CREATE(cmd, LikeOrNot, @"LikeOrNot");
+        
+        if(item.MTVID>0)
         {
-            if (pannelView && pannelView == playPannel_) {
-                [playPannel_ showLikeStatus];
-            } else {
-                [maxPannel_ showLikeStatus];
-            }
-            //            for (UIView * v in listView_.visibleItemViews) {
-            //                if([v isKindOfClass:[RankView class]])
-            //                {
-            //                    RankView * vv = (RankView *)v;
-            //                    [vv setConcernChanged:currentMtv_];
-            //                }
-            //            }
-            
-            if (currentMTV_.MTVID>0) {
-                NSMutableDictionary *dic = [NSMutableDictionary new];
-                [dic setValue:@(HCObjectTypeMTV) forKey:@"objecttype"];
-                [dic setValue:@(currentMTV_.MTVID) forKey:@"objectid"];
-                [dic setValue:@(!isLike) forKey:@"islike"];
-                [[NSNotificationCenter defaultCenter] postNotificationName:NT_CHANGELIKESTATUS object:nil userInfo:dic];
-            }
+            cmd.MtvID = item.MTVID;
         }
-    };
-    [cmd sendCMD];
-   
+        else
+        {
+            cmd.MtvID = item.SampleID;
+            cmd.ObjectType = HCObjectTypeSample;
+        }
+        cmd.ObjectUserID = item.UserID;
+        cmd.IsLike = !isLike;
+        cmd.CMDCallBack = ^(HCCallbackResult * result)
+        {
+            if(result.Code==0)
+            {
+                if (pannelView && pannelView == playPannel_) {
+                    [playPannel_ showLikeStatus];
+                } else {
+                    [maxPannel_ showLikeStatus];
+                }
+                //            for (UIView * v in listView_.visibleItemViews) {
+                //                if([v isKindOfClass:[RankView class]])
+                //                {
+                //                    RankView * vv = (RankView *)v;
+                //                    [vv setConcernChanged:currentMtv_];
+                //                }
+                //            }
+                
+                if (currentMTV_.MTVID>0) {
+                    NSMutableDictionary *dic = [NSMutableDictionary new];
+                    [dic setValue:@(HCObjectTypeMTV) forKey:@"objecttype"];
+                    [dic setValue:@(currentMTV_.MTVID) forKey:@"objectid"];
+                    [dic setValue:@(!isLike) forKey:@"islike"];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:NT_CHANGELIKESTATUS object:nil userInfo:dic];
+                }
+            }
+        };
+        [cmd sendCMD];
+        
     }
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView editMtv:(BOOL)edit
@@ -1179,14 +1183,16 @@ static HCPlayerWrapper * _instanceDetailItem;
     else if([self.delegate respondsToSelector:@selector(videoProgress:willFullScreen:)])
     {
         [self.delegate videoProgress:progressView_ willFullScreen:NO];
-//         [self cancelFullScreen:playFrameForPortrait_];
+        //         [self cancelFullScreen:playFrameForPortrait_];
     }
 }
 
 #pragma mark - player delegate
 - (void)videoPlayerViewIsReadyToPlayVideo:(WTVideoPlayerView *)videoPlayerView
 {
+#ifndef __OPTIMIZE__
     [self showSecondsWasted:@"player item ready"];
+#endif
     NSLog(@"ready to play...%i",(int)mplayer_.playing);
     [self setTotalSeconds:CMTimeGetSeconds(videoPlayerView.playerItem.duration)];
     if(currentPlayerItem_ &&currentPlayerItem_!=videoPlayerView.playerItem)
@@ -1319,7 +1325,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@"playing pause by didFailedToPlayToEnd:%@",[error localizedDescription]);
-
+    
     if([userManager_ enableCachenWhenPlaying])
     {
         NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
@@ -1381,7 +1387,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     //        currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@" playing failed error:%@",[error localizedDescription]);
-
+    
     if([userManager_ enableCachenWhenPlaying])
     {
         NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
