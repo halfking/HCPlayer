@@ -11,7 +11,8 @@
 #import <hccoren/base.h>
 
 #import "publicconfig.h"
-
+#import <HCBaseSystem/vdc_f.h>
+#import <HCBaseSystem/UpDown.h>
 #import "testViewController.h"
 #import "MusicDetailViewController.h"
 @interface AppDelegate ()
@@ -40,7 +41,9 @@
     
     [config changeConfigs:CT_INTERFACE imageServer:CT_IMAGESERVERPATH imageSever2:CT_IMAGEPATHROOT uploadServer:CT_UPLOADSERVER uploadService:CT_UPLOADSERVERPATH debugMode:debugMode];
     
-    
+//    VDCManager * vdc = [VDCManager shareObject];
+    UDManager * ud = [UDManager sharedUDManager];
+    [ud checkAllDireictories];
     
     MusicDetailViewController * vc = [[MusicDetailViewController alloc]initWithNibName:nil bundle:nil];
     

@@ -9,7 +9,7 @@
 //#import <MediaPlayer/MediaPlayer.h>
 #import "WTVideoPlayerView.h"
 //#import "WTVideoPlayerView(Lyric).h"
-#import "WTVideoPlayerView(Cache).h"
+//#import "WTVideoPlayerView(Cache).h"
 #import "WTVideoPlayerProgressView.h"
 #import <HCBaseSystem/cmds_wt.h>
 #import <HCMVManager/mtv.h>

@@ -8,7 +8,7 @@
 
 #import "WTVideoPlayerView(MTV).h"
 #import "WTVideoPlayerView.h"
-#import "WTVideoPlayerView(Cache).h"
+//#import "WTVideoPlayerView(Cache).h"
 #import <hccoren/base.h>
 #import <HCBaseSystem/UpDown.h>
 #import <HCBaseSystem/VDCManager(Helper).h>
@@ -219,8 +219,8 @@
     [[VDCManager shareObject] stopDownload:nil];
 }
 #pragma mark - play mtv
-- (BOOL) playMTV:(MTV*)item{
-    return YES;
-}
+//- (BOOL) playMTV:(MTV*)item{
+//    return YES;
+//}
 
 @end

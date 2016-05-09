@@ -689,6 +689,21 @@ static NSString * cellIdentifier =@"CommentListitem";
 //        }
 //    }
 //}
+- (NSArray*)buildTestComments
+{
+    NSMutableArray * result = [NSMutableArray new];
+    for (int i =0; i<50; i ++) {
+        Comment * cc = [Comment new];
+        cc.Title = [NSString stringWithFormat:@"test%d",i];
+        cc.Content = [NSString stringWithFormat:@"content index:%d",i];
+        cc.DateCreated = [CommonUtil stringFromDate:[NSDate date]];
+        cc.DuranceForWhen = i;
+        cc.UserID = 232;
+        cc.UserName = [NSString stringWithFormat:@"user test:%d",i];
+        [result addObject:cc];
+    }
+    return result;
+}
 - (void)getComments:(int)pageIndex completed:(didGetComments)completed
 {
     CMD_CREATE(cmd, GetMtvComments, @"GetMtvComments");
@@ -709,12 +724,23 @@ static NSString * cellIdentifier =@"CommentListitem";
     
     cmd.CMDCallBack= ^(HCCallbackResult * result)
     {
+#ifndef __OPTIMIZE__
+        if(result)
+#else
         if(result.Code==0 && result.List)
+#endif
         {
             if(pageIndex==0)
             {
                 [self clearComments:nil];
             }
+#ifndef __OPTIMIZE__
+            if(!result.List || result.List.count==0)
+            {
+                result.List = [self buildTestComments];
+            }
+            result.Code = 0;
+#endif
             if(result.List.count >0)
             {
                 [self addComments:result.List pageIndex:pageIndex];

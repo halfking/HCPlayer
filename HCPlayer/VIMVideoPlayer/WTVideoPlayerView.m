@@ -8,7 +8,7 @@
 #import "CommentViewManager.h"
 #import "UICommentsView.h"
 
-#import "WTVideoPlayerView(Cache).h"
+//#import "WTVideoPlayerView(Cache).h"
 //#import "WTVideoPlayerView(Lyric).h"
 
 @interface WTVideoPlayerView () <VDCLoaderConnectionDelegate>

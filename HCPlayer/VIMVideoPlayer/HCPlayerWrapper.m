@@ -712,7 +712,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 -(BOOL) updatePlayer:(MTV *)item seconds:(CGFloat)seconds
 {
     __block NSString * path;
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         if(!item.isCheckDownload)
@@ -720,7 +720,7 @@ static HCPlayerWrapper * _instanceDetailItem;
             [WTVideoPlayerView isDownloadCompleted:&item Sample:nil NetStatus:config_.networkStatus  UserID:[userManager_ userID]];
         }
     }
-#endif
+
     path = [item getMTVUrlString:config_.networkStatus userID:[userManager_ userID] remoteUrl:nil];
     
     if(path && path.length != 0)
@@ -802,11 +802,24 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView playBegin:(CGFloat)seconds
 {
+    BOOL needChangeComments = NO;
     if(seconds>0)
     {
+        if(fabs(seconds - currentPlaySeconds_)>2)
+        {
+            needChangeComments = YES;
+        }
         currentPlaySeconds_ = seconds;
     }
+    else
+    {
+        needChangeComments = YES;
+    }
     [self play];
+    if(needChangeComments)
+    {
+        [self refreshCommentsView:currentPlaySeconds_];
+    }
 }
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView progressChanged:(CGFloat)seconds
 {
@@ -898,6 +911,23 @@ static HCPlayerWrapper * _instanceDetailItem;
         [mplayer_ seek:seconds accurate:YES];
     }
 }
+- (BOOL)videoProgress:(WTVideoPlayerProgressView *)pannelView showComments:(BOOL)show
+{
+    if (!mplayer_) return NO;
+    if (show) {
+        if(!commentListView_)
+        {
+            [self initCommentView];
+        }
+        [self showComments];
+        [self refreshComment];
+    } else {
+        [self hideComments];
+    }
+    maxPannel_.isCommentsShow = show;
+
+    return YES;
+}
 #pragma mark - share download....
 
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView doShare:(CGFloat)seconds
@@ -909,6 +939,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     //        openTypeAfterLogin_ = 1;//分享
     //        [self openLoginView];
     //    }
+    if([self.delegate respondsToSelector:@selector(videoPannel:doShare:)])
+    {
+        [self.delegate videoPannel:pannelView doShare:seconds];
+    }
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView guideChanged:(BOOL)isGuide
 {
@@ -917,6 +951,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     else{
         leaderPlayer_.volume = 0;
+    }
+    if([self.delegate respondsToSelector:@selector(videoPannel:guideChanged:)])
+    {
+        [self.delegate videoPannel:pannelView guideChanged:isGuide];
     }
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView showComments:(BOOL)show{
@@ -934,6 +972,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     } else {
         [self hideComments];
     }
+    progressView_.isCommentShow = show;
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView editComments:(BOOL)show
 {
@@ -960,11 +999,20 @@ static HCPlayerWrapper * _instanceDetailItem;
     
     //    textView.selectedRange = NSMakeRange(0, 0);
     //    }
+    if([self.delegate respondsToSelector:@selector(videoPannel:editComments:)])
+    {
+        [self.delegate videoPannel:pannelView editComments:show];
+    }
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView likeIt:(BOOL)isLike
 {
     //    if (![self checkLoginStatus]) return;
-    
+    if([self.delegate respondsToSelector:@selector(videoPannel:likeIt:)])
+    {
+        [self.delegate videoPannel:pannelView likeIt:isLike];
+    }
+    else
+    {
     MTV * item = currentMTV_;
     CMD_CREATE(cmd, LikeOrNot, @"LikeOrNot");
     
@@ -1006,7 +1054,8 @@ static HCPlayerWrapper * _instanceDetailItem;
         }
     };
     [cmd sendCMD];
-    
+   
+    }
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView editMtv:(BOOL)edit
 {
@@ -1033,7 +1082,15 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView didReturn:(BOOL)isReturn
 {
-    [self cancelFullScreen:playFrameForPortrait_];
+    if([self.delegate respondsToSelector:@selector(videoPannel:didReturn:)])
+    {
+        [self.delegate videoPannel:pannelView didReturn:isReturn];
+    }
+    else if([self.delegate respondsToSelector:@selector(videoProgress:willFullScreen:)])
+    {
+        [self.delegate videoProgress:progressView_ willFullScreen:NO];
+//         [self cancelFullScreen:playFrameForPortrait_];
+    }
 }
 
 #pragma mark - player delegate
@@ -1059,6 +1116,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     } else {
         [self hideComments];
     }
+    if([self.delegate respondsToSelector:@selector(videoPlayerViewIsReadyToPlayVideo:)])
+    {
+        [self.delegate videoPlayerViewIsReadyToPlayVideo:videoPlayerView];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView showWaiting:(BOOL)isShow
 {
@@ -1083,6 +1144,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [commentManager_ stopCommentTimer];
         [self pause];
+    }
+    if([self.delegate respondsToSelector:@selector(videoPlayerViewDidReachEnd:)])
+    {
+        [self.delegate videoPlayerViewDidReachEnd:videoPlayerView];
     }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView timeDidChange:(CGFloat)cmTime
@@ -1128,6 +1193,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self pause];
     }
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didStalled:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView didStalled:playerItem];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView beginPlay:(AVPlayerItem *)playerItem
 {
@@ -1135,12 +1204,16 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         needPlayLeader_ = YES;
     }
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:beginPlay:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView beginPlay:playerItem];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didFailedToPlayToEnd:(NSError *)error
 {
     currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@"playing pause by didFailedToPlayToEnd:%@",[error localizedDescription]);
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
@@ -1167,9 +1240,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self pause];
     }
-#else
-    [self pause];
-#endif
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didFailedToPlayToEnd:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView didFailedToPlayToEnd:error];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView pausedByUnexpected:(NSError *)error item:(AVPlayerItem *)playerItem
 {
@@ -1179,7 +1253,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [leaderPlayer_ pause];
     }
-    
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:pausedByUnexpected:item:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView pausedByUnexpected:error item:playerItem];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView autoPlayAfterPause:(NSError *)error item:(AVPlayerItem *)playerItem
 {
@@ -1189,12 +1266,16 @@ static HCPlayerWrapper * _instanceDetailItem;
     //        NSLog(@"playing auto, no unexpected stop, so pause.");
     //    }
     //    pauseUnexpected_ = NO;
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:autoPlayAfterPause:item:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView autoPlayAfterPause:error item:playerItem];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didFailWithError:(NSError *)error
 {
     //        currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@" playing failed error:%@",[error localizedDescription]);
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
@@ -1205,15 +1286,22 @@ static HCPlayerWrapper * _instanceDetailItem;
                 [[VDCManager shareObject]removeUrlCahche:localFileVDCItem_.remoteUrl];
                 localFileVDCItem_.downloadBytes = 0;
                 [videoPlayerView resetPlayItemKey];
-                [self pauseItem:nil];
+                [self pause];
             }
         }
     }
-#endif
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView didFailWithError:error];
+    }
 }
 - (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didTapped:(AVPlayerItem *)playerItem
 {
     [self showProgressView:nil];
+    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didTapped:)])
+    {
+        [self.delegate videoPlayerView:videoPlayerView didTapped:playerItem];
+    }
 }
 #pragma mark - moving
 #pragma mark - PanGestureRecognizer

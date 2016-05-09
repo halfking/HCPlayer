@@ -35,7 +35,6 @@
 		112B52DD1CD92000008564C6 /* WTRecordTopPannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52BF1CD91FFF008564C6 /* WTRecordTopPannel.m */; };
 		112B52DE1CD92000008564C6 /* PlayerMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C31CD91FFF008564C6 /* PlayerMediaItem.m */; };
 		112B52DF1CD92000008564C6 /* WTVideoPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */; };
-		112B52E01CD92000008564C6 /* WTVideoPlayerView(Cache).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */; };
 		112B52E11CD92000008564C6 /* HCPlayerWrapper(Lyric).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52C91CD91FFF008564C6 /* HCPlayerWrapper(Lyric).m */; };
 		112B52E21CD92000008564C6 /* WTVideoPlayerView(MTV).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52CB1CD91FFF008564C6 /* WTVideoPlayerView(MTV).m */; };
 		112B52E31CD92000008564C6 /* WTVideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B52CD1CD91FFF008564C6 /* WTVideoPlayerView.m */; };
@@ -105,8 +104,6 @@
 		112B52C31CD91FFF008564C6 /* PlayerMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMediaItem.m; sourceTree = "<group>"; };
 		112B52C41CD91FFF008564C6 /* WTVideoPlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerProgressView.h; sourceTree = "<group>"; };
 		112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTVideoPlayerProgressView.m; sourceTree = "<group>"; };
-		112B52C61CD91FFF008564C6 /* WTVideoPlayerView(Cache).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Cache).h"; sourceTree = "<group>"; };
-		112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Cache).m"; sourceTree = "<group>"; };
 		112B52C81CD91FFF008564C6 /* HCPlayerWrapper(Lyric).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HCPlayerWrapper(Lyric).h"; sourceTree = "<group>"; };
 		112B52C91CD91FFF008564C6 /* HCPlayerWrapper(Lyric).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HCPlayerWrapper(Lyric).m"; sourceTree = "<group>"; };
 		112B52CA1CD91FFF008564C6 /* WTVideoPlayerView(MTV).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(MTV).h"; sourceTree = "<group>"; };
@@ -384,8 +381,6 @@
 				112B52C31CD91FFF008564C6 /* PlayerMediaItem.m */,
 				112B52C41CD91FFF008564C6 /* WTVideoPlayerProgressView.h */,
 				112B52C51CD91FFF008564C6 /* WTVideoPlayerProgressView.m */,
-				112B52C61CD91FFF008564C6 /* WTVideoPlayerView(Cache).h */,
-				112B52C71CD91FFF008564C6 /* WTVideoPlayerView(Cache).m */,
 				112B52CA1CD91FFF008564C6 /* WTVideoPlayerView(MTV).h */,
 				112B52CB1CD91FFF008564C6 /* WTVideoPlayerView(MTV).m */,
 				112B52CC1CD91FFF008564C6 /* WTVideoPlayerView.h */,
@@ -850,7 +845,6 @@
 				112B52E21CD92000008564C6 /* WTVideoPlayerView(MTV).m in Sources */,
 				112B52E11CD92000008564C6 /* HCPlayerWrapper(Lyric).m in Sources */,
 				112B52D81CD91FFF008564C6 /* AVFunComm.m in Sources */,
-				112B52E01CD92000008564C6 /* WTVideoPlayerView(Cache).m in Sources */,
 				112B52CF1CD91FFF008564C6 /* CommentViewManager.m in Sources */,
 				112B52F11CD9A136008564C6 /* CMD_GetSampleInfo.m in Sources */,
 				112B52D31CD91FFF008564C6 /* UICommentsView.m in Sources */,

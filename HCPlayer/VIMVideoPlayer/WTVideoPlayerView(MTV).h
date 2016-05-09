@@ -19,7 +19,7 @@
 + (BOOL)isDownloadCompleted:(MTV **)orgItem Sample:(MTV*)sample NetStatus:(NetworkStatus)status UserID:(long)userID;
 + (VDCItem *)getVDCItem:(MTV*)item Sample:(MTV *)sample;
 + (void) stopCacheMTV:(MTV *)item;
-
-- (BOOL) playMTV:(MTV *)item;
-- (BOOL) pauseMTV;
+//
+//- (BOOL) playMTV:(MTV *)item;
+//- (BOOL) pauseMTV;
 @end

@@ -94,6 +94,7 @@
     progressLength_ = self.frame.size.width;
     
     _isCommentBtnShow = YES;
+    _isCommentShow = YES;
     
     self.trackBGView = [[UIView alloc] init];
     self.trackBGView.alpha = 0.3;

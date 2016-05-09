@@ -52,7 +52,7 @@
         return;
     }
     lastPlaySecondsForBackInfo_ = 0;
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         if(localFileVDCItem_ && localFileVDCItem_.needStop)
@@ -60,7 +60,6 @@
             localFileVDCItem_.needStop = NO;
         }
     }
-#endif
     //    MTV * currentItem = [self getCurrentMTV];
     if(mplayer_ && !mplayer_.playing)
     {
@@ -137,7 +136,7 @@
         [mplayer_ resizeViewToRect:playerFrame andUpdateBounds:YES withAnimation:NO hidden:NO changed:nil];
         //    mplayer_.frame = playerFrame;
     }
-#ifdef  USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         mplayer_.cachingWhenPlaying = YES;
@@ -146,9 +145,6 @@
     {
         mplayer_.cachingWhenPlaying = NO;
     }
-#else
-    mplayer_.cachingWhenPlaying = NO;
-#endif
     mplayer_.userInteractionEnabled = NO;
     mplayer_.delegate = self;
     
@@ -171,7 +167,7 @@
     //        [mplayer_ setVideoVolume:1];
     //    }
     mplayer_.playerItemKey = [item getKey];
-#ifdef USE_CACHEPLAYING
+
     if([userManager_ enableCachenWhenPlaying])
     {
         if (localFileVDCItem_ && localFileVDCItem_.AudioPath && localFileVDCItem_.AudioPath.length > 5 && [HCFileManager isLocalFile:localFileVDCItem_.AudioPath] && item.MTVID == 0) {
@@ -203,10 +199,6 @@
         [maxPannel_ setUseGuidAudio:NO];
         [playPannel_ setUseGuidAudio:NO];
     }
-#else
-    [maxPannel_ setUseGuidAudio:NO];
-    [playPannel_ setUseGuidAudio:NO];
-#endif
     
     [self addSubview:mplayer_];
     mplayer_.hidden = YES;

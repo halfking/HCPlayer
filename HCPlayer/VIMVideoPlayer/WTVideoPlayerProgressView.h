@@ -39,7 +39,7 @@ typedef enum{
 - (void)videoProgress:(WTVideoPlayerProgressView *)progressView willRecode:(BOOL)record;
 
 - (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView isPlaying:(BOOL)isPlaying;
-- (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView showComments:(BOOL)isPlaying;
+- (BOOL)videoProgress:(WTVideoPlayerProgressView *)progressView showComments:(BOOL)isShow;
 
 @end
 
