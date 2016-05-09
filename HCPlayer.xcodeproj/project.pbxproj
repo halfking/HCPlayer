@@ -184,8 +184,6 @@
 		11754E6F1CD755E100F4DA09 /* HCPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E6E1CD755E100F4DA09 /* HCPlayerTests.m */; };
 		11754E841CD7585500F4DA09 /* WTVideoPlayerProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754E851CD7585500F4DA09 /* WTVideoPlayerProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */; };
-		11754E861CD7585500F4DA09 /* WTVideoPlayerView(Cache).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */; settings = {ATTRIBUTES = (Public, ); }; };
-		11754E871CD7585500F4DA09 /* WTVideoPlayerView(Cache).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */; };
 		11754E8A1CD7585500F4DA09 /* WTVideoPlayerView(MTV).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754E8B1CD7585500F4DA09 /* WTVideoPlayerView(MTV).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */; };
 		11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -225,6 +223,12 @@
 		11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F591CD87C0D00F4DA09 /* LyricDragView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
 		11754F601CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
+		118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */; };
+		118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */; };
+		118CE51C1CE0A9F200290641 /* VDCTempFileManager(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */; };
+		118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5171CE0A9F200290641 /* VDCTempFileManager.m */; };
+		118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */; };
+		118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */; };
 		1193D4681CDC4D50006874C8 /* mtvcover_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4661CDC4D17006874C8 /* mtvcover_icon@2x.png */; };
 		1193D46D1CDCABB6006874C8 /* play_iconbig.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4691CDCABB6006874C8 /* play_iconbig.png */; };
 		1193D46F1CDCABB6006874C8 /* play_iconbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D46A1CDCABB6006874C8 /* play_iconbig@2x.png */; };
@@ -431,8 +435,6 @@
 		11754E701CD755E100F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerProgressView.h; sourceTree = "<group>"; };
 		11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTVideoPlayerProgressView.m; sourceTree = "<group>"; };
-		11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(Cache).h"; sourceTree = "<group>"; };
-		11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(Cache).m"; sourceTree = "<group>"; };
 		11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTVideoPlayerView(MTV).h"; sourceTree = "<group>"; };
 		11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTVideoPlayerView(MTV).m"; sourceTree = "<group>"; };
 		11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WTVideoPlayerView.h; sourceTree = "<group>"; };
@@ -470,6 +472,12 @@
 		11754F591CD87C0D00F4DA09 /* LyricDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LyricDragView.h; sourceTree = "<group>"; };
 		11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LyricDragView.m; sourceTree = "<group>"; };
 		11754F8F1CD89C3E00F4DA09 /* HCPlayer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HCPlayer.podspec; sourceTree = "<group>"; };
+		118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCLoaderConnectionN.h; sourceTree = "<group>"; };
+		118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCLoaderConnectionN.m; sourceTree = "<group>"; };
+		118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VDCTempFileManager(readwriter).m"; sourceTree = "<group>"; };
+		118CE5171CE0A9F200290641 /* VDCTempFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCTempFileManager.m; sourceTree = "<group>"; };
+		118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VDCTempFileManagerN(readwriter).h"; sourceTree = "<group>"; };
+		118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCTempFileManagerN.h; sourceTree = "<group>"; };
 		1193D4661CDC4D17006874C8 /* mtvcover_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mtvcover_icon@2x.png"; sourceTree = "<group>"; };
 		1193D4691CDCABB6006874C8 /* play_iconbig.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_iconbig.png; sourceTree = "<group>"; };
 		1193D46A1CDCABB6006874C8 /* play_iconbig@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play_iconbig@2x.png"; sourceTree = "<group>"; };
@@ -721,14 +729,15 @@
 		11754E611CD755E000F4DA09 /* HCPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				11754E8E1CD7588800F4DA09 /* Pannels */,
+				11754E791CD7585500F4DA09 /* VIMVideoPlayer */,
+				118CE5131CE0A9F200290641 /* CacheLoader */,
 				112B57CC1CDAFC04008564C6 /* progressimages */,
 				112B55FA1CDA26C0008564C6 /* EditImages */,
 				112B56041CDA26C0008564C6 /* images */,
 				112B56411CDA26C0008564C6 /* playfullscreen */,
 				11754F511CD87BC400F4DA09 /* Lyric */,
 				11754F211CD871CB00F4DA09 /* CommentView */,
-				11754E8E1CD7588800F4DA09 /* Pannels */,
-				11754E791CD7585500F4DA09 /* VIMVideoPlayer */,
 				11754E621CD755E000F4DA09 /* HCPlayer.h */,
 				11754E641CD755E000F4DA09 /* Info.plist */,
 				11754F1F1CD871A300F4DA09 /* player_config.h */,
@@ -762,8 +771,6 @@
 				11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */,
 				11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */,
 				11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */,
-				11754E7C1CD7585500F4DA09 /* WTVideoPlayerView(Cache).h */,
-				11754E7D1CD7585500F4DA09 /* WTVideoPlayerView(Cache).m */,
 				11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */,
 				11754E811CD7585500F4DA09 /* WTVideoPlayerView(MTV).m */,
 				11754E821CD7585500F4DA09 /* WTVideoPlayerView.h */,
@@ -821,6 +828,19 @@
 			path = Lyric;
 			sourceTree = "<group>";
 		};
+		118CE5131CE0A9F200290641 /* CacheLoader */ = {
+			isa = PBXGroup;
+			children = (
+				118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */,
+				118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */,
+				118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */,
+				118CE5171CE0A9F200290641 /* VDCTempFileManager.m */,
+				118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */,
+				118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */,
+			);
+			path = CacheLoader;
+			sourceTree = "<group>";
+		};
 		404BEBCC910CE8859C734347 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,13 +877,14 @@
 				11754F301CD871CB00F4DA09 /* CommentViewManager.h in Headers */,
 				11754EA31CD758A500F4DA09 /* WTPlayerTopPannel.h in Headers */,
 				11754F5B1CD87C0D00F4DA09 /* LyricCell.h in Headers */,
+				118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */,
 				112B582D1CDB4FA0008564C6 /* HCPlayerWrapper(Play).h in Headers */,
 				11754EA51CD758A500F4DA09 /* WTRecordTopPannel.h in Headers */,
 				11754F321CD871CB00F4DA09 /* UICommentItemView.h in Headers */,
 				11754E9C1CD758A500F4DA09 /* AVFunComm.h in Headers */,
 				112B582B1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h in Headers */,
-				11754E861CD7585500F4DA09 /* WTVideoPlayerView(Cache).h in Headers */,
 				11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */,
+				118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */,
 				112B58271CDB4FA0008564C6 /* HCPlayerWrapper(background).h in Headers */,
 				112B58291CDB4FA0008564C6 /* HCPlayerWrapper(Data).h in Headers */,
 				11754E9F1CD758A500F4DA09 /* WTPlayerControlPannel.h in Headers */,
@@ -872,6 +893,7 @@
 				11754E631CD755E000F4DA09 /* HCPlayer.h in Headers */,
 				11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */,
 				11754F541CD87BD000F4DA09 /* LyricView.h in Headers */,
+				118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */,
 				11754EAB1CD758F300F4DA09 /* PlayerMediaItem.h in Headers */,
 				11754F361CD871CB00F4DA09 /* UICommentsPopView.h in Headers */,
 				11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */,
@@ -1291,10 +1313,12 @@
 				11754EA81CD758A500F4DA09 /* WTRecordTopPannel(Upload).m in Sources */,
 				11754F551CD87BD000F4DA09 /* LyricView.m in Sources */,
 				11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */,
+				118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */,
+				118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */,
 				11754F5C1CD87C0D00F4DA09 /* LyricCell.m in Sources */,
-				11754E871CD7585500F4DA09 /* WTVideoPlayerView(Cache).m in Sources */,
 				11754EA41CD758A500F4DA09 /* WTPlayerTopPannel.m in Sources */,
 				11754E9D1CD758A500F4DA09 /* AVFunComm.m in Sources */,
+				118CE51C1CE0A9F200290641 /* VDCTempFileManager(readwriter).m in Sources */,
 				11754F2F1CD871CB00F4DA09 /* CommentAnimateItem.m in Sources */,
 				112B58261CDB4FA0008564C6 /* HCPlayerWrapper.m in Sources */,
 				11754E851CD7585500F4DA09 /* WTVideoPlayerProgressView.m in Sources */,
