@@ -106,6 +106,7 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 - (UIImage *) getCoverImage;
 - (void)    showButtonsPause;
 - (void)    showButtonsPlaying;
-
+#ifndef __OPTIMIZE__
 - (void)showSecondsWasted:(NSString *)title;
+#endif
 @end

@@ -827,10 +827,10 @@
 			children = (
 				118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */,
 				118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */,
-				118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */,
-				118CE5171CE0A9F200290641 /* VDCTempFileManager.m */,
 				118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */,
+				118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */,
 				118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */,
+				118CE5171CE0A9F200290641 /* VDCTempFileManager.m */,
 			);
 			path = CacheLoader;
 			sourceTree = "<group>";

@@ -686,8 +686,10 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (BOOL) play
 {
+#ifndef __OPTIMIZE__
     //如何播放的对像发生过变化
     lastSecondsRemember_ = [[NSDate date]timeIntervalSince1970];
+#endif
     if(playItemChanged_)
     {
         currentPlaySeconds_ = playBeginSeconds_;
