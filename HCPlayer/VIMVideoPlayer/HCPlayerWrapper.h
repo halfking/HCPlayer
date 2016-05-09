@@ -49,6 +49,7 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     
     AVPlayerItem * currentPlayerItem_;
     NSURL * currentUrl_;
+    NSString * lyricUrlORContent_;//指定的歌词或URL
     
     BOOL needPlayLeader_; //是否叠加音频，如导唱之类的
     CGFloat currentPlaySeconds_; //当前播放时间，当切源时，可以继续
@@ -65,24 +66,35 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     CGFloat playBeginSeconds_;
     CGFloat playEndSeconds_;
     BOOL playItemChanged_;
+    CGFloat playRate_;
     
+    CGFloat playVol_;   //声音大小
+    CGFloat leaderVol_;//导唱的声音大小
     //歌词
     CGFloat lyricSpace2Bottom_;
+#ifndef __OPTIMIZE__
+    CGFloat lastSecondsRemember_;
+#endif
 }
 @property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate> delegate;
 @property (nonatomic,assign) BOOL isLoop;
+@property (nonatomic,assign) BOOL isShowLyric;
 + (instancetype)shareObject;
 
 - (BOOL) setPlayerData:(MTV *)item sample:(MTV *)sample;
-- (BOOL) setPlayerItem:(AVPlayerItem *)playerItem;
-- (BOOL) setPlayerUrl:(NSURL *)url;
+- (BOOL) setPlayerItem:(AVPlayerItem *)playerItem lyric:(NSString*)lyric;
+- (BOOL) setPlayerUrl:(NSURL *)url lyric:(NSString *)lyric;
 
 - (BOOL) setPlayRange:(CGFloat)beginSeconds end:(CGFloat)endSeconds;
 
 - (BOOL) play;
 - (BOOL) pause;
 - (BOOL) pauseWithCache;
+- (BOOL) seek:(CGFloat)seconds;
+
 - (void) readyToRelease;
+- (void) setPlayRate:(CGFloat)rate;
+- (void) setPlayVol:(CGFloat)vol leaderVol:(CGFloat)leaderVol;
 
 - (void) doFullScreen:(CGRect)frame;
 - (void) cancelFullScreen:(CGRect)frame;
@@ -94,4 +106,6 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 - (UIImage *) getCoverImage;
 - (void)    showButtonsPause;
 - (void)    showButtonsPlaying;
+
+- (void)showSecondsWasted:(NSString *)title;
 @end

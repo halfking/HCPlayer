@@ -724,8 +724,10 @@ static NSString * cellIdentifier =@"CommentListitem";
     cmd.PageIndex = pageIndex;
     cmd.PageSize = 30;
     
+    __weak CommentViewManager * weakSelf = self;
     cmd.CMDCallBack= ^(HCCallbackResult * result)
     {
+        __strong CommentViewManager * strongSelf = weakSelf;
 #ifndef __OPTIMIZE__
         if(result)
 #else
@@ -734,18 +736,18 @@ static NSString * cellIdentifier =@"CommentListitem";
         {
             if(pageIndex==0)
             {
-                [self clearComments:nil];
+                [strongSelf clearComments:nil];
             }
 #ifndef __OPTIMIZE__
             if(!result.List || result.List.count==0)
             {
-                result.List = [self buildTestComments];
+                result.List = [strongSelf buildTestComments];
             }
             result.Code = 0;
 #endif
             if(result.List.count >0)
             {
-                [self addComments:result.List pageIndex:pageIndex];
+                [strongSelf addComments:result.List pageIndex:pageIndex];
                 // self.commentListView_.userInteractionEnabled = YES;
             }
             else if(pageIndex==0)
@@ -763,9 +765,9 @@ static NSString * cellIdentifier =@"CommentListitem";
             commentsTotalCount_ = result.TotalCount;
             
             if(pageIndex==0)
-                [self refreshCommentsViewInThread:YES reset:YES andIndex:0];
+                [strongSelf refreshCommentsViewInThread:YES reset:YES andIndex:0];
             else
-                [self refreshCommentsViewInThread:NO reset:NO andIndex:-1];
+                [strongSelf refreshCommentsViewInThread:NO reset:NO andIndex:-1];
         }
         if(completed)
         {

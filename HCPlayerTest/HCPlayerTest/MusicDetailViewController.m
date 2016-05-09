@@ -335,7 +335,7 @@ static MusicDetailViewController * _instanceDetailItem;
     //    [self removeStartView];
     mtv.IsLandscape = YES;
     currentMtv_ = mtv;
-    [UserManager sharedUserManager].currentSettings.EnbaleCacheWhenPlaying = YES;
+//    [UserManager sharedUserManager].currentSettings.EnbaleCacheWhenPlaying = YES;
     [MediaEditManager shareObject].mergeMTVItem = mtv;
     //    mtv.IsLandscape = NO;
     //    [[MediaEditManager shareObject] setCacheDataBetweenWindows:mtv sample:nil];
@@ -623,9 +623,21 @@ static MusicDetailViewController * _instanceDetailItem;
     NSLog(@"getData.....");
     if([NSThread isMainThread])
     {
-        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
+//        [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
+        [[UserManager sharedUserManager]currentSettings].EnbaleCacheWhenPlaying = YES;
         [playContainerView_ setLyricBottomSpace:30];
         [playContainerView_ setPlayRange:10 end:-1];
+        
+//        AVURLAsset *movieAsset = nil;
+//        NSString * urlString = [currentMtv_ getMTVUrlString:config_.networkStatus userID:[[UserManager sharedUserManager] userID] remoteUrl:nil];;
+//        NSLog(@"play item url:%@",urlString);
+//        
+//        movieAsset = [AVURLAsset URLAssetWithURL:[NSURL URLWithString:urlString] options:nil];
+//        AVPlayerItem * playerItem = [AVPlayerItem playerItemWithAsset:movieAsset];
+//        [playContainerView_ setPlayerUrl:[NSURL URLWithString:urlString]];
+        [playContainerView_ setPlayerData:currentMtv_ sample:nil];
+        playContainerView_.backgroundColor = [UIColor blackColor];
+//        [playContainerView_ setPlayRate:1];
         playContainerView_.isLoop = YES;
         
         [self bringToolBar2Front];

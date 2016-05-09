@@ -74,7 +74,7 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 {
 //    CommentViewManager * commentManager_;
     CGFloat secondsPlaying_;
-
+    CGFloat playRate_;
 }
 
 @property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate> delegate;
@@ -86,6 +86,7 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 //@property (assign,nonatomic) BOOL isFull;
 @property (assign,nonatomic) BOOL playing;
 @property (assign,nonatomic) BOOL isFull;
+@property (assign,nonatomic) CGFloat secondsPlaying;
 @property (nonatomic,strong) NSString * playerItemKey;
 @property (nonatomic, assign) BOOL isEcoCancellationMode;
 
@@ -101,6 +102,8 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 - (void) pauseWithCache;
 - (BOOL) seek:(CGFloat)seconds accurate:(BOOL)accurate;
 - (void) resetPlayer;
+
+- (void) setRate:(CGFloat)rate;
 
 - (void) setVideoVolume:(float)volume;//值 0-1
 - (CGFloat) getVideoVolumne;

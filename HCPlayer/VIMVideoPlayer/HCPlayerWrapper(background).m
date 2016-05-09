@@ -391,6 +391,7 @@
             //30分钟内不再提示
             [UserManager sharedUserManager].currentSettings.DownloadVia3G = YES;
             [[UserManager sharedUserManager] disableNotickeFor3G];
+            playItemChanged_ = YES;
             [self play];
 //            [self playItem:nil seconds:-1];
         }

@@ -2,8 +2,15 @@
 #import "WTVideoPlayerView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <HCMVManager/MTV.h>
-#import <HCMVManager/vdcmanager_full.h>
+//#import <HCMVManager/vdcmanager_full.h>
+#import <HCBaseSystem/VDCManager.h>
+#import <HCBaseSystem/VDCManager(Helper).h>
+#import <HCBaseSystem/VDCManager(LocalFiles).h>
+#import <HCMVManager/VDCManager(MTV).h>
 
+#import "VDCLoaderConnectionN.h"
+#import "VDCTempFileManagerN.h"
+#import "VDCTempFileManagerN(readwriter).h"
 #import "LyricView.h"
 #import "CommentViewManager.h"
 #import "UICommentsView.h"
@@ -11,10 +18,10 @@
 //#import "WTVideoPlayerView(Cache).h"
 //#import "WTVideoPlayerView(Lyric).h"
 
-@interface WTVideoPlayerView () <VDCLoaderConnectionDelegate>
+@interface WTVideoPlayerView () <VDCLoaderConnectionNDelegate>
 @property (strong, nonatomic) AVPlayer *player;
 @property (strong, nonatomic) AVPlayerLayer *playerLayer;
-@property (strong, nonatomic) VDCLoaderConnection * loader;
+@property (strong, nonatomic) VDCLoaderConnectionN * loader;
 @end
 
 @implementation WTVideoPlayerView
@@ -48,6 +55,7 @@
 }
 @synthesize player = player_;
 @synthesize playerItem = playerItem_;
+@synthesize secondsPlaying = secondsPlaying_;
 
 + (instancetype)sharedWTVideoPlayerView
 {
@@ -84,6 +92,9 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         self.mainBounds = frame;
         
         self.cachingWhenPlaying = YES;
+        
+        playRate_ = 1;
+        
         [self clearPlayerContents];
         
         transform_ = CATransform3DIdentity;
@@ -155,6 +166,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     //    }
     
     [player_ play];
+    player_.rate = playRate_;
     
     NSLog(@"player status:%d",(int)player_.status);
     if(player_.error)
@@ -178,8 +190,14 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         }
     }
 }
-
-
+- (void)setRate:(CGFloat)rate
+{
+    playRate_ = rate;
+    if(player_ && player_.rate!=0)
+    {
+        player_.rate = rate;
+    }
+}
 - (BOOL)play:(CGFloat)begin end:(CGFloat)end
 {
     secondsBegin_ = begin;
@@ -230,7 +248,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
             [self showActivityView];
             __weak WTVideoPlayerView * weakSelf = self;
             count ++;
-            [NSThread sleepForTimeInterval:1];
+            [NSThread sleepForTimeInterval:0.1];
             dispatch_async(dispatch_get_main_queue(), ^{
                 __strong WTVideoPlayerView * strongSelf = weakSelf;
                 [strongSelf seek:seconds accurate:accurate count:count];
@@ -277,6 +295,8 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         [player_ seekToTime:CMTimeMakeWithSeconds(seconds, ts)
             toleranceBefore:kCMTimeZero
              toleranceAfter:kCMTimeZero];
+    
+    secondsPlaying_ = seconds;
     
     if(needAutoPlay_)
     {
@@ -508,10 +528,12 @@ static WTVideoPlayerView *sharedPlayerView = nil;
             [self.loader cancel];
             self.loader = nil;
         }
-        self.loader = [[VDCLoaderConnection alloc]init];
+        NSLog(@"create loader connection");
+        self.loader = [[VDCLoaderConnectionN alloc]init];
         self.loader.delegate = self;
         NSURL *playUrl = [self.loader getSchemeVideoURL:url];
         //        NSURL * playUrl = url;
+        NSLog(@"getschecme video url:%@",[url path]);
         movieAsset = [AVURLAsset URLAssetWithURL:playUrl options:nil];
         [movieAsset.resourceLoader setDelegate:self.loader queue:dispatch_get_main_queue()];
     }
@@ -525,11 +547,11 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     
     currentPlayUrl_ = PP_RETAIN(url);
 }
-- (void)didFailLoadingWithTask:(VDCTempFileManager *)task WithError:(NSInteger )errorCode
+- (void)didFailLoadingWithTask:(VDCTempFileManagerN *)task WithError:(NSInteger )errorCode
 {
     NSLog(@"load task failure:%ld",(long)errorCode);
 }
-- (void)didFinishLoadingWithTask:(VDCTempFileManager *)task
+- (void)didFinishLoadingWithTask:(VDCTempFileManagerN *)task
 {
     if(self.playing==NO && needAutoPlay_==YES)
     {

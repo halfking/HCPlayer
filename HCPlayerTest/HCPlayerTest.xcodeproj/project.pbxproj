@@ -50,6 +50,9 @@
 		112B581A1CDB3771008564C6 /* HCPlayerWrapper(Play).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58191CDB3771008564C6 /* HCPlayerWrapper(Play).m */; };
 		11754F9F1CD8AC6700F4DA09 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F9E1CD8AC6700F4DA09 /* main.m */; };
 		11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754FA11CD8AC6700F4DA09 /* AppDelegate.m */; };
+		118CE5101CE06CF600290641 /* VDCLoaderConnectionN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE50B1CE06CF600290641 /* VDCLoaderConnectionN.m */; };
+		118CE5111CE06CF600290641 /* VDCTempFileManager(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE50D1CE06CF600290641 /* VDCTempFileManager(readwriter).m */; };
+		118CE5121CE06CF600290641 /* VDCTempFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE50F1CE06CF600290641 /* VDCTempFileManager.m */; };
 		E40D72D15AFFAAE7C7EBD1A6 /* libPods-HCPlayerTest.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */; };
 /* End PBXBuildFile section */
 
@@ -273,6 +276,12 @@
 		11754FA01CD8AC6700F4DA09 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		11754FA11CD8AC6700F4DA09 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		11754FB11CD8AC6700F4DA09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		118CE50A1CE06CF600290641 /* VDCLoaderConnectionN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCLoaderConnectionN.h; sourceTree = "<group>"; };
+		118CE50B1CE06CF600290641 /* VDCLoaderConnectionN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCLoaderConnectionN.m; sourceTree = "<group>"; };
+		118CE50C1CE06CF600290641 /* VDCTempFileManagerN(readwriter).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VDCTempFileManagerN(readwriter).h"; sourceTree = "<group>"; };
+		118CE50D1CE06CF600290641 /* VDCTempFileManager(readwriter).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VDCTempFileManager(readwriter).m"; sourceTree = "<group>"; };
+		118CE50E1CE06CF600290641 /* VDCTempFileManagerN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCTempFileManagerN.h; sourceTree = "<group>"; };
+		118CE50F1CE06CF600290641 /* VDCTempFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCTempFileManager.m; sourceTree = "<group>"; };
 		1193D4641CDC48C7006874C8 /* mtvcover_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mtvcover_icon@2x.png"; sourceTree = "<group>"; };
 		7FEF77DA6B658AA02EB73260 /* libPods-HCPlayerTest.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HCPlayerTest.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81E6A89600EA3A0CEF6F574 /* Pods-HCPlayerTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HCPlayerTest.release.xcconfig"; path = "Pods/Target Support Files/Pods-HCPlayerTest/Pods-HCPlayerTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -310,16 +319,17 @@
 		112B529D1CD91FFF008564C6 /* HCPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				112B52C11CD91FFF008564C6 /* VIMVideoPlayer */,
+				118CE5091CE06CF600290641 /* CacheLoader */,
+				112B529E1CD91FFF008564C6 /* CommentView */,
+				112B52AD1CD91FFF008564C6 /* Lyric */,
+				112B52B41CD91FFF008564C6 /* Pannels */,
+				112B52C01CD91FFF008564C6 /* player_config.h */,
+				112B52AC1CD91FFF008564C6 /* Info.plist */,
 				112B57B71CDAFA41008564C6 /* progressimages */,
 				112B55B11CDA0808008564C6 /* EditImages */,
 				112B55621CDA0593008564C6 /* playfullscreen */,
 				112B54F51CDA0529008564C6 /* images */,
-				112B529E1CD91FFF008564C6 /* CommentView */,
-				112B52AC1CD91FFF008564C6 /* Info.plist */,
-				112B52AD1CD91FFF008564C6 /* Lyric */,
-				112B52B41CD91FFF008564C6 /* Pannels */,
-				112B52C01CD91FFF008564C6 /* player_config.h */,
-				112B52C11CD91FFF008564C6 /* VIMVideoPlayer */,
 			);
 			name = HCPlayer;
 			path = ../HCPlayer;
@@ -621,6 +631,19 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		118CE5091CE06CF600290641 /* CacheLoader */ = {
+			isa = PBXGroup;
+			children = (
+				118CE50A1CE06CF600290641 /* VDCLoaderConnectionN.h */,
+				118CE50B1CE06CF600290641 /* VDCLoaderConnectionN.m */,
+				118CE50C1CE06CF600290641 /* VDCTempFileManagerN(readwriter).h */,
+				118CE50D1CE06CF600290641 /* VDCTempFileManager(readwriter).m */,
+				118CE50E1CE06CF600290641 /* VDCTempFileManagerN.h */,
+				118CE50F1CE06CF600290641 /* VDCTempFileManager.m */,
+			);
+			path = CacheLoader;
+			sourceTree = "<group>";
+		};
 		DA1933E17343213D22AF04B8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -823,8 +846,10 @@
 				112B52CE1CD91FFF008564C6 /* CommentAnimateItem.m in Sources */,
 				112B52DA1CD91FFF008564C6 /* WTPlayerControlPannel.m in Sources */,
 				112B52EB1CD9224F008564C6 /* MusicDetailViewController(Play).m in Sources */,
+				118CE5101CE06CF600290641 /* VDCLoaderConnectionN.m in Sources */,
 				112B52DB1CD91FFF008564C6 /* WTPlayerTopPannel.m in Sources */,
 				112B52D01CD91FFF008564C6 /* UICommentItemView.m in Sources */,
+				118CE5111CE06CF600290641 /* VDCTempFileManager(readwriter).m in Sources */,
 				112B58111CDB204E008564C6 /* HCPlayerWrapper.m in Sources */,
 				112B52DD1CD92000008564C6 /* WTRecordTopPannel.m in Sources */,
 				11754FA21CD8AC6700F4DA09 /* AppDelegate.m in Sources */,
@@ -833,6 +858,7 @@
 				11754F9F1CD8AC6700F4DA09 /* main.m in Sources */,
 				112B52DF1CD92000008564C6 /* WTVideoPlayerProgressView.m in Sources */,
 				112B52E91CD9224F008564C6 /* MusicDetailViewController.m in Sources */,
+				118CE5121CE06CF600290641 /* VDCTempFileManager.m in Sources */,
 				112B52DC1CD92000008564C6 /* WTRecordTopPannel(Upload).m in Sources */,
 				112B58171CDB2A62008564C6 /* HCPlayerWrapper(Data).m in Sources */,
 				112B52D21CD91FFF008564C6 /* UICommentsPopView.m in Sources */,

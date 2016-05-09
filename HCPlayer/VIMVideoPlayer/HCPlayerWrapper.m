@@ -87,11 +87,17 @@ static HCPlayerWrapper * _instanceDetailItem;
 {
     config_ = [DeviceConfig config];
     
+    playRate_ = 1;
+    playVol_ = 1;
+    leaderVol_ = 1;
+    
     centerPlayWidth_ = 200;
     playPannelHeight_ = 0;
     progressHeight_ = 45;
     lyricSpace2Bottom_ = 12;
     playItemChanged_ = YES;
+    
+    
     bgTask_ = UIBackgroundTaskInvalid;
     
     userManager_ = [UserManager sharedUserManager];
@@ -511,7 +517,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         [02:13.11] 应怜我 应怜我 粉妆玉琢";
     }
 #endif
-    if(currentMTV_.Lyric && currentMTV_.Lyric.length>4)
+    if(currentMTV_.Lyric && currentMTV_.Lyric.length>4 && self.isShowLyric)
     {
         [self showLyric:currentMTV_.Lyric singleLine:YES container:self];
     }
@@ -523,7 +529,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     [self bringToolBar2Front];
     return YES;
 }
-- (BOOL) setPlayerItem:(AVPlayerItem *)playerItem
+- (BOOL) setPlayerItem:(AVPlayerItem *)playerItem lyric:(NSString*)lyric
 {
     if(playerItem==currentPlayerItem_)
     {
@@ -558,12 +564,22 @@ static HCPlayerWrapper * _instanceDetailItem;
         [leaderPlayer_ stop];
         leaderPlayer_ = nil;
     }
-    [self removeLyric];
+    PP_RELEASE(lyricUrlORContent_);
+    
+    if(lyric && self.isShowLyric)
+    {
+        [self showLyric:lyric singleLine:YES container:self];
+        lyricUrlORContent_ = PP_RETAIN(lyric);
+    }
+    else
+    {
+        [self removeLyric];
+    }
     [self showButtonsPause];
     [self bringToolBar2Front];
     return YES;
 }
-- (BOOL) setPlayerUrl:(NSURL *)url
+- (BOOL) setPlayerUrl:(NSURL *)url lyric:(NSString*)lyric
 {
     if(currentUrl_ && url &&
        (url==currentUrl_ || [url.absoluteString isEqualToString:currentUrl_.absoluteString]))
@@ -582,7 +598,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     [mplayer_ resetPlayer];
     if([userManager_ enableCachenWhenPlaying])
     {
-        localFileVDCItem_ = [[VDCManager shareObject]getVDCItem:[url absoluteString]];
+        localFileVDCItem_ = [[VDCManager shareObject]getVDCItemByURL:[url absoluteString] checkFiles:YES];
         [progressView_ setCacheKey:localFileVDCItem_.key];
     }
     else
@@ -607,6 +623,17 @@ static HCPlayerWrapper * _instanceDetailItem;
         [leaderPlayer_ stop];
         leaderPlayer_ = nil;
     }
+    PP_RELEASE(lyricUrlORContent_);
+    
+    if(lyric && self.isShowLyric)
+    {
+        [self showLyric:lyric singleLine:YES container:self];
+        lyricUrlORContent_ = PP_RETAIN(lyric);
+    }
+    else
+    {
+        [self removeLyric];
+    }
     [self showButtonsPause];
     [self bringToolBar2Front];
     return NO;
@@ -618,7 +645,24 @@ static HCPlayerWrapper * _instanceDetailItem;
     playEndSeconds_ = endSeconds;
     return YES;
 }
-
+- (void)setPlayRate:(CGFloat)rate
+{
+    playRate_ = rate;
+    [mplayer_ setRate:rate];
+}
+- (void) setPlayVol:(CGFloat)vol leaderVol:(CGFloat)leaderVol
+{
+    playVol_ = vol;
+    leaderVol_ = leaderVol;
+    if(mplayer_)
+    {
+        [mplayer_ setVideoVolume:playVol_];
+    }
+    if(leaderPlayer_)
+    {
+        [leaderPlayer_ setVolume:leaderVol_];
+    }
+}
 #pragma mark - 播放
 - (BOOL)pauseWithCache
 {
@@ -635,9 +679,15 @@ static HCPlayerWrapper * _instanceDetailItem;
     [self pauseItemWithCoreEvents];
     return YES;
 }
+- (BOOL)seek:(CGFloat)seconds
+{
+    if(!currentPlayerItem_) return NO;
+    return [mplayer_ seek:seconds accurate:YES];
+}
 - (BOOL) play
 {
     //如何播放的对像发生过变化
+    lastSecondsRemember_ = [[NSDate date]timeIntervalSince1970];
     if(playItemChanged_)
     {
         currentPlaySeconds_ = playBeginSeconds_;
@@ -666,7 +716,7 @@ static HCPlayerWrapper * _instanceDetailItem;
                 {
                     audioUrl = currentSample_.AudioRemoteUrl;
                 }
-                
+                [self showSecondsWasted:@" get path"];
                 if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
                 {
                     [self playLocalFile:item path:path audioUrl:audioUrl seconds:currentPlaySeconds_ play:YES];
@@ -680,7 +730,7 @@ static HCPlayerWrapper * _instanceDetailItem;
                     }
                 }
                 [self showButtonsPlaying];
-                playItemChanged_ = NO;
+//                playItemChanged_ = NO;
                 return YES;
             }
             else
@@ -692,27 +742,27 @@ static HCPlayerWrapper * _instanceDetailItem;
         }
         else if(currentUrl_)
         {
-            NSString * path = [currentUrl_ path];
+            NSString * path = [HCFileManager checkPath:[currentUrl_ absoluteString]];
             if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
             {
-                [self playLocalFile:item path:path audioUrl:nil seconds:currentPlaySeconds_ play:YES];
+                [self playLocalFile:nil path:path audioUrl:nil seconds:currentPlaySeconds_ play:YES];
             }
             else
             {
-                if(![self playRemoteFile:item path:path audioUrl:nil seconds:currentPlaySeconds_])
+                if(![self playRemoteFile:nil path:path audioUrl:nil seconds:currentPlaySeconds_])
                 {
                     [self showButtonsPause];
                     return NO;
                 }
             }
             [self showButtonsPlaying];
-            playItemChanged_ = NO;
+//            playItemChanged_ = NO;
         }
         else if(currentPlayerItem_)
         {
             [self playItemWithPlayerItem:currentPlayerItem_ beginSeconds:currentPlaySeconds_ play:YES];
             [self showButtonsPlaying];
-            playItemChanged_ = NO;
+//            playItemChanged_ = NO;
         }
         else
         {
@@ -740,68 +790,72 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     return YES;
 }
-
-//滚动的时候也会触发该事件
-//更换当前播放的对像或者再次播放
-//在此之前，请不要更新currentMtv对像
--(BOOL) updatePlayer:(MTV *)item seconds:(CGFloat)seconds
+- (void)showSecondsWasted:(NSString *)title
 {
-    __block NSString * path;
-
-    if([userManager_ enableCachenWhenPlaying])
-    {
-        if(!item.isCheckDownload)
-        {
-            [WTVideoPlayerView isDownloadCompleted:&item Sample:nil NetStatus:config_.networkStatus  UserID:[userManager_ userID]];
-        }
-    }
-
-    path = [item getMTVUrlString:config_.networkStatus userID:[userManager_ userID] remoteUrl:nil];
-    
-    if(path && path.length != 0)
-    {
-        //[self showHUDViewInThread];
-        NSString * audioUrl = nil;
-        //下载导唱的数据
-        if([self currentItemIsSample] ||item.UserID==[userManager_ userID])
-        {
-            audioUrl = item.AudioRemoteUrl;
-        }
-        
-        //        [[UMShareObject shareObject]event:@"PlayBegin" attributes:@{@"title":item.Title?item.Title:@"NoName",@"url":path}];
-        if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
-        {
-            [self playLocalFile:item path:path audioUrl:audioUrl seconds:seconds play:YES];
-        }
-        else
-        {
-            if(![self playRemoteFile:item path:path audioUrl:audioUrl seconds:seconds])
-            {
-                return NO;
-            }
-        }
-        if([self getCurrentMTV]!=item)
-        {
-            //            [self setCurrentMTV:item];
-        }
-        
-        //[self refreshButtonStateInThreadWithMTV:item];
-        
-        
-        return YES;
-    }
-    else if(item)
-    {
-        NSLog(@"invalid item path(not found)");
-        //        [self showMessage:MSG_ERROR msg:MSG_FILENOTFOUND];
-        return NO;
-    }
-    else
-    {
-        //        [self showMessage:MSG_ERROR msg:@"没有获取到正确的数据，请检查网络后重试!"];
-        return NO;
-    }
+    CGFloat now = [[NSDate date]timeIntervalSince1970];
+    NSLog(@"%@ waster seconds:%f",title,now - lastSecondsRemember_);
 }
+////滚动的时候也会触发该事件
+////更换当前播放的对像或者再次播放
+////在此之前，请不要更新currentMtv对像
+//-(BOOL) updatePlayer:(MTV *)item seconds:(CGFloat)seconds
+//{
+//    __block NSString * path;
+//
+//    if([userManager_ enableCachenWhenPlaying])
+//    {
+//        if(!item.isCheckDownload)
+//        {
+//            [WTVideoPlayerView isDownloadCompleted:&item Sample:nil NetStatus:config_.networkStatus  UserID:[userManager_ userID]];
+//        }
+//    }
+//
+//    path = [item getMTVUrlString:config_.networkStatus userID:[userManager_ userID] remoteUrl:nil];
+//    
+//    if(path && path.length != 0)
+//    {
+//        //[self showHUDViewInThread];
+//        NSString * audioUrl = nil;
+//        //下载导唱的数据
+//        if([self currentItemIsSample] ||item.UserID==[userManager_ userID])
+//        {
+//            audioUrl = item.AudioRemoteUrl;
+//        }
+//        
+//        //        [[UMShareObject shareObject]event:@"PlayBegin" attributes:@{@"title":item.Title?item.Title:@"NoName",@"url":path}];
+//        if([HCFileManager isLocalFile:path] && [HCFileManager isExistsFile:path])
+//        {
+//            [self playLocalFile:item path:path audioUrl:audioUrl seconds:seconds play:YES];
+//        }
+//        else
+//        {
+//            if(![self playRemoteFile:item path:path audioUrl:audioUrl seconds:seconds])
+//            {
+//                return NO;
+//            }
+//        }
+//        if([self getCurrentMTV]!=item)
+//        {
+//            //            [self setCurrentMTV:item];
+//        }
+//        
+//        //[self refreshButtonStateInThreadWithMTV:item];
+//        
+//        
+//        return YES;
+//    }
+//    else if(item)
+//    {
+//        NSLog(@"invalid item path(not found)");
+//        //        [self showMessage:MSG_ERROR msg:MSG_FILENOTFOUND];
+//        return NO;
+//    }
+//    else
+//    {
+//        //        [self showMessage:MSG_ERROR msg:@"没有获取到正确的数据，请检查网络后重试!"];
+//        return NO;
+//    }
+//}
 
 #pragma mark - progress delegate
 //- (void)videoProgress:(WTVideoPlayerProgressView *)progressView playBegin:(CGFloat)seconds
@@ -1131,8 +1185,15 @@ static HCPlayerWrapper * _instanceDetailItem;
 #pragma mark - player delegate
 - (void)videoPlayerViewIsReadyToPlayVideo:(WTVideoPlayerView *)videoPlayerView
 {
+    [self showSecondsWasted:@"player item ready"];
     NSLog(@"ready to play...%i",(int)mplayer_.playing);
     [self setTotalSeconds:CMTimeGetSeconds(videoPlayerView.playerItem.duration)];
+    if(currentPlayerItem_ &&currentPlayerItem_!=videoPlayerView.playerItem)
+    {
+        PP_RELEASE(currentPlayerItem_);
+    }
+    if(!currentPlayerItem_)
+        currentPlayerItem_ = PP_RETAIN(videoPlayerView.playerItem);
     
     //    [self recordPlayItemBegin];
     //    [self setDelaySeconds];
@@ -1151,6 +1212,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     } else {
         [self hideComments];
     }
+    playItemChanged_ = NO;
     if([self.delegate respondsToSelector:@selector(videoPlayerViewIsReadyToPlayVideo:)])
     {
         [self.delegate videoPlayerViewIsReadyToPlayVideo:videoPlayerView];
@@ -1572,6 +1634,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         [commentManager_ readyToRelease];
         commentManager_ = nil;
     }
+    PP_RELEASE(lyricUrlORContent_);
     PP_RELEASE(commentListView_);
     PP_RELEASE(lyricView_);
     //    PP_RELEASE(activityView_);

@@ -13,16 +13,17 @@
 @interface HCPlayerWrapper(Play)
 - (void)    pauseItemWithCoreEvents;
 - (void)    playItemWithCoreEvents:(CGFloat)seconds;
-- (void)    playItemChangeWithCoreEvents:(NSString *)path
-                                 orgPath:(NSString*)orgPath
-                                     mtv:(MTV*)item
-                            beginSeconds:(CGFloat) beginSeconds;
-- (void)    playItemChangeWithReady:(NSString *)path
-                            orgPath:(NSString*)orgPath
-                                mtv:(MTV*)item
-                       beginSeconds:(CGFloat)beginSeconds;
-
 - (void)    removePlayerInThread;
+//- (void)    playItemChangeWithCoreEvents:(NSString *)path
+//                                 orgPath:(NSString*)orgPath
+//                                     mtv:(MTV*)item
+//                            beginSeconds:(CGFloat) beginSeconds;
+//- (void)    playItemChangeWithReady:(NSString *)path
+//                            orgPath:(NSString*)orgPath
+//                                mtv:(MTV*)item
+//                       beginSeconds:(CGFloat)beginSeconds;
+
+
 - (BOOL)    playRemoteFile:(MTV *)item
                       path:(NSString *)path
                   audioUrl:(NSString*)audioUrl
