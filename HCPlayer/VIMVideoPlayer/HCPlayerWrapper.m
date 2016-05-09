@@ -90,6 +90,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     centerPlayWidth_ = 200;
     playPannelHeight_ = 0;
     progressHeight_ = 45;
+    lyricSpace2Bottom_ = 12;
     playItemChanged_ = YES;
     bgTask_ = UIBackgroundTaskInvalid;
     
@@ -202,6 +203,10 @@ static HCPlayerWrapper * _instanceDetailItem;
     if(commentListView_)
     {
         [self resetCommentsFrame:mplayer_.frame container:self textContainer:self.superview];
+    }
+    if(lyricView_)
+    {
+        [self resetLyricFrame:frame];
     }
 }
 
@@ -482,12 +487,40 @@ static HCPlayerWrapper * _instanceDetailItem;
         [leaderPlayer_ stop];
         leaderPlayer_ = nil;
     }
-    
+#ifndef __OPTIMIZE__
+    if(!currentMTV_.Lyric || currentMTV_.Lyric.length<=4)
+    {
+        currentMTV_.Lyric = @"[ti:纹身]\n\
+        [ar:周华健]\n\
+        [t_time:(03:59)]\n\
+        [00:02.08] 纹身 - 周华健\n\
+        [00:04.18] 词：张大春\n\
+        [00:06.87] 曲：周华健\n\
+        [00:16.85] 脂粉门墙五丈楼\n\
+        [00:24.87] 笙箫日夜伴歌讴\n\
+        [00:33.36] 争途骐骥迷痴眼\n\
+        [00:41.23] 竞艳芳华醉啭喉\n\
+        [00:55.74] 应怜我 应怜我 粉妆玉琢\n\
+        [01:04.03] 应怜我 应怜我 盈盈红袖\n\
+        [01:11.77] 应怜我 应怜我 滴露芳枝\n\
+        [01:19.95] 应怜我 应怜我 流年豆蔻\n\
+        [01:29.54] 不及那 一身花绣\n\
+        [01:36.39] 贴着身儿 伴君四海逍遥游\n\
+        [01:47.77] 不及那 一身花绣\n\
+        [01:51.99] 贴着身儿 伴君四海逍遥游\n\
+        [02:13.11] 应怜我 应怜我 粉妆玉琢";
+    }
+#endif
+    if(currentMTV_.Lyric && currentMTV_.Lyric.length>4)
+    {
+        [self showLyric:currentMTV_.Lyric singleLine:YES container:self];
+    }
     if(![item hasAudio])
     {
         [self videoPannel:nil guideChanged:NO];
     }
     [self showButtonsPause];
+    [self bringToolBar2Front];
     return YES;
 }
 - (BOOL) setPlayerItem:(AVPlayerItem *)playerItem
@@ -527,6 +560,7 @@ static HCPlayerWrapper * _instanceDetailItem;
     }
     [self removeLyric];
     [self showButtonsPause];
+    [self bringToolBar2Front];
     return YES;
 }
 - (BOOL) setPlayerUrl:(NSURL *)url
@@ -574,6 +608,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         leaderPlayer_ = nil;
     }
     [self showButtonsPause];
+    [self bringToolBar2Front];
     return NO;
 }
 
@@ -694,7 +729,7 @@ static HCPlayerWrapper * _instanceDetailItem;
             [self showButtonsPause];
             return NO;
         }
-        if(currentPlaySeconds_ < playBeginSeconds_ || (currentPlaySeconds_ > playEndSeconds_ && playEndSeconds_>0))
+        if(currentPlaySeconds_ < playBeginSeconds_ || (currentPlaySeconds_ >= playEndSeconds_ && playEndSeconds_>0))
             currentPlaySeconds_ = playBeginSeconds_;
         //        else
         //            currentPlaySeconds_  = -1;
@@ -1138,6 +1173,8 @@ static HCPlayerWrapper * _instanceDetailItem;
     //如果是循环播放
     if(self.isLoop)
     {
+        [commentManager_ stopCommentTimer];
+        [commentManager_ refreshCommentsView:currentPlaySeconds_ reloadNow:YES completed:nil];
         [self play];
     }
     else
@@ -1159,6 +1196,12 @@ static HCPlayerWrapper * _instanceDetailItem;
     
     CGFloat progress = cmTime;
     currentPlaySeconds_ = progress;
+    
+    if(playEndSeconds_>0 && currentPlaySeconds_ >= playEndSeconds_)
+    {
+        [self videoPlayerViewDidReachEnd:videoPlayerView];
+        return;
+    }
     
     if (leaderPlayer_ && needPlayLeader_) {
         leaderPlayer_.currentTime = progress + 0.1;
@@ -1475,13 +1518,13 @@ static HCPlayerWrapper * _instanceDetailItem;
         [self bringSubviewToFront:mplayer_];
     
     
-    
-    [self bringSubviewToFront:progressView_];
     [self bringSubviewToFront:playPannel_];
     [self bringSubviewToFront:maxPannel_];
     
     [self bringSubviewToFront:commentListView_];
+    [self bringSubviewToFront:lyricView_];
     
+    [self bringSubviewToFront:progressView_];
     [self bringSubviewToFront:centerPlayBtn_];
     
 }

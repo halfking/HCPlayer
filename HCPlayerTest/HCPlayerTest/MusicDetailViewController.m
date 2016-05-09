@@ -624,6 +624,8 @@ static MusicDetailViewController * _instanceDetailItem;
     if([NSThread isMainThread])
     {
         [playContainerView_ setPlayerData:currentMtv_ sample:currentSample_];
+        [playContainerView_ setLyricBottomSpace:30];
+        [playContainerView_ setPlayRange:10 end:-1];
         playContainerView_.isLoop = YES;
         
         [self bringToolBar2Front];

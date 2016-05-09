@@ -154,7 +154,8 @@ static NSString * cellIdentifier =@"CommentListitem";
             // 这个根据 计时器滚动的算法得出 当前播放时间 弹幕应该滚动的位置
             CGFloat value = durance * 150 - self.commentListView_.frame.size.width/2;
             [self.commentListView_ setScrollOffset:value updateLayout:NO];
-            completed(0);
+            if(completed)
+                completed(0);
         } else {
             [self reloadComments:durance completed:^(int code) {
                 if (completed) {
@@ -699,6 +700,7 @@ static NSString * cellIdentifier =@"CommentListitem";
         cc.DateCreated = [CommonUtil stringFromDate:[NSDate date]];
         cc.DuranceForWhen = i;
         cc.UserID = 232;
+        cc.QAID = i * 10;
         cc.UserName = [NSString stringWithFormat:@"user test:%d",i];
         [result addObject:cc];
     }

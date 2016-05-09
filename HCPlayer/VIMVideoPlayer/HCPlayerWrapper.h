@@ -65,6 +65,9 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     CGFloat playBeginSeconds_;
     CGFloat playEndSeconds_;
     BOOL playItemChanged_;
+    
+    //歌词
+    CGFloat lyricSpace2Bottom_;
 }
 @property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate> delegate;
 @property (nonatomic,assign) BOOL isLoop;

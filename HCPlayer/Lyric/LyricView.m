@@ -13,6 +13,8 @@
 #import "player_config.h"
 #import "LyricCell.h"
 #import "LyricDragView.h"
+#import <HCMVManager/LyricItem.h>
+
 @interface LyricView ()<UITableViewDataSource,UITableViewDelegate>
 {
     CGFloat rowH_;
@@ -58,7 +60,7 @@
 - (void)setFrame:(CGRect)frame
 {
     [super setFrame:frame];
-     self.lyricView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
+    self.lyricView.frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
 }
 - (instancetype)initWithFrame:(CGRect)frame lyric:(NSString *)lyric singleRowShow:(BOOL)singleRowShow
 {
@@ -95,12 +97,35 @@
 {
     NSLog(@"%@",lyric);
     
-    self.lrcItems = [[LyricHelper sharedObject] setSongLrcWithUrl:lyric lycArray:self.lrcArray timeArray:self.timeArray];
+    //如果是URL，则直接去取，如果是Json，直接处理
+    if([HCFileManager isUrlOK:lyric])
+    {
+        self.lrcItems = [[LyricHelper sharedObject] setSongLrcWithUrl:lyric lycArray:self.lrcArray timeArray:self.timeArray];
+    }
+    else
+    {
+        self.lrcItems = [[LyricHelper sharedObject]getSongLrcWithStr:lyric metas:nil];
+        //check 时间
+        if(self.lrcArray)
+            [self.lrcArray removeAllObjects];
+        else
+            self.lrcArray = [NSMutableArray new];
+        if(self.timeArray)
+            [self.timeArray removeAllObjects];
+        else
+            self.timeArray = [NSMutableArray new];
+        for (LyricItem * item in self.lrcItems) {
+            [self.lrcArray addObject:item.text?item.text:@""];
+            [self.timeArray addObject:[NSString stringWithFormat:@"%.2f",item.begin]];
+        }
+        
+    }
     if (!self.lrcArray || self.lrcArray.count == 0) {
         return;
     }
     
-    #pragma mark 暂时用来判断 以防前两句歌词不是空歌词
+    
+#pragma mark 暂时用来判断 以防前两句歌词不是空歌词
     // 如果第一句歌词不为空歌词
     NSString *firstLyric = [[self.lrcArray firstObject] stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSLog(@"firstLyric.length %d",(int)firstLyric.length);
@@ -406,7 +431,7 @@
         cell.lrc.text = [self.lrcArray objectAtIndex:indexPath.row];
     }
     cell.backgroundColor = [UIColor clearColor];
-
+    
     return cell;
 }
 

@@ -215,6 +215,8 @@
             [self addSubview:self.commentShowBtn];
             rightMargin -= widthForBtn  +15;
             progressLength_ -=  widthForBtn + 15;
+            self.commentShowBtn.selected = self.isCommentShow;
+            
         }
         
         //total seconds

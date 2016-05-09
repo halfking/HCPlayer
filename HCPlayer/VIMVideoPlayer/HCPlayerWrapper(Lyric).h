@@ -16,6 +16,7 @@
 - (void)showLyric;
 - (void)hideLyric;
 - (void)removeLyric;
+- (void)setLyricBottomSpace:(CGFloat)space;
 
 - (void)initComments:(UIView *)container textContainer:(UIView *)textContainer inputTag:(int)inputTag objectType:(HCObjectType) objectType objectID:(long)objectID;
 - (void)resetCommentsFrame:(CGRect)commentFamre container:(UIView *)container textContainer:(UIView *)textContainer;

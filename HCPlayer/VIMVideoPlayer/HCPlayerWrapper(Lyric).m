@@ -55,7 +55,7 @@
 {
     if([NSThread isMainThread])
     {
-        CGFloat height = 90;
+        CGFloat height = 60;
         if (lyricView_) {
             [lyricView_ setLyric:lyric singleRowShow:singleLine];
             [lyricView_ didPlayingWithSecond:0];
@@ -75,7 +75,7 @@
             {
                 containerFrame = container.frame;
             }
-            CGRect frame = CGRectMake((containerFrame.size.width - 400)/2.0f, containerFrame.size.height - 12 - height, 400, height);
+            CGRect frame = CGRectMake((containerFrame.size.width - 400)/2.0f, containerFrame.size.height - lyricSpace2Bottom_ - height, 400, height);
             if(frame.origin.x <10)
             {
                 frame.size.width -= (10 - frame.origin.x )*2;
@@ -107,7 +107,8 @@
     
     if([NSThread isMainThread])
     {
-        CGRect frame = CGRectMake((containerFrame.size.width - 400)/2.0f, containerFrame.size.height - 12 - self.frame.size.height, 400, self.frame.size.height);
+         CGFloat height = 60;
+        CGRect frame = CGRectMake((containerFrame.size.width - 400)/2.0f, containerFrame.size.height - lyricSpace2Bottom_ - height, 400, height);
         if(frame.origin.x <10)
         {
             frame.size.width -= (10 - frame.origin.x )*2;
@@ -174,7 +175,11 @@
                        });
     }
 }
-
+- (void)setLyricBottomSpace:(CGFloat)space
+{
+    lyricSpace2Bottom_ = space;
+    [self resetLyricFrame:self.frame];
+}
 #pragma mark - comments
 - (void)initCommentView
 {
