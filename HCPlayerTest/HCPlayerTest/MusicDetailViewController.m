@@ -417,11 +417,11 @@ static MusicDetailViewController * _instanceDetailItem;
         //        [contentContainerView_ addSubview:swipeContainerView_];
         
         
-        returnBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
-        returnBtn_.frame = CGRectMake(10, 20, 40, 40);
-        [returnBtn_ setImage:[UIImage imageNamed:@"play_back_icon.png"] forState:UIControlStateNormal];
-        [returnBtn_ addTarget:self action:@selector(returnToParent:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:returnBtn_];
+//        returnBtn_ = [UIButton buttonWithType:UIButtonTypeCustom];
+//        returnBtn_.frame = CGRectMake(10, 20, 40, 40);
+//        [returnBtn_ setImage:[UIImage imageNamed:@"play_back_icon.png"] forState:UIControlStateNormal];
+//        [returnBtn_ addTarget:self action:@selector(returnToParent:) forControlEvents:UIControlEventTouchUpInside];
+//        [self.view addSubview:returnBtn_];
         
         playContainerView_ = [[HCPlayerWrapper alloc] initWithFrame:CGRectMake(0, 0, screenWidth_, playerHeightMax_)];
         currentPlayerHeight_ = playerHeightMax_;
@@ -1590,6 +1590,7 @@ static MusicDetailViewController * _instanceDetailItem;
              }];
         }
     }
+     [[UIApplication sharedApplication] setStatusBarOrientation:orientation animated:NO];
 }
 - (void)cancelFullScreen:(UIInterfaceOrientation)orientation
 {

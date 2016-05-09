@@ -1171,6 +1171,7 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 - (void)videoPannel:(WTPlayerControlPannel *)pannelView didReturn:(BOOL)isReturn
 {
+    NSLog(@"will return");
     if([self.delegate respondsToSelector:@selector(videoPannel:didReturn:)])
     {
         [self.delegate videoPannel:pannelView didReturn:isReturn];
