@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "HCPlayer"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "这是一个视频与音频播放器的库。"
   s.description  = <<-DESC
 这是一个视频的播放特定的核心库。包含了视频、音频、歌词及缓冲处理的功能。
@@ -38,7 +38,7 @@ s.ios.deployment_target = "7.0"
 s.source       = { :git => "https://github.com/halfking/HCPlayer", :tag => s.version}
 
 s.source_files  = "HCPlayer/**/*.{h,m,mm,c,cpp}","HCPlayer/**/*.bundle"
-#  s.exclude_files = "hccoren/Exclude"
+s.exclude_files = "HCPlayer/HCPlayerTest/**/*"
 #s.public_header_files = "HCPlayer/**/*.h"
 
 # s.resource  = "icon.png"
@@ -51,7 +51,7 @@ s.xcconfig = { "CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES" => "YES",
 s.pod_target_xcconfig = { 'LIBRARY_SEARCH_PATHS' => "$(inherited) " }
 # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
 
-s.dependency "HCMinizip", "~> 1.2.6"
+s.dependency "HCMinizip"
 s.dependency "hccoren"
 s.dependency "HCBaseSystem"
 s.dependency "HCMVManager"
