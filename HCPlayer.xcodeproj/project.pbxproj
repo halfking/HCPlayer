@@ -163,15 +163,15 @@
 		112B580C1CDAFC6C008564C6 /* upload.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57EA1CDAFC12008564C6 /* upload.png */; };
 		112B580D1CDAFC6C008564C6 /* upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57EB1CDAFC12008564C6 /* upload@2x.png */; };
 		112B580E1CDAFC6C008564C6 /* upload@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B57EC1CDAFC12008564C6 /* upload@3x.png */; };
-		112B58251CDB4FA0008564C6 /* HCPlayerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581B1CDB4FA0008564C6 /* HCPlayerWrapper.h */; };
+		112B58251CDB4FA0008564C6 /* HCPlayerWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581B1CDB4FA0008564C6 /* HCPlayerWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		112B58261CDB4FA0008564C6 /* HCPlayerWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 112B581C1CDB4FA0008564C6 /* HCPlayerWrapper.m */; };
-		112B58271CDB4FA0008564C6 /* HCPlayerWrapper(background).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581D1CDB4FA0008564C6 /* HCPlayerWrapper(background).h */; };
+		112B58271CDB4FA0008564C6 /* HCPlayerWrapper(background).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581D1CDB4FA0008564C6 /* HCPlayerWrapper(background).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		112B58281CDB4FA0008564C6 /* HCPlayerWrapper(background).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B581E1CDB4FA0008564C6 /* HCPlayerWrapper(background).m */; };
-		112B58291CDB4FA0008564C6 /* HCPlayerWrapper(Data).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581F1CDB4FA0008564C6 /* HCPlayerWrapper(Data).h */; };
+		112B58291CDB4FA0008564C6 /* HCPlayerWrapper(Data).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B581F1CDB4FA0008564C6 /* HCPlayerWrapper(Data).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		112B582A1CDB4FA0008564C6 /* HCPlayerWrapper(Data).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58201CDB4FA0008564C6 /* HCPlayerWrapper(Data).m */; };
-		112B582B1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B58211CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h */; };
+		112B582B1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B58211CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		112B582C1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58221CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).m */; };
-		112B582D1CDB4FA0008564C6 /* HCPlayerWrapper(Play).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B58231CDB4FA0008564C6 /* HCPlayerWrapper(Play).h */; };
+		112B582D1CDB4FA0008564C6 /* HCPlayerWrapper(Play).h in Headers */ = {isa = PBXBuildFile; fileRef = 112B58231CDB4FA0008564C6 /* HCPlayerWrapper(Play).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		112B582E1CDB4FA0008564C6 /* HCPlayerWrapper(Play).m in Sources */ = {isa = PBXBuildFile; fileRef = 112B58241CDB4FA0008564C6 /* HCPlayerWrapper(Play).m */; };
 		112B58361CDB4FB2008564C6 /* close_danmu.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B582F1CDB4FB2008564C6 /* close_danmu.png */; };
 		112B58381CDB4FB2008564C6 /* close_danmu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 112B58301CDB4FB2008564C6 /* close_danmu@2x.png */; };
@@ -221,12 +221,12 @@
 		11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F591CD87C0D00F4DA09 /* LyricDragView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
 		11754F601CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
-		118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */; };
+		118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */; };
 		118CE51C1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */; };
 		118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5171CE0A9F200290641 /* VDCTempFileManager.m */; };
-		118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */; };
-		118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */; };
+		118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */; settings = {ATTRIBUTES = (Public, ); }; };
+		118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1193D4681CDC4D50006874C8 /* mtvcover_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4661CDC4D17006874C8 /* mtvcover_icon@2x.png */; };
 		1193D46D1CDCABB6006874C8 /* play_iconbig.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4691CDCABB6006874C8 /* play_iconbig.png */; };
 		1193D46F1CDCABB6006874C8 /* play_iconbig@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D46A1CDCABB6006874C8 /* play_iconbig@2x.png */; };
@@ -864,30 +864,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				11754E8A1CD7585500F4DA09 /* WTVideoPlayerView(MTV).h in Headers */,
-				112B58251CDB4FA0008564C6 /* HCPlayerWrapper.h in Headers */,
 				11754E841CD7585500F4DA09 /* WTVideoPlayerProgressView.h in Headers */,
 				11754EA71CD758A500F4DA09 /* WTRecordTopPannel(Upload).h in Headers */,
 				11754F341CD871CB00F4DA09 /* UICommentListView.h in Headers */,
 				11754F301CD871CB00F4DA09 /* CommentViewManager.h in Headers */,
 				11754EA31CD758A500F4DA09 /* WTPlayerTopPannel.h in Headers */,
 				11754F5B1CD87C0D00F4DA09 /* LyricCell.h in Headers */,
-				118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */,
-				112B582D1CDB4FA0008564C6 /* HCPlayerWrapper(Play).h in Headers */,
 				11754EA51CD758A500F4DA09 /* WTRecordTopPannel.h in Headers */,
 				11754F321CD871CB00F4DA09 /* UICommentItemView.h in Headers */,
 				11754E9C1CD758A500F4DA09 /* AVFunComm.h in Headers */,
-				112B582B1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h in Headers */,
 				11754F5E1CD87C0D00F4DA09 /* LyricDragView.h in Headers */,
+				112B58251CDB4FA0008564C6 /* HCPlayerWrapper.h in Headers */,
+				118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */,
+				112B582D1CDB4FA0008564C6 /* HCPlayerWrapper(Play).h in Headers */,
+				112B582B1CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).h in Headers */,
 				118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */,
 				112B58271CDB4FA0008564C6 /* HCPlayerWrapper(background).h in Headers */,
 				112B58291CDB4FA0008564C6 /* HCPlayerWrapper(Data).h in Headers */,
+				118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */,
 				11754E9F1CD758A500F4DA09 /* WTPlayerControlPannel.h in Headers */,
 				11754F201CD871A300F4DA09 /* player_config.h in Headers */,
 				11754F381CD871CB00F4DA09 /* UICommentsView.h in Headers */,
 				11754E631CD755E000F4DA09 /* HCPlayer.h in Headers */,
 				11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */,
 				11754F541CD87BD000F4DA09 /* LyricView.h in Headers */,
-				118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */,
 				11754F361CD871CB00F4DA09 /* UICommentsPopView.h in Headers */,
 				11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */,
 			);

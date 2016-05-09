@@ -38,7 +38,7 @@ FOUNDATION_EXPORT const unsigned char HCPlayerVersionString[];
 
 #import <HCPlayer/VDCLoaderConnectionN.h>
 #import <HCPlayer/VDCTempFileManagerN.h>
-#import <HCPlayer/VDCTempFileManagerN(readerwrite).h>
+#import <HCPlayer/VDCTempFileManagerN(readerwriter).h>
 
 
 //#import <HCPlayer/PlayerMediaItem.h>
