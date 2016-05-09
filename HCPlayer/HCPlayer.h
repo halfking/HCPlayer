@@ -36,12 +36,23 @@ FOUNDATION_EXPORT const unsigned char HCPlayerVersionString[];
 #import <HCPlayer/WTRecordTopPannel.h>
 #import <HCPlayer/WTRecordTopPannel(Upload).h>
 
-#import <HCPlayer/PlayerMediaItem.h>
+#import <HCPlayer/VDCLoaderConnectionN.h>
+#import <HCPlayer/VDCTempFileManagerN.h>
+#import <HCPlayer/VDCTempFileManagerN(readerwrite).h>
+
+
+//#import <HCPlayer/PlayerMediaItem.h>
 #import <HCPlayer/WTVideoPlayerProgressView.h>
-#import <HCPlayer/WTVideoPlayerView(Cache).h>
-#import <HCPlayer/WTVideoPlayerView(Lyric).h>
+//#import <HCPlayer/WTVideoPlayerView(Cache).h>
+//#import <HCPlayer/WTVideoPlayerView(Lyric).h>
 #import <HCPlayer/WTVideoPlayerView(MTV).h>
 #import <HCPlayer/WTVideoPlayerView.h>
+
+#import <HCPlayer/HCPlayerWrapper.h>
+#import <HCPlayer/HCPlayerWrapper(background).h>
+#import <HCPlayer/HCPlayerWrapper(Data).h>
+#import <HCPlayer/HCPlayerWrapper(Lyric).h>
+#import <HCPlayer/HCPlayerWrapper(Play).h>
 
 #import <HCPlayer/player_config.h>
 

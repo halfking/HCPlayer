@@ -198,8 +198,6 @@
 		11754EA61CD758A500F4DA09 /* WTRecordTopPannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E991CD758A500F4DA09 /* WTRecordTopPannel.m */; };
 		11754EA71CD758A500F4DA09 /* WTRecordTopPannel(Upload).h in Headers */ = {isa = PBXBuildFile; fileRef = 11754E9A1CD758A500F4DA09 /* WTRecordTopPannel(Upload).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754EA81CD758A500F4DA09 /* WTRecordTopPannel(Upload).m in Sources */ = {isa = PBXBuildFile; fileRef = 11754E9B1CD758A500F4DA09 /* WTRecordTopPannel(Upload).m */; };
-		11754EAB1CD758F300F4DA09 /* PlayerMediaItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		11754EAC1CD758F300F4DA09 /* PlayerMediaItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */; };
 		11754EAE1CD7593100F4DA09 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 11754EAD1CD7593100F4DA09 /* Podfile */; };
 		11754F201CD871A300F4DA09 /* player_config.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F1F1CD871A300F4DA09 /* player_config.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 11754F221CD871CB00F4DA09 /* CommentAnimateItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -225,7 +223,7 @@
 		11754F601CD87C0D00F4DA09 /* LyricDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 11754F5A1CD87C0D00F4DA09 /* LyricDragView.m */; };
 		118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */; };
 		118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */; };
-		118CE51C1CE0A9F200290641 /* VDCTempFileManager(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */; };
+		118CE51C1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */; };
 		118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5171CE0A9F200290641 /* VDCTempFileManager.m */; };
 		118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */; };
 		118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */; };
@@ -449,8 +447,6 @@
 		11754E991CD758A500F4DA09 /* WTRecordTopPannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WTRecordTopPannel.m; sourceTree = "<group>"; };
 		11754E9A1CD758A500F4DA09 /* WTRecordTopPannel(Upload).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WTRecordTopPannel(Upload).h"; sourceTree = "<group>"; };
 		11754E9B1CD758A500F4DA09 /* WTRecordTopPannel(Upload).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "WTRecordTopPannel(Upload).m"; sourceTree = "<group>"; };
-		11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerMediaItem.h; sourceTree = "<group>"; };
-		11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerMediaItem.m; sourceTree = "<group>"; };
 		11754EAD1CD7593100F4DA09 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		11754F1F1CD871A300F4DA09 /* player_config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = player_config.h; sourceTree = "<group>"; };
 		11754F221CD871CB00F4DA09 /* CommentAnimateItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentAnimateItem.h; sourceTree = "<group>"; };
@@ -474,7 +470,7 @@
 		11754F8F1CD89C3E00F4DA09 /* HCPlayer.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HCPlayer.podspec; sourceTree = "<group>"; };
 		118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCLoaderConnectionN.h; sourceTree = "<group>"; };
 		118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCLoaderConnectionN.m; sourceTree = "<group>"; };
-		118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VDCTempFileManager(readwriter).m"; sourceTree = "<group>"; };
+		118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VDCTempFileManagerN(readwriter).m"; sourceTree = "<group>"; };
 		118CE5171CE0A9F200290641 /* VDCTempFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCTempFileManager.m; sourceTree = "<group>"; };
 		118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VDCTempFileManagerN(readwriter).h"; sourceTree = "<group>"; };
 		118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCTempFileManagerN.h; sourceTree = "<group>"; };
@@ -767,8 +763,6 @@
 				112B58221CDB4FA0008564C6 /* HCPlayerWrapper(Lyric).m */,
 				112B58231CDB4FA0008564C6 /* HCPlayerWrapper(Play).h */,
 				112B58241CDB4FA0008564C6 /* HCPlayerWrapper(Play).m */,
-				11754EA91CD758F300F4DA09 /* PlayerMediaItem.h */,
-				11754EAA1CD758F300F4DA09 /* PlayerMediaItem.m */,
 				11754E7A1CD7585500F4DA09 /* WTVideoPlayerProgressView.h */,
 				11754E7B1CD7585500F4DA09 /* WTVideoPlayerProgressView.m */,
 				11754E801CD7585500F4DA09 /* WTVideoPlayerView(MTV).h */,
@@ -833,7 +827,7 @@
 			children = (
 				118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */,
 				118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */,
-				118CE5161CE0A9F200290641 /* VDCTempFileManager(readwriter).m */,
+				118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */,
 				118CE5171CE0A9F200290641 /* VDCTempFileManager.m */,
 				118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */,
 				118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */,
@@ -894,7 +888,6 @@
 				11754F2E1CD871CB00F4DA09 /* CommentAnimateItem.h in Headers */,
 				11754F541CD87BD000F4DA09 /* LyricView.h in Headers */,
 				118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */,
-				11754EAB1CD758F300F4DA09 /* PlayerMediaItem.h in Headers */,
 				11754F361CD871CB00F4DA09 /* UICommentsPopView.h in Headers */,
 				11754E8C1CD7585500F4DA09 /* WTVideoPlayerView.h in Headers */,
 			);
@@ -1296,7 +1289,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11754EAC1CD758F300F4DA09 /* PlayerMediaItem.m in Sources */,
 				11754F371CD871CB00F4DA09 /* UICommentsPopView.m in Sources */,
 				112B582A1CDB4FA0008564C6 /* HCPlayerWrapper(Data).m in Sources */,
 				11754EA01CD758A500F4DA09 /* WTPlayerControlPannel.m in Sources */,
@@ -1318,7 +1310,7 @@
 				11754F5C1CD87C0D00F4DA09 /* LyricCell.m in Sources */,
 				11754EA41CD758A500F4DA09 /* WTPlayerTopPannel.m in Sources */,
 				11754E9D1CD758A500F4DA09 /* AVFunComm.m in Sources */,
-				118CE51C1CE0A9F200290641 /* VDCTempFileManager(readwriter).m in Sources */,
+				118CE51C1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m in Sources */,
 				11754F2F1CD871CB00F4DA09 /* CommentAnimateItem.m in Sources */,
 				112B58261CDB4FA0008564C6 /* HCPlayerWrapper.m in Sources */,
 				11754E851CD7585500F4DA09 /* WTVideoPlayerProgressView.m in Sources */,
