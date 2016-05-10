@@ -5,9 +5,9 @@ platform :ios, '7.0'
 target 'HCPlayerTest' do
 
 pod 'HCMinizip'
-pod 'hccoren’,’~>0.3.1’
-pod 'HCBaseSystem’,’~>0.3.0’
-pod 'HCMVManager','~>0.1.2'
-pod 'HCAudioUnit','~>0.1.8'
+pod 'hccoren’,’~>0.3.3’
+pod 'HCBaseSystem’,’~>0.3.3’
+pod 'HCMVManager','~>0.1.4'
+pod 'HCAudioUnit','~>0.2.1'
 
 end
