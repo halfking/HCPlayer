@@ -12,8 +12,8 @@
 
 #import "VDCManager.h"
 #import "VDCItem.h"
-#import "UDManager(Helper).h"
 
+@class UDManager;
 @class VDCTempFileManagerN;
 @protocol VDCManagerRequestTaskNDelegate <NSObject>
 @optional

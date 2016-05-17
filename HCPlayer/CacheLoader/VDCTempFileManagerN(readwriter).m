@@ -11,6 +11,7 @@
 #import "VDCItem.h"
 #import "VDCTempFileManagerN.h"
 #import "VDCTempFileManagerN(readwriter).h"
+#import <HCBaseSystem/UpDown.h>
 #import <hccoren/base.h>
 
 @implementation VDCTempFileManagerN(readwriter)

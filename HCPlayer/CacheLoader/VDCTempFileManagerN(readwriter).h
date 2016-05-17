@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "VDCTempFileInfo.h"
 #import "VDCItem.h"
-#import "UDManager(Helper).h"
+//#import "UDManager(Helper).h"
 #import "VDCTempFileManagerN.h"
 
 @interface VDCTempFileManagerN(readwriter)

@@ -15,6 +15,7 @@
 #import <UIKit/UIKit.h>
 
 @interface WTVideoPlayerView(MTV)<UIActionSheetDelegate>
+- (BOOL) isCurrentMTV:(MTV*)mtvItem;
 //检查文件属性
 + (BOOL)isDownloadCompleted:(MTV **)orgItem Sample:(MTV*)sample NetStatus:(NetworkStatus)status UserID:(long)userID;
 + (VDCItem *)getVDCItem:(MTV*)item Sample:(MTV *)sample;

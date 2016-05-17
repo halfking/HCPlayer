@@ -224,7 +224,7 @@
 		118CE51A1CE0A9F200290641 /* VDCLoaderConnectionN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */; };
 		118CE51C1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */; };
-		118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5171CE0A9F200290641 /* VDCTempFileManager.m */; };
+		118CE51D1CE0A9F200290641 /* VDCTempFileManagerN.m in Sources */ = {isa = PBXBuildFile; fileRef = 118CE5171CE0A9F200290641 /* VDCTempFileManagerN.m */; };
 		118CE51E1CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */; settings = {ATTRIBUTES = (Public, ); }; };
 		118CE51F1CE0A9F200290641 /* VDCTempFileManagerN.h in Headers */ = {isa = PBXBuildFile; fileRef = 118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1193D4681CDC4D50006874C8 /* mtvcover_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1193D4661CDC4D17006874C8 /* mtvcover_icon@2x.png */; };
@@ -471,7 +471,7 @@
 		118CE5141CE0A9F200290641 /* VDCLoaderConnectionN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCLoaderConnectionN.h; sourceTree = "<group>"; };
 		118CE5151CE0A9F200290641 /* VDCLoaderConnectionN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCLoaderConnectionN.m; sourceTree = "<group>"; };
 		118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VDCTempFileManagerN(readwriter).m"; sourceTree = "<group>"; };
-		118CE5171CE0A9F200290641 /* VDCTempFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCTempFileManager.m; sourceTree = "<group>"; };
+		118CE5171CE0A9F200290641 /* VDCTempFileManagerN.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDCTempFileManagerN.m; sourceTree = "<group>"; };
 		118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VDCTempFileManagerN(readwriter).h"; sourceTree = "<group>"; };
 		118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDCTempFileManagerN.h; sourceTree = "<group>"; };
 		1193D4661CDC4D17006874C8 /* mtvcover_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mtvcover_icon@2x.png"; sourceTree = "<group>"; };
@@ -830,7 +830,7 @@
 				118CE5181CE0A9F200290641 /* VDCTempFileManagerN(readwriter).h */,
 				118CE5161CE0A9F200290641 /* VDCTempFileManagerN(readwriter).m */,
 				118CE5191CE0A9F200290641 /* VDCTempFileManagerN.h */,
-				118CE5171CE0A9F200290641 /* VDCTempFileManager.m */,
+				118CE5171CE0A9F200290641 /* VDCTempFileManagerN.m */,
 			);
 			path = CacheLoader;
 			sourceTree = "<group>";
@@ -1306,7 +1306,7 @@
 				11754F551CD87BD000F4DA09 /* LyricView.m in Sources */,
 				11754F5F1CD87C0D00F4DA09 /* LyricDragView.m in Sources */,
 				118CE51B1CE0A9F200290641 /* VDCLoaderConnectionN.m in Sources */,
-				118CE51D1CE0A9F200290641 /* VDCTempFileManager.m in Sources */,
+				118CE51D1CE0A9F200290641 /* VDCTempFileManagerN.m in Sources */,
 				11754F5C1CD87C0D00F4DA09 /* LyricCell.m in Sources */,
 				11754EA41CD758A500F4DA09 /* WTPlayerTopPannel.m in Sources */,
 				11754E9D1CD758A500F4DA09 /* AVFunComm.m in Sources */,

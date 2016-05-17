@@ -19,7 +19,14 @@
 
 
 @implementation WTVideoPlayerView(MTV)
-
+- (BOOL) isCurrentMTV:(MTV*)mtvItem
+{
+    if(!mtvItem) return NO;
+    if(self.playerItemKey && [self.playerItemKey isEqualToString:[mtvItem getKey]])
+        return YES;
+    
+    return NO;
+}
 //检查文件是否存在，并且检查是否下载完成了
 + (BOOL)isDownloadCompleted:(MTV **)orgItem Sample:(MTV*)sample NetStatus:(NetworkStatus)status UserID:(long)userID
 {

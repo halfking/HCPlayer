@@ -1,22 +1,10 @@
 
 #import "WTVideoPlayerView.h"
 #import <AVFoundation/AVFoundation.h>
-#import <HCMVManager/MTV.h>
-//#import <HCMVManager/vdcmanager_full.h>
-#import <HCBaseSystem/VDCManager.h>
-#import <HCBaseSystem/VDCManager(Helper).h>
-#import <HCBaseSystem/VDCManager(LocalFiles).h>
-#import <HCMVManager/VDCManager(MTV).h>
 
 #import "VDCLoaderConnectionN.h"
 #import "VDCTempFileManagerN.h"
 #import "VDCTempFileManagerN(readwriter).h"
-#import "LyricView.h"
-#import "CommentViewManager.h"
-#import "UICommentsView.h"
-
-//#import "WTVideoPlayerView(Cache).h"
-//#import "WTVideoPlayerView(Lyric).h"
 
 @interface WTVideoPlayerView () <VDCLoaderConnectionNDelegate>
 @property (strong, nonatomic) AVPlayer *player;
@@ -569,14 +557,7 @@ static WTVideoPlayerView *sharedPlayerView = nil;
     PP_RELEASE(orgPath_);
     orgPath_ = PP_RETAIN(orgPath);
 }
-- (BOOL) isCurrentMTV:(MTV*)mtvItem
-{
-    if(!mtvItem) return NO;
-    if(self.playerItemKey && [self.playerItemKey isEqualToString:[mtvItem getKey]])
-        return YES;
-    
-    return NO;
-}
+
 - (BOOL) isCurrentPath:(NSString *)path
 {
     if(!path || path.length==0) return NO;

@@ -1,54 +1,13 @@
-//
-//  VideoPlayerView.h
-//  Smokescreen
-//
-//  Created by Alfred Hanssen on 2/9/14.
-//  Copyright (c) 2014-2015 Vimeo (https://vimeo.com)
-//
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
-//
-//  The above copyright notice and this permission notice shall be included in
-//  all copies or substantial portions of the Software.
-//
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-//  THE SOFTWARE.
-//
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 #import <hccoren/base.h>
 
-@class MTV;
-@class LyricView;
-@class UICommentsView;
-@class CommentViewManager;
-
 typedef void (^PlayerFrameChanged)(CGRect frame,NSURL * url);
 typedef void (^generateCompletedByPlayer)(CMTime requestTime,UIImage* image);
 typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 
-@class WTVideoPlayer;
 @class WTVideoPlayerView;
-//@class WTVideoPlayerProgressView;
-
-//@protocol WTVideoPlayerViewDatasource <NSObject>
-//@optional
-//-(NSInteger) videoPlayerView:(WTVideoPlayerView *)player itemCount:(NSInteger)section;
-//-(AVPlayerItem*) videoPlayerView:(WTVideoPlayerView *)player getPlayerItemForIndex:(NSInteger)index;
-//-(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForIndex:(NSInteger)index;
-//-(PlayerMediaItem*) videoPlayerView:(WTVideoPlayerView *)player getItemForTime:(CGFloat)secondsInTime;
-//-(CMTime) videoPlayerView:(WTVideoPlayerView *)player getDuration:(CGFloat)secondsInTime;
-//@end
 
 @protocol WTVideoPlayerViewDelegate <NSObject>
 
@@ -113,7 +72,7 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 - (void) changeCurrentItemPath:(NSString *)path;
 - (void) setItemOrgPath:(NSString *)orgPath;
 - (BOOL) isCurrentPath:(NSString *)path;
-- (BOOL) isCurrentMTV:(MTV*)mtvItem;
+//- (BOOL) isCurrentMTV:(MTV*)mtvItem;
 - (void) resetPlayItemKey;
 - (NSURL *) getUrlFromString:(NSString *)urlString;
 
