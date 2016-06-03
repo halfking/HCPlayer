@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A83609129213103982B0CF7BDF11DA59'
+               BlueprintIdentifier = '67DD051FC6C274ADEC0B3FF3EFF44EB5'
                BlueprintName = 'HCMVManager'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libHCMVManager.a'>

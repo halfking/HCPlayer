@@ -181,7 +181,16 @@
                  {
                      [self updateFilePath:weakMtv filePath:vdcItem.localFilePath];
                  }
-                 NSString * newPath = [url path];
+                 
+                 NSString * newPath = nil;
+                 if([[HCFileManager manager]existFileAtPath:vdcItem.localFilePath])
+                 {
+                     newPath = vdcItem.localFilePath;
+                 }
+                 else
+                 {
+                     newPath = [url absoluteString];
+                 }
                  NSLog(@"**-- Play:%@",newPath?newPath:@"文件可能没有上传，但本地文件又不在了，所以会出现NULL值");
                  
                  [self playItemChangeWithCoreEvents:newPath /*orgPath:weakPath mtv:item */ beginSeconds:seconds play:YES];

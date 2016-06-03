@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GPUImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HCAudioUnit.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -67,6 +72,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>0DC8BCC337CBE1F795C675E87C3D1B3E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>28FA6EF91550C1A53CD05EF9D5F1D774</key>
 		<dict>
 			<key>primary</key>
@@ -82,7 +92,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4D08BBB85F425DAA8377B80B789A92D1</key>
+		<key>6610362E50A6DE8BACCA1F2885CD9157</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>67DD051FC6C274ADEC0B3FF3EFF44EB5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,22 +112,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>9954C88812BD34A7B70BA562B626733A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7DF2DC46E01EE91FCED0FA453136F76</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A83609129213103982B0CF7BDF11DA59</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>FBB36B05781C8E8B216BF19994C1624B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>FFC3F6A6F4BC074C378D2D629E0F2D9C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
