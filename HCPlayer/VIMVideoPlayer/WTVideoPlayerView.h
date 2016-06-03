@@ -20,7 +20,7 @@ typedef void (^generateFailureByPlayer)(CMTime requestTime,NSError * error);
 
 - (void) pauseWithCache;
 
-- (void) setItemOrgPath:(NSString *)orgPath;
-- (BOOL) isCurrentPath:(NSString *)path;
+//- (void) setItemOrgPath:(NSString *)orgPath;
+//- (BOOL) isCurrentPath:(NSString *)path;
 
 @end

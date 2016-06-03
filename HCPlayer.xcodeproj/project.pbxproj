@@ -1423,13 +1423,14 @@
 		112B55F51CDA22F2008564C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMBINE_HIDPI_IMAGES = NO;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HCPlayerResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayerResource;
 				PRODUCT_NAME = HCPlayer;
+				PROVISIONING_PROFILE = "1ca4aa45-3d1d-4f3f-b72f-f13b8ae1b153";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
@@ -1438,13 +1439,14 @@
 		112B55F61CDA22F2008564C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hangzhou Qunyin Network Technology Co., Ltd. (9TD5C77UVP)";
 				COMBINE_HIDPI_IMAGES = NO;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = HCPlayerResource/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.seenvoice.HCPlayerResource;
 				PRODUCT_NAME = HCPlayer;
+				PROVISIONING_PROFILE = "c89a33fa-8603-4e1e-9347-bd67fda14b16";
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
 			};
