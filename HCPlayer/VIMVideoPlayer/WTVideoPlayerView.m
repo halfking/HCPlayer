@@ -674,16 +674,11 @@ static WTVideoPlayerView *sharedPlayerView = nil;
         timeObserver_ = [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1, 25)
                                                                   queue:NULL
                                                              usingBlock:^(CMTime time){
-                                                                 //                                                                 __strong WTVideoPlayerView *strongSelf = weakSelf;
                                                                  if(weakSelf && !timerDoing_)
                                                                  {
                                                                      timerDoing_ = YES;
                                                                      __strong WTVideoPlayerView *strongSelf = weakSelf;
                                                                      
-                                                                     //                                                                     CGFloat endTime = [strongSelf getSecondsEnd];
-                                                                     
-                                                                     
-                                                                     //                                                                     CGFloat seconds  = [strongSelf getSecondsBeforeCurrentItem] + CMTimeGetSeconds(time);
                                                                      CGFloat seconds  = CMTimeGetSeconds(time);
                                                                      [strongSelf setDurationWhenWithSeconds:seconds];
                                                                      
@@ -691,14 +686,11 @@ static WTVideoPlayerView *sharedPlayerView = nil;
                                                                                timeDidChange:seconds];
                                                                      
                                                                      //结束
-                                                                     //                                                                     if(endTime > 0){
-                                                                     //                                                                         NSLog(@"endtime:%.2f,seconds:%.2f",endTime,seconds);
-                                                                     //                                                                         if(seconds >= endTime -0.01)
-                                                                     //                                                                         {
-                                                                     //                                                                             [strongSelf pause];
-                                                                     //                                                                             [strongSelf videoPlayerDidReachEnd:nil];
-                                                                     //                                                                         }
-                                                                     //                                                                     }
+                                                                     if(secondsEnd_ > 0 && seconds >=secondsEnd_){
+                                                                         //                                                                         NSLog(@"endtime:%.2f,seconds:%.2f",secondsEnd_,seconds);
+                                                                         [strongSelf pause];
+                                                                         [strongSelf videoPlayerDidReachEnd:weakSelf];
+                                                                     }
                                                                      timerDoing_ = NO;
                                                                  }
                                                              }];

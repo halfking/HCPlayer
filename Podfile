@@ -7,9 +7,9 @@ target 'HCPlayer' do
 
   # Pods for HCPlayer
   pod 'HCMinizip'
-  pod 'hccoren’,’~>0.3.3’
-  pod 'HCBaseSystem’,’~>0.3.3’
-  pod 'HCMVManager','~>0.1.4'
+  pod 'hccoren’,’~>0.3.6’
+  pod 'HCBaseSystem’,’~>0.3.4’
+  pod 'HCMVManager','~>0.9.9'
   pod 'HCAudioUnit','~>0.2.1'
   target 'HCPlayerTests' do
     inherit! :search_paths
