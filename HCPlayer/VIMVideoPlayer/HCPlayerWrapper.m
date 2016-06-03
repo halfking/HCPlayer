@@ -28,11 +28,12 @@
 
 #import <HCBaseSystem/cmd_wt.h>
 #import <HCBaseSystem/CMD_LikeOrNot.h>
+#import <HCMVManager/HCPlayerSimple.h>
 
 #define TAG_SCROLLRECT 78654
 #define TAG_PROGRESSVIEW 78653
 #define COVERHOLDER @"HCPlayer.boundle/mtvcover_icon"
-@interface HCPlayerWrapper()<WTVideoPlayerViewDelegate,WTVideoPlayerProgressDelegate,WTPlayerControlPannelDelegate>
+@interface HCPlayerWrapper()<WTVideoPlayerProgressDelegate,WTPlayerControlPannelDelegate>
 {
     BOOL subViewBuild_;
     UIButton *  centerPlayBtn_;      //视图中央的播放按钮
@@ -1206,19 +1207,19 @@ static HCPlayerWrapper * _instanceDetailItem;
 }
 
 #pragma mark - player delegate
-- (void)videoPlayerViewIsReadyToPlayVideo:(WTVideoPlayerView *)videoPlayerView
+- (void)playerSimple:(HCPlayerSimple *)playerSimple itemReady:(AVPlayerItem *)item
 {
 #ifndef __OPTIMIZE__
     [self showSecondsWasted:@"player item ready"];
 #endif
     NSLog(@"ready to play...%i",(int)mplayer_.playing);
-    [self setTotalSeconds:CMTimeGetSeconds(videoPlayerView.playerItem.duration)];
-    if(currentPlayerItem_ &&currentPlayerItem_!=videoPlayerView.playerItem)
+    [self setTotalSeconds:CMTimeGetSeconds(item.duration)];
+    if(currentPlayerItem_ &&currentPlayerItem_!=item)
     {
         PP_RELEASE(currentPlayerItem_);
     }
     if(!currentPlayerItem_)
-        currentPlayerItem_ = PP_RETAIN(videoPlayerView.playerItem);
+        currentPlayerItem_ = PP_RETAIN(item);
     
     //    [self recordPlayItemBegin];
     //    [self setDelaySeconds];
@@ -1238,12 +1239,12 @@ static HCPlayerWrapper * _instanceDetailItem;
         [self hideComments];
     }
     playItemChanged_ = NO;
-    if([self.delegate respondsToSelector:@selector(videoPlayerViewIsReadyToPlayVideo:)])
+    if([self.delegate respondsToSelector:@selector(playerSimple:itemReady:)])
     {
-        [self.delegate videoPlayerViewIsReadyToPlayVideo:videoPlayerView];
+        [self.delegate playerSimple:playerSimple itemReady:item];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView showWaiting:(BOOL)isShow
+- (void)playerSimple:(HCPlayerSimple *)playerSimple  showWaiting:(BOOL)isShow
 {
     if(isShow)
     {
@@ -1254,7 +1255,7 @@ static HCPlayerWrapper * _instanceDetailItem;
         [self hidePlayerWaitingView];
     }
 }
-- (void)videoPlayerViewDidReachEnd:(WTVideoPlayerView *)videoPlayerView
+- (void)playerSimple:(HCPlayerSimple *)playerSimple reachEnd:(CGFloat)end
 {
     currentPlaySeconds_ = playBeginSeconds_;
     //如果是循环播放
@@ -1269,12 +1270,12 @@ static HCPlayerWrapper * _instanceDetailItem;
         [commentManager_ stopCommentTimer];
         [self pause];
     }
-    if([self.delegate respondsToSelector:@selector(videoPlayerViewDidReachEnd:)])
+    if([self.delegate respondsToSelector:@selector(playerSimple:reachEnd:)])
     {
-        [self.delegate videoPlayerViewDidReachEnd:videoPlayerView];
+        [self.delegate playerSimple:playerSimple reachEnd:end];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView timeDidChange:(CGFloat)cmTime
+- (void)playerSimple:(HCPlayerSimple *)playerSimple timeDidChange:(CGFloat)cmTime
 {
     if(cmTime < 0.15)
         return;
@@ -1286,7 +1287,8 @@ static HCPlayerWrapper * _instanceDetailItem;
     
     if(playEndSeconds_>0 && currentPlaySeconds_ >= playEndSeconds_)
     {
-        [self videoPlayerViewDidReachEnd:videoPlayerView];
+        [self playerSimple:playerSimple reachEnd:playEndSeconds_];
+//        [self videoPlayerViewDidReachEnd:videoPlayerView];
         return;
     }
     
@@ -1310,12 +1312,12 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [commentManager_ setCurrentDuranceWhen:progress];
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:timeDidChange:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:timeDidChange:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView timeDidChange:currentPlaySeconds_];
+        [self.delegate playerSimple:playerSimple timeDidChange:currentPlaySeconds_];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didStalled:(AVPlayerItem *)playerItem
+- (void)playerSimple:(HCPlayerSimple *)playerSimple  didStalled:(AVPlayerItem *)playerItem
 {
     NSLog(@"playing pause by stalled");
     //此处不易中断处理，在Loader代理情况下，如果中断，会导致下载停止,IOS 7以下，不使用Loader
@@ -1323,37 +1325,44 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self pause];
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didStalled:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:didStalled:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView didStalled:playerItem];
+        [self.delegate playerSimple:playerSimple didStalled:playerItem];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView beginPlay:(AVPlayerItem *)playerItem
+- (void)playerSimple:(HCPlayerSimple *)playerSimple  beginPlay:(AVPlayerItem *)playerItem
 {
     if(leaderPlayer_ && leaderPlayer_.rate<=0.1)
     {
         needPlayLeader_ = YES;
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:beginPlay:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:beginPlay:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView beginPlay:playerItem];
+        [self.delegate playerSimple:playerSimple beginPlay:playerItem];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didFailedToPlayToEnd:(NSError *)error
+- (void)playerSimple:(HCPlayerSimple *)playerSimple didFailedToPlayToEnd:(NSError *)error
 {
     currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@"playing pause by didFailedToPlayToEnd:%@",[error localizedDescription]);
     
     if([userManager_ enableCachenWhenPlaying])
     {
-        NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
+        NSString * url = [[playerSimple getCurrentUrl]absoluteString];
         if(url && [HCFileManager isLocalFile:url])
         {
             if(localFileVDCItem_ && [[localFileVDCItem_.localFilePath lastPathComponent]isEqualToString:[url lastPathComponent]])
             {
                 [[VDCManager shareObject]removeUrlCahche:localFileVDCItem_.remoteUrl];
                 localFileVDCItem_.downloadBytes = 0;
-                [videoPlayerView resetPlayItemKey];
+                if([playerSimple isKindOfClass:[WTVideoPlayerView class]])
+                {
+                    [((WTVideoPlayerView *)playerSimple) resetPlayItemKey];
+                }
+                else
+                {
+                    playerSimple.key = nil;
+                }
                 [self pause];
             }
             else
@@ -1370,12 +1379,12 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [self pause];
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didFailedToPlayToEnd:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:didFailedToPlayToEnd:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView didFailedToPlayToEnd:error];
+        [self.delegate playerSimple:playerSimple didFailedToPlayToEnd:error];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView pausedByUnexpected:(NSError *)error item:(AVPlayerItem *)playerItem
+- (void)playerSimple:(HCPlayerSimple *)playerSimple  pausedByUnexpected:(NSError *)error item:(AVPlayerItem *)playerItem
 {
     NSLog(@"playing pausedByUnexpected:%@",[error localizedDescription]);
     //    pauseUnexpected_ = YES;
@@ -1383,12 +1392,12 @@ static HCPlayerWrapper * _instanceDetailItem;
     {
         [leaderPlayer_ pause];
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:pausedByUnexpected:item:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:pausedByUnexpected:item:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView pausedByUnexpected:error item:playerItem];
+        [self.delegate playerSimple:playerSimple pausedByUnexpected:error item:playerItem];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView autoPlayAfterPause:(NSError *)error item:(AVPlayerItem *)playerItem
+- (void)playerSimple:(HCPlayerSimple *)playerSimple autoPlayAfterPause:(NSError *)error item:(AVPlayerItem *)playerItem
 {
     //    if(!pauseUnexpected_)
     //    {
@@ -1396,41 +1405,48 @@ static HCPlayerWrapper * _instanceDetailItem;
     //        NSLog(@"playing auto, no unexpected stop, so pause.");
     //    }
     //    pauseUnexpected_ = NO;
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:autoPlayAfterPause:item:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:autoPlayAfterPause:item:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView autoPlayAfterPause:error item:playerItem];
+        [self.delegate playerSimple:playerSimple autoPlayAfterPause:error item:playerItem];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didFailWithError:(NSError *)error
+- (void)playerSimple:(HCPlayerSimple *)playerSimple didFailWithError:(NSError *)error
 {
     //        currentPlaySeconds_ = playBeginSeconds_;
     NSLog(@" playing failed error:%@",[error localizedDescription]);
     
     if([userManager_ enableCachenWhenPlaying])
     {
-        NSString * url = [[videoPlayerView getCurrentUrl]absoluteString];
+        NSString * url = [[playerSimple getCurrentUrl]absoluteString];
         if([HCFileManager isLocalFile:url])
         {
             if(localFileVDCItem_ && [[localFileVDCItem_.localFilePath lastPathComponent]isEqualToString:[url lastPathComponent]])
             {
                 [[VDCManager shareObject]removeUrlCahche:localFileVDCItem_.remoteUrl];
                 localFileVDCItem_.downloadBytes = 0;
-                [videoPlayerView resetPlayItemKey];
+                if([playerSimple isKindOfClass:[WTVideoPlayerView class]])
+                {
+                    [((WTVideoPlayerView *)playerSimple) resetPlayItemKey];
+                }
+                else
+                {
+                    playerSimple.key = nil;
+                }
                 [self pause];
             }
         }
     }
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didFailWithError:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:didFailWithError:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView didFailWithError:error];
+        [self.delegate playerSimple:playerSimple didFailWithError:error];
     }
 }
-- (void)videoPlayerView:(WTVideoPlayerView *)videoPlayerView didTapped:(AVPlayerItem *)playerItem
+- (void)playerSimple:(HCPlayerSimple *)playerSimple didTapped:(AVPlayerItem *)playerItem
 {
     [self showProgressView:nil];
-    if ([self.delegate respondsToSelector:@selector(videoPlayerView:didTapped:)])
+    if ([self.delegate respondsToSelector:@selector(playerSimple:didTapped:)])
     {
-        [self.delegate videoPlayerView:videoPlayerView didTapped:playerItem];
+        [self.delegate playerSimple:playerSimple didTapped:playerItem];
     }
 }
 #pragma mark - moving

@@ -23,6 +23,7 @@
 #import "CMD_GetSampleInfo.h"
 #import <HCBaseSystem/CMD_LikeOrNot.h>
 #import <HCBaseSystem/SevenSwitch.h>
+#import <HCMVManager/HCPlayerSimple.h>
 
 
 #define PLAYPANNEL_HEIGHT 0 //45
@@ -44,7 +45,7 @@
 
 static MusicDetailViewController * _instanceDetailItem;
 
-@interface MusicDetailViewController()<UIScrollViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate,WTVideoPlayerViewDelegate>
+@interface MusicDetailViewController()<UIScrollViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate,HCPlayerSimpleDelegate>
 {
     
     //    UIView *containerView_;

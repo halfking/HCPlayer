@@ -41,9 +41,9 @@
     
     
     if(localFileVDCItem_)
-        mplayer_.playerItemKey = localFileVDCItem_.key;//[item getKey];
+        mplayer_.key = localFileVDCItem_.key;//[item getKey];
     else
-        mplayer_.playerItemKey = [path md5Digest];
+        mplayer_.key = [path md5Digest];
     
     if([userManager_ enableCachenWhenPlaying])
     {
@@ -362,7 +362,7 @@
     //    [mplayer_ setRate:playRate_];
     mplayer_.userInteractionEnabled = NO;
     mplayer_.delegate = self;
-    mplayer_.playerItemKey = nil;
+    mplayer_.key = nil;
     if([userManager_ enableCachenWhenPlaying])
     {
         mplayer_.cachingWhenPlaying = YES;

@@ -22,7 +22,7 @@
 - (BOOL) isCurrentMTV:(MTV*)mtvItem
 {
     if(!mtvItem) return NO;
-    if(self.playerItemKey && [self.playerItemKey isEqualToString:[mtvItem getKey]])
+    if(self.key && [self.key isEqualToString:[mtvItem getKey]])
         return YES;
     
     return NO;

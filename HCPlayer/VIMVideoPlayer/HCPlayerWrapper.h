@@ -20,10 +20,10 @@
 #import "WTPlayerControlPannel.h"
 #import "WTPlayerTopPannel.h"
 #import <HCBaseSystem/VDCItem.h>
-
+#import <HCMVManager/HCPlayerSimple.h>
 static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
 
-@interface HCPlayerWrapper : UIView<WTVideoPlayerViewDelegate>
+@interface HCPlayerWrapper : UIView<HCPlayerSimpleDelegate>
 {
     LyricView * lyricView_;
     UICommentsView * commentListView_;
@@ -76,7 +76,7 @@ static UIBackgroundTaskIdentifier bgTask_ =  0;//UIBackgroundTaskInvalid;
     CGFloat lastSecondsRemember_;
 #endif
 }
-@property (nonatomic,PP_WEAK) id<WTVideoPlayerViewDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate> delegate;
+@property (nonatomic,PP_WEAK) id<HCPlayerSimpleDelegate,WTPlayerControlPannelDelegate,WTVideoPlayerProgressDelegate> delegate;
 @property (nonatomic,assign) BOOL isLoop;
 @property (nonatomic,assign) BOOL isShowLyric;
 + (instancetype)shareObject;
